@@ -33,5 +33,5 @@ export default function UseReducerComponent() {
       payload: payload,
     });
   }
-  return [state, dispatching];
+  return { state, dispatching };
 }
