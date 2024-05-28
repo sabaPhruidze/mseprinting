@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { rootContext } from "../Root";
 import CarouselComponent from "../importantparts/CarouselComponent";
-
+import WhatWeDoCards from "../importantparts/WhatWeDoCards";
 export default function Home() {
   const context = useContext(rootContext);
 
@@ -15,6 +15,7 @@ export default function Home() {
   return (
     <div>
       <CarouselComponent />
+      <WhatWeDoCards />
     </div>
   );
 }

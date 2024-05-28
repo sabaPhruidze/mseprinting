@@ -1,8 +1,7 @@
 import Carousel from "react-bootstrap/Carousel";
-import Banner from "../assets/icon/MSE Graphics.svg";
-import Banner1 from "../assets/icon/MSE Graphics.svg";
 import "bootstrap/dist/css/bootstrap.min.css";
 import CarouselData from "./CarouselData";
+
 export default function CarouselComponent() {
   const carouselData = CarouselData();
   return (
