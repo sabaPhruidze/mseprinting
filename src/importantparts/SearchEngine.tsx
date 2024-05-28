@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import {
   SearchEngineContainer,
-  SearchEngineButton,
   SearchEngineInput,
+  SearchEngineButton,
 } from "../style/HeaderStyles";
 interface SearchResult {
   id: number;
@@ -50,14 +50,14 @@ const SearchEngine: React.FC = () => {
         placeholder="Search..."
       />
       <SearchEngineButton onClick={handleSearch}>Search</SearchEngineButton>
-      {/* <ul>
+      {/* <ResultsList>
         {results.map((result) => (
-          <li key={result.id}>
-            <h2>{result.title}</h2>
-            <p>{result.description}</p>
-          </li>
+          <ResultItem key={result.id}>
+            <ResultTitle>{result.title}</ResultTitle>
+            <ResultDescription>{result.description}</ResultDescription>
+          </ResultItem>
         ))}
-      </ul> */}
+      </ResultsList> */}
     </SearchEngineContainer>
   );
 };

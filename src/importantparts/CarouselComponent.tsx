@@ -13,7 +13,7 @@ export default function CarouselComponent() {
             className="d-block w-100"
             src={data.image}
             alt={data.alt}
-            style={{ width: "100%", height: "600px", objectFit: "cover" }}
+            style={{ width: "100%", height: "100vh", objectFit: "cover" }}
           />
           <Carousel.Caption>
             <h3>{data.title}</h3>

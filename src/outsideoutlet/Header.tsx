@@ -3,12 +3,13 @@ import {
   HeaderContainer,
   HeaderButton,
   ButtonGroup,
+  HeaderButtonLogin,
 } from "../style/HeaderStyles";
 
 export default function Header() {
   return (
     <HeaderContainer>
-      <HeaderButton>Login</HeaderButton>
+      <HeaderButtonLogin>Login</HeaderButtonLogin>
       <ButtonGroup>
         <HeaderButton>Home</HeaderButton>
         <HeaderButton>Product & Services</HeaderButton>
