@@ -8,3 +8,15 @@ export const GlobalStyle = createGlobalStyle`
     }
     
 `;
+export const RowFlex = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+export const ColumnFlex = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;

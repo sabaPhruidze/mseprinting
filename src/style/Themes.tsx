@@ -1,6 +1,6 @@
 export const defaultTheme = {
   DarkBlue: "#273C55",
-  DarkBlueOpacity: "#273c5541",
+  DarkBlueOpacity: "#273c5565",
   LightBlue: "#93b6ce85",
   DarkGrey: "#595D6E",
   LightGrey: "#D3D9E3",

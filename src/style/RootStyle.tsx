@@ -18,7 +18,7 @@ export const RootOutlet = styled.div`
   flex: 1; // This will make the outlet take the remaining space below the header
   z-index: 2;
   width: 100%;
-  margin-top: -80px; // Adjust this value based on the height of your header
+  margin-top: -160px; // Adjust this value based on the height of your header
 `;
 
 export const RootFooter = styled.div`
