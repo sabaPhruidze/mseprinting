@@ -3,26 +3,19 @@ import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container"; // Import Container
-
+import CardData from "../data/CardData";
 function WWDCCard() {
+  const DATA = CardData();
   return (
     <Container>
-      {" "}
-      {/* Add a Container component */}
       <Row xs={1} md={2} className="g-4">
-        {Array.from({ length: 4 }).map((_, idx) => (
+        {DATA.map((card, idx) => (
           <Col key={idx}>
             <Card className="h-100">
-              {" "}
-              {/* Ensure full height for cards */}
-              <Card.Img variant="top" src="holder.js/100px160" />
+              <Card.Img variant="top" src={card.imgSrc} />
               <Card.Body>
-                <Card.Title>Card title</Card.Title>
-                <Card.Text>
-                  This is a longer card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
-                </Card.Text>
+                <Card.Title>{card.title}</Card.Title>
+                <Card.Text>{card.content}</Card.Text>
               </Card.Body>
             </Card>
           </Col>

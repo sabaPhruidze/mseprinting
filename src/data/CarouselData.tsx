@@ -1,12 +1,12 @@
 import React from "react";
-import BANNER_POSTERS from "../assets/icon/banner and poster.webp";
-import MAIL_MAILING from "../assets/icon/Direct Mail & Mailing.webp";
-import GRAPHIC_DESIGN from "../assets/icon/Graphic Design.webp";
-import LABELS_PACKAGING from "../assets/icon/Labels & Packaging.webp";
-import MARKETING_SERVICES from "../assets/icon/Marketing services.webp";
-import ONLINE_ORDERING from "../assets/icon/Online Ordering.webp";
-import PRINTING_COPYING from "../assets/icon/Printing & Copying.webp";
-import TRADESHOWS_EVENTS from "../assets/icon/Tradeshows & Events.webp";
+import BANNER_POSTERS from "../assets/icon/mainCarouselImg/banner and poster.webp";
+import MAIL_MAILING from "../assets/icon/mainCarouselImg/Direct Mail & Mailing.webp";
+import GRAPHIC_DESIGN from "../assets/icon/mainCarouselImg/Graphic Design.webp";
+import LABELS_PACKAGING from "../assets/icon/mainCarouselImg/Labels & Packaging.webp";
+import MARKETING_SERVICES from "../assets/icon/mainCarouselImg/Marketing services.webp";
+import ONLINE_ORDERING from "../assets/icon/mainCarouselImg/Online Ordering.webp";
+import PRINTING_COPYING from "../assets/icon/mainCarouselImg/Printing & Copying.webp";
+import TRADESHOWS_EVENTS from "../assets/icon/mainCarouselImg/Tradeshows & Events.webp";
 
 export default function CarouselData() {
   const caruselData = [

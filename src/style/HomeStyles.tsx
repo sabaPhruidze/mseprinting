@@ -3,7 +3,7 @@ import { RowFlex, ColumnFlex } from "./GlobalStyle";
 
 export const WWDCContainer = styled(RowFlex)`
   width: 100%;
-  height: 800px;
+  height: 1200px;
 `;
 export const WWDCCSpecialitiesContainer = styled(ColumnFlex)`
   width: 400px;

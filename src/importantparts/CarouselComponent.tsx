@@ -1,6 +1,6 @@
 import Carousel from "react-bootstrap/Carousel";
 import "bootstrap/dist/css/bootstrap.min.css";
-import CarouselData from "./CarouselData";
+import CarouselData from "../data/CarouselData";
 
 export default function CarouselComponent() {
   const carouselData = CarouselData();

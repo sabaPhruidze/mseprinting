@@ -1,10 +1,10 @@
 export const defaultTheme = {
   DarkBlue: "#273C55",
-  DarkBlueOpacity: "#273c5565",
+  MediumBlue: "#1d6a8c",
   LightBlue: "#93b6ce85",
   DarkGrey: "#595D6E",
   LightGrey: "#D3D9E3",
   White: "#FFFFFF",
-  MediumBlue: "#4A7CA0",
+  black: "#000",
   SkyNeon: "#00d4eb",
 };

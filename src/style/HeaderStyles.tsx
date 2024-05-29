@@ -12,7 +12,7 @@ export const HeaderContainer = styled(ColumnFlex)`
 export const HeaderMainContainer = styled(RowFlex)`
   width: 100%;
   height: 80px;
-  background-color: ${(props) => props.theme.DarkBlueOpacity};
+  background-color: ${(props) => props.theme.MediumBlue};
   padding: 0 40px;
   border-radius: 0 0 80px 80px;
   border: 1px solid white;
@@ -74,7 +74,7 @@ export const HeaderSendContainer = styled(RowFlex)`
   width: 350px;
   height: 80px;
   padding: 0 20px;
-  background-color: ${(props) => props.theme.DarkBlueOpacity};
+  background-color: ${(props) => props.theme.MediumBlue};
   border-radius: 0 0 60px 60px;
   position: relative;
   z-index: 3;
