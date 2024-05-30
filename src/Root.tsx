@@ -2,12 +2,7 @@ import { createContext } from "react";
 import { ThemeProvider } from "styled-components";
 import UseReducerComponent from "./importantparts/UseReducerComponent";
 import { GlobalStyle } from "./style/GlobalStyle";
-import {
-  RootContainer,
-  RootOutlet,
-  RootHeader,
-  RootFooter,
-} from "./style/RootStyle";
+import { RootContainer } from "./style/RootStyle";
 import { defaultTheme } from "./style/Themes";
 import Header from "./outsideoutlet/Header";
 import { Outlet } from "react-router-dom";
@@ -32,15 +27,9 @@ export default function Root() {
       <ThemeProvider theme={defaultTheme}>
         <RootContainer>
           <GlobalStyle />
-          <RootHeader>
-            <Header />
-          </RootHeader>
-          <RootOutlet>
-            <Outlet />
-          </RootOutlet>
-          <RootFooter>
-            <Footer />
-          </RootFooter>
+          <Header />
+          <Outlet />
+          <Footer />
         </RootContainer>
       </ThemeProvider>
     </rootContext.Provider>

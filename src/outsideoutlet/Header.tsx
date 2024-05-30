@@ -1,29 +1,35 @@
 import SearchEngine from "../importantparts/SearchEngine";
+import { HeaderMenuData } from "../data/HeaderData";
 import {
   HeaderContainer,
   HeaderMainContainer,
+  HeaderMainSpan,
   HeaderButton,
-  ButtonGroup,
-  HeaderButtonLogin,
-  HeaderSendContainer,
-  HeaderSendButton,
+  HeaderOneSimbyol,
+  HeaderMenuContainer,
+  HeaderMenuButton,
+  HeaderMainLogo,
 } from "../style/HeaderStyles";
+
+import MSEPRINTING from "../assets/icon/header/MSEPRINTING.svg";
 
 export default function Header() {
   return (
     <HeaderContainer>
       <HeaderMainContainer>
-        <HeaderButtonLogin>Login</HeaderButtonLogin>
-        <ButtonGroup>
-          <HeaderButton>Home</HeaderButton>
-          <HeaderButton>Product & Services</HeaderButton>
-        </ButtonGroup>
-        <SearchEngine />
+        <HeaderMainLogo src={MSEPRINTING} alt="MSE PRINTING" />
+        <HeaderMainSpan>
+          <HeaderButton>Account</HeaderButton>
+          <HeaderOneSimbyol>|</HeaderOneSimbyol>
+          <HeaderButton style={{ marginRight: 10 }}>Sign in</HeaderButton>
+          <SearchEngine />
+        </HeaderMainSpan>
       </HeaderMainContainer>
-      <HeaderSendContainer>
-        <HeaderSendButton>Request a Quote</HeaderSendButton>
-        <HeaderSendButton>Send a File</HeaderSendButton>
-      </HeaderSendContainer>
+      <HeaderMenuContainer>
+        {HeaderMenuData.map((data: string) => (
+          <HeaderMenuButton key={data}>{data}</HeaderMenuButton>
+        ))}
+      </HeaderMenuContainer>
     </HeaderContainer>
   );
 }

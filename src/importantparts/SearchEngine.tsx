@@ -3,7 +3,11 @@ import {
   SearchEngineContainer,
   SearchEngineInput,
   SearchEngineButton,
+  SearchEngineIcon,
 } from "../style/HeaderStyles";
+
+import SEARCHICON from "../assets/icon/header/SEARCH.svg";
+
 interface SearchResult {
   id: number;
   title: string;
@@ -49,7 +53,9 @@ const SearchEngine: React.FC = () => {
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Search..."
       />
-      <SearchEngineButton onClick={handleSearch}>Search</SearchEngineButton>
+      <SearchEngineButton onClick={handleSearch}>
+        <SearchEngineIcon src={SEARCHICON} alt="search icon" />
+      </SearchEngineButton>
       {/* <ResultsList>
         {results.map((result) => (
           <ResultItem key={result.id}>

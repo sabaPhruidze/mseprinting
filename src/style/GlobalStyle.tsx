@@ -16,6 +16,6 @@ export const RowFlex = styled.div`
 export const ColumnFlex = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 `;
