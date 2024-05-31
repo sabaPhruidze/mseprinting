@@ -4,7 +4,7 @@ import { RowFlex, ColumnFlex } from "./GlobalStyle";
 
 export const HeaderContainer = styled(ColumnFlex)`
   width: 100%;
-  height: 110px;
+  height: 100px;
   background-color: ${(props) => props.theme.White};
   padding: 5px 100px;
 `;

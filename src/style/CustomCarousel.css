@@ -7,3 +7,14 @@
 .carousel-control-next-icon:first-child {
   display: none;
 }
+.custom-carousel-caption {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(0, -50%);
+  text-align: left;
+  width: 100%;
+  padding: 20px;
+}
+
+

@@ -2,7 +2,14 @@ import React, { useState } from "react";
 import Carousel from "react-bootstrap/Carousel";
 import "bootstrap/dist/css/bootstrap.min.css";
 import CarouselData from "../data/CarouselData";
-import { CarouselControl, CarouselIcon } from "../style/HomeStyles";
+import {
+  CarouselControl,
+  CarouselImg,
+  CarouselIcon,
+  CarouselTitle,
+  CarouselContent,
+  CarouselButton,
+} from "../style/HomeStyles";
 import "../style/CustomCarousel.css";
 
 export default function CarouselComponent() {
@@ -30,15 +37,15 @@ export default function CarouselComponent() {
       <Carousel activeIndex={index} onSelect={handleSelect} fade>
         {carouselData.map((data, idx) => (
           <Carousel.Item key={idx}>
-            <img
+            <CarouselImg
               className="d-block w-100"
               src={data.image}
               alt={data.alt}
-              style={{ width: "100%", height: "600px", objectFit: "cover" }}
             />
-            <Carousel.Caption>
-              <h3>{data.title}</h3>
-              <p>{data.text}</p>
+            <Carousel.Caption className="custom-carousel-caption">
+              <CarouselTitle>{data.title}</CarouselTitle>
+              <CarouselContent>{data.text}</CarouselContent>
+              <CarouselButton>Learn more ...</CarouselButton>
             </Carousel.Caption>
           </Carousel.Item>
         ))}
