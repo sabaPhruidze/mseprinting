@@ -1,0 +1,9 @@
+/* Remove the first left arrow */
+.carousel-control-prev-icon:first-child {
+  display: none;
+}
+
+/* Remove the second right arrow */
+.carousel-control-next-icon:first-child {
+  display: none;
+}

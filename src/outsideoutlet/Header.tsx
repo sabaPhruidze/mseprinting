@@ -9,6 +9,7 @@ import {
   HeaderMenuContainer,
   HeaderMenuButton,
   HeaderMainLogo,
+  HeaderMenuText,
 } from "../style/HeaderStyles";
 
 import MSEPRINTING from "../assets/icon/header/MSEPRINTING.svg";
@@ -27,7 +28,9 @@ export default function Header() {
       </HeaderMainContainer>
       <HeaderMenuContainer>
         {HeaderMenuData.map((data: string) => (
-          <HeaderMenuButton key={data}>{data}</HeaderMenuButton>
+          <HeaderMenuButton key={data}>
+            <HeaderMenuText>{data}</HeaderMenuText>
+          </HeaderMenuButton>
         ))}
       </HeaderMenuContainer>
     </HeaderContainer>

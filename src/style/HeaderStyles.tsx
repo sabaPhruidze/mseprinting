@@ -4,26 +4,26 @@ import { RowFlex, ColumnFlex } from "./GlobalStyle";
 
 export const HeaderContainer = styled(ColumnFlex)`
   width: 100%;
-  height: 140px;
+  height: 110px;
   background-color: ${(props) => props.theme.White};
-  padding: 10px 100px;
+  padding: 5px 100px;
 `;
 
 export const HeaderMainContainer = styled(RowFlex)`
   align-items: start;
   width: 100%;
-  height: 100px;
-
+  height: 70px;
   border-radius: 0 0 80px 80px;
   border: 1px solid white;
 `;
 export const HeaderMainLogo = styled.img`
-  height: 100px;
+  height: 70px;
   object-fit: cover;
 `;
 
 export const HeaderMainSpan = styled.span`
-  height: 30%;
+  margin-top: 5px;
+  height: 45%;
   display: flex;
   flex-direction: row;
   color: ${(props) => props.theme.MediumBlue};
@@ -36,7 +36,7 @@ export const HeaderButton = styled.button`
   color: ${(props) => props.theme.MediumBlue};
 `;
 export const HeaderOneSimbyol = styled.p`
-  margin: 0 5px;
+  margin: 3px 5px;
 `;
 
 // search engine
@@ -55,8 +55,9 @@ export const SearchEngineInput = styled.input`
   font-size: 14px;
   position: relative;
   z-index: 2;
+  transition: 0.4s;
   &:focus {
-    border-bottom: 3px solid ${(props) => props.theme.SkyNeon};
+    border-bottom: 1px solid ${(props) => props.theme.SkyNeon};
     outline: 0;
   }
 `;
@@ -82,25 +83,24 @@ export const SearchEngineIcon = styled.img`
 
 export const HeaderMenuContainer = styled(RowFlex)`
   width: 500px;
-  height: 40px;
+  height: 30px;
 `;
 export const HeaderMenuButton = styled.button`
-  color: ${(props) => props.theme.DarkBlue};
-  font-size: 16px;
-
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0);
   border: 0;
   margin-right: 15px;
-  transition: 0.7s;
+`;
+export const HeaderMenuText = styled.p`
+  font-size: 16px;
+  font-weight: 500;
+  color: ${(props) => props.theme.DarkBlue};
+  background-color: ${(props) => props.theme.white};
+  transition: 0.3s;
   &:hover {
-    text-decoration: underline;
     transform: scale(1.1);
-    padding: 0px 10px;
-    background-color: ${(props) => props.theme.white};
-    border: 1px solid ${(props) => props.theme.DarkBlue};
-    border-bottom: 0;
-    border-radius: 30px;
-    font-weight: 800px;
+    padding: 5px 0 0 0;
+    border-bottom: 1px solid ${(props) => props.theme.DarkBlue};
+    font-weight: 800;
   }
 `;
