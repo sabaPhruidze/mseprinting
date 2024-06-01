@@ -9,6 +9,7 @@ import {
   CarouselTitle,
   CarouselContent,
   CarouselButton,
+  CarouselOverlay,
 } from "../style/HomeStyles";
 import "../style/CustomCarousel.css";
 
@@ -37,16 +38,19 @@ export default function CarouselComponent() {
       <Carousel activeIndex={index} onSelect={handleSelect} fade>
         {carouselData.map((data, idx) => (
           <Carousel.Item key={idx}>
-            <CarouselImg
-              className="d-block w-100"
-              src={data.image}
-              alt={data.alt}
-            />
-            <Carousel.Caption className="custom-carousel-caption">
-              <CarouselTitle>{data.title}</CarouselTitle>
-              <CarouselContent>{data.text}</CarouselContent>
-              <CarouselButton>Learn more ...</CarouselButton>
-            </Carousel.Caption>
+            <div style={{ position: "relative", width: "100%", height: 600 }}>
+              <CarouselImg
+                className="d-block w-100"
+                src={data.image}
+                alt={data.alt}
+              />
+              <CarouselOverlay />
+              <Carousel.Caption className="custom-carousel-caption">
+                <CarouselTitle>{data.title}</CarouselTitle>
+                <CarouselContent>{data.text}</CarouselContent>
+                <CarouselButton>Learn more ...</CarouselButton>
+              </Carousel.Caption>
+            </div>
           </Carousel.Item>
         ))}
       </Carousel>

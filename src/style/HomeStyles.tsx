@@ -10,21 +10,30 @@ export const WWDCContainer = styled(RowFlex)`
 
 export const WWDCCSpecialitiesContainer = styled(ColumnFlex)`
   width: 400px;
-  height: 300px;
+  height: 260px;
   color: ${(props) => props.theme.DarkBlue};
+  padding: 0 20px;
 `;
 
 export const WWDCTitle = styled.h2`
-  font-weight: 800;
-  margin-bottom: 50px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  font-size: 28px;
 `;
 
 export const WWDCParagraph = styled.p`
   font-weight: 400;
-  font-size: 20px;
+  font-size: 18px;
   text-align: center;
 `;
-
+export const CarouselOverlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+`;
 export const CarouselControl = styled.button`
   width: 50px;
   height: 50px;
