@@ -6,13 +6,14 @@ import Card from "react-bootstrap/Card";
 export const WWDCContainer = styled(RowFlex)`
   width: 100%;
   height: 900px;
+  padding: 0 40px;
 `;
 
 export const WWDCCSpecialitiesContainer = styled(ColumnFlex)`
   width: 400px;
   height: 260px;
   color: ${(props) => props.theme.DarkBlue};
-  padding: 0 20px;
+  padding-right: 20px;
 `;
 
 export const WWDCTitle = styled.h2`
