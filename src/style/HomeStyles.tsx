@@ -1,14 +1,16 @@
 import styled from "styled-components";
 import { RowFlex, ColumnFlex } from "./GlobalStyle";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Card from "react-bootstrap/Card";
 
 export const WWDCContainer = styled(RowFlex)`
   width: 100%;
-  height: 1200px;
+  height: 900px;
 `;
 
 export const WWDCCSpecialitiesContainer = styled(ColumnFlex)`
   width: 400px;
-  height: 800px;
+  height: 300px;
   color: ${(props) => props.theme.DarkBlue};
 `;
 
@@ -96,5 +98,16 @@ export const CarouselButton = styled.button`
   }
   &:focus {
     transform: scale(0.9);
+  }
+`;
+
+export const CardContainer = styled(Card)`
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
   }
 `;

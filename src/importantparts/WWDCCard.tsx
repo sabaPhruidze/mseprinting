@@ -1,23 +1,26 @@
-import "bootstrap/dist/css/bootstrap.min.css";
-import Card from "react-bootstrap/Card";
+import { Container } from "react-bootstrap";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import Container from "react-bootstrap/Container"; // Import Container
+import { CardContainer } from "../style/HomeStyles";
 import CardData from "../data/CardData";
 function WWDCCard() {
   const DATA = CardData();
   return (
     <Container>
-      <Row xs={1} md={2} className="g-4">
+      <Row xs={1} md={3} className="g-4">
         {DATA.map((card, idx) => (
           <Col key={idx}>
-            <Card className="h-100">
-              <Card.Img variant="top" src={card.imgSrc} />
-              <Card.Body>
-                <Card.Title>{card.title}</Card.Title>
-                <Card.Text>{card.content}</Card.Text>
-              </Card.Body>
-            </Card>
+            <CardContainer className="h-100">
+              <CardContainer.Img
+                variant="top"
+                src={card.imgSrc}
+                style={{ height: 180, objectFit: "cover" }}
+              />
+              <CardContainer.Body>
+                <CardContainer.Title>{card.title}</CardContainer.Title>
+                <CardContainer.Text>{card.content}</CardContainer.Text>
+              </CardContainer.Body>
+            </CardContainer>
           </Col>
         ))}
       </Row>
