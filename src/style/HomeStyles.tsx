@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { RowFlex, ColumnFlex } from "./GlobalStyle";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Card from "react-bootstrap/Card";
+import SERVICES from "../assets/icon/home/services/SERVICES.webp";
 
 export const WWDCContainer = styled(RowFlex)`
   width: 100%;
@@ -82,6 +83,7 @@ export const CarouselTitle = styled.h3`
   font-size: 36px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
 `;
+
 export const CarouselContent = styled.p`
   margin-top: 10px;
   margin-left: 150px;
@@ -120,4 +122,38 @@ export const CardContainer = styled(Card)`
     transform: scale(1.1);
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
   }
+`;
+
+export const HomeServicesContainer = styled.div`
+  width: 100%;
+  height: 400px;
+  background: url(${SERVICES}) no-repeat center center;
+  background-size: cover;
+  position: relative;
+`;
+
+export const HomeServicesDarkCover = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 400px;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  padding: 0 100px;
+  color: white;
+`;
+
+export const HomeServicesContext = styled(WWDCParagraph)`
+  width: 700px;
+  text-align: left;
+`;
+
+export const HomeServicesButton = styled(CarouselButton)`
+  margin-top: 20px;
+  margin-left: 0px;
+  max-width: 180px;
 `;
