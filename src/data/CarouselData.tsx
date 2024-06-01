@@ -1,13 +1,11 @@
-import React from "react";
-
-import BANNERS_POSTERS from "../assets/icon/carousel/BANNERS_POSTERS.webp";
-import PULL_UP_BANNERS_FLAGS from "../assets/icon/carousel/PULL_UP_BANNERS_FLAGS.webp";
-import CAR_GRAPHICS_WRAPS from "../assets/icon/carousel/CAR_GRAPHICS_WRAPS.webp";
-import WINDOW_WALL_FLOOR from "../assets/icon/carousel/WINDOW_WALL_FLOOR.webp";
-import YARD_OUTDOOR_SIGNS from "../assets/icon/carousel/YARD_OUTDOOR_SIGNS.webp";
-import BOOK_PRINTING from "../assets/icon/carousel/BOOK_PRINTING.webp";
-import BROCHURES_COLLATERAL from "../assets/icon/carousel/BROCHURES_COLLATERAL.webp";
-import EVENT_LITERATURES_SIGNS from "../assets/icon/carousel/EVENT_LITERATURE_SIGNS.webp";
+import BANNERS_POSTERS from "../assets/icon/home/carousel/BANNERS_POSTERS.webp";
+import PULL_UP_BANNERS_FLAGS from "../assets/icon/home/carousel/PULL_UP_BANNERS_FLAGS.webp";
+import CAR_GRAPHICS_WRAPS from "../assets/icon/home/carousel/CAR_GRAPHICS_WRAPS.webp";
+import WINDOW_WALL_FLOOR from "../assets/icon/home/carousel/WINDOW_WALL_FLOOR.webp";
+import YARD_OUTDOOR_SIGNS from "../assets/icon/home/carousel/YARD_OUTDOOR_SIGNS.webp";
+import BOOK_PRINTING from "../assets/icon/home/carousel/BOOK_PRINTING.webp";
+import BROCHURES_COLLATERAL from "../assets/icon/home/carousel/BROCHURES_COLLATERAL.webp";
+import EVENT_LITERATURES_SIGNS from "../assets/icon/home/carousel/EVENT_LITERATURE_SIGNS.webp";
 
 export default function CarouselData() {
   const caruselData = [

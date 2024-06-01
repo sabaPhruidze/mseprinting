@@ -1,9 +1,9 @@
-import BANNERS_POSTERS from "../assets/icon/card/BANNERS_POSTERS.webp";
-import BROCHURES_COLLATERAL from "../assets/icon/card/BROCHURES_COLLATERAL.webp";
-import BUSINESS_FORMS from "../assets/icon/card/BUSINESS_FORMS.webp";
-import DIRECT_MAIL_MAILING_SERVICES from "../assets/icon/card/DIRECT_MAIL_MAILING_SERVICES.webp";
-import LABELS_PACKAGING from "../assets/icon/card/LABELS_PACKAGING.webp";
-import MANUALS_CATALOGS_BOOKLETS from "../assets/icon/card/MANUALS_CATALOGS_BOOKLETS.webp";
+import BANNERS_POSTERS from "../assets/icon/home/card/BANNERS_POSTERS.webp";
+import BROCHURES_COLLATERAL from "../assets/icon/home/card/BROCHURES_COLLATERAL.webp";
+import BUSINESS_FORMS from "../assets/icon/home/card/BUSINESS_FORMS.webp";
+import DIRECT_MAIL_MAILING_SERVICES from "../assets/icon/home/card/DIRECT_MAIL_MAILING_SERVICES.webp";
+import LABELS_PACKAGING from "../assets/icon/home/card/LABELS_PACKAGING.webp";
+import MANUALS_CATALOGS_BOOKLETS from "../assets/icon/home/card/MANUALS_CATALOGS_BOOKLETS.webp";
 
 export default function CardData() {
   const CardData = [
