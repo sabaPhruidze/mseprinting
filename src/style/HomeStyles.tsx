@@ -2,7 +2,10 @@ import styled from "styled-components";
 import { RowFlex, ColumnFlex } from "./GlobalStyle";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Card from "react-bootstrap/Card";
+
 import SERVICES from "../assets/icon/home/services/SERVICES.webp";
+import REQUEST_QUOTE from "../assets/icon/home/doublecard/REQUEST_QUOTE.webp";
+import SEND_FILE from "../assets/icon/home/doublecard/SEND_FILE.webp";
 
 export const WWDCContainer = styled(RowFlex)`
   width: 100%;
@@ -10,7 +13,7 @@ export const WWDCContainer = styled(RowFlex)`
   padding: 0 40px;
 `;
 
-export const WWDCCSpecialitiesContainer = styled(ColumnFlex)`
+export const WWDCCSpecialitiesContainers = styled(ColumnFlex)`
   width: 400px;
   height: 260px;
   color: ${(props) => props.theme.DarkBlue};
@@ -28,6 +31,9 @@ export const WWDCParagraph = styled.p`
   font-size: 18px;
   text-align: center;
 `;
+
+//carousel
+
 export const CarouselOverlay = styled.div`
   position: absolute;
   top: 0;
@@ -112,7 +118,7 @@ export const CarouselButton = styled.button`
     transform: scale(0.9);
   }
 `;
-
+//card
 export const CardContainer = styled(Card)`
   cursor: pointer;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -123,6 +129,7 @@ export const CardContainer = styled(Card)`
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
   }
 `;
+//services
 
 export const HomeServicesContainer = styled.div`
   width: 100%;
@@ -148,7 +155,7 @@ export const HomeServicesDarkCover = styled.div`
 `;
 
 export const HomeServicesContext = styled(WWDCParagraph)`
-  width: 700px;
+  width: 900px;
   text-align: left;
 `;
 
@@ -156,4 +163,57 @@ export const HomeServicesButton = styled(CarouselButton)`
   margin-top: 20px;
   margin-left: 0px;
   max-width: 180px;
+`;
+
+// double cards
+
+export const DoubleCardContainer = styled(RowFlex)`
+  width: 100%;
+  height: 600px;
+  margin: 70px 0;
+  padding: 0 40px;
+`;
+export const RequestQuoteBGImage = styled(HomeServicesContainer)`
+  background: url(${REQUEST_QUOTE}) no-repeat center center;
+  width: calc(100% / 2 - 30px);
+  background-size: contain;
+  position: relative;
+  border-radius: 25px;
+  z-index: 1;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  }
+`;
+
+export const RequsetQuoteBGHalf = styled.img`
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  opacity: 0.9;
+`;
+
+export const RequsetQuoteTitle = styled(WWDCTitle)`
+  color: ${(props) => props.theme.White};
+  width: 220px;
+  position: absolute;
+  z-index: 3;
+  top: 30px;
+  left: calc(100% / 2 - 100px);
+`;
+
+export const SendFileBGImage = styled(RequestQuoteBGImage)`
+  background: url(${SEND_FILE}) no-repeat center center;
+  background-size: contain;
+`;
+
+export const SendFileTitle = styled(RequsetQuoteTitle)`
+  color: ${(props) => props.theme.Black};
+  width: 150px;
+  left: calc(100% / 2 - 75px);
 `;

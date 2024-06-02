@@ -3,6 +3,7 @@ import { rootContext } from "../Root";
 import CarouselComponent from "../importantparts/CarouselComponent";
 import WhatWeDoCards from "../importantparts/WhatWeDoCards";
 import HomeServices from "../importantparts/HomeServices";
+import DoubleCards from "../importantparts/DoubleCards";
 export default function Home() {
   const context = useContext(rootContext);
 
@@ -18,6 +19,7 @@ export default function Home() {
       <CarouselComponent />
       <WhatWeDoCards />
       <HomeServices />
+      <DoubleCards />
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import WWDCCard from "./WWDCCard";
 import {
   WWDCContainer,
-  WWDCCSpecialitiesContainer,
+  WWDCCSpecialitiesContainers,
   WWDCTitle,
   WWDCParagraph,
 } from "../style/HomeStyles";
@@ -9,7 +9,7 @@ import {
 export default function WhatWeDoCards() {
   return (
     <WWDCContainer>
-      <WWDCCSpecialitiesContainer>
+      <WWDCCSpecialitiesContainers>
         <WWDCTitle>OUR SPECIALTIES</WWDCTitle>
         <WWDCParagraph>
           For exceptional printing of banners, posters, business cards,
@@ -18,7 +18,7 @@ export default function WhatWeDoCards() {
           professional service your business deserves. Partner with us for
           outstanding results.
         </WWDCParagraph>
-      </WWDCCSpecialitiesContainer>
+      </WWDCCSpecialitiesContainers>
       <div>
         <WWDCCard />
       </div>
