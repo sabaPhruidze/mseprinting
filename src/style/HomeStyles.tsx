@@ -182,7 +182,7 @@ export const RequestQuoteBGImage = styled(HomeServicesContainer)`
   z-index: 1;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-
+  cursor: pointer;
   &:hover {
     transform: scale(1.1);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
