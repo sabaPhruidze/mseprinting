@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   SearchEngineContainer,
   SearchEngineInput,
   SearchEngineButton,
   SearchEngineIcon,
+  ResultsList,
+  ResultItem,
+  ResultTitle,
 } from "../style/HeaderStyles";
 
 import SEARCHICON from "../assets/icon/header/SEARCH.svg";
@@ -11,7 +14,6 @@ import SEARCHICON from "../assets/icon/header/SEARCH.svg";
 interface SearchResult {
   id: number;
   title: string;
-  description: string;
 }
 
 const SearchEngine: React.FC = () => {
@@ -23,17 +25,14 @@ const SearchEngine: React.FC = () => {
       {
         id: 1,
         title: "First Result",
-        description: "This is the first search result",
       },
       {
         id: 2,
         title: "Second Result",
-        description: "This is the second search result",
       },
       {
         id: 3,
         title: "Third Result",
-        description: "This is the third search result",
       },
     ];
 
@@ -56,14 +55,13 @@ const SearchEngine: React.FC = () => {
       <SearchEngineButton onClick={handleSearch}>
         <SearchEngineIcon src={SEARCHICON} alt="search icon" />
       </SearchEngineButton>
-      {/* <ResultsList>
+      <ResultsList>
         {results.map((result) => (
           <ResultItem key={result.id}>
             <ResultTitle>{result.title}</ResultTitle>
-            <ResultDescription>{result.description}</ResultDescription>
           </ResultItem>
         ))}
-      </ResultsList> */}
+      </ResultsList>
     </SearchEngineContainer>
   );
 };

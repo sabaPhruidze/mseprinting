@@ -40,10 +40,11 @@ export const HeaderOneSimbyol = styled.p`
 `;
 
 // search engine
-export const SearchEngineContainer = styled(RowFlex)`
+export const SearchEngineContainer = styled(ColumnFlex)`
   border-radius: 15px;
   position: relative;
   z-index: 1;
+  height: 100%;
 `;
 
 export const SearchEngineInput = styled.input`
@@ -80,6 +81,41 @@ export const SearchEngineIcon = styled.img`
   filter: invert(33%) sepia(46%) saturate(738%) hue-rotate(153deg)
     brightness(97%) contrast(92%);
 `;
+
+export const ResultsList = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+  width: 100%;
+  background-color: ${(props) => props.theme.White};
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  height: 40px;
+`;
+
+export const ResultItem = styled.div`
+  padding: 10px;
+  border-bottom: 1px solid ${(props) => props.theme.LightGray};
+  &:last-child {
+    border-bottom: none;
+  }
+  &:hover {
+    background-color: ${(props) => props.theme.LightBlue};
+    border-radius: 10px;
+  }
+`;
+
+export const ResultTitle = styled.h3`
+  margin: 0;
+  color: ${(props) => props.theme.DarkBlue};
+  font-size: 16px;
+`;
+
+// export const ResultDescription = styled.p`
+//   margin: 5px 0 0 0;
+//   color: ${(props) => props.theme.Gray};
+//   font-size: 14px;
+// `;
 
 export const HeaderMenuContainer = styled(RowFlex)`
   width: 500px;

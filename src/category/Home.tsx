@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { rootContext } from "../Root";
 import CarouselComponent from "../importantparts/CarouselComponent";
 import WhatWeDoCards from "../importantparts/WhatWeDoCards";
@@ -11,8 +11,8 @@ export default function Home() {
     throw new Error("useContext must be used within a rootContext.Provider");
   }
 
-  const { state, dispatching } = context;
-  const { name } = state;
+  // const { state, dispatching } = context;
+  // const { name } = state;
 
   return (
     <div>
