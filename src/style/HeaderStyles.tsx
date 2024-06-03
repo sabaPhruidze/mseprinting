@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import SearchEngine from "../importantparts/SearchEngine";
 import { RowFlex, ColumnFlex } from "./GlobalStyle";
 
 export const HeaderContainer = styled(ColumnFlex)`
