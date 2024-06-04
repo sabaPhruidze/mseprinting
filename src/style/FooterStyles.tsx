@@ -4,7 +4,7 @@ import { WWDCTitle } from "./HomeStyles";
 
 export const FooterContainer = styled(ColumnFlex)`
   width: 100%;
-  height: 690px;
+  height: 640px;
   background-color: ${(props) => props.theme.White};
 `;
 
@@ -40,24 +40,26 @@ export const Quote = styled(WWDCTitle)`
 
 export const ProductsAboutContainer = styled(ColumnFlex)`
   width: 100%;
-  height: 560px;
+  height: 512px;
 `;
 
 export const ProductsAboutUsBox = styled(RowFlex)`
   width: 100%;
-  height: 558px;
+  height: 510px;
   background-color: ${(props) => props.theme.LightGrey};
 `;
 
 export const ProductsAboutUsCont = styled(RowFlex)`
   width: 320px;
-  height: 558px;
+  height: 510px;
 `;
 
 export const ProductsAboutUsColumn = styled(ColumnFlex)`
   height: 100%;
   width: 300px;
   justify-content: flex-start;
+  align-items: center;
+  text-align: left;
 `;
 
 export const VerticalLine = styled.div`
@@ -73,12 +75,13 @@ export const ColumnTitle = styled(Quote)`
 `;
 
 export const ColumnContext = styled(Quote)`
-  font-size: 16px;
+  font-size: 14px;
   color: ${(props) => props.theme.MediumBlue};
   font-weight: 300;
   cursor: pointer;
   padding: 5px 0;
   transition: 0.4s;
+
   &:hover {
     text-decoration: underline;
   }
