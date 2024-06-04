@@ -1,7 +1,7 @@
+import { useMemo, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-
 import SearchEngine from "../importantparts/SearchEngine";
-import { HeaderMenuData } from "../data/HeaderData";
+import { HeaderMenuData, HMenuData } from "../data/HeaderData";
 import {
   HeaderContainer,
   HeaderMainContainer,
@@ -13,18 +13,42 @@ import {
   HeaderMainLogo,
   HeaderMenuText,
 } from "../style/HeaderStyles";
-
 import MSEPRINTING from "../assets/icon/header/MSEPRINTING.svg";
 
 export default function Header() {
   const navigate = useNavigate();
-  const handleNavigationHome = () => {
-    navigate("/");
-  };
 
-  const handleNavigationLogin = () => {
+  const handleNavigationHome = useCallback(() => {
+    navigate("/");
+  }, [navigate]);
+
+  const handleNavigationLogin = useCallback(() => {
     navigate("/login");
-  };
+  }, [navigate]);
+
+  const handleMenuNavigation = useCallback(
+    (data: HMenuData) => {
+      if (data.page !== "Products & Services") {
+        navigate(data.path);
+      }
+    },
+    [navigate]
+  );
+
+  const renderMenuItems = useCallback(
+    () =>
+      HeaderMenuData.map((data) => (
+        <HeaderMenuButton key={data.page}>
+          <HeaderMenuText onClick={() => handleMenuNavigation(data)}>
+            {data.page}
+          </HeaderMenuText>
+        </HeaderMenuButton>
+      )),
+    [handleMenuNavigation]
+  );
+
+  const menuItems = useMemo(renderMenuItems, [renderMenuItems]);
+
   return (
     <HeaderContainer>
       <HeaderMainContainer>
@@ -45,19 +69,7 @@ export default function Header() {
           <SearchEngine />
         </HeaderMainSpan>
       </HeaderMainContainer>
-      <HeaderMenuContainer>
-        {HeaderMenuData.map((data) => (
-          <HeaderMenuButton key={data.page}>
-            <HeaderMenuText
-              onClick={() =>
-                data.page !== "Products & Services" ? navigate(data.path) : ""
-              }
-            >
-              {data.page}
-            </HeaderMenuText>
-          </HeaderMenuButton>
-        ))}
-      </HeaderMenuContainer>
+      <HeaderMenuContainer>{menuItems}</HeaderMenuContainer>
     </HeaderContainer>
   );
 }

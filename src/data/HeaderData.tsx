@@ -1,4 +1,10 @@
-export const HeaderMenuData = [
+export interface HMenuData {
+  page: string;
+  path: string;
+}
+[];
+
+export const HeaderMenuData: HMenuData[] = [
   {
     page: "Home",
     path: "/",
