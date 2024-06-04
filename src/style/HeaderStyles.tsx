@@ -1,6 +1,8 @@
+// Imports
 import styled from "styled-components";
 import { RowFlex, ColumnFlex } from "./GlobalStyle";
 
+// Header Container
 export const HeaderContainer = styled(ColumnFlex)`
   width: 100%;
   height: 100px;
@@ -15,9 +17,11 @@ export const HeaderMainContainer = styled(RowFlex)`
   border-radius: 0 0 80px 80px;
   border: 1px solid white;
 `;
+
 export const HeaderMainLogo = styled.img`
   height: 70px;
   object-fit: cover;
+  cursor: pointer;
 `;
 
 export const HeaderMainSpan = styled.span`
@@ -27,18 +31,24 @@ export const HeaderMainSpan = styled.span`
   flex-direction: row;
   color: ${(props) => props.theme.MediumBlue};
 `;
+
 export const HeaderButton = styled.button`
-  color: ${(props) => props.theme.Black};
   font-size: 14px;
   border: 0;
   background-color: rgba(0, 0, 0, 0);
   color: ${(props) => props.theme.MediumBlue};
+  transition: 0.3s;
+  &:hover {
+    transform: scale(1.1);
+    font-weight: 500;
+  }
 `;
+
 export const HeaderOneSimbyol = styled.p`
   margin: 3px 5px;
 `;
 
-// search engine
+// Search Engine
 export const SearchEngineContainer = styled(ColumnFlex)`
   border-radius: 15px;
   position: relative;
@@ -56,6 +66,7 @@ export const SearchEngineInput = styled.input`
   position: relative;
   z-index: 2;
   transition: 0.4s;
+
   &:focus {
     border-bottom: 1px solid ${(props) => props.theme.SkyNeon};
     outline: 0;
@@ -81,6 +92,7 @@ export const SearchEngineIcon = styled.img`
     brightness(97%) contrast(92%);
 `;
 
+// Results List
 export const ResultsList = styled.div`
   display: flex;
   flex-direction: column;
@@ -95,9 +107,11 @@ export const ResultsList = styled.div`
 export const ResultItem = styled.div`
   padding: 10px;
   border-bottom: 1px solid ${(props) => props.theme.LightGray};
+
   &:last-child {
     border-bottom: none;
   }
+
   &:hover {
     background-color: ${(props) => props.theme.LightBlue};
     border-radius: 10px;
@@ -110,28 +124,26 @@ export const ResultTitle = styled.h3`
   font-size: 16px;
 `;
 
-// export const ResultDescription = styled.p`
-//   margin: 5px 0 0 0;
-//   color: ${(props) => props.theme.Gray};
-//   font-size: 14px;
-// `;
-
+// Header Menu
 export const HeaderMenuContainer = styled(RowFlex)`
   width: 500px;
   height: 30px;
 `;
+
 export const HeaderMenuButton = styled.button`
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0);
   border: 0;
   margin-right: 15px;
 `;
+
 export const HeaderMenuText = styled.p`
   font-size: 16px;
   font-weight: 500;
   color: ${(props) => props.theme.DarkBlue};
   background-color: ${(props) => props.theme.white};
   transition: 0.3s;
+
   &:hover {
     transform: scale(1.1);
     padding: 5px 0 0 0;
