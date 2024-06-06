@@ -1,50 +1,73 @@
+// components/Login.tsx
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { LoginContainer, LoginForm, LoginInput } from "../style/LoginStyles";
-import { LOGINDATA } from "../data/LoginData";
-import { Placeholder } from "react-bootstrap";
+import {
+  LoginContainer,
+  LoginForm,
+  LoginInput,
+  RegisterBox,
+} from "../style/LoginStyles";
+import {
+  REGISTERDATAFIRSTPART,
+  REGISTERDATASECONDPART,
+  UseFormFirstPart,
+  UseFormSecondPart,
+} from "../data/LoginData";
+
 function Login() {
-  type UseForm = {
-    firstname: string;
-    lastname: string;
-    email: string;
-    emailVerification: string;
-    phone: number;
-    password: string;
-    optionalJobTitle: string;
-    optionalCompany: string;
-  };
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<UseForm>();
+  } = useForm<UseFormFirstPart & UseFormSecondPart>();
   const navigate = useNavigate();
 
-  const passwordMessage =
-    "minimum 8 characters,at least one letter and one number";
-
-  const onSubmit = (data: UseForm) => {
-    console.log("saba");
+  const onSubmit = (data: UseFormFirstPart & UseFormSecondPart) => {
+    console.log("saba", data);
   };
 
   return (
     <LoginContainer>
       <LoginForm onSubmit={handleSubmit(onSubmit)}>
-        {LOGINDATA.map((data) => (
-          <LoginInput
-            key={data.placeholder}
-            placeholder={data.placeholder}
-            {...register(data.registerName, {
-              required: data.required,
-              pattern: {
-                message: data.message,
-                value: data.value,
-              },
-            })}
-          />
-        ))}
-        {errors.firstname && <div>{errors.firstname.message}</div>}
+        <RegisterBox>
+          {REGISTERDATAFIRSTPART.map((data) => (
+            <LoginInput
+              key={data.placeholder}
+              placeholder={data.placeholder}
+              {...register(data.registerName, {
+                required: data.required,
+                pattern: {
+                  message: data.message,
+                  value: data.value,
+                },
+              })}
+            />
+          ))}
+          {errors.firstname && <div>{errors.firstname.message}</div>}
+          {errors.lastname && <div>{errors.lastname.message}</div>}
+          {errors.email && <div>{errors.email.message}</div>}
+          {errors.emailVerification && (
+            <div>{errors.emailVerification.message}</div>
+          )}
+          {errors.phone && <div>{errors.phone.message}</div>}
+        </RegisterBox>
+        <RegisterBox>
+          {REGISTERDATASECONDPART.map((data) => (
+            <LoginInput
+              key={data.placeholder}
+              placeholder={data.placeholder}
+              {...register(data.registerName, {
+                required: data.required,
+                pattern: {
+                  message: data.message,
+                  value: data.value,
+                },
+              })}
+            />
+          ))}
+          {errors.jobTitle && <div>{errors.jobTitle.message}</div>}
+          {errors.company && <div>{errors.company.message}</div>}
+        </RegisterBox>
       </LoginForm>
     </LoginContainer>
   );
