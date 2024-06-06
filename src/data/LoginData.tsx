@@ -4,11 +4,11 @@ export type UseFormFirstPart = {
   email: string;
   emailVerification: string;
   phone: string;
-  password: string;
-  passwordVerification: string;
 };
 
 export type UseFormSecondPart = {
+  password: string;
+  passwordVerification: string;
   jobTitle: string;
   company: string;
 };
@@ -58,6 +58,9 @@ export const REGISTERDATAFIRSTPART: FormField<UseFormFirstPart>[] = [
     message: "Please provide the phone number in the 'xxx-xxx-xxxx' format.",
     value: /^\d{3}-\d{3}-\d{4}$/,
   },
+];
+
+export const REGISTERDATASECONDPART: FormField<UseFormSecondPart>[] = [
   {
     placeholder: "Password",
     registerName: "password",
@@ -73,9 +76,6 @@ export const REGISTERDATAFIRSTPART: FormField<UseFormFirstPart>[] = [
     message: "The password address entered is invalid.",
     value: /^(?=.*[a-zA-Z]{3,})(?=.*\d)(?=.*[@$!%*?&])[a-zA-Z\d@$!%*?&]+$/,
   },
-];
-
-export const REGISTERDATASECONDPART: FormField<UseFormSecondPart>[] = [
   {
     placeholder: "Job title",
     registerName: "jobTitle",

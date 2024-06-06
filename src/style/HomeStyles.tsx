@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { RowFlex, ColumnFlex } from "./GlobalStyle";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Card from "react-bootstrap/Card";
+import { GlobalButton } from "./GlobalStyle";
 
 import SERVICES from "../assets/icon/home/services/SERVICES.webp";
 import REQUEST_QUOTE from "../assets/icon/home/doublecard/REQUEST_QUOTE.webp";
@@ -98,25 +99,9 @@ export const CarouselContent = styled.p`
   width: 600px;
 `;
 
-export const CarouselButton = styled.button`
-  background-color: #13a3e0;
-  color: ${(props) => props.theme.White};
-  border: 1px solid;
-  padding: 10px 20px;
-  font-size: 20px;
-  font-weight: 800;
-  cursor: pointer;
-  transition: 0.3s ease;
+export const CarouselButton = styled(GlobalButton)`
   margin-left: 150px;
   margin-top: 10px;
-  border-radius: 20px;
-  &:hover {
-    background-color: #102948; /* DarkBlue */
-    color: #1d6a8c; /* MediumBlue */
-  }
-  &:focus {
-    transform: scale(0.9);
-  }
 `;
 //card
 export const CardContainer = styled(Card)`
