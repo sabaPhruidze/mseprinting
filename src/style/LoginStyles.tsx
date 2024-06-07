@@ -2,7 +2,15 @@ import styled from "styled-components";
 import { RowFlex, ColumnFlex } from "./GlobalStyle";
 import { GlobalButton } from "./GlobalStyle";
 
-export const LoginContainer = styled(ColumnFlex)`
+//Radio
+
+export const RadioContainer = styled.div`
+  width: 70%;
+  margin: 0 0 20px 0;
+`;
+
+//register
+export const RegisterContainer = styled(ColumnFlex)`
   width: 100%;
   height: 800px;
   margin: 0;
@@ -11,10 +19,10 @@ export const LoginContainer = styled(ColumnFlex)`
   border-top: 3px solid ${(props) => props.theme.MediumBlue};
 `;
 
-export const LoginForm = styled.form`
+export const RegisterForm = styled.form`
   width: 80%;
   max-width: 600px;
-  padding: 40px;
+  padding: 20px 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -37,7 +45,7 @@ export const RegisterBox = styled(ColumnFlex)`
   align-items: center;
 `;
 
-export const LoginInput = styled.input`
+export const RegisterInput = styled.input`
   width: 100%;
   height: 50px;
   font-size: 18px;
@@ -80,4 +88,13 @@ export const LoginButton = styled(GlobalButton)`
   &:hover {
     background: ${(props) => props.theme.LightBlue};
   }
+`;
+//login
+
+export const LoginContainer = styled(RegisterContainer)`
+  height: 500px;
+`;
+export const LoginForm = styled(RegisterForm)`
+  max-width: 400px;
+  position: relative;
 `;

@@ -10,7 +10,7 @@ import Footer from "./outsideoutlet/Footer";
 
 interface RootContextProps {
   state: {
-    name: string;
+    radioForRegLog: boolean;
   };
   dispatching: (type: string, payload: any) => void;
 }
