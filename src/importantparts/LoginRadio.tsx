@@ -1,6 +1,7 @@
 // components/LoginRadio.tsx
 import React, { useContext } from "react";
 import { rootContext } from "../Root";
+import { RadioContainer } from "../style/LoginStyles";
 
 const LoginRadio = () => {
   const loginContext = useContext(rootContext);
@@ -12,11 +13,11 @@ const LoginRadio = () => {
   const { state, dispatching } = loginContext;
 
   const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    dispatching("SHOW_REGISTER", !state.radioForRegLog);
+    dispatching("SWITCH_LOG_REG", !state.radioForRegLog);
   };
 
   return (
-    <div>
+    <RadioContainer>
       <label>
         <input
           type="radio"
@@ -36,7 +37,7 @@ const LoginRadio = () => {
         />
         I don't have an account
       </label>
-    </div>
+    </RadioContainer>
   );
 };
 
