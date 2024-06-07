@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { rootContext } from "../Root";
 import { useMemo, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import SearchEngine from "../importantparts/SearchEngine";
@@ -16,6 +18,13 @@ import {
 import MSEPRINTING from "../assets/icon/header/MSEPRINTING.svg";
 
 export default function Header() {
+  const headerContext = useContext(rootContext);
+
+  if (!headerContext) {
+    throw new Error("rootContext must be used within a Root provider");
+  }
+
+  const { state, dispatching } = headerContext;
   const navigate = useNavigate();
 
   const handleNavigationHome = useCallback(() => {
@@ -23,8 +32,10 @@ export default function Header() {
   }, [navigate]);
 
   const handleNavigationLogin = useCallback(() => {
-    navigate("/login");
-  }, [navigate]);
+    if (!state.user) {
+      navigate("/login");
+    }
+  }, [navigate, state.user]);
 
   const handleMenuNavigation = useCallback(
     (data: HMenuData) => {
@@ -64,7 +75,9 @@ export default function Header() {
             style={{ marginRight: 10 }}
             onClick={handleNavigationLogin}
           >
-            Sign in
+            {state.user
+              ? `${state.user.firstname} ${state.user.lastname}`
+              : "Sign in"}
           </HeaderButton>
           <SearchEngine />
         </HeaderMainSpan>

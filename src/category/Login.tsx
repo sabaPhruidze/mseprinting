@@ -1,12 +1,11 @@
-// components/Login.tsx
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { rootContext } from "../Root";
 import { auth, db } from "../config/Firebase";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, getDoc } from "firebase/firestore";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import {
@@ -74,6 +73,14 @@ function Login() {
           company,
           createdAt: new Date(),
         });
+
+        dispatching("SET_USER", {
+          firstname,
+          lastname,
+          email,
+          uid: user.uid,
+        });
+
         navigate("/");
       } catch (error) {
         console.error("Error registering user:", error);
@@ -91,10 +98,25 @@ function Login() {
         email,
         password
       );
-      console.log("User logged in:", userCredential.user);
-      navigate("/");
+      const user = userCredential.user;
+
+      // Fetch additional user info from Firestore
+      const userDoc = await getDoc(doc(db, "users", user.uid));
+      const userData = userDoc.data();
+
+      if (userData) {
+        dispatching("USER_INFO", {
+          firstname: userData.firstname,
+          lastname: userData.lastname,
+          email: userData.email,
+          uid: user.uid,
+        });
+        navigate("/");
+      } else {
+        console.error("No such document!");
+      }
     } catch (error) {
-      console.error("Error logging in user:");
+      console.error("Error logging in user:", error);
     }
   };
 
