@@ -8,31 +8,6 @@ import SERVICES from "../assets/icon/home/services/SERVICES.webp";
 import REQUEST_QUOTE from "../assets/icon/home/doublecard/REQUEST_QUOTE.webp";
 import SEND_FILE from "../assets/icon/home/doublecard/SEND_FILE.webp";
 
-export const WWDCContainer = styled(RowFlex)`
-  width: 100%;
-  height: 900px;
-  padding: 0 40px;
-`;
-
-export const WWDCCSpecialitiesContainers = styled(ColumnFlex)`
-  width: 400px;
-  height: 260px;
-  color: ${(props) => props.theme.DarkBlue};
-  padding-right: 20px;
-`;
-
-export const WWDCTitle = styled.h2`
-  font-weight: 700;
-  margin-bottom: 20px;
-  font-size: 28px;
-`;
-
-export const WWDCParagraph = styled.p`
-  font-weight: 400;
-  font-size: 18px;
-  text-align: center;
-`;
-
 //carousel
 export const CarouselContainer = styled.div`
   position: relative;
@@ -175,14 +150,94 @@ export const CarouselButton = styled(GlobalButton)`
   }
 `;
 //card
+export const WWDCContainer = styled(RowFlex)`
+  width: 100%;
+  margin: 20px 0;
+  padding: 0 20px;
+  height: auto;
+  min-height: 600px;
+
+  /* @media (min-width: 768px) {
+    padding: 0 30px;
+    min-height: 700px;
+  }
+
+  @media (min-width: 1024px) {
+    padding: 0 40px;
+    min-height: 800px;
+  } */
+
+  @media (max-width: 1400px) {
+    flex-direction: column;
+  }
+`;
+
+export const WWDCCSpecialitiesContainers = styled(ColumnFlex)`
+  width: 100%;
+  max-width: 400px;
+  color: ${(props) => props.theme.DarkBlue};
+
+  margin-bottom: 20px;
+
+  @media (min-width: 768px) {
+    margin-bottom: 0;
+  }
+`;
+
+export const WWDCTitle = styled.h2`
+  font-weight: 700;
+  margin-bottom: 20px;
+  font-size: 24px;
+  text-align: center;
+
+  @media (min-width: 768px) {
+    font-size: 26px;
+    margin-bottom: 10px;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+
+  @media (min-width: 1440px) {
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+`;
+
+export const WWDCParagraph = styled.p`
+  font-weight: 400;
+  font-size: 16px;
+  text-align: center;
+
+  @media (min-width: 768px) {
+    font-size: 17px;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 18px;
+  }
+`;
+
 export const CardContainer = styled(Card)`
   cursor: pointer;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  margin-bottom: 20px;
 
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  @media (min-width: 768px) {
+    margin-bottom: 30px;
+  }
+
+  @media (min-width: 1024px) {
+    margin-bottom: 40px;
   }
 `;
 //services

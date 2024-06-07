@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import WWDCCard from "./WWDCCard";
 import {
   WWDCContainer,
@@ -7,9 +8,9 @@ import {
 } from "../style/HomeStyles";
 
 export default function WhatWeDoCards() {
-  return (
-    <WWDCContainer>
-      <WWDCCSpecialitiesContainers>
+  const specialitiesContent = useMemo(
+    () => (
+      <>
         <WWDCTitle>OUR SPECIALTIES</WWDCTitle>
         <WWDCParagraph>
           For exceptional printing of banners, posters, business cards,
@@ -18,6 +19,15 @@ export default function WhatWeDoCards() {
           professional service your business deserves. Partner with us for
           outstanding results.
         </WWDCParagraph>
+      </>
+    ),
+    []
+  );
+
+  return (
+    <WWDCContainer>
+      <WWDCCSpecialitiesContainers>
+        {specialitiesContent}
       </WWDCCSpecialitiesContainers>
       <div>
         <WWDCCard />
