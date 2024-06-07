@@ -248,6 +248,14 @@ export const HomeServicesContainer = styled.div`
   background: url(${SERVICES}) no-repeat center center;
   background-size: cover;
   position: relative;
+
+  @media (max-width: 768px) {
+    height: 300px;
+  }
+
+  @media (max-width: 480px) {
+    height: 200px;
+  }
 `;
 
 export const HomeServicesDarkCover = styled.div`
@@ -263,19 +271,69 @@ export const HomeServicesDarkCover = styled.div`
   text-align: left;
   padding: 0 100px;
   color: white;
+
+  @media (max-width: 768px) {
+    height: 300px;
+    padding: 0 10px;
+  }
+
+  @media (max-width: 480px) {
+    height: 200px;
+    padding: 0 10px;
+  }
+`;
+
+export const HomeServicesTitle = styled(WWDCTitle)`
+  text-align: left;
+  font-size: 2rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+  }
 `;
 
 export const HomeServicesContext = styled(WWDCParagraph)`
   width: 900px;
   text-align: left;
+  font-size: 1rem;
+
+  @media (max-width: 1200px) {
+    width: 700px;
+  }
+
+  @media (max-width: 992px) {
+    width: 500px;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.8rem;
+  }
 `;
 
 export const HomeServicesButton = styled(CarouselButton)`
   margin-top: 20px;
   margin-left: 0px;
   max-width: 180px;
-`;
 
+  @media (max-width: 768px) {
+    margin-top: 0px;
+  }
+
+  /* @media (max-width: 480px) {
+    max-width: 120px;
+  } */
+`;
 // double cards
 
 export const DoubleCardContainer = styled(RowFlex)`
