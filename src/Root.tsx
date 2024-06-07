@@ -7,11 +7,10 @@ import { defaultTheme } from "./style/Themes";
 import Header from "./outsideoutlet/Header";
 import { Outlet } from "react-router-dom";
 import Footer from "./outsideoutlet/Footer";
+import { InitialState } from "./importantparts/UseReducerComponent";
 
 interface RootContextProps {
-  state: {
-    radioForRegLog: boolean;
-  };
+  state: InitialState;
   dispatching: (type: string, payload: any) => void;
 }
 
