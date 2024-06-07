@@ -1,16 +1,17 @@
+import { useMemo } from "react";
 import {
   HomeServicesContainer,
   HomeServicesDarkCover,
-  WWDCTitle,
+  HomeServicesTitle,
   HomeServicesContext,
   HomeServicesButton,
 } from "../style/HomeStyles";
 
 export default function HomeServices() {
-  return (
-    <HomeServicesContainer>
-      <HomeServicesDarkCover>
-        <WWDCTitle>Products & Services</WWDCTitle>
+  const content = useMemo(
+    () => (
+      <>
+        <HomeServicesTitle>Products & Services</HomeServicesTitle>
         <HomeServicesContext>
           At MSE PRINTING, we provide a wide range of high-quality printing and
           signage services to meet all your business needs. Whether you need
@@ -24,7 +25,14 @@ export default function HomeServices() {
           premium print and design solutions.
         </HomeServicesContext>
         <HomeServicesButton>Learn More ...</HomeServicesButton>
-      </HomeServicesDarkCover>
+      </>
+    ),
+    []
+  );
+
+  return (
+    <HomeServicesContainer>
+      <HomeServicesDarkCover>{content}</HomeServicesDarkCover>
     </HomeServicesContainer>
   );
 }
