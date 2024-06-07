@@ -34,6 +34,23 @@ export const WWDCParagraph = styled.p`
 `;
 
 //carousel
+export const CarouselContainer = styled.div`
+  position: relative;
+  width: 100%;
+  height: 300px;
+
+  @media (min-width: 768px) {
+    height: 400px;
+  }
+
+  @media (min-width: 1024px) {
+    height: 500px;
+  }
+
+  @media (min-width: 1440px) {
+    height: 600px;
+  }
+`;
 
 export const CarouselOverlay = styled.div`
   position: absolute;
@@ -43,9 +60,10 @@ export const CarouselOverlay = styled.div`
   height: 100%;
   background-color: rgba(0, 0, 0, 0.3);
 `;
+
 export const CarouselControl = styled.button`
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background-color: rgba(0, 0, 0, 0.5);
   border: 2px solid white;
@@ -70,11 +88,16 @@ export const CarouselControl = styled.button`
     opacity: 0.5;
     pointer-events: none;
   }
+
+  @media (min-width: 768px) {
+    width: 50px;
+    height: 50px;
+  }
 `;
 
 export const CarouselImg = styled.img`
   width: 100%;
-  height: 600px;
+  height: 100%;
   object-fit: cover;
 `;
 
@@ -86,22 +109,70 @@ export const CarouselIcon = styled.span`
 
 export const CarouselTitle = styled.h3`
   margin: 0;
-  margin-left: 150px;
-  font-size: 36px;
+  font-size: 24px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+  text-align: center;
+
+  @media (min-width: 768px) {
+    font-size: 28px;
+    text-align: left;
+    margin-left: 50px;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 32px;
+    margin-left: 100px;
+  }
+
+  @media (min-width: 1440px) {
+    font-size: 36px;
+    margin-left: 150px;
+  }
 `;
 
 export const CarouselContent = styled.p`
   margin-top: 10px;
-  margin-left: 150px;
-  font-size: 20px;
+  font-size: 16px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
-  width: 600px;
+  text-align: center;
+  width: 90%;
+  margin: 0 auto;
+
+  @media (min-width: 768px) {
+    font-size: 18px;
+    text-align: left;
+    margin-left: 50px;
+    width: 80%;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 20px;
+    margin-left: 100px;
+    width: 70%;
+  }
+
+  @media (min-width: 1440px) {
+    font-size: 22px;
+    margin-left: 150px;
+    width: 60%;
+  }
 `;
 
 export const CarouselButton = styled(GlobalButton)`
-  margin-left: 150px;
-  margin-top: 10px;
+  display: block;
+  margin: 10px auto 0;
+
+  @media (min-width: 768px) {
+    margin: 10px 0 0 50px;
+  }
+
+  @media (min-width: 1024px) {
+    margin-left: 100px;
+  }
+
+  @media (min-width: 1440px) {
+    margin-left: 150px;
+  }
 `;
 //card
 export const CardContainer = styled(Card)`
