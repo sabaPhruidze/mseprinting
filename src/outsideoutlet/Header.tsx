@@ -1,6 +1,5 @@
-import { useContext } from "react";
+import { useContext, useMemo, useCallback } from "react";
 import { rootContext } from "../Root";
-import { useMemo, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import SearchEngine from "../importantparts/SearchEngine";
 import { HeaderMenuData, HMenuData } from "../data/HeaderData";
@@ -24,7 +23,7 @@ export default function Header() {
     throw new Error("rootContext must be used within a Root provider");
   }
 
-  const { state, dispatching } = headerContext;
+  const { state } = headerContext;
   const navigate = useNavigate();
 
   const handleNavigationHome = useCallback(() => {
@@ -58,7 +57,7 @@ export default function Header() {
     [handleMenuNavigation]
   );
 
-  const menuItems = useMemo(renderMenuItems, [renderMenuItems]);
+  const menuItems = useMemo(() => renderMenuItems(), [renderMenuItems]);
 
   return (
     <HeaderContainer>

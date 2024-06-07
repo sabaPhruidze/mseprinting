@@ -7,7 +7,15 @@ export const HeaderContainer = styled(ColumnFlex)`
   width: 100%;
   height: 100px;
   background-color: ${(props) => props.theme.White};
-  padding: 5px 100px;
+  padding: 5px 20px;
+
+  @media (min-width: 768px) {
+    padding: 5px 50px;
+  }
+
+  @media (min-width: 1024px) {
+    padding: 5px 100px;
+  }
 `;
 
 export const HeaderMainContainer = styled(RowFlex)`
@@ -34,10 +42,12 @@ export const HeaderMainSpan = styled.span`
 
 export const HeaderButton = styled.button`
   font-size: 14px;
+  padding: 0 5px;
   border: 0;
   background-color: rgba(0, 0, 0, 0);
   color: ${(props) => props.theme.MediumBlue};
   transition: 0.3s;
+  white-space: nowrap;
   &:hover {
     transform: scale(1.1);
     font-weight: 500;
@@ -49,15 +59,35 @@ export const HeaderOneSimbyol = styled.p`
 `;
 
 // Search Engine
+
 export const SearchEngineContainer = styled(ColumnFlex)`
   border-radius: 15px;
   position: relative;
   z-index: 1;
   height: 100%;
+  width: 100%;
+  max-width: 200px;
+  margin: 0 auto;
+
+  @media (min-width: 768px) {
+    max-width: 100px;
+  }
+
+  @media (min-width: 1024px) {
+    max-width: 150px;
+  }
+
+  @media (min-width: 1440px) {
+    max-width: 200px;
+  }
+
+  @media (min-width: 1920px) {
+    max-width: 300px;
+  }
 `;
 
 export const SearchEngineInput = styled.input`
-  width: 150px;
+  width: 100%;
   padding: 6px 15px;
   border: none;
   border-bottom: 1px solid ${(props) => props.theme.MediumBlue};
@@ -92,7 +122,6 @@ export const SearchEngineIcon = styled.img`
     brightness(97%) contrast(92%);
 `;
 
-// Results List
 export const ResultsList = styled.div`
   display: flex;
   flex-direction: column;
@@ -126,8 +155,12 @@ export const ResultTitle = styled.h3`
 
 // Header Menu
 export const HeaderMenuContainer = styled(RowFlex)`
-  width: 500px;
+  width: 100%;
   height: 30px;
+  justify-content: center;
+  @media (min-width: 768px) {
+    width: 500px;
+  }
 `;
 
 export const HeaderMenuButton = styled.button`
@@ -141,7 +174,7 @@ export const HeaderMenuText = styled.p`
   font-size: 16px;
   font-weight: 500;
   color: ${(props) => props.theme.DarkBlue};
-  background-color: ${(props) => props.theme.white};
+  background-color: rgba(0, 0, 0, 0);
   transition: 0.3s;
 
   &:hover {
