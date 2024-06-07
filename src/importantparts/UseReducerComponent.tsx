@@ -1,10 +1,10 @@
 import { useReducer } from "react";
 
 export interface InitialState {
-  name: string;
+  radioForRegLog: boolean;
 }
 const initialState: InitialState = {
-  name: "sssssss",
+  radioForRegLog: false,
 };
 
 type ActionType = {
@@ -15,8 +15,9 @@ type ActionType = {
 const reducer = (state: typeof initialState, action: ActionType) => {
   const newState = { ...state };
   switch (action.type) {
-    case "N_C":
-      newState.name = action.payload;
+    case "SHOW_REGISTER":
+    case "SHOW_LOGIN":
+      newState.radioForRegLog = action.payload;
       break;
     default:
       throw new Error("Unknown action type");

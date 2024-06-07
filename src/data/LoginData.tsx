@@ -12,6 +12,10 @@ export type UseFormSecondPart = {
   jobTitle: string;
   company: string;
 };
+export type UseFormLogin = {
+  email: string;
+  password: string;
+};
 
 type FormField<T> = {
   placeholder: string;
@@ -91,5 +95,22 @@ export const REGISTERDATASECONDPART: FormField<UseFormSecondPart>[] = [
     message:
       "Please enter at least 3 English alphabet character.If you do not have a company affiliation, please write 'NaN' in the company field.",
     value: /^[a-zA-Z]{3,}$/,
+  },
+];
+export const LOGINDATA: FormField<UseFormLogin>[] = [
+  {
+    placeholder: "Email",
+    registerName: "email",
+    required: true,
+    message: "The email is not correct",
+    value: /^(?=.*[a-zA-Z]{3,})(?=.*\d)(?=.*[@$!%*?&])[a-zA-Z\d@$!%*?&]+$/,
+  },
+  {
+    placeholder: "Password",
+    registerName: "password",
+    required: true,
+    message:
+      "Enter at least 3 English alphabet characters, one number and one symbol (e.g., mse1@)",
+    value: /^(?=.*[a-zA-Z]{3,})(?=.*\d)(?=.*[@$!%*?&])[a-zA-Z\d@$!%*?&]+$/,
   },
 ];
