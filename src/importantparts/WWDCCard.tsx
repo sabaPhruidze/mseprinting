@@ -1,13 +1,16 @@
+import { useMemo } from "react";
 import { Container } from "react-bootstrap";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { CardContainer } from "../style/HomeStyles";
 import CardData from "../data/CardData";
+
 function WWDCCard() {
-  const DATA = CardData();
+  const DATA = useMemo(() => CardData(), []);
+
   return (
     <Container>
-      <Row xs={1} md={3} className="g-4">
+      <Row xs={1} sm={2} md={3} className="g-4">
         {DATA.map((card, idx) => (
           <Col key={idx}>
             <CardContainer className="h-100">
