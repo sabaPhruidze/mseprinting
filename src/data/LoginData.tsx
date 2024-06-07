@@ -80,14 +80,16 @@ export const REGISTERDATASECONDPART: FormField<UseFormSecondPart>[] = [
     placeholder: "Job title",
     registerName: "jobTitle",
     required: true,
-    message: "enter at least 3 English alphabet characters.",
+    message:
+      "enter at least 3 English alphabet characters.If you do not have a Job title, please write 'NaN' in the Job title field.",
     value: /^[a-zA-Z]{3,}$/,
   },
   {
     placeholder: "Company",
     registerName: "company",
     required: true,
-    message: "Please enter at least 1 English alphabet character.",
-    value: /^[a-zA-Z]{1,}$/,
+    message:
+      "Please enter at least 3 English alphabet character.If you do not have a company affiliation, please write 'NaN' in the company field.",
+    value: /^[a-zA-Z]{3,}$/,
   },
 ];
