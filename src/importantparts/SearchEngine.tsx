@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import {
   SearchEngineContainer,
   SearchEngineInput,
@@ -20,7 +20,7 @@ const SearchEngine: React.FC = () => {
   const [query, setQuery] = useState<string>("");
   const [results, setResults] = useState<SearchResult[]>([]);
 
-  const handleSearch = async () => {
+  const handleSearch = useCallback(() => {
     const data: SearchResult[] = [
       {
         id: 1,
@@ -42,14 +42,18 @@ const SearchEngine: React.FC = () => {
     );
 
     setResults(filteredResults);
-  };
+  }, [query]);
+
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    setQuery(e.target.value);
+  }, []);
 
   return (
     <SearchEngineContainer>
       <SearchEngineInput
         type="text"
         value={query}
-        onChange={(e) => setQuery(e.target.value)}
+        onChange={handleChange}
         placeholder="Search..."
       />
       <SearchEngineButton onClick={handleSearch}>

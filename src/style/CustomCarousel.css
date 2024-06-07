@@ -12,9 +12,24 @@
   top: 50%;
   left: 0;
   transform: translate(0, -50%);
-  text-align: left;
+  text-align: center;
   width: 100%;
-  padding: 20px;
+  padding: 10px;
+}
+
+@media (max-width: 790px) {
+  .custom-carousel-caption {
+    text-align: left;
+    padding: 20px;
+    top: 32%;
+  }
+}
+
+@media (min-width: 790px) {
+  .custom-carousel-caption {
+    padding: 40px;
+    top: 50%;
+  }
 }
 
 
