@@ -15,8 +15,7 @@ type ActionType = {
 const reducer = (state: typeof initialState, action: ActionType) => {
   const newState = { ...state };
   switch (action.type) {
-    case "SHOW_REGISTER":
-    case "SHOW_LOGIN":
+    case "SWITCH_LOG_REG":
       newState.radioForRegLog = action.payload;
       break;
     default:

@@ -7,10 +7,13 @@ import {
   REGISTERDATASECONDPART,
   UseFormFirstPart,
   UseFormSecondPart,
+  UseFormLogin,
 } from "../data/LoginData";
 
 interface RegisterInputsProps {
-  register: UseFormRegister<UseFormFirstPart & UseFormSecondPart>;
+  register: UseFormRegister<
+    (UseFormFirstPart & UseFormSecondPart) | UseFormLogin
+  >;
   errors: FieldErrors<UseFormFirstPart & UseFormSecondPart>;
 }
 

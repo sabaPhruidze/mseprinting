@@ -103,7 +103,7 @@ export const LOGINDATA: FormField<UseFormLogin>[] = [
     registerName: "email",
     required: true,
     message: "The email is not correct",
-    value: /^(?=.*[a-zA-Z]{3,})(?=.*\d)(?=.*[@$!%*?&])[a-zA-Z\d@$!%*?&]+$/,
+    value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
   },
   {
     placeholder: "Password",

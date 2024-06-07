@@ -1,15 +1,15 @@
-// components/RegisterInputs.tsx
+// components/LoginInputs.tsx
 import React from "react";
 import { UseFormRegister, FieldErrors } from "react-hook-form";
 import { RegisterInput, ErrorMessage } from "../style/LoginStyles";
 import { LOGINDATA, UseFormLogin } from "../data/LoginData";
 
-interface RegisterInputsProps {
+interface LoginInputsProps {
   register: UseFormRegister<UseFormLogin>;
   errors: FieldErrors<UseFormLogin>;
 }
 
-const LoginInputs: React.FC<RegisterInputsProps> = ({ register, errors }) => {
+const LoginInputs: React.FC<LoginInputsProps> = ({ register, errors }) => {
   return (
     <>
       {LOGINDATA.map((data) => (

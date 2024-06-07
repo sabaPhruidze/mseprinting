@@ -74,9 +74,6 @@ function Login() {
           company,
           createdAt: new Date(),
         });
-
-        console.log("User registered and additional data saved:", user);
-
         navigate("/");
       } catch (error) {
         console.error("Error registering user:", error);
@@ -97,7 +94,7 @@ function Login() {
       console.log("User logged in:", userCredential.user);
       navigate("/");
     } catch (error) {
-      console.error("Error logging in user:", error);
+      console.error("Error logging in user:");
     }
   };
 
