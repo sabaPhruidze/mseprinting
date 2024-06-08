@@ -30,7 +30,6 @@ export const PrintingAndCopyingData: string[] = [
   "Labels, Stickers & Decals",
   "Legal Copying",
   "Manuals, Catalogs & Booklets",
-  "Marketing & Sales Kits",
 ];
 
 export const TradeshowsAndEventsData: string[] = [
