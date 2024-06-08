@@ -14,6 +14,12 @@ export const DividingLineBox = styled(RowFlex)`
   background-color: ${(props) => props.theme.DarkBlue};
   text-align: center;
   padding: 0 60px 0 80px;
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    height: auto;
+    padding: 5px 60px;
+  }
 `;
 
 export const Icons = styled(RowFlex)``;
@@ -47,30 +53,53 @@ export const ProductsAboutUsBox = styled(RowFlex)`
   width: 100%;
   height: 510px;
   background-color: ${(props) => props.theme.LightGrey};
+  justify-content: center; /* Center the box horizontally */
+  align-items: flex-start; /* Align items to the start to ensure they are aligned properly */
+  padding-top: 20px; /* Add padding to adjust the top spacing */
 `;
 
 export const ProductsAboutUsCont = styled(RowFlex)`
   width: 320px;
   height: 510px;
+  justify-content: center; /* Center the container horizontally */
+  align-items: flex-start; /* Ensure the container content aligns properly */
+
+  @media (max-width: 600px) {
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+  }
 `;
 
 export const ProductsAboutUsColumn = styled(ColumnFlex)`
   height: 100%;
   width: 300px;
-  justify-content: flex-start;
-  align-items: center;
-  text-align: left;
+  justify-content: flex-start; /* Align column content to the start */
+  align-items: center; /* Ensure column content is centered horizontally */
+  text-align: center; /* Ensure text content is centered horizontally */
+  padding-top: 20px; /* Add padding to adjust the top spacing */
+
+  @media (max-width: 600px) {
+    width: 100%;
+    text-align: center;
+  }
 `;
 
 export const VerticalLine = styled.div`
   border-left: 1px solid ${(props) => props.theme.MediumBlue};
   height: 70%;
+
+  @media (max-width: 600px) {
+    border-left: none;
+    border-top: 1px solid ${(props) => props.theme.MediumBlue};
+    width: 70%;
+  }
 `;
 
 export const ColumnTitle = styled(Quote)`
   font-size: 22px;
   font-weight: 600;
-  margin: 10px 0 20px 0;
+  margin-bottom: 10px;
   color: ${(props) => props.theme.Black};
 `;
 
@@ -96,6 +125,18 @@ export const TermsConditionsBox = styled(RowFlex)`
   width: 100%;
   height: 80px;
   padding: 0 80px;
+
+  @media (max-width: 1300px) {
+    flex-direction: column;
+    height: auto;
+    padding: 20px 80px;
+  }
+
+  @media (max-width: 800px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 `;
 
 export const Address = styled.p`
@@ -103,16 +144,35 @@ export const Address = styled.p`
   color: black;
   width: 500px;
   margin-bottom: 0;
+  text-align: left;
+
+  @media (max-width: 1300px) {
+    text-align: center;
+  }
+
+  @media (max-width: 800px) {
+    width: 100%;
+  }
 `;
 
 export const TermsConditionsLinks = styled(RowFlex)`
   font-size: 14px;
   color: black;
+  flex-wrap: wrap;
+
+  @media (max-width: 800px) {
+    justify-content: center;
+    text-align: center;
+  }
 `;
 
 export const TermsConditionsLink = styled(ColumnContext)`
   font-size: 14px;
   font-weight: 200;
   color: black;
-  margin-left: 5px;
+  margin: 5px;
+
+  @media (max-width: 800px) {
+    margin: 5px 10px;
+  }
 `;
