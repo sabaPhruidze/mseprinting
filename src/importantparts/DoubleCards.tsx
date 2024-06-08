@@ -3,7 +3,7 @@ import {
   RequestQuoteBGImage,
   SendFileBGImage,
   RequsetQuoteBGHalf,
-  RequsetQuoteTitle,
+  RequestQuoteTitle,
   SendFileTitle,
 } from "../style/HomeStyles";
 
@@ -15,7 +15,7 @@ export default function DoubleCards() {
     <DoubleCardContainer>
       <RequestQuoteBGImage>
         <RequsetQuoteBGHalf src={HALF_DARK} alt="HALF_DARK" />
-        <RequsetQuoteTitle>Request a Quote</RequsetQuoteTitle>
+        <RequestQuoteTitle>Request a Quote</RequestQuoteTitle>
       </RequestQuoteBGImage>
       <SendFileBGImage>
         <RequsetQuoteBGHalf src={HALF_LIGHT} alt="HALF_LIGHT" />

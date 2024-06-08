@@ -338,36 +338,48 @@ export const HomeServicesButton = styled(CarouselButton)`
 
 export const DoubleCardContainer = styled(RowFlex)`
   width: 100%;
-  height: 600px;
+  height: 500px;
   margin: 70px 0;
-  padding: 0 40px;
+  padding: 0 50px;
+  flex-wrap: nowrap;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 50px;
+  }
 `;
 export const RequestQuoteBGImage = styled(HomeServicesContainer)`
   background: url(${REQUEST_QUOTE}) no-repeat center center;
-  width: calc(100% / 2 - 30px);
-  background-size: contain;
+  width: calc(50% - 30px);
+  background-size: cover;
   position: relative;
   border-radius: 25px;
   z-index: 1;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
+  margin-bottom: 30px;
   &:hover {
     transform: scale(1.1);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  }
+  @media (max-width: 768px) {
+    width: 100%;
   }
 `;
 
 export const RequsetQuoteBGHalf = styled.img`
   width: 100%;
   position: absolute;
-  top: 0;
+  top: 0px;
   left: 0;
   z-index: 2;
   opacity: 0.9;
+  border-radius: 25px;
+  border-top: 3px solid ${(props) => props.theme.MediumBlue};
 `;
 
-export const RequsetQuoteTitle = styled(WWDCTitle)`
+export const RequestQuoteTitle = styled(WWDCTitle)`
   color: ${(props) => props.theme.White};
   width: 220px;
   position: absolute;
@@ -378,10 +390,9 @@ export const RequsetQuoteTitle = styled(WWDCTitle)`
 
 export const SendFileBGImage = styled(RequestQuoteBGImage)`
   background: url(${SEND_FILE}) no-repeat center center;
-  background-size: contain;
 `;
 
-export const SendFileTitle = styled(RequsetQuoteTitle)`
+export const SendFileTitle = styled(RequestQuoteTitle)`
   color: ${(props) => props.theme.Black};
   width: 150px;
   left: calc(100% / 2 - 75px);
