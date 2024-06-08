@@ -1,7 +1,13 @@
 // components/RegisterInputs.tsx
 import React from "react";
 import { UseFormRegister, FieldErrors } from "react-hook-form";
-import { RegisterInput, RegisterBox, ErrorMessage } from "../style/LoginStyles";
+import {
+  RegisterInput,
+  RegisterBoxOne,
+  RegisterBoxTwo,
+  ErrorMessage,
+  RegLogContainer,
+} from "../style/LoginStyles";
 import {
   REGISTERDATAFIRSTPART,
   REGISTERDATASECONDPART,
@@ -22,8 +28,8 @@ const RegisterInputs: React.FC<RegisterInputsProps> = ({
   errors,
 }) => {
   return (
-    <>
-      <RegisterBox>
+    <RegLogContainer>
+      <RegisterBoxOne>
         {REGISTERDATAFIRSTPART.map((data) => (
           <div key={data.placeholder}>
             <RegisterInput
@@ -45,8 +51,8 @@ const RegisterInputs: React.FC<RegisterInputsProps> = ({
             )}
           </div>
         ))}
-      </RegisterBox>
-      <RegisterBox>
+      </RegisterBoxOne>
+      <RegisterBoxTwo>
         {REGISTERDATASECONDPART.map((data) => (
           <div key={data.placeholder}>
             <RegisterInput
@@ -68,8 +74,8 @@ const RegisterInputs: React.FC<RegisterInputsProps> = ({
             )}
           </div>
         ))}
-      </RegisterBox>
-    </>
+      </RegisterBoxTwo>
+    </RegLogContainer>
   );
 };
 
