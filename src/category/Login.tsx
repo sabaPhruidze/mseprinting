@@ -126,9 +126,9 @@ function Login() {
         <RegisterContainer>
           <RegisterForm onSubmit={handleSubmit(onSubmitRegister as any)}>
             <LoginRadio />
-            <RegLogContainer>
-              <RegisterInputs register={register} errors={errors} />
-            </RegLogContainer>
+
+            <RegisterInputs register={register} errors={errors} />
+
             <LoginButton type="submit">Register</LoginButton>
           </RegisterForm>
         </RegisterContainer>

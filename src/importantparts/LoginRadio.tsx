@@ -27,7 +27,6 @@ const LoginRadio = () => {
         />
         I have an account
       </label>
-      <br />
       <label>
         <input
           type="radio"

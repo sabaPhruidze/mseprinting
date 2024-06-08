@@ -4,25 +4,32 @@ import { GlobalButton } from "./GlobalStyle";
 
 //Radio
 
-export const RadioContainer = styled.div`
-  width: 70%;
+export const RadioContainer = styled(ColumnFlex)`
+  width: 100%;
+  height: 50px;
   margin: 0 0 20px 0;
+  justify-content: space-evenly;
+  @media (max-width: 900px) {
+    margin: 0 0 10px 0;
+  }
 `;
 
 //register
 export const RegisterContainer = styled(ColumnFlex)`
   width: 100%;
   height: 800px;
-  margin: 0;
   justify-content: center;
   align-items: center;
   border-top: 3px solid ${(props) => props.theme.MediumBlue};
+  @media (max-width: 900px) {
+    height: 1150px;
+  }
 `;
 
 export const RegisterForm = styled.form`
-  width: 80%;
-  max-width: 600px;
-  padding: 20px 40px;
+  width: 100%;
+  max-width: 700px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -30,23 +37,35 @@ export const RegisterForm = styled.form`
   border: 3px solid ${(props) => props.theme.MediumBlue};
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
   border-radius: 10px; /* Rounded corners */
+  @media (max-width: 900px) {
+    padding: 5px 10px;
+  }
 `;
 
 export const RegLogContainer = styled(RowFlex)`
-  width: 100%;
-  justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+  @media (max-width: 900px) {
+    flex-direction: column;
+    margin-bottom: 10px;
+    width: 40%;
+  }
 `;
-
-export const RegisterBox = styled(ColumnFlex)`
-  width: 45%;
+export const RegisterBoxOne = styled(ColumnFlex)`
+  width: 100%;
   justify-content: center;
   align-items: center;
+  margin-right: 20px;
+  @media (max-width: 900px) {
+    margin-right: 0px;
+  }
+`;
+export const RegisterBoxTwo = styled(RegisterBoxOne)`
+  margin-right: 0;
 `;
 
 export const RegisterInput = styled.input`
-  width: 100%;
+  width: 300px;
   height: 50px;
   font-size: 18px;
   color: ${(props) => props.theme.DarkBlue};
@@ -67,6 +86,7 @@ export const RegisterInput = styled.input`
 `;
 
 export const ErrorMessage = styled.div`
+  width: 100%;
   color: red;
   font-size: 12px;
   margin-top: -15px;
