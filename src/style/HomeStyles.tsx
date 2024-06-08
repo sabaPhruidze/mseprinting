@@ -381,11 +381,14 @@ export const RequsetQuoteBGHalf = styled.img`
 
 export const RequestQuoteTitle = styled(WWDCTitle)`
   color: ${(props) => props.theme.White};
-  width: 220px;
+  font-size: 26px;
   position: absolute;
   z-index: 3;
-  top: 30px;
+  top: 20px;
   left: calc(100% / 2 - 100px);
+  @media (max-width: 1000px) {
+    top: 10px;
+  }
 `;
 
 export const SendFileBGImage = styled(RequestQuoteBGImage)`
@@ -394,6 +397,5 @@ export const SendFileBGImage = styled(RequestQuoteBGImage)`
 
 export const SendFileTitle = styled(RequestQuoteTitle)`
   color: ${(props) => props.theme.Black};
-  width: 150px;
-  left: calc(100% / 2 - 75px);
+  left: calc(100% / 2 - 65px);
 `;
