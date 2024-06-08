@@ -250,11 +250,11 @@ export const HomeServicesContainer = styled.div`
   position: relative;
 
   @media (max-width: 768px) {
-    height: 300px;
+    height: 350px;
   }
 
   @media (max-width: 480px) {
-    height: 200px;
+    height: 400px;
   }
 `;
 
@@ -273,7 +273,7 @@ export const HomeServicesDarkCover = styled.div`
   color: white;
 
   @media (max-width: 768px) {
-    height: 300px;
+    height: 350px;
     padding: 0 10px;
   }
 

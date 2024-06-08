@@ -9,8 +9,8 @@ export const HeaderContainer = styled(ColumnFlex)`
   background-color: ${(props) => props.theme.White};
   padding: 5px 20px;
 
-  @media (min-width: 768px) {
-    padding: 5px 50px;
+  @media (max-width: 768px) {
+    padding: 5px 10px;
   }
 
   @media (min-width: 1024px) {
