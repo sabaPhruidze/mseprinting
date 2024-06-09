@@ -1,5 +1,5 @@
 // components/LoginRadio.tsx
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { rootContext } from "../Root";
 import { RadioContainer } from "../style/LoginStyles";
 
@@ -12,7 +12,7 @@ const LoginRadio = () => {
 
   const { state, dispatching } = loginContext;
 
-  const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleRadioChange = () => {
     dispatching("SWITCH_LOG_REG", !state.radioForRegLog);
   };
 
