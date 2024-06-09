@@ -1,30 +1,10 @@
+import { collection, getDocs, DocumentData } from "firebase/firestore";
+import { db } from "../config/Firebase";
+
 export interface HMenuData {
   page: string;
   path: string;
 }
-
-export const HeaderMenuData: HMenuData[] = [
-  {
-    page: "Home",
-    path: "/",
-  },
-  {
-    page: "Products & Services",
-    path: "productsservices",
-  },
-  {
-    page: "Request a Quote",
-    path: "requestquote",
-  },
-  {
-    page: "Send a File",
-    path: "sendfile",
-  },
-];
-
-import { collection, getDocs, DocumentData } from "firebase/firestore";
-import { db } from "../config/Firebase"; // Adjust the path as needed
-// Adjust the path as needed
 
 export const fetchHeaderMenuData = async (): Promise<HMenuData[]> => {
   try {

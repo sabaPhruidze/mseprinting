@@ -98,11 +98,7 @@ export default function Header() {
           <SearchEngine />
         </HeaderMainSpan>
       </HeaderMainContainer>
-      <HeaderMenuContainer>
-        <nav>
-          <ul>{menuItems}</ul>
-        </nav>
-      </HeaderMenuContainer>
+      <HeaderMenuContainer>{menuItems}</HeaderMenuContainer>
     </HeaderContainer>
   );
 }
