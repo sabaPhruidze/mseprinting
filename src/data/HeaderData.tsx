@@ -10,6 +10,7 @@ export const fetchHeaderMenuData = async (): Promise<HMenuData[]> => {
   try {
     const querySnapshot = await getDocs(collection(db, "HeaderMenu"));
     let headerMenuData: HMenuData[] = [];
+
     querySnapshot.forEach((doc) => {
       const data = doc.data() as DocumentData;
       if (data.Data && Array.isArray(data.Data)) {

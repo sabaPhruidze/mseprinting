@@ -2,13 +2,14 @@ import { createContext, useEffect, useState } from "react";
 import { ThemeProvider } from "styled-components";
 import UseReducerComponent from "./importantparts/UseReducerComponent";
 import { GlobalStyle } from "./style/GlobalStyle";
-import { RootContainer } from "./style/RootStyle";
+import { RootContainer, RootLoading } from "./style/RootStyle";
 import { defaultTheme } from "./style/Themes";
 import Header from "./outsideoutlet/Header";
 import { Outlet } from "react-router-dom";
 import Footer from "./outsideoutlet/Footer";
 import { InitialState } from "./importantparts/UseReducerComponent";
 import { fetchHeaderMenuData } from "./data/HeaderData"; // Adjust the path as needed
+import { fetchCarouselData } from "./data/CarouselData";
 
 interface RootContextProps {
   state: InitialState;
@@ -26,7 +27,7 @@ export default function Root() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        await fetchHeaderMenuData(); // Fetch data
+        await fetchHeaderMenuData(), fetchCarouselData(); // Fetch data
       } catch (error) {
         console.error("Error fetching header menu data: ", error);
       } finally {
@@ -38,7 +39,11 @@ export default function Root() {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>; // Show a loading indicator
+    return (
+      <RootLoading>
+        <div>Loading...</div>
+      </RootLoading>
+    ); // Show a loading indicator
   }
 
   return (
