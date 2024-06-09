@@ -1,7 +1,8 @@
-import { useState, useCallback, useMemo } from "react";
+import { useState, useCallback, useMemo, useEffect } from "react";
+import { fetchCarouselData, CarouselData } from "../data/CarouselData";
 import Carousel from "react-bootstrap/Carousel";
 import "bootstrap/dist/css/bootstrap.min.css";
-import CarouselData from "../data/CarouselData";
+
 import {
   CarouselControl,
   CarouselContainer,
@@ -15,8 +16,8 @@ import {
 import "../style/CustomCarousel.css";
 
 export default function CarouselComponent() {
-  const carouselData = useMemo(() => CarouselData(), []);
   const [index, setIndex] = useState(0);
+  const [carouselMainData, setCarouselMainData] = useState<CarouselData[]>([]);
 
   const handleSelect = useCallback((selectedIndex: number) => {
     setIndex(selectedIndex);
@@ -28,30 +29,49 @@ export default function CarouselComponent() {
 
   const handleNext = useCallback(() => {
     setIndex((prevIndex) =>
-      prevIndex < carouselData.length - 1 ? prevIndex + 1 : prevIndex
+      prevIndex < carouselMainData.length - 1 ? prevIndex + 1 : prevIndex
     );
-  }, [carouselData.length]);
+  }, [carouselMainData.length]);
+
+  useEffect(() => {
+    const getCarouselData = async () => {
+      const data = await fetchCarouselData();
+
+      if (data && data.length > 0) {
+        console.log(data);
+        setCarouselMainData(data);
+      }
+    };
+
+    getCarouselData();
+  }, []);
+
+  const carouselItems = useMemo(
+    () =>
+      carouselMainData.map((data, idx) => (
+        <Carousel.Item key={idx}>
+          <CarouselContainer>
+            <CarouselImg
+              className="d-block w-100"
+              src={data.image}
+              alt={data.alt}
+            />
+            <CarouselOverlay />
+            <Carousel.Caption className="custom-carousel-caption">
+              <CarouselTitle>{data.title}</CarouselTitle>
+              <CarouselContent>{data.text}</CarouselContent>
+              <CarouselButton>Learn more ...</CarouselButton>
+            </Carousel.Caption>
+          </CarouselContainer>
+        </Carousel.Item>
+      )),
+    [carouselMainData]
+  );
 
   return (
     <div style={{ position: "relative" }}>
       <Carousel activeIndex={index} onSelect={handleSelect} fade>
-        {carouselData.map((data, idx) => (
-          <Carousel.Item key={idx}>
-            <CarouselContainer>
-              <CarouselImg
-                className="d-block w-100"
-                src={data.image}
-                alt={data.alt}
-              />
-              <CarouselOverlay />
-              <Carousel.Caption className="custom-carousel-caption">
-                <CarouselTitle>{data.title}</CarouselTitle>
-                <CarouselContent>{data.text}</CarouselContent>
-                <CarouselButton>Learn more ...</CarouselButton>
-              </Carousel.Caption>
-            </CarouselContainer>
-          </Carousel.Item>
-        ))}
+        {carouselItems}
       </Carousel>
       <CarouselControl
         className={`left ${index === 0 && "disabled"}`}
@@ -63,7 +83,9 @@ export default function CarouselComponent() {
         />
       </CarouselControl>
       <CarouselControl
-        className={`right ${index === carouselData.length - 1 && "disabled"}`}
+        className={`right ${
+          index === carouselMainData.length - 1 && "disabled"
+        }`}
         onClick={handleNext}
       >
         <CarouselIcon

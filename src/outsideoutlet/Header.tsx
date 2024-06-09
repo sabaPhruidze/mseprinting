@@ -56,7 +56,6 @@ export default function Header() {
       } else if (data && data.length > 0 && (data[0] as any).Data) {
         setMenuData((data[0] as any).Data);
       }
-      console.log(data); // Check the structure of the data
     };
 
     getMenuData();
