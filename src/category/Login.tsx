@@ -12,7 +12,6 @@ import {
   RegisterContainer,
   RegisterForm,
   LoginButton,
-  RegLogContainer,
   LoginContainer,
   LoginForm,
 } from "../style/LoginStyles";

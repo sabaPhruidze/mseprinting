@@ -1,8 +1,9 @@
-import { useContext, useMemo, useCallback } from "react";
-import { rootContext } from "../Root";
+import { useContext, useMemo, useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+import { rootContext } from "../Root";
 import SearchEngine from "../importantparts/SearchEngine";
-import { HeaderMenuData, HMenuData } from "../data/HeaderData";
+import { fetchHeaderMenuData, HMenuData } from "../data/HeaderData";
 import {
   HeaderContainer,
   HeaderMainContainer,
@@ -45,16 +46,32 @@ export default function Header() {
     [navigate]
   );
 
+  const [menuData, setMenuData] = useState<HMenuData[]>([]);
+
+  useEffect(() => {
+    const getMenuData = async () => {
+      const data = await fetchHeaderMenuData();
+      if (data && data.length > 0 && data[0].page) {
+        setMenuData(data);
+      } else if (data && data.length > 0 && (data[0] as any).Data) {
+        setMenuData((data[0] as any).Data);
+      }
+      console.log(data); // Check the structure of the data
+    };
+
+    getMenuData();
+  }, []);
+
   const renderMenuItems = useCallback(
     () =>
-      HeaderMenuData.map((data) => (
+      menuData.map((data) => (
         <HeaderMenuButton key={data.page}>
           <HeaderMenuText onClick={() => handleMenuNavigation(data)}>
             {data.page}
           </HeaderMenuText>
         </HeaderMenuButton>
       )),
-    [handleMenuNavigation]
+    [menuData, handleMenuNavigation]
   );
 
   const menuItems = useMemo(() => renderMenuItems(), [renderMenuItems]);
@@ -81,7 +98,11 @@ export default function Header() {
           <SearchEngine />
         </HeaderMainSpan>
       </HeaderMainContainer>
-      <HeaderMenuContainer>{menuItems}</HeaderMenuContainer>
+      <HeaderMenuContainer>
+        <nav>
+          <ul>{menuItems}</ul>
+        </nav>
+      </HeaderMenuContainer>
     </HeaderContainer>
   );
 }
