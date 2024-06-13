@@ -1,8 +1,6 @@
 export const SignsData: string[] = [
-  "ADA & Wayfinding Signs",
   "Banners & Posters",
   "Booth Graphics, Signs & Banners",
-  "Car Graphics & Wraps",
   "Counter & Pop-up Displays",
   "Delivery & Takeout Signs",
   "Interior Office & Lobby Decor",
