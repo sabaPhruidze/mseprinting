@@ -59,13 +59,13 @@ const SearchEngine: React.FC = () => {
       <SearchEngineButton onClick={handleSearch}>
         <SearchEngineIcon src={SEARCHICON} alt="search icon" />
       </SearchEngineButton>
-      <ResultsList>
+      {/* <ResultsList>
         {results.map((result) => (
           <ResultItem key={result.id}>
             <ResultTitle>{result.title}</ResultTitle>
           </ResultItem>
         ))}
-      </ResultsList>
+      </ResultsList> */}
     </SearchEngineContainer>
   );
 };

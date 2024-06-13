@@ -5,7 +5,7 @@ import { RowFlex, ColumnFlex } from "./GlobalStyle";
 // Header Container
 export const HeaderContainer = styled(ColumnFlex)`
   width: 100%;
-  height: 100px;
+  height: 140px;
   background-color: ${(props) => props.theme.White};
   padding: 5px 20px;
 
@@ -21,20 +21,20 @@ export const HeaderContainer = styled(ColumnFlex)`
 export const HeaderMainContainer = styled(RowFlex)`
   align-items: start;
   width: 100%;
-  height: 70px;
+  height: 110px;
   border-radius: 0 0 80px 80px;
   border: 1px solid white;
 `;
 
 export const HeaderMainLogo = styled.img`
-  height: 70px;
+  height: 110px;
   object-fit: cover;
   cursor: pointer;
 `;
 
 export const HeaderMainSpan = styled.span`
   margin-top: 5px;
-  height: 45%;
+  height: 33px;
   display: flex;
   flex-direction: row;
   color: ${(props) => props.theme.MediumBlue};
