@@ -65,7 +65,7 @@ export default function Footer() {
       const screenWidth = window.innerWidth;
       let updatedData = [
         {
-          Title: "Sign",
+          Title: "Signs",
           Context: SignsData,
         },
         {
