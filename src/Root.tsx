@@ -8,7 +8,7 @@ import Header from "./outsideoutlet/Header";
 import { Outlet } from "react-router-dom";
 import Footer from "./outsideoutlet/Footer";
 import { InitialState } from "./importantparts/UseReducerComponent";
-import { fetchHeaderMenuData } from "./data/HeaderData"; // Adjust the path as needed
+import { fetchHeaderMenuData, fetchHeaderMainLogo } from "./data/HeaderData"; // Adjust the path as needed
 import { fetchCarouselData } from "./data/CarouselData";
 // import HeaderTrue from "./outsideoutlet/HeaderTrue";
 
@@ -28,7 +28,7 @@ export default function Root() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        await fetchHeaderMenuData(), fetchCarouselData(); // Fetch data
+        await fetchHeaderMainLogo(), fetchHeaderMenuData(), fetchCarouselData(); // Fetch data
       } catch (error) {
         console.error("Error fetching header menu data: ", error);
       } finally {
