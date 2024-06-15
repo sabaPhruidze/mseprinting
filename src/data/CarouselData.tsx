@@ -12,11 +12,12 @@ export interface CarouselData {
   alt: string;
   title: string;
   text: string;
+  link: string;
 }
 
 export const fetchCarouselData = async (): Promise<CarouselData[]> => {
   try {
-    const querySnapshot = await getDocs(collection(db, "carousel"));
+    const querySnapshot = await getDocs(collection(db, "home"));
     let carouselData: CarouselData[] = [];
 
     querySnapshot.forEach((doc) => {
@@ -27,9 +28,17 @@ export const fetchCarouselData = async (): Promise<CarouselData[]> => {
           image: item.image,
           text: item.text,
           title: item.title,
+          link: item.link,
         })) as CarouselData[];
-      } else if (data.image && data.alt && data.title && data.text) {
+      } else if (
+        data.image &&
+        data.alt &&
+        data.title &&
+        data.text &&
+        data.link
+      ) {
         carouselData.push(data as CarouselData);
+        console.log(carouselData);
       }
     });
     return carouselData;
