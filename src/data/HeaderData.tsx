@@ -14,7 +14,7 @@ export interface HMenuData {
 
 export const fetchHeaderMenuData = async (): Promise<HMenuData[]> => {
   try {
-    const querySnapshot = await getDocs(collection(db, "HeaderMenu"));
+    const querySnapshot = await getDocs(collection(db, "header"));
     let headerMenuData: HMenuData[] = [];
 
     querySnapshot.forEach((doc) => {
@@ -41,17 +41,14 @@ export interface LogoData {
 
 export const fetchHeaderMainLogo = async (): Promise<LogoData> => {
   try {
-    const docRef = doc(db, "headerMainLogo", "5yNTcldorNMdQW9IPgyO");
-    console.log("Document Reference:", docRef.path);
+    const docRef = doc(db, "header", "logo");
 
     const docSnap = await getDoc(docRef);
-    console.log("Document Snapshot:", docSnap);
 
     if (docSnap.exists()) {
       const data = docSnap.data() as LogoData;
       return { logo: data.logo };
     } else {
-      console.log("No such document!");
       return { logo: null };
     }
   } catch (error) {

@@ -55,7 +55,7 @@ export const HeaderMenuCountDiv = styled(RowFlex)`
   justify-content: center;
   margin-top: 30px;
 
-  width: 450px;
+  width: 550px;
 `;
 export const HeaderMenuCountDivButton = styled.button`
   cursor: pointer;
@@ -65,7 +65,7 @@ export const HeaderMenuCountDivButton = styled.button`
 `;
 
 export const HeaderMenuCountDivText = styled.p`
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 500;
   color: ${(props) => props.theme.DarkBlue};
   background-color: rgba(0, 0, 0, 0);
