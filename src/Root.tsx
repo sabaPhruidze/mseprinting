@@ -10,7 +10,7 @@ import Footer from "./outsideoutlet/Footer";
 import { InitialState } from "./importantparts/UseReducerComponent";
 import { fetchHeaderMenuData } from "./data/HeaderData"; // Adjust the path as needed
 import { fetchCarouselData } from "./data/CarouselData";
-import HeaderTrue from "./outsideoutlet/HeaderTrue";
+// import HeaderTrue from "./outsideoutlet/HeaderTrue";
 
 interface RootContextProps {
   state: InitialState;
