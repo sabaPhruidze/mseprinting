@@ -3,7 +3,12 @@ import { useNavigate } from "react-router-dom";
 
 import { rootContext } from "../Root";
 import SearchEngine from "../importantparts/SearchEngine";
-import { fetchHeaderMenuData, HMenuData } from "../data/HeaderData";
+import {
+  fetchHeaderMenuData,
+  HMenuData,
+  LogoData,
+  fetchHeaderMainLogo,
+} from "../data/HeaderData";
 import {
   HeaderContainer,
   HeaderMainContainer,
@@ -15,7 +20,6 @@ import {
   HeaderMainLogo,
   HeaderMenuText,
 } from "../style/HeaderStyles";
-import MSEPRINTING from "../assets/icon/header/MSEPRINTING.svg";
 
 export default function Header() {
   const headerContext = useContext(rootContext);
@@ -47,14 +51,17 @@ export default function Header() {
   );
 
   const [menuData, setMenuData] = useState<HMenuData[]>([]);
+  const [logoLink, setLogoLink] = useState<LogoData>({ logo: null });
 
   useEffect(() => {
     const getMenuData = async () => {
-      const data = await fetchHeaderMenuData();
-      if (data && data.length > 0 && data[0].page) {
+      try {
+        const data = await fetchHeaderMenuData();
+        const logoData = await fetchHeaderMainLogo();
         setMenuData(data);
-      } else if (data && data.length > 0 && (data[0] as any).Data) {
-        setMenuData((data[0] as any).Data);
+        setLogoLink(logoData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
       }
     };
 
@@ -78,11 +85,15 @@ export default function Header() {
   return (
     <HeaderContainer>
       <HeaderMainContainer>
-        <HeaderMainLogo
-          src={MSEPRINTING}
-          alt="MSE PRINTING"
-          onClick={handleNavigationHome}
-        />
+        {logoLink.logo ? (
+          <HeaderMainLogo
+            src={logoLink.logo}
+            alt="MSE PRINTING"
+            onClick={handleNavigationHome}
+          />
+        ) : (
+          "Loading..."
+        )}
         <HeaderMainSpan>
           <HeaderButton>Account</HeaderButton>
           <HeaderOneSimbyol>|</HeaderOneSimbyol>
