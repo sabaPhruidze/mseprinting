@@ -8,6 +8,15 @@ import SERVICES from "../assets/icon/home/services/SERVICES.webp";
 import REQUEST_QUOTE from "../assets/icon/home/doublecard/REQUEST_QUOTE.webp";
 import SEND_FILE from "../assets/icon/home/doublecard/SEND_FILE.webp";
 
+export const HomeLoading = styled(ColumnFlex)`
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  text-align: center;
+  font-weight: 700;
+`;
 //carousel
 export const CarouselContainer = styled.div`
   position: relative;
