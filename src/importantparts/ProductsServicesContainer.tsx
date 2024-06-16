@@ -30,7 +30,6 @@ export default function ProductsServicesContainer() {
         {ProductServicesContainerLeftData.map((data) => (
           <LeftSideText key={data}>{data}</LeftSideText>
         ))}
-        <LeftSideText></LeftSideText>
       </LeftSideContainer>
       <RightSideContainer></RightSideContainer>
     </ProductsServicesContainerStyle>
