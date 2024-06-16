@@ -38,7 +38,6 @@ export default function CarouselComponent() {
       const data = await fetchCarouselData();
 
       if (data && data.length > 0) {
-        console.log(data);
         setCarouselMainData(data);
       }
     };
