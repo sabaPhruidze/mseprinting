@@ -29,12 +29,13 @@ export const LeftSideText = styled.button`
   font-size: 16px;
   border: 0;
   background-color: rgba(0, 0, 0, 0);
-  color: ${(props) => props.theme.MediumBlue};
+  /* color: ${(props) => props.theme.MediumBlue}; */
   transition: 0.3s;
   white-space: nowrap;
   cursor: pointer;
+  font-weight: 500;
   &:hover {
-    font-weight: 500;
+    font-weight: 800;
     transform: scale(1.1);
     padding-left: 10px;
   }
@@ -69,6 +70,7 @@ export const RightSideText = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   cursor: pointer;
+  font-weight: 500;
   &:hover {
     background-color: ${(props) => props.theme.MediumBlue};
     color: ${(props) => props.theme.White};
