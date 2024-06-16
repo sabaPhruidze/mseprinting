@@ -34,3 +34,27 @@ export const fetchWWDCCardData = async (): Promise<WWDCCardType[]> => {
     return [];
   }
 };
+
+export interface WWDCSpecialitiesContentType {
+  paragraph: string | null;
+  title: string | null;
+}
+
+export const fetchWWDCSpecialitiesContentData =
+  async (): Promise<WWDCSpecialitiesContentType> => {
+    try {
+      const docRef = doc(db, "home", "WWDCCSpecialitiesContent");
+
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        const data = docSnap.data() as WWDCSpecialitiesContentType;
+        return { paragraph: data.paragraph, title: data.title };
+      } else {
+        return { paragraph: null, title: null };
+      }
+    } catch (error) {
+      console.error("Error fetching header main logo: ", error);
+      return { paragraph: null, title: null };
+    }
+  };

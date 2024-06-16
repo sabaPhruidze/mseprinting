@@ -250,11 +250,14 @@ export const CardContainer = styled(Card)`
   }
 `;
 //services
+interface HomeServicesContainerProps {
+  backgroundImage: string | null;
+}
 
-export const HomeServicesContainer = styled.div`
+export const HomeServicesContainer = styled.div<HomeServicesContainerProps>`
   width: 100%;
   height: 400px;
-  background: url(${SERVICES}) no-repeat center center;
+  background: url(${(props) => props.backgroundImage}) no-repeat center center;
   background-size: cover;
   position: relative;
 
