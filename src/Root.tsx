@@ -10,7 +10,7 @@ import Footer from "./outsideoutlet/Footer";
 import { InitialState } from "./importantparts/UseReducerComponent";
 import { fetchHeaderMenuData, fetchHeaderMainLogo } from "./data/HeaderData"; // Adjust the path as needed
 import { fetchCarouselData } from "./data/CarouselData";
-// import HeaderTrue from "./outsideoutlet/HeaderTrue";
+import ProductsServicesContainer from "./importantparts/ProductsServicesContainer"; // Import your ProductsServicesContainer
 
 interface RootContextProps {
   state: InitialState;
@@ -23,6 +23,7 @@ export const rootContext = createContext<RootContextProps | undefined>(
 
 export default function Root() {
   const { state, dispatching } = UseReducerComponent();
+  const { showProductsServicesWindow } = state;
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -53,6 +54,12 @@ export default function Root() {
         <RootContainer>
           <GlobalStyle />
           <Header />
+          {showProductsServicesWindow.showProductFromBox ||
+          showProductsServicesWindow.showProductFromMenu ? (
+            <ProductsServicesContainer />
+          ) : (
+            ""
+          )}
           <Outlet />
           <Footer />
         </RootContainer>

@@ -170,12 +170,15 @@ export const HeaderMenuButton = styled.button`
   margin-right: 15px;
 `;
 
-export const HeaderMenuText = styled.p`
+export const HeaderMenuText = styled.p<{ active: boolean }>`
   font-size: 16px;
-  font-weight: 500;
+  font-weight: ${(props) => (props.active ? 800 : 500)};
   color: ${(props) => props.theme.DarkBlue};
   background-color: rgba(0, 0, 0, 0);
   transition: 0.3s;
+  padding: ${(props) => (props.active ? "5px 0 0 0" : "0")};
+  transform: ${(props) => (props.active ? "scale(1.1)" : "scale(1)")};
+  border-bottom: ${(props) => (props.active ? "1px solid #102948" : "none")};
 
   &:hover {
     transform: scale(1.1);

@@ -8,11 +8,19 @@ export interface InitialState {
     email: string;
     uid: string;
   };
+  showProductsServicesWindow: {
+    showProductFromMenu: boolean;
+    showProductFromBox: boolean;
+  };
 }
 
 const initialState: InitialState = {
   radioForRegLog: false,
   user: null,
+  showProductsServicesWindow: {
+    showProductFromMenu: false,
+    showProductFromBox: false,
+  },
 };
 
 type ActionType = {
@@ -28,6 +36,12 @@ const reducer = (state: typeof initialState, action: ActionType) => {
       break;
     case "USER_INFO":
       newState.user = action.payload;
+      break;
+    case "SHOW_PRODUCT_SERVICES_WINDOW_FROM_MENU":
+      newState.showProductsServicesWindow.showProductFromMenu = action.payload;
+      break;
+    case "SHOW_PRODUCT_SERVICES_WINDOW_FROM_BOX":
+      newState.showProductsServicesWindow.showProductFromBox = action.payload;
       break;
     default:
       throw new Error("Unknown action type");
