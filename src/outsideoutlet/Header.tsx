@@ -1,13 +1,12 @@
-import { useContext, useMemo, useCallback, useEffect, useState } from "react";
+import { useContext, useMemo, useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-
 import { rootContext } from "../Root";
 import SearchEngine from "../importantparts/SearchEngine";
 import {
   fetchHeaderMenuData,
+  fetchHeaderMainLogo,
   HMenuData,
   LogoData,
-  fetchHeaderMainLogo,
 } from "../data/HeaderData";
 import {
   HeaderContainer,
@@ -22,65 +21,74 @@ import {
 } from "../style/HeaderStyles";
 
 export default function Header() {
-  const headerContext = useContext(rootContext);
-
-  if (!headerContext) {
+  const context = useContext(rootContext);
+  if (!context) {
     throw new Error("rootContext must be used within a Root provider");
   }
-
-  const { state } = headerContext;
+  const { state, dispatching } = context;
+  const { showProductsServicesWindow } = state;
   const navigate = useNavigate();
-
-  const handleNavigationHome = useCallback(() => {
-    navigate("/");
-  }, [navigate]);
-
-  const handleNavigationLogin = useCallback(() => {
-    if (!state.user) {
-      navigate("/login");
-    }
-  }, [navigate, state.user]);
-
-  const handleMenuNavigation = useCallback(
-    (data: HMenuData) => {
-      if (data.page !== "Products & Services") {
-        navigate(data.path);
-      }
-    },
-    [navigate]
-  );
 
   const [menuData, setMenuData] = useState<HMenuData[]>([]);
   const [logoLink, setLogoLink] = useState<LogoData>({ logo: null });
 
   useEffect(() => {
-    const getMenuData = async () => {
+    const fetchData = async () => {
       try {
-        const data = await fetchHeaderMenuData();
-        const logoData = await fetchHeaderMainLogo();
-        setMenuData(data);
+        const [menuData, logoData] = await Promise.all([
+          fetchHeaderMenuData(),
+          fetchHeaderMainLogo(),
+        ]);
+        setMenuData(menuData);
         setLogoLink(logoData);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
-
-    getMenuData();
+    fetchData();
   }, []);
 
-  const renderMenuItems = useCallback(
+  const handleNavigationHome = () => navigate("/");
+
+  const handleNavigationLogin = () => {
+    if (!state.user) navigate("/login");
+  };
+
+  const handleMenuNavigation = (data: HMenuData) => {
+    if (data.page !== "Products & Services") navigate(data.path);
+  };
+
+  const handleMouseEnter = useCallback(() => {
+    dispatching("SHOW_PRODUCT_SERVICES_WINDOW_FROM_MENU", true);
+  }, [dispatching]);
+
+  const handleMouseLeave = useCallback(() => {
+    dispatching("SHOW_PRODUCT_SERVICES_WINDOW_FROM_MENU", false);
+  }, [dispatching]);
+
+  const menuItems = useMemo(
     () =>
       menuData.map((data) => (
-        <HeaderMenuButton key={data.page}>
-          <HeaderMenuText onClick={() => handleMenuNavigation(data)}>
+        <HeaderMenuButton
+          key={data.page}
+          onMouseEnter={
+            data.page === "Products & Services" ? handleMouseEnter : undefined
+          }
+          onMouseLeave={handleMouseLeave}
+        >
+          <HeaderMenuText
+            onClick={() => handleMenuNavigation(data)}
+            active={
+              showProductsServicesWindow.showProductFromBox &&
+              data.page === "Products & Services"
+            }
+          >
             {data.page}
           </HeaderMenuText>
         </HeaderMenuButton>
       )),
-    [menuData, handleMenuNavigation]
+    [menuData, handleMouseEnter, handleMouseLeave]
   );
-
-  const menuItems = useMemo(() => renderMenuItems(), [renderMenuItems]);
 
   return (
     <HeaderContainer>

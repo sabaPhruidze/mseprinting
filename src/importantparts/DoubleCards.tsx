@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import {
   DoubleCardContainer,
   RequestQuoteBGImage,
@@ -7,54 +7,54 @@ import {
   RequestQuoteTitle,
   SendFileTitle,
 } from "../style/HomeStyles";
-
 import {
-  DoubleCardsDarkType,
-  DoubleCardsLightType,
   fetchDoubleCardsDarkData,
   fetchDoubleCardsLightData,
+  DoubleCardsDarkType,
+  DoubleCardsLightType,
 } from "../data/DoubleCardsData";
 
 export default function DoubleCards() {
-  const [DarkData, setDarkData] = useState<DoubleCardsDarkType>({
+  const [darkData, setDarkData] = useState<DoubleCardsDarkType>({
     imageDark: "",
     imageRQ: "",
     link: "",
     title: "",
   });
-  const [LightData, setLightData] = useState<DoubleCardsLightType>({
+  const [lightData, setLightData] = useState<DoubleCardsLightType>({
     imageLight: "",
     imageSF: "",
     link: "",
     title: "",
   });
 
-  useEffect(() => {
-    const getDoubleCardsData = async () => {
-      const dataDark = await fetchDoubleCardsDarkData();
-      const dataLight = await fetchDoubleCardsLightData();
-      if (
-        dataDark.imageDark &&
-        dataDark.imageDark?.length > 0 &&
-        dataLight.imageLight &&
-        dataLight.imageLight?.length > 0
-      ) {
-        setDarkData(dataDark);
-        setLightData(dataLight);
-      }
-    };
+  const getDoubleCardsData = useCallback(async () => {
+    try {
+      const [dataDark, dataLight] = await Promise.all([
+        fetchDoubleCardsDarkData(),
+        fetchDoubleCardsLightData(),
+      ]);
 
-    getDoubleCardsData();
+      setDarkData(dataDark);
+      setLightData(dataLight);
+    } catch (error) {
+      console.error("Error fetching double cards data:", error);
+    }
   }, []);
+
+  useEffect(() => {
+    getDoubleCardsData();
+  }, [getDoubleCardsData]);
+
   return (
     <DoubleCardContainer>
-      <RequestQuoteBGImage $backgroundimage={DarkData.imageRQ}>
-        <RequsetQuoteBGHalf src={DarkData.imageDark} alt="HALF_DARK" />
-        <RequestQuoteTitle>{DarkData.title}</RequestQuoteTitle>
+      <RequestQuoteBGImage $backgroundimage={darkData.imageRQ}>
+        <RequsetQuoteBGHalf src={darkData.imageDark} alt="HALF_DARK" />
+        <RequestQuoteTitle>{darkData.title}</RequestQuoteTitle>
       </RequestQuoteBGImage>
-      <SendFileBGImage $backgroundimage={LightData.imageSF}>
-        <RequsetQuoteBGHalf src={LightData.imageLight} alt="HALF_LIGHT" />
-        <SendFileTitle>{LightData.title}</SendFileTitle>
+      <SendFileBGImage $backgroundimage={lightData.imageSF}>
+        <RequsetQuoteBGHalf src={lightData.imageLight} alt="HALF_LIGHT" />
+        <SendFileTitle>{lightData.title}</SendFileTitle>
       </SendFileBGImage>
     </DoubleCardContainer>
   );
