@@ -1,4 +1,11 @@
-import { useContext, useMemo, useEffect, useState, useCallback } from "react";
+import {
+  useContext,
+  useMemo,
+  useEffect,
+  useState,
+  useCallback,
+  useRef,
+} from "react";
 import { useNavigate } from "react-router-dom";
 import { rootContext } from "../Root";
 import SearchEngine from "../importantparts/SearchEngine";
@@ -31,6 +38,7 @@ export default function Header() {
 
   const [menuData, setMenuData] = useState<HMenuData[]>([]);
   const [logoLink, setLogoLink] = useState<LogoData>({ logo: null });
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -59,11 +67,17 @@ export default function Header() {
   };
 
   const handleMouseEnter = useCallback(() => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    }
     dispatching("SHOW_PRODUCT_SERVICES_WINDOW_FROM_MENU", true);
   }, [dispatching]);
 
   const handleMouseLeave = useCallback(() => {
-    dispatching("SHOW_PRODUCT_SERVICES_WINDOW_FROM_MENU", false);
+    timeoutRef.current = setTimeout(() => {
+      dispatching("SHOW_PRODUCT_SERVICES_WINDOW_FROM_MENU", false);
+    }, 150);
   }, [dispatching]);
 
   const menuItems = useMemo(
