@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useState, useEffect, useMemo } from "react";
 import {
   HomeServicesContainer,
   HomeServicesDarkCover,
@@ -7,31 +7,44 @@ import {
   HomeServicesButton,
 } from "../style/HomeStyles";
 
+import {
+  fetchHomeServicesData,
+  HomeServicesType,
+} from "../data/HomeServicesData";
+
 export default function HomeServices() {
+  const [HomeServicesData, setHomeServicesData] = useState<HomeServicesType>({
+    image: "",
+    link: "",
+    text: "",
+    title: "",
+  });
+
+  useEffect(() => {
+    const getHomeServicesData = async () => {
+      const data = await fetchHomeServicesData();
+
+      if (data.image && data.image.length > 0) {
+        setHomeServicesData(data);
+      }
+    };
+
+    getHomeServicesData();
+  }, []);
+
   const content = useMemo(
     () => (
       <>
-        <HomeServicesTitle>Products & Services</HomeServicesTitle>
-        <HomeServicesContext>
-          At MSE PRINTING, we provide a wide range of high-quality printing and
-          signage services to meet all your business needs. Whether you need
-          banners, posters, or trade show displays, we've got you covered. Our
-          comprehensive printing solutions include brochures, business cards,
-          manuals, and direct mail services to help you effectively reach your
-          audience. We also specialize in custom graphics for vehicles, windows,
-          and interior decor. Additionally, our expert team offers graphic
-          design, marketing services, and online ordering portals to streamline
-          your projects. Let us help you make a lasting impression with our
-          premium print and design solutions.
-        </HomeServicesContext>
+        <HomeServicesTitle>{HomeServicesData.title}</HomeServicesTitle>
+        <HomeServicesContext>{HomeServicesData.text}</HomeServicesContext>
         <HomeServicesButton>Learn More ...</HomeServicesButton>
       </>
     ),
-    []
+    [HomeServicesData]
   );
 
   return (
-    <HomeServicesContainer>
+    <HomeServicesContainer backgroundImage={HomeServicesData.image}>
       <HomeServicesDarkCover>{content}</HomeServicesDarkCover>
     </HomeServicesContainer>
   );

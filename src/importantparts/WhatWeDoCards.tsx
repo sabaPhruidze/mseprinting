@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useState, useEffect } from "react";
 import WWDCCard from "./WWDCCard";
 import {
   WWDCContainer,
@@ -6,22 +6,35 @@ import {
   WWDCTitle,
   WWDCParagraph,
 } from "../style/HomeStyles";
+import {
+  fetchWWDCSpecialitiesContentData,
+  WWDCSpecialitiesContentType,
+} from "../data/CardData";
 
 export default function WhatWeDoCards() {
+  const [WWDCSpecialitiesData, setWWDCSpecialitiesData] =
+    useState<WWDCSpecialitiesContentType>({ paragraph: "", title: "" });
+  // const DATA = useMemo(() => CardData(), []);
+
+  useEffect(() => {
+    const getWWDCSpecialitiesData = async () => {
+      const data = await fetchWWDCSpecialitiesContentData();
+
+      if (data.paragraph && data.paragraph?.length > 0) {
+        setWWDCSpecialitiesData(data);
+      }
+    };
+
+    getWWDCSpecialitiesData();
+  }, []);
   const specialitiesContent = useMemo(
     () => (
       <>
-        <WWDCTitle>OUR SPECIALTIES</WWDCTitle>
-        <WWDCParagraph>
-          For exceptional printing of banners, posters, business cards,
-          stationery, or invitations, we’ve got you covered.
-          &nbsp;&nbsp;&nbsp;Trust mseprinting for the high-quality products and
-          professional service your business deserves. Partner with us for
-          outstanding results.
-        </WWDCParagraph>
+        <WWDCTitle>{WWDCSpecialitiesData.title}</WWDCTitle>
+        <WWDCParagraph>{WWDCSpecialitiesData.paragraph}</WWDCParagraph>
       </>
     ),
-    []
+    [WWDCSpecialitiesData]
   );
 
   return (
