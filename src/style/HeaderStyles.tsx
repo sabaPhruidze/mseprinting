@@ -170,7 +170,9 @@ export const HeaderMenuButton = styled.button`
   margin-right: 15px;
 `;
 
-export const HeaderMenuText = styled.p<{ active: boolean }>`
+export const HeaderMenuText = styled.p.withConfig({
+  shouldForwardProp: (prop) => !["active"].includes(prop),
+})<{ active: boolean }>`
   font-size: 16px;
   font-weight: ${(props) => (props.active ? 800 : 500)};
   color: ${(props) => props.theme.DarkBlue};

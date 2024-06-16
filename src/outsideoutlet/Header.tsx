@@ -87,7 +87,12 @@ export default function Header() {
           </HeaderMenuText>
         </HeaderMenuButton>
       )),
-    [menuData, handleMouseEnter, handleMouseLeave]
+    [
+      menuData,
+      handleMouseEnter,
+      handleMouseLeave,
+      showProductsServicesWindow.showProductFromBox,
+    ]
   );
 
   return (
