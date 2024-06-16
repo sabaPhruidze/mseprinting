@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import {
   DoubleCardContainer,
   RequestQuoteBGImage,
@@ -7,19 +8,53 @@ import {
   SendFileTitle,
 } from "../style/HomeStyles";
 
-import HALF_DARK from "../assets/icon/home/doublecard/DARK_HALF_CIRCLE.svg";
-import HALF_LIGHT from "../assets/icon/home/doublecard/LIGHT_HALF_CIRCLE.svg";
+import {
+  DoubleCardsDarkType,
+  DoubleCardsLightType,
+  fetchDoubleCardsDarkData,
+  fetchDoubleCardsLightData,
+} from "../data/DoubleCardsData";
 
 export default function DoubleCards() {
+  const [DarkData, setDarkData] = useState<DoubleCardsDarkType>({
+    imageDark: "",
+    imageRQ: "",
+    link: "",
+    title: "",
+  });
+  const [LightData, setLightData] = useState<DoubleCardsLightType>({
+    imageLight: "",
+    imageSF: "",
+    link: "",
+    title: "",
+  });
+
+  useEffect(() => {
+    const getDoubleCardsData = async () => {
+      const dataDark = await fetchDoubleCardsDarkData();
+      const dataLight = await fetchDoubleCardsLightData();
+      if (
+        dataDark.imageDark &&
+        dataDark.imageDark?.length > 0 &&
+        dataLight.imageLight &&
+        dataLight.imageLight?.length > 0
+      ) {
+        setDarkData(dataDark);
+        setLightData(dataLight);
+      }
+    };
+
+    getDoubleCardsData();
+  }, []);
   return (
     <DoubleCardContainer>
-      <RequestQuoteBGImage>
-        <RequsetQuoteBGHalf src={HALF_DARK} alt="HALF_DARK" />
-        <RequestQuoteTitle>Request a Quote</RequestQuoteTitle>
+      <RequestQuoteBGImage $backgroundimage={DarkData.imageRQ}>
+        <RequsetQuoteBGHalf src={DarkData.imageDark} alt="HALF_DARK" />
+        <RequestQuoteTitle>{DarkData.title}</RequestQuoteTitle>
       </RequestQuoteBGImage>
-      <SendFileBGImage>
-        <RequsetQuoteBGHalf src={HALF_LIGHT} alt="HALF_LIGHT" />
-        <SendFileTitle>Send a File</SendFileTitle>
+      <SendFileBGImage $backgroundimage={LightData.imageSF}>
+        <RequsetQuoteBGHalf src={LightData.imageLight} alt="HALF_LIGHT" />
+        <SendFileTitle>{LightData.title}</SendFileTitle>
       </SendFileBGImage>
     </DoubleCardContainer>
   );

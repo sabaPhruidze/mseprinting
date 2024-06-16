@@ -4,10 +4,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Card from "react-bootstrap/Card";
 import { GlobalButton } from "./GlobalStyle";
 
-import SERVICES from "../assets/icon/home/services/SERVICES.webp";
-import REQUEST_QUOTE from "../assets/icon/home/doublecard/REQUEST_QUOTE.webp";
-import SEND_FILE from "../assets/icon/home/doublecard/SEND_FILE.webp";
-
 export const HomeLoading = styled(ColumnFlex)`
   width: 100%;
   height: 100vh;
@@ -250,14 +246,14 @@ export const CardContainer = styled(Card)`
   }
 `;
 //services
-interface HomeServicesContainerProps {
-  backgroundImage: string | null;
+export interface HomeServicesContainerProps {
+  $backgroundimage: string | null;
 }
 
 export const HomeServicesContainer = styled.div<HomeServicesContainerProps>`
   width: 100%;
   height: 400px;
-  background: url(${(props) => props.backgroundImage}) no-repeat center center;
+  background: url(${(props) => props.$backgroundimage}) no-repeat center center;
   background-size: cover;
   position: relative;
 
@@ -269,7 +265,6 @@ export const HomeServicesContainer = styled.div<HomeServicesContainerProps>`
     height: 400px;
   }
 `;
-
 export const HomeServicesDarkCover = styled.div`
   position: absolute;
   top: 0;
@@ -290,7 +285,7 @@ export const HomeServicesDarkCover = styled.div`
   }
 
   @media (max-width: 480px) {
-    height: 200px;
+    height: 100%;
     padding: 0 10px;
   }
 `;
@@ -361,7 +356,7 @@ export const DoubleCardContainer = styled(RowFlex)`
   }
 `;
 export const RequestQuoteBGImage = styled(HomeServicesContainer)`
-  background: url(${REQUEST_QUOTE}) no-repeat center center;
+  background: url(${(props) => props.$backgroundimage}) no-repeat center center;
   width: calc(50% - 30px);
   background-size: cover;
   position: relative;
@@ -404,7 +399,7 @@ export const RequestQuoteTitle = styled(WWDCTitle)`
 `;
 
 export const SendFileBGImage = styled(RequestQuoteBGImage)`
-  background: url(${SEND_FILE}) no-repeat center center;
+  background: url(${(props) => props.$backgroundimage}) no-repeat center center;
 `;
 
 export const SendFileTitle = styled(RequestQuoteTitle)`

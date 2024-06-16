@@ -13,7 +13,7 @@ import {
 } from "../data/HomeServicesData";
 
 export default function HomeServices() {
-  const [HomeServicesData, setHomeServicesData] = useState<HomeServicesType>({
+  const [homeServicesData, setHomeServicesData] = useState<HomeServicesType>({
     image: "",
     link: "",
     text: "",
@@ -35,16 +35,16 @@ export default function HomeServices() {
   const content = useMemo(
     () => (
       <>
-        <HomeServicesTitle>{HomeServicesData.title}</HomeServicesTitle>
-        <HomeServicesContext>{HomeServicesData.text}</HomeServicesContext>
+        <HomeServicesTitle>{homeServicesData.title}</HomeServicesTitle>
+        <HomeServicesContext>{homeServicesData.text}</HomeServicesContext>
         <HomeServicesButton>Learn More ...</HomeServicesButton>
       </>
     ),
-    [HomeServicesData]
+    [homeServicesData]
   );
 
   return (
-    <HomeServicesContainer backgroundImage={HomeServicesData.image}>
+    <HomeServicesContainer $backgroundimage={homeServicesData.image}>
       <HomeServicesDarkCover>{content}</HomeServicesDarkCover>
     </HomeServicesContainer>
   );
