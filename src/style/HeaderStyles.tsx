@@ -5,10 +5,12 @@ import { RowFlex, ColumnFlex } from "./GlobalStyle";
 // Header Container
 export const HeaderContainer = styled(ColumnFlex)`
   width: 100%;
-  height: 140px;
+  height: 170px;
   background-color: ${(props) => props.theme.White};
   padding: 5px 20px;
-
+  @media (max-width: 1600px) {
+    height: 150px;
+  }
   @media (max-width: 768px) {
     padding: 5px 10px;
   }
@@ -21,15 +23,21 @@ export const HeaderContainer = styled(ColumnFlex)`
 export const HeaderMainContainer = styled(RowFlex)`
   align-items: start;
   width: 100%;
-  height: 110px;
+  height: 140px;
   border-radius: 0 0 80px 80px;
   border: 1px solid white;
+  @media (max-width: 1600px) {
+    height: 120px;
+  }
 `;
 
 export const HeaderMainLogo = styled.img`
-  height: 110px;
+  height: 140px;
   object-fit: cover;
   cursor: pointer;
+  @media (max-width: 1600px) {
+    height: 120px;
+  }
 `;
 
 export const HeaderMainSpan = styled.span`
