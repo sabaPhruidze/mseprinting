@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import { useNavigate } from "react-router-dom";
 import {
   FooterContainer,
   DividingLineBox,
@@ -35,6 +35,8 @@ import XTWITTER from "../assets/icon/footer/social/XTWITTER.svg";
 import LINKEDIN from "../assets/icon/footer/social/LINKEDIN.svg";
 
 export default function Footer() {
+  const navigate = useNavigate();
+
   const [productsAboutData, setProductsAboutData] = useState([
     {
       Title: "Sign",
@@ -156,8 +158,11 @@ export default function Footer() {
         </Address>
         <TermsConditionsLinks>
           {BlogAndPoliciesData.map((data) => (
-            <TermsConditionsLink key={data}>
-              {data} {data !== "Terms & Conditions" ? "|" : ""}
+            <TermsConditionsLink
+              key={data.name}
+              onClick={() => navigate(data.link)}
+            >
+              {data.name} {data.name !== "Environmental Message" ? "|" : ""}
             </TermsConditionsLink>
           ))}
         </TermsConditionsLinks>

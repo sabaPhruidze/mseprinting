@@ -170,7 +170,7 @@ export const TermsConditionsLink = styled(ColumnContext)`
   font-size: 14px;
   font-weight: 200;
   color: black;
-  margin: 5px;
+  margin: 2px;
 
   @media (max-width: 800px) {
     margin: 5px 10px;
