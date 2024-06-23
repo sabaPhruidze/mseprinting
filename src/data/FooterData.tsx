@@ -12,7 +12,6 @@ export const SignsData: string[] = [
 ];
 
 export const PrintingAndCopyingData: string[] = [
-  "Advanced Mailing Services",
   "Apparel & Uniforms",
   "Book Printing",
   "Booth Graphics, Signs & Banners",
@@ -23,7 +22,6 @@ export const PrintingAndCopyingData: string[] = [
   "Cards & Invitations",
   "Catalogs & Booklets",
   "Event Literature & Signs",
-  "Every Door Direct Mail®",
   "Kitting & Fulfillment",
   "Labels, Stickers & Decals",
   "Legal Copying",
@@ -45,7 +43,6 @@ export const TradeshowsAndEventsData: string[] = [
   "Pre- & Post-Show Direct Mail",
   "Pull-up Banners & Flags",
   "Table, Counter & Kiosk Displays",
-  "Targeted Direct Mail",
   "Tradeshow & Event Signs",
 ];
 export const IndustrySpecificData: string[] = [

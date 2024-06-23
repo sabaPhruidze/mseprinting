@@ -6,10 +6,9 @@ import {
   WWDCTitle,
   WWDCParagraph,
 } from "../style/HomeStyles";
-import {
-  fetchWWDCSpecialitiesContentData,
-  WWDCSpecialitiesContentType,
-} from "../data/CardData";
+
+import { WWDCSpecialitiesContentType } from "../types/DataTypes";
+import { fetchWWDCSpecialitiesContentData } from "../data/CardData";
 
 export default function WhatWeDoCards() {
   const [WWDCSpecialitiesData, setWWDCSpecialitiesData] =
