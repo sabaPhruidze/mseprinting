@@ -40,22 +40,21 @@ export const HeaderOneSimbyol = styled.div`
 //MenuBox
 export const HeaderMenuBox = styled(RowFlex)`
   width: 100%;
-  height: 130px;
-  padding: 0 100px;
+  height: 145px;
+  padding: 0 0 0 80px;
 `;
 
 export const HeaderMainLogo = styled.img`
-  height: 130px;
+  height: 145px;
   object-fit: cover;
   cursor: pointer;
+  margin-right: 150px;
 `;
 export const HeaderMenuCountDiv = styled(RowFlex)`
   width: 100%;
   height: 30px;
-  justify-content: center;
-  margin-top: 30px;
-
-  width: 550px;
+  justify-content: space-evenly;
+  margin-top: 50px;
 `;
 export const HeaderMenuCountDivButton = styled.button`
   cursor: pointer;
@@ -65,25 +64,26 @@ export const HeaderMenuCountDivButton = styled.button`
 `;
 
 export const HeaderMenuCountDivText = styled.p`
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 500;
-  color: ${(props) => props.theme.DarkBlue};
+  color: ${(props) => props.theme.Black};
   background-color: rgba(0, 0, 0, 0);
   transition: 0.3s;
 
   &:hover {
     transform: scale(1.1);
     padding: 5px 0 0 0;
-    border-bottom: 1px solid ${(props) => props.theme.DarkBlue};
+    border-bottom: 1px solid ${(props) => props.theme.White};
     font-weight: 800;
   }
 `;
 // Request a quote and Send a File
 export const HeaderRSBox = styled(RowFlex)`
-  width: 400px;
+  width: 100%;
   height: 70px;
   flex-wrap: nowrap;
-  justify-content: space-between;
+  justify-content: flex-end;
+  background-color: #f5f5dc;
 `;
 
 export const HeaderRSButton = styled(GlobalButton)`
@@ -91,4 +91,12 @@ export const HeaderRSButton = styled(GlobalButton)`
   font-size: 16px;
   border-radius: 10px;
   background-color: #980b0b;
+  margin-right: 50px;
+  &:hover {
+    background-color: #480707; /* DarkBlue */
+    color: #ffffff; /* MediumBlue */
+  }
+  &:focus {
+    transform: scale(0.9);
+  }
 `;

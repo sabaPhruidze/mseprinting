@@ -5,11 +5,11 @@ import { RowFlex, ColumnFlex } from "./GlobalStyle";
 // Header Container
 export const HeaderContainer = styled(ColumnFlex)`
   width: 100%;
-  height: 170px;
+  height: 180px;
   background-color: ${(props) => props.theme.White};
   padding: 5px 20px;
   @media (max-width: 1600px) {
-    height: 150px;
+    height: 160px;
   }
   @media (max-width: 768px) {
     padding: 5px 10px;
@@ -23,20 +23,20 @@ export const HeaderContainer = styled(ColumnFlex)`
 export const HeaderMainContainer = styled(RowFlex)`
   align-items: start;
   width: 100%;
-  height: 140px;
+  height: 150px;
   border-radius: 0 0 80px 80px;
   border: 1px solid white;
   @media (max-width: 1600px) {
-    height: 120px;
+    height: 130px;
   }
 `;
 
 export const HeaderMainLogo = styled.img`
-  height: 140px;
+  height: 150px;
   object-fit: cover;
   cursor: pointer;
   @media (max-width: 1600px) {
-    height: 120px;
+    height: 130px;
   }
 `;
 
