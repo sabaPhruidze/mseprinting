@@ -10,9 +10,9 @@ import {
 import {
   fetchDoubleCardsDarkData,
   fetchDoubleCardsLightData,
-  DoubleCardsDarkType,
-  DoubleCardsLightType,
 } from "../data/DoubleCardsData";
+
+import { DoubleCardsDarkType, DoubleCardsLightType } from "../types/DataTypes";
 
 export default function DoubleCards() {
   const [darkData, setDarkData] = useState<DoubleCardsDarkType>({

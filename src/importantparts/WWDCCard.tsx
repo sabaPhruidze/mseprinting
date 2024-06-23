@@ -5,7 +5,8 @@ import Row from "react-bootstrap/Row";
 import { CardContainer } from "../style/HomeStyles";
 // import CardData from "../data/CardData";
 
-import { WWDCCardType, fetchWWDCCardData } from "../data/CardData";
+import { fetchWWDCCardData } from "../data/CardData";
+import { WWDCCardType } from "../types/DataTypes";
 
 function WWDCCard() {
   const [WWDCCardMainData, setWWDCCardMainData] = useState<WWDCCardType[]>([]);
