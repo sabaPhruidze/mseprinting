@@ -59,6 +59,22 @@ export interface DoubleCardsLightType {
   link: string | null;
   title: string | null;
 }
+
+// products and services
+export interface HomeServicesFullType {
+  DirectMailAndMailingServices: string[] | null;
+  FulfillmentServices: string[] | null;
+  GraphicDesign: string | null;
+  IndustrySpecific: string[] | null;
+  LabelsAndPackaging: string[] | null;
+  MarketingServices: string[] | null;
+  OnlineOrderingPortals: string | null;
+  PrintingAndCopying: string[] | null;
+  Signs: string[] | null;
+  TradeshowsAndEvents: string[] | null;
+  left: string[] | null;
+}
+
 // sub-categories
 
 //Accessibility
