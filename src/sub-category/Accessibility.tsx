@@ -11,10 +11,11 @@ import {
   AccesibilityContainer,
   AccesibilityBox,
   AccesibilityMail,
-  AccesibilityPart,
+  AccesibilityPartBox,
   AccesibilityContent,
   AccesibilityStarth2Title,
   AccesibilityStarth3Title,
+  AccesibilityPart,
   AccesibilityInsideBox,
 } from "../style/sub-category styles/AccessibilityStyles";
 
@@ -46,11 +47,11 @@ export default function Accessibility() {
         <AccesibilityStarth2Title>
           {accessibilityData?.help.title}
         </AccesibilityStarth2Title>
-        <AccesibilityPart>{accessibilityData?.help.firstPart}</AccesibilityPart>
-        <AccesibilityMail>{accessibilityData?.help.mail}</AccesibilityMail>
-        <AccesibilityPart>
+        <AccesibilityPartBox>
+          {accessibilityData?.help.firstPart}
+          <AccesibilityMail> {accessibilityData?.help.mail} </AccesibilityMail>
           {accessibilityData?.help.secondPart}
-        </AccesibilityPart>
+        </AccesibilityPartBox>
       </AccesibilityBox>
       <AccesibilityBox>
         <AccesibilityStarth2Title>
@@ -76,9 +77,11 @@ export default function Accessibility() {
                 <AccesibilityStarth2Title>
                   {data.title}
                 </AccesibilityStarth2Title>
-                <AccesibilityPart>{data.content.firstPart}</AccesibilityPart>
-                <AccesibilityMail>{data.content.mail}</AccesibilityMail>
-                <AccesibilityPart>{data.content.secondPart}</AccesibilityPart>
+                <AccesibilityPartBox>
+                  {data.content.firstPart}
+                  <AccesibilityMail> {data.content.mail} </AccesibilityMail>
+                  {data.content.secondPart}
+                </AccesibilityPartBox>
               </>
             ) : (
               <>

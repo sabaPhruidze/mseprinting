@@ -27,7 +27,11 @@ export const AccesibilityInsideBox = styled(ColumnFlex)`
   align-items: flex-start;
   margin-bottom: 10px;
 `;
+export const AccesibilityPartBox = styled.span`
+  font-size: 18px;
+`;
 export const AccesibilityPart = styled(AccesibilityContent)``;
-export const AccesibilityMail = styled.p`
+
+export const AccesibilityMail = styled.span`
   color: ${(props) => props.theme.MediumBlue};
 `;
