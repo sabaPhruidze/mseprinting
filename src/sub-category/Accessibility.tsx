@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import { fetchAccessibilityData } from "../data/sub-category data/AccessibilityData";
+
 import {
   AccessibilityDocument,
-  fetchAccessibilityData,
   StartContent,
   EndContent,
   ContentPart,
-} from "../data/sub-category data/AccessibilityData";
+} from "../types/DataTypes";
 
 import {
   AccesibilityContainer,
@@ -79,7 +80,7 @@ export default function Accessibility() {
                 </AccesibilityStarth2Title>
                 <AccesibilityPartBox>
                   {data.content.firstPart}
-                  <AccesibilityMail>{data.content.mail}</AccesibilityMail>
+                  <AccesibilityMail> {data.content.mail} </AccesibilityMail>
                   {data.content.secondPart}
                 </AccesibilityPartBox>
               </>
