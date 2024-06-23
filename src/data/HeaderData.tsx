@@ -1,58 +1,12 @@
-import {
-  collection,
-  getDocs,
-  DocumentData,
-  doc,
-  getDoc,
-} from "firebase/firestore";
-import { db } from "../config/Firebase";
+import { LogoType, HMenuType } from "../types/DataTypes";
+import { GeneralizedFetch } from "../importantparts/GeneralizedFetch";
 
-export interface HMenuData {
-  page: string;
-  path: string;
-}
-
-export const fetchHeaderMenuData = async (): Promise<HMenuData[]> => {
-  try {
-    const querySnapshot = await getDocs(collection(db, "header"));
-    let headerMenuData: HMenuData[] = [];
-
-    querySnapshot.forEach((doc) => {
-      const data = doc.data() as DocumentData;
-      if (data.Data && Array.isArray(data.Data)) {
-        headerMenuData = data.Data.map((item: DocumentData) => ({
-          page: item.page,
-          path: item.path,
-        })) as HMenuData[];
-      } else if (data.page && data.path) {
-        headerMenuData.push(data as HMenuData);
-      }
-    });
-    return headerMenuData;
-  } catch (error) {
-    console.error("Error fetching HeaderMenu data: ", error);
-    return [];
-  }
+export const fetchHeaderMainLogo = async (): Promise<LogoType> => {
+  const data = await GeneralizedFetch<LogoType>("header", "logo");
+  return data || { logo: null };
 };
 
-export interface LogoData {
-  logo: string | null;
-}
-
-export const fetchHeaderMainLogo = async (): Promise<LogoData> => {
-  try {
-    const docRef = doc(db, "header", "logo");
-
-    const docSnap = await getDoc(docRef);
-
-    if (docSnap.exists()) {
-      const data = docSnap.data() as LogoData;
-      return { logo: data.logo };
-    } else {
-      return { logo: null };
-    }
-  } catch (error) {
-    console.error("Error fetching header main logo: ", error);
-    return { logo: null };
-  }
+export const fetchHeaderMenuData = async (): Promise<HMenuType[]> => {
+  const data = await GeneralizedFetch<{ Data: HMenuType[] }>("header", "menu");
+  return data?.Data || [];
 };
