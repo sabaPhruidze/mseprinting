@@ -1,12 +1,12 @@
 export const ProductServicesContainerLeftData = [
-  "Signs",
   "Printing & Copying",
   "Direct Mail & Mailing Services",
+  "Signs",
   "Online Ordering Portals",
   "Graphic Design",
+  "Labels & Packaging",
   "Marketing Services",
   "Tradeshows & Events",
-  "Labels & Packaging",
   "Fulfillment Services",
   "Industry Specific",
 ];
