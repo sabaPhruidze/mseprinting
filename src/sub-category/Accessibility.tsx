@@ -79,17 +79,17 @@ export default function Accessibility() {
                 </AccesibilityStarth2Title>
                 <AccesibilityPartBox>
                   {data.content.firstPart}
-                  <AccesibilityMail> {data.content.mail} </AccesibilityMail>
+                  <AccesibilityMail>{data.content.mail}</AccesibilityMail>
                   {data.content.secondPart}
                 </AccesibilityPartBox>
               </>
             ) : (
-              <>
+              <AccesibilityBox>
                 <AccesibilityStarth2Title>
                   {data.title}
                 </AccesibilityStarth2Title>
                 <AccesibilityContent>{data.content}</AccesibilityContent>
-              </>
+              </AccesibilityBox>
             )}
           </AccesibilityInsideBox>
         ))}

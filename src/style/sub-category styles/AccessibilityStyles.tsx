@@ -4,7 +4,8 @@ import { ColumnFlex } from "../GlobalStyle";
 export const AccesibilityContainer = styled(ColumnFlex)`
   width: 100%;
   min-height: 100%;
-  padding: 80px 50px;
+  padding: 40px 50px;
+  border-top: 3px solid ${(props) => props.theme.MediumBlue};
 `;
 export const AccesibilityBox = styled(ColumnFlex)`
   width: 100%;
@@ -25,7 +26,7 @@ export const AccesibilityContent = styled.p`
 export const AccesibilityInsideBox = styled(ColumnFlex)`
   width: 100%;
   align-items: flex-start;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 `;
 export const AccesibilityPartBox = styled.span`
   font-size: 18px;
