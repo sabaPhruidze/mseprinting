@@ -1,6 +1,11 @@
-import React, { useContext, useState, useEffect, useCallback } from "react";
+import React, {
+  useContext,
+  useState,
+  useEffect,
+  useCallback,
+  useMemo,
+} from "react";
 import { rootContext } from "../Root";
-import { PrintingAndCopyingData, SignsData } from "../data/FooterData";
 import { HomeServicesFullType } from "../types/DataTypes";
 import { fetchHomeServicesData } from "../data/ProductsServicesContainerData";
 import {
@@ -18,7 +23,6 @@ export default function ProductsServicesContainer() {
   useEffect(() => {
     const getHomeServicesFullData = async () => {
       const data = await fetchHomeServicesData();
-      console.log(data);
       if (data && (data.left?.length ?? 0) > 0) {
         setProductsAndServicesData(data);
       }
@@ -48,19 +52,47 @@ export default function ProductsServicesContainer() {
     setHoveredItem(null);
   }, [dispatching]);
 
-  const getRightSideData = () => {
-    if (hoveredItem === "Signs") {
-      return SignsData;
-    } else if (hoveredItem === "Printing & Copying") {
-      return PrintingAndCopyingData;
+  const getRightSideData = useCallback(() => {
+    if (!productsAndServicesData) return [];
+
+    switch (hoveredItem) {
+      case "Printing & Copying":
+        return productsAndServicesData.PrintingAndCopying || [];
+      case "Direct Mail & Mailing Services":
+        return productsAndServicesData.DirectMailAndMailingServices || [];
+      case "Signs":
+        return productsAndServicesData.Signs || [];
+      case "Online Ordering Portals":
+        return productsAndServicesData.OnlineOrderingPortals
+          ? [productsAndServicesData.OnlineOrderingPortals]
+          : [];
+      case "Graphic Design":
+        return productsAndServicesData.GraphicDesign
+          ? [productsAndServicesData.GraphicDesign]
+          : [];
+      case "Labels & Packaging":
+        return productsAndServicesData.LabelsAndPackaging || [];
+      case "Marketing Services":
+        return productsAndServicesData.MarketingServices || [];
+      case "Tradeshows & Events":
+        return productsAndServicesData.TradeshowsAndEvents || [];
+      case "Fulfillment Services":
+        return productsAndServicesData.FulfillmentServices || [];
+      case "Industry Specific":
+        return productsAndServicesData.IndustrySpecific || [];
+      default:
+        return [];
     }
-    return [];
-  };
+  }, [hoveredItem, productsAndServicesData]);
+
+  const leftSideItems = useMemo(() => {
+    return productsAndServicesData?.left || [];
+  }, [productsAndServicesData]);
 
   return (
     <ProductsServicesContainerStyle onMouseLeave={handleMouseLeave}>
       <LeftSideContainer>
-        {productsAndServicesData?.left?.map((data, index) => (
+        {leftSideItems.map((data, index) => (
           <LeftSideText key={index} onMouseEnter={() => handleMouseEnter(data)}>
             {data}
           </LeftSideText>

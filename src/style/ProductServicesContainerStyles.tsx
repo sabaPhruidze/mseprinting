@@ -38,9 +38,9 @@ export const LeftSideText = styled.button`
   cursor: pointer;
   font-weight: 500;
   &:hover {
-    font-weight: 800;
     text-decoration: underline;
-    padding-left: 5px;
+    padding-left: 2px;
+    font-size: 18px;
   }
 `;
 
