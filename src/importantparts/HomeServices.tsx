@@ -7,10 +7,8 @@ import {
   HomeServicesButton,
 } from "../style/HomeStyles";
 
-import {
-  fetchHomeServicesData,
-  HomeServicesType,
-} from "../data/HomeServicesData";
+import { fetchHomeServicesData } from "../data/HomeServicesData";
+import { HomeServicesType } from "../types/DataTypes";
 
 export default function HomeServices() {
   const [homeServicesData, setHomeServicesData] = useState<HomeServicesType>({
