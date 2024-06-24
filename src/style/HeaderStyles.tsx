@@ -73,61 +73,37 @@ export const SearchEngineContainer = styled(ColumnFlex)`
   position: relative;
   z-index: 1;
   height: 100%;
-  width: 100%;
-  max-width: 200px;
+  width: 430px;
   margin: 0 auto;
-
-  @media (min-width: 768px) {
-    max-width: 100px;
-  }
-
-  @media (min-width: 1024px) {
-    max-width: 150px;
-  }
-
-  @media (min-width: 1440px) {
-    max-width: 200px;
-  }
-
-  @media (min-width: 1920px) {
-    max-width: 300px;
-  }
 `;
 
 export const SearchEngineInput = styled.input`
   width: 100%;
-  padding: 6px 15px;
-  border: none;
-  border-bottom: 1px solid ${(props) => props.theme.MediumBlue};
+  padding: 4px 15px;
   border-radius: 10px;
   font-size: 14px;
   position: relative;
+  border: 0;
   z-index: 2;
-  transition: 0.4s;
-
   &:focus {
-    border-bottom: 1px solid ${(props) => props.theme.SkyNeon};
     outline: 0;
   }
 `;
 
 export const SearchEngineButton = styled.button`
-  padding: 5px;
   border: none;
   border-radius: 25px;
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0);
   position: absolute;
   z-index: 3;
-  right: 3px;
+  right: 10px;
   top: 0px;
 `;
 
 export const SearchEngineIcon = styled.img`
   width: 20px;
   height: 20px;
-  filter: invert(33%) sepia(46%) saturate(738%) hue-rotate(153deg)
-    brightness(97%) contrast(92%);
 `;
 
 export const ResultsList = styled.div`
