@@ -20,7 +20,7 @@ export const ColumnFlex = styled.div`
   align-items: center;
 `;
 export const GlobalButton = styled.button`
-  background-color: rgba(0, 0, 0, 0);
+  background-color: ${(props) => props.theme.Transparent};
   color: ${(props) => props.theme.White};
   border: 1px solid;
   padding: 5px 10px;
