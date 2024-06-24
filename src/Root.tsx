@@ -5,7 +5,7 @@ import { GlobalStyle } from "./style/GlobalStyle";
 import { RootContainer, RootLoading } from "./style/RootStyle";
 import { defaultTheme } from "./style/Themes";
 import Header from "./outsideoutlet/Header";
-// import HeaderTrue from "./outsideoutlet/HeaderTrue";
+import HeaderTrue from "./outsideoutlet/HeaderTrue";
 import { Outlet } from "react-router-dom";
 import Footer from "./outsideoutlet/Footer";
 import { InitialState } from "./importantparts/UseReducerComponent";
@@ -54,7 +54,7 @@ export default function Root() {
       <ThemeProvider theme={defaultTheme}>
         <RootContainer>
           <GlobalStyle />
-          <Header />
+          <HeaderTrue />
           {showProductsServicesWindow.showProductFromBox ||
           showProductsServicesWindow.showProductFromMenu ? (
             <ProductsServicesContainer />

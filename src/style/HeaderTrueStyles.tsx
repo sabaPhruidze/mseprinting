@@ -9,22 +9,23 @@ export const HeaderContainer = styled(ColumnFlex)`
 //SearchBarBox
 export const HeaderTopBox = styled(RowFlex)`
   width: 100%;
-  height: 35px;
+  height: 40px;
   justify-content: flex-end;
-  padding-right: 100px;
+  padding-right: 20px;
+  background-color: ${(props) => props.theme.lightGray};
 `;
 export const HeaderAccSignDiv = styled(RowFlex)`
-  width: 110px;
+  width: 120px;
   box-sizing: border-box;
 `;
 export const HeaderAccSignSearchDiv = styled(HeaderAccSignDiv)`
-  width: 350px;
+  width: 600px;
 `;
 export const HeaderAccSignButton = styled.button`
   font-size: 14px;
   border: 0;
   background-color: rgba(0, 0, 0, 0);
-  color: ${(props) => props.theme.MediumBlue};
+  color: ${(props) => props.theme.Dark};
   transition: 0.3s;
   white-space: nowrap;
   &:hover {
@@ -32,10 +33,7 @@ export const HeaderAccSignButton = styled.button`
     font-weight: 500;
   }
 `;
-export const HeaderOneSimbyol = styled.div`
-  background-color: rgba(0, 0, 0, 0);
-  color: ${(props) => props.theme.MediumBlue};
-`;
+export const HeaderOneSimbyol = styled.div``;
 
 //MenuBox
 export const HeaderMenuBox = styled(RowFlex)`

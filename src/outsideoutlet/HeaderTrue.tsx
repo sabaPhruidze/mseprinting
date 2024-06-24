@@ -16,14 +16,15 @@ import {
   HeaderRSButton,
 } from "../style/HeaderTrueStyles";
 import SearchEngine from "../importantparts/SearchEngine";
-import MAIN_LOGO from "../assets/icon/header/MSEPRINTING.svg";
-import { fetchHeaderMenuData, HMenuData } from "../data/HeaderData";
+import MAIN_LOGO from "../assets/icon/header/MSEPRINTING.png";
+import { fetchHeaderMenuData } from "../data/HeaderData";
+import { HMenuType } from "../types/DataTypes";
 
 export default function HeaderTrue() {
   const navigate = useNavigate();
 
   const handleMenuNavigation = useCallback(
-    (data: HMenuData) => {
+    (data: HMenuType) => {
       if (data.page !== "Products & Services") {
         navigate(data.path);
       }
@@ -31,7 +32,7 @@ export default function HeaderTrue() {
     [navigate]
   );
 
-  const [menuData, setMenuData] = useState<HMenuData[]>([]);
+  const [menuData, setMenuData] = useState<HMenuType[]>([]);
 
   useEffect(() => {
     const getMenuData = async () => {
@@ -62,9 +63,9 @@ export default function HeaderTrue() {
       <HeaderTopBox>
         <HeaderAccSignSearchDiv>
           <HeaderAccSignDiv>
-            <HeaderAccSignButton>Account</HeaderAccSignButton>
-            <HeaderOneSimbyol>|</HeaderOneSimbyol>
             <HeaderAccSignButton>Sign in</HeaderAccSignButton>
+            <HeaderOneSimbyol>or</HeaderOneSimbyol>
+            <HeaderAccSignButton>Sign up</HeaderAccSignButton>
           </HeaderAccSignDiv>
           <SearchEngine />
         </HeaderAccSignSearchDiv>
