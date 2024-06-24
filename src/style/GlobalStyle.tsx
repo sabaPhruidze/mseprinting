@@ -20,12 +20,12 @@ export const ColumnFlex = styled.div`
   align-items: center;
 `;
 export const GlobalButton = styled.button`
-  background-color: #13a3e0;
+  background-color: rgba(0, 0, 0, 0);
   color: ${(props) => props.theme.White};
   border: 1px solid;
-  padding: 10px 20px;
+  padding: 5px 10px;
   font-size: 20px;
-  font-weight: 800;
+  font-weight: 400;
   cursor: pointer;
   transition: 0.3s ease;
 

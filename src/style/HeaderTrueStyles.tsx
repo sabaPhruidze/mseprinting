@@ -4,12 +4,12 @@ import { GlobalButton } from "./GlobalStyle";
 
 export const HeaderContainer = styled(ColumnFlex)`
   width: 100%;
-  height: 250px;
+  height: 230px;
 `;
 //SearchBarBox
 export const HeaderTopBox = styled(RowFlex)`
   width: 100%;
-  height: 40px;
+  height: 45px;
   justify-content: flex-end;
   padding-right: 20px;
   background-color: ${(props) => props.theme.lightGray};
@@ -38,61 +38,70 @@ export const HeaderOneSimbyol = styled.div``;
 //MenuBox
 export const HeaderMenuBox = styled(RowFlex)`
   width: 100%;
-  height: 145px;
-  padding: 0 0 0 80px;
+  height: 140px;
+  padding: 0 50px;
+  background-color: ${(props) => props.theme.Black};
 `;
 
 export const HeaderMainLogo = styled.img`
-  height: 145px;
+  width: 25%;
   object-fit: cover;
   cursor: pointer;
-  margin-right: 150px;
 `;
+export const HeaderTagline = styled.div`
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(40% - 20px);
+  background-color: ${(props) => props.theme.Black};
+  transform: skew(-15deg);
+`;
+
 export const HeaderMenuCountDiv = styled(RowFlex)`
-  width: 100%;
-  height: 30px;
-  justify-content: space-evenly;
-  margin-top: 50px;
+  width: 400px;
 `;
 export const HeaderMenuCountDivButton = styled.button`
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0);
   border: 0;
-  margin-right: 15px;
+  height: 30px;
 `;
 
 export const HeaderMenuCountDivText = styled.p`
   font-size: 20px;
-  font-weight: 500;
-  color: ${(props) => props.theme.Black};
+  font-weight: 400;
+  color: ${(props) => props.theme.White};
   background-color: rgba(0, 0, 0, 0);
   transition: 0.3s;
 
   &:hover {
-    transform: scale(1.1);
-    padding: 5px 0 0 0;
+    transform: scale(1.05);
     border-bottom: 1px solid ${(props) => props.theme.White};
-    font-weight: 800;
   }
 `;
 // Request a quote and Send a File
 export const HeaderRSBox = styled(RowFlex)`
   width: 100%;
-  height: 70px;
+  height: 45px;
   flex-wrap: nowrap;
   justify-content: flex-end;
-  background-color: #f5f5dc;
+  background-color: ${(props) => props.theme.Purple};
+  padding-right: 50px;
 `;
 
 export const HeaderRSButton = styled(GlobalButton)`
   white-space: nowrap;
   font-size: 16px;
   border-radius: 10px;
-  background-color: #980b0b;
-  margin-right: 50px;
+  background-color: rgba(0, 0, 0, 0);
+  margin-right: 20px;
   &:hover {
-    background-color: #480707; /* DarkBlue */
-    color: #ffffff; /* MediumBlue */
+    background-color: ${(props) => props.theme.White};
+    color: ${(props) => props.theme.Black};
+    border: 0;
   }
   &:focus {
     transform: scale(0.9);
