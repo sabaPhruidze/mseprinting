@@ -47,6 +47,7 @@ export default function HeaderTrue() {
 
     getMenuData();
   }, []);
+
   const renderMenuItems = useCallback(
     () =>
       menuData.map((data) => (
@@ -58,7 +59,9 @@ export default function HeaderTrue() {
       )),
     [menuData, handleMenuNavigation]
   );
+
   const menuItems = useMemo(() => renderMenuItems(), [renderMenuItems]);
+
   return (
     <HeaderContainer>
       <HeaderTopBox>

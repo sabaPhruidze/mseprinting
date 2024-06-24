@@ -75,6 +75,12 @@ export const SearchEngineContainer = styled(ColumnFlex)`
   height: 100%;
   width: 430px;
   margin: 0 auto;
+  @media (max-width: 768px) {
+    width: 300px;
+  }
+  @media (max-width: 510px) {
+    width: 230px;
+  }
 `;
 
 export const SearchEngineInput = styled.input`
