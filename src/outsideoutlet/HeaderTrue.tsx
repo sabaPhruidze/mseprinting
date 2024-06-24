@@ -12,6 +12,7 @@ import {
   HeaderMainLogo,
   HeaderMenuCountDiv,
   HeaderMenuCountDivButton,
+  HeaderTagline,
   HeaderMenuCountDivText,
   HeaderRSButton,
 } from "../style/HeaderTrueStyles";
@@ -72,6 +73,7 @@ export default function HeaderTrue() {
       </HeaderTopBox>
       <HeaderMenuBox>
         <HeaderMainLogo src={MAIN_LOGO} alt="Main logo" />
+        <HeaderTagline>PRINT ● SIGNS ● MARKETING</HeaderTagline>
         <HeaderMenuCountDiv>{menuItems}</HeaderMenuCountDiv>
       </HeaderMenuBox>
       <HeaderRSBox>
