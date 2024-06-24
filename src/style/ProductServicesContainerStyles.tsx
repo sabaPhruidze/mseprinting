@@ -31,7 +31,7 @@ export const LeftSideText = styled.button`
   width: 100%;
   font-size: 16px;
   border: 0;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: ${(props) => props.theme.Transparent};
   /* color: ${(props) => props.theme.MediumBlue}; */
   transition: 0.3s;
   white-space: nowrap;

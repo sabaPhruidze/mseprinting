@@ -24,7 +24,7 @@ export const HeaderAccSignSearchDiv = styled(HeaderAccSignDiv)`
 export const HeaderAccSignButton = styled.button`
   font-size: 14px;
   border: 0;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: ${(props) => props.theme.Transparent};
   color: ${(props) => props.theme.Dark};
   transition: 0.3s;
   white-space: nowrap;
@@ -65,7 +65,7 @@ export const HeaderMenuCountDiv = styled(RowFlex)`
 `;
 export const HeaderMenuCountDivButton = styled.button`
   cursor: pointer;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: ${(props) => props.theme.Transparent};
   border: 0;
   height: 30px;
 `;
@@ -74,7 +74,7 @@ export const HeaderMenuCountDivText = styled.p`
   font-size: 20px;
   font-weight: 400;
   color: ${(props) => props.theme.White};
-  background-color: rgba(0, 0, 0, 0);
+  background-color: ${(props) => props.theme.Transparent};
   transition: 0.3s;
 
   &:hover {
@@ -96,7 +96,7 @@ export const HeaderRSButton = styled(GlobalButton)`
   white-space: nowrap;
   font-size: 16px;
   border-radius: 10px;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: ${(props) => props.theme.Transparent};
   margin-right: 20px;
   &:hover {
     background-color: ${(props) => props.theme.White};

@@ -52,7 +52,7 @@ export const HeaderButton = styled.button`
   font-size: 14px;
   padding: 0 5px;
   border: 0;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: ${(props) => props.theme.Transparent};
   color: ${(props) => props.theme.MediumBlue};
   transition: 0.3s;
   white-space: nowrap;
@@ -94,7 +94,7 @@ export const SearchEngineButton = styled.button`
   border: none;
   border-radius: 25px;
   cursor: pointer;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: ${(props) => props.theme.Transparent};
   position: absolute;
   z-index: 3;
   right: 10px;
@@ -149,7 +149,7 @@ export const HeaderMenuContainer = styled(RowFlex)`
 
 export const HeaderMenuButton = styled.button`
   cursor: pointer;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: ${(props) => props.theme.Transparent};
   border: 0;
   margin-right: 15px;
 `;
@@ -160,7 +160,7 @@ export const HeaderMenuText = styled.p.withConfig({
   font-size: 16px;
   font-weight: ${(props) => (props.active ? 800 : 500)};
   color: ${(props) => props.theme.DarkBlue};
-  background-color: rgba(0, 0, 0, 0);
+  background-color: ${(props) => props.theme.Transparent};
   transition: 0.3s;
   padding: ${(props) => (props.active ? "5px 0 0 0" : "0")};
   transform: ${(props) => (props.active ? "scale(1.1)" : "scale(1)")};
