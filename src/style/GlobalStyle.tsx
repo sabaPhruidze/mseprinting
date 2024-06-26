@@ -41,6 +41,7 @@ export const GlobalButton = styled.button`
 export const GlobalContainerColumn = styled(ColumnFlex)`
   width: 100%;
   min-height: 100%;
+  padding: 40px 50px;
 `;
 export const GlobalContainerRow = styled(RowFlex)`
   width: 100%;
