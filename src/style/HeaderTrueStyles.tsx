@@ -19,8 +19,8 @@ export const HeaderTopBox = styled(RowFlex)`
 `;
 
 export const HeaderAccSignDiv = styled(RowFlex)`
-  width: 120px;
   box-sizing: border-box;
+  padding: 20px;
 `;
 
 export const HeaderAccSignSearchDiv = styled(HeaderAccSignDiv)`
@@ -43,10 +43,13 @@ export const HeaderAccSignButton = styled.button`
   &:hover {
     transform: scale(1.1);
     font-weight: 500;
+    padding: 0 5px;
   }
 `;
 
-export const HeaderOneSimbyol = styled.div``;
+export const HeaderOneSimbyol = styled.div`
+  padding: 0 5px;
+`;
 
 export const HeaderMenuBox = styled(RowFlex)`
   width: 100%;
