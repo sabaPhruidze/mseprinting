@@ -112,3 +112,24 @@ export interface AccessibilityDocument {
   end: EndContent[];
   accessibility: AccessibilityContent;
 }
+// privacy and policy
+export interface PrivacyPolicySection {
+  title: string;
+  content: string | PrivacyPolicyContentPart[];
+}
+
+export interface PrivacyPolicyContentPart {
+  firstPartOne?: string;
+  firstPartTwo?: string;
+  firstSpecialPart?: string;
+  secondPart?: string;
+  thirdPart?: string;
+  fifthPart?: string;
+  fourthPart?: string;
+  secondPartOne?: string;
+  secondPartTwo?: string;
+  secondSpecialPart?: string;
+  sixthPartOne?: string;
+  sixthPartTwo?: string;
+  sixthSpecialPart?: string;
+}
