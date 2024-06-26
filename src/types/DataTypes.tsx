@@ -113,23 +113,74 @@ export interface AccessibilityDocument {
   accessibility: AccessibilityContent;
 }
 // privacy and policy
-export interface PrivacyPolicySection {
+export interface PrivacyAndPolicyDocument {
+  one: PrivacyAndPolicyOne;
+  two: PrivacyAndPolicyTwo;
+  three: PrivacyAndPolicyThree;
+  four: PrivacyAndPolicyFour;
+  five: PrivacyAndPolicyFive;
+  six: PrivacyAndPolicySix;
+  seven: PrivacyAndPolicySeven;
+  eight: PrivacyAndPolicyEight;
+  nine: PrivacyAndPolicyNine;
+}
+export interface PrivacyAndPolicyOne {
+  firstPartOne: string;
+  firstPartTwo: string;
+  firstSpecialPart: string;
+  secondPart: string;
+  thirdPart: string;
   title: string;
-  content: string | PrivacyPolicyContentPart[];
 }
 
-export interface PrivacyPolicyContentPart {
-  firstPartOne?: string;
-  firstPartTwo?: string;
-  firstSpecialPart?: string;
-  secondPart?: string;
-  thirdPart?: string;
-  fifthPart?: string;
-  fourthPart?: string;
-  secondPartOne?: string;
-  secondPartTwo?: string;
-  secondSpecialPart?: string;
-  sixthPartOne?: string;
-  sixthPartTwo?: string;
-  sixthSpecialPart?: string;
+export interface PrivacyAndPolicyTwo {
+  title: string;
+  content: string;
+}
+export interface PrivacyAndPolicyThree {
+  thirdPart: string;
+  sixthPart: string;
+  secondPart: string;
+  fourthPart: string;
+  firstPart: string;
+  fifthPart: string;
+  title: string;
+}
+export interface PrivacyAndPolicyFour {
+  title: string;
+  firstPart: string;
+  secondPart: string;
+}
+export interface PrivacyAndPolicyFive {
+  firstPart: string;
+  secondPartOne: string;
+  secondPartTwo: string;
+  secondSpecialPart: string;
+  title: string;
+}
+export interface PrivacyAndPolicySix {
+  firstPartOne: string;
+  firstPartTwo: string;
+  firstSpecialPart: string;
+  title: string;
+}
+export interface PrivacyAndPolicySeven {
+  content: string;
+  title: string;
+}
+export interface PrivacyAndPolicyEight {
+  firstPartOne: string;
+  firstPartTwo: string;
+  firstSpecialPart: string;
+  title: string;
+}
+export interface PrivacyAndPolicyNine {
+  fifthPart: string;
+  firstPart: string;
+  fourthPartOne: string;
+  fourthPartTwo: string;
+  fourthSpecialPart: string;
+  secondPart: string;
+  thirdPart: string;
+  title: string;
 }

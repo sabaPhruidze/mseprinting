@@ -9,9 +9,7 @@ import {
   GlobalSpecialPart,
 } from "../GlobalStyle";
 
-export const AccesibilityContainer = styled(GlobalContainerColumn)`
-  padding: 40px 50px;
-`;
+export const AccesibilityContainer = styled(GlobalContainerColumn)``;
 export const AccesibilityBox = styled(GlobalBoxColumnStart)``;
 export const AccesibilityStarth2Title = styled(Globalh2Title)``;
 export const AccesibilityStarth3Title = styled(Globalh3Title)``;

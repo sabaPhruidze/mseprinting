@@ -1,9 +1,9 @@
 import { GeneralizedFetch } from "../../importantparts/GeneralizedFetch";
-import { PrivacyPolicySection } from "../../types/DataTypes";
+import { PrivacyAndPolicyDocument } from "../../types/DataTypes";
 
 export const fetchPrivacyAndPolicyData =
-  async (): Promise<PrivacyPolicySection | null> => {
-    return GeneralizedFetch<PrivacyPolicySection>(
+  async (): Promise<PrivacyAndPolicyDocument | null> => {
+    return GeneralizedFetch<PrivacyAndPolicyDocument>(
       "sub-category",
       "PrivacyAndPolicy"
     );
