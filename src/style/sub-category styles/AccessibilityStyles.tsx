@@ -1,38 +1,28 @@
 import styled from "styled-components";
-import { ColumnFlex } from "../GlobalStyle";
+import {
+  GlobalContainerColumn,
+  GlobalBoxColumnStart,
+  Globalh2Title,
+  Globalh3Title,
+  GlobalPartBox,
+  GlobalPart,
+  GlobalSpecialPart,
+} from "../GlobalStyle";
 
-export const AccesibilityContainer = styled(ColumnFlex)`
-  width: 100%;
-  min-height: 100%;
+export const AccesibilityContainer = styled(GlobalContainerColumn)`
   padding: 40px 50px;
-  border-top: 3px solid ${(props) => props.theme.MediumBlue};
 `;
-export const AccesibilityBox = styled(ColumnFlex)`
-  width: 100%;
-  align-items: flex-start;
-  margin-bottom: 50px;
-`;
-export const AccesibilityStarth2Title = styled.h2`
-  margin-bottom: 30px;
-  font-size: 30px;
-`;
-export const AccesibilityStarth3Title = styled.h3`
-  font-size: 24px;
-`;
+export const AccesibilityBox = styled(GlobalBoxColumnStart)``;
+export const AccesibilityStarth2Title = styled(Globalh2Title)``;
+export const AccesibilityStarth3Title = styled(Globalh3Title)``;
 
-export const AccesibilityContent = styled.p`
-  font-size: 18px;
-`;
-export const AccesibilityInsideBox = styled(ColumnFlex)`
-  width: 100%;
-  align-items: flex-start;
+export const AccesibilityContent = styled(GlobalPart)``;
+export const AccesibilityInsideBox = styled(GlobalBoxColumnStart)`
   margin-bottom: 5px;
 `;
-export const AccesibilityPartBox = styled.span`
-  font-size: 18px;
-`;
+export const AccesibilityPartBox = styled(GlobalPartBox)``;
 export const AccesibilityPart = styled(AccesibilityContent)``;
 
-export const AccesibilityMail = styled.span`
+export const AccesibilityMail = styled(GlobalSpecialPart)`
   color: ${(props) => props.theme.MediumBlue};
 `;
