@@ -6,15 +6,12 @@ export const ProductsServicesContainerStyle = styled(RowFlex)`
   height: 400px;
   background-color: ${(props) => props.theme.White};
   position: absolute;
-  top: 180px;
-  left: calc(50% - 350px);
+  top: 185px;
+  right: 0;
   z-index: 1000; // Ensure this is higher than other components
   border-radius: 0 0 20px 20px;
   padding: 10px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  @media (max-width: 1600px) {
-    top: 160px;
-  }
 `;
 
 // Left side

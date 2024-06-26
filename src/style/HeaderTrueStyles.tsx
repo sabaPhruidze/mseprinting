@@ -63,7 +63,7 @@ export const HeaderMenuBox = styled(RowFlex)`
   @media (max-width: 1150px) {
     padding: 0 50px;
   }
-  @media (max-width: 768px) {
+  @media (max-width: 800px) {
     justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
@@ -78,16 +78,14 @@ export const HeaderMainLogo = styled.img`
   object-fit: cover;
   cursor: pointer;
   @media (max-width: 1150px) {
-    width: 30%;
-  }
-  @media (max-width: 1000px) {
     width: 35%;
   }
+
   @media (max-width: 768px) {
-    width: 50%;
+    width: 40%;
   }
   @media (max-width: 650px) {
-    width: 80%;
+    width: 50%;
   }
 `;
 
@@ -112,25 +110,32 @@ export const HeaderTagline = styled.div`
 export const HeaderMenuCountDiv = styled(RowFlex)`
   width: 400px;
   justify-content: space-around;
+  height: 100%;
 `;
 
 export const HeaderMenuCountDivButton = styled.button`
   cursor: pointer;
   background-color: ${(props) => props.theme.Transparent};
+  color: ${(props) => props.theme.White};
   border: 0;
-  height: 30px;
+  height: 100%;
+  padding: 0 5px;
+  transition: 0.3s;
+  &:hover {
+    background-color: ${(props) => props.theme.White};
+    color: ${(props) => props.theme.Black};
+  }
 `;
 
 export const HeaderMenuCountDivText = styled.p`
   font-size: 20px;
   font-weight: 400;
-  color: ${(props) => props.theme.White};
-  background-color: ${(props) => props.theme.Transparent};
+  height: 30px;
+
   transition: 0.3s;
 
   &:hover {
     transform: scale(1.05);
-    border-bottom: 1px solid ${(props) => props.theme.White};
   }
   @media (max-width: 1300px) {
     font-size: 18px;

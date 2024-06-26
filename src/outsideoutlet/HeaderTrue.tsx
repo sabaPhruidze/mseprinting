@@ -4,6 +4,7 @@ import React, {
   useEffect,
   useMemo,
   useContext,
+  useRef,
 } from "react";
 import { rootContext } from "../Root";
 import { useNavigate } from "react-router-dom";
@@ -35,7 +36,7 @@ export default function HeaderTrue() {
     throw new Error("rootContext must be used within a Root provider");
   }
   const { state, dispatching } = context;
-  const { showProductsServicesWindow } = state;
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const handleMenuNavigation = useCallback(
     (data: HMenuType) => {
@@ -72,10 +73,29 @@ export default function HeaderTrue() {
   const handleNavigationSend = () => {
     navigate("/send-file");
   };
+  const handleMouseEnter = useCallback(() => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    }
+    dispatching("SHOW_PRODUCT_SERVICES_WINDOW_FROM_MENU", true);
+  }, [dispatching]);
+
+  const handleMouseLeave = useCallback(() => {
+    timeoutRef.current = setTimeout(() => {
+      dispatching("SHOW_PRODUCT_SERVICES_WINDOW_FROM_MENU", false);
+    }, 150);
+  }, [dispatching]);
   const renderMenuItems = useCallback(
     () =>
       menuData.map((data) => (
-        <HeaderMenuCountDivButton key={data.page}>
+        <HeaderMenuCountDivButton
+          key={data.page}
+          onMouseEnter={
+            data.page === "Products & Services" ? handleMouseEnter : undefined
+          }
+          onMouseLeave={handleMouseLeave}
+        >
           <HeaderMenuCountDivText onClick={() => handleMenuNavigation(data)}>
             {data.page}
           </HeaderMenuCountDivText>
