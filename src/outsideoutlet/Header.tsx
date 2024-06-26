@@ -9,12 +9,8 @@ import {
 import { useNavigate } from "react-router-dom";
 import { rootContext } from "../Root";
 import SearchEngine from "../importantparts/SearchEngine";
-import {
-  fetchHeaderMenuData,
-  fetchHeaderMainLogo,
-  HMenuData,
-  LogoData,
-} from "../data/HeaderData";
+import { fetchHeaderMenuData, fetchHeaderMainLogo } from "../data/HeaderData";
+import { HMenuType, LogoType } from "../types/DataTypes";
 import {
   HeaderContainer,
   HeaderMainContainer,
@@ -36,8 +32,8 @@ export default function Header() {
   const { showProductsServicesWindow } = state;
   const navigate = useNavigate();
 
-  const [menuData, setMenuData] = useState<HMenuData[]>([]);
-  const [logoLink, setLogoLink] = useState<LogoData>({ logo: null });
+  const [menuData, setMenuData] = useState<HMenuType[]>([]);
+  const [logoLink, setLogoLink] = useState<LogoType>({ logo: null });
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
@@ -62,7 +58,7 @@ export default function Header() {
     if (!state.user) navigate("/login");
   };
 
-  const handleMenuNavigation = (data: HMenuData) => {
+  const handleMenuNavigation = (data: HMenuType) => {
     if (data.page !== "Products & Services") navigate(data.path);
   };
 
