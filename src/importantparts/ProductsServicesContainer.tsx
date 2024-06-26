@@ -41,11 +41,13 @@ export default function ProductsServicesContainer() {
 
   const handleMouseEnter = useCallback(
     (item: string) => {
-      dispatching("SHOW_PRODUCT_SERVICES_WINDOW_FROM_BOX", true);
       setHoveredItem(item);
     },
     [dispatching]
   );
+  const handleMouseEnterMain = () => {
+    dispatching("SHOW_PRODUCT_SERVICES_WINDOW_FROM_BOX", true);
+  };
 
   const handleMouseLeave = useCallback(() => {
     dispatching("SHOW_PRODUCT_SERVICES_WINDOW_FROM_BOX", false);
@@ -90,7 +92,10 @@ export default function ProductsServicesContainer() {
   }, [productsAndServicesData]);
 
   return (
-    <ProductsServicesContainerStyle onMouseLeave={handleMouseLeave}>
+    <ProductsServicesContainerStyle
+      onMouseLeave={handleMouseLeave}
+      onMouseEnter={handleMouseEnterMain}
+    >
       <LeftSideContainer>
         {leftSideItems.map((data, index) => (
           <LeftSideText key={index} onMouseEnter={() => handleMouseEnter(data)}>

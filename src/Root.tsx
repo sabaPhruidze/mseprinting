@@ -55,12 +55,12 @@ export default function Root() {
         <RootContainer>
           <GlobalStyle />
           <HeaderTrue />
-          {/* {showProductsServicesWindow.showProductFromBox ||
+          {showProductsServicesWindow.showProductFromBox ||
           showProductsServicesWindow.showProductFromMenu ? (
             <ProductsServicesContainer />
           ) : (
             ""
-          )} */}
+          )}
           <Outlet />
           <Footer />
         </RootContainer>
