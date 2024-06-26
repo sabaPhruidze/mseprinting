@@ -38,3 +38,36 @@ export const GlobalButton = styled.button`
     transform: scale(0.9);
   }
 `;
+export const GlobalContainerColumn = styled(ColumnFlex)`
+  width: 100%;
+  min-height: 100%;
+`;
+export const GlobalContainerRow = styled(RowFlex)`
+  width: 100%;
+  min-height: 100%;
+`;
+export const GlobalBoxColumnStart = styled(ColumnFlex)`
+  width: 100%;
+  align-items: flex-start;
+  margin-bottom: 30px;
+`;
+
+export const Globalh2Title = styled.h2`
+  margin-bottom: 20px;
+  font-size: 30px;
+`;
+
+export const Globalh3Title = styled.h3`
+  font-size: 22px;
+`;
+
+export const GlobalPartBox = styled.span`
+  font-size: 18px;
+`;
+export const GlobalPart = styled.p`
+  font-size: 18px;
+`;
+
+export const GlobalSpecialPart = styled.span`
+  color: ${(props) => props.theme.MediumBlue};
+`;
