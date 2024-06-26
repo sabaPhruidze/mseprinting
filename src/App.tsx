@@ -7,10 +7,11 @@ import {
 
 import Root from "./Root";
 import Home from "./category/Home";
+import AboutUs from "./category/AboutUs";
+import Resources from "./category/Resources";
 
 import Login from "./category/Login";
 import Productsservices from "./category/Productsservices";
-import FulfillmentServices from "./category/FulfillmentServices";
 
 import RequestQuote from "./category/RequestQuote";
 import SendFile from "./category/SendFile";
@@ -28,11 +29,14 @@ function App() {
     createRoutesFromElements(
       <Route path="/" element={<Root />}>
         <Route index element={<Home />} />
+        {/* header */}
         <Route path="/Login" element={<Login />} />
+        <Route path="/Register" element={<Login />} />
         <Route path="/productsservices" element={<Productsservices />} />
-        <Route path="/fulfillmentservices" element={<FulfillmentServices />} />
-        <Route path="/requestquote" element={<RequestQuote />} />
-        <Route path="/sendfile" element={<SendFile />} />
+        <Route path="/about-us" element={<AboutUs />} />
+        <Route path="/resources" element={<Resources />} />
+        <Route path="/request-quote" element={<RequestQuote />} />
+        <Route path="/send-file" element={<SendFile />} />
         {/* sub-category */}
         <Route path="/accessibility" element={<Accessibility />} />
         <Route path="/blog" element={<Blog />} />
