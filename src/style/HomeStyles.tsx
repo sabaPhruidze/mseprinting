@@ -18,17 +18,11 @@ export const CarouselContainer = styled.div`
   position: relative;
   width: 100%;
   height: 300px;
-
-  @media (min-width: 768px) {
+  @media (max-width: 630px) {
     height: 400px;
   }
-
-  @media (min-width: 1024px) {
+  @media (max-width: 540px) {
     height: 500px;
-  }
-
-  @media (min-width: 1440px) {
-    height: 600px;
   }
 `;
 
@@ -89,70 +83,35 @@ export const CarouselIcon = styled.span`
 
 export const CarouselTitle = styled.h3`
   margin: 0;
+  margin-bottom: 20px;
   font-size: 24px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
-  text-align: center;
+  text-align: left;
 
-  @media (min-width: 768px) {
+  /* @media (min-width: 768px) {
     font-size: 28px;
     text-align: left;
-    margin-left: 50px;
-  }
-
-  @media (min-width: 1024px) {
-    font-size: 32px;
-    margin-left: 100px;
-  }
-
-  @media (min-width: 1440px) {
-    font-size: 36px;
-    margin-left: 150px;
-  }
+  } */
 `;
 
 export const CarouselContent = styled.p`
   margin-top: 10px;
   font-size: 16px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
-  text-align: center;
-  width: 90%;
-  margin: 0 auto;
-
-  @media (min-width: 768px) {
-    font-size: 18px;
-    text-align: left;
-    margin-left: 50px;
-    width: 80%;
+  text-align: left;
+  margin: 0;
+  margin-bottom: 10px;
+  @media (max-width: 900px) {
+    text-align: center;
   }
-
-  @media (min-width: 1024px) {
-    font-size: 20px;
-    margin-left: 100px;
-    width: 70%;
-  }
-
-  @media (min-width: 1440px) {
-    font-size: 22px;
-    margin-left: 150px;
-    width: 60%;
+  @media (max-width: 630px) {
+    text-align: center;
   }
 `;
 
 export const CarouselButton = styled(GlobalButton)`
-  display: block;
-  margin: 10px auto 0;
-
-  @media (min-width: 768px) {
-    margin: 10px 0 0 50px;
-  }
-
-  @media (min-width: 1024px) {
-    margin-left: 100px;
-  }
-
-  @media (min-width: 1440px) {
-    margin-left: 150px;
-  }
+  text-align: left;
+  width: 150px;
 `;
 //card
 export const WWDCContainer = styled(RowFlex)`

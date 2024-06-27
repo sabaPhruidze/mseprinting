@@ -28,7 +28,6 @@ export const GlobalButton = styled.button`
   font-weight: 400;
   cursor: pointer;
   transition: 0.3s ease;
-
   border-radius: 20px;
   &:hover {
     background-color: #102948; /* DarkBlue */
