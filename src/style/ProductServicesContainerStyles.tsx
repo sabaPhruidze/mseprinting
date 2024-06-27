@@ -7,7 +7,7 @@ export const ProductsServicesContainerStyle = styled(RowFlex)`
   background-color: ${(props) => props.theme.White};
   position: absolute;
   top: 185px;
-  right: 0;
+  right: 15px;
   z-index: 1000; // Ensure this is higher than other components
   border-radius: 0 0 20px 20px;
   padding: 10px;
