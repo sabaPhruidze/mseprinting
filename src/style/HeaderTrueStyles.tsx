@@ -64,12 +64,12 @@ export const HeaderMenuBox = styled(RowFlex)`
     padding: 0 50px;
   }
   @media (max-width: 800px) {
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
-    flex-direction: column;
+    flex-direction: row;
   }
   @media (max-width: 768px) {
-    padding: 0 10px;
+    padding: 0px;
   }
 `;
 
@@ -81,11 +81,12 @@ export const HeaderMainLogo = styled.img`
     width: 35%;
   }
 
-  @media (max-width: 768px) {
-    width: 40%;
+  @media (max-width: 800px) {
+    width: 380px;
+    margin-bottom: 20px;
   }
   @media (max-width: 650px) {
-    width: 50%;
+    width: 360px;
   }
 `;
 
@@ -111,6 +112,10 @@ export const HeaderMenuCountDiv = styled(RowFlex)`
   width: 400px;
   justify-content: space-around;
   height: 100%;
+  align-items: flex-end; /* Add this line to align items at the bottom */
+  @media (max-width: 800px) {
+    height: 40px;
+  }
 `;
 
 export const HeaderMenuCountDivButton = styled.button`
@@ -121,6 +126,8 @@ export const HeaderMenuCountDivButton = styled.button`
   height: 100%;
   padding: 0 5px;
   transition: 0.3s;
+  margin-bottom: 0; /* Ensure there's no margin at the bottom */
+
   &:hover {
     background-color: ${(props) => props.theme.White};
     color: ${(props) => props.theme.Black};
@@ -131,9 +138,8 @@ export const HeaderMenuCountDivText = styled.p`
   font-size: 20px;
   font-weight: 400;
   height: 30px;
-
   transition: 0.3s;
-
+  margin: 0; /* Ensure there's no margin at the bottom */
   &:hover {
     transform: scale(1.05);
   }
@@ -161,7 +167,9 @@ export const HeaderRSButton = styled(GlobalButton)`
   font-size: 16px;
   border-radius: 10px;
   background-color: ${(props) => props.theme.Transparent};
+  margin: 0;
   margin-right: 20px;
+
   &:hover {
     background-color: ${(props) => props.theme.White};
     color: ${(props) => props.theme.Black};
