@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   FooterContainer,
@@ -20,14 +20,9 @@ import {
   ProductsAboutContainer,
 } from "../style/FooterStyles";
 
-import {
-  SignsData,
-  PrintingAndCopyingData,
-  TradeshowsAndEventsData,
-  IndustrySpecificData,
-  LabelsAndPackagingData,
-  BlogAndPoliciesData,
-} from "../data/FooterData";
+import { BlogAndPoliciesData } from "../data/FooterData";
+import { fetchHomeServicesData } from "../data/ProductsServicesContainerData";
+import { HomeServicesFullType } from "../types/DataTypes";
 
 import FACEBOOK from "../assets/icon/footer/social/FACEBOOK.svg";
 import INSTAGRAM from "../assets/icon/footer/social/INSTAGRAM.svg";
@@ -36,80 +31,97 @@ import LINKEDIN from "../assets/icon/footer/social/LINKEDIN.svg";
 
 export default function Footer() {
   const navigate = useNavigate();
+  const [footerData, setFooterData] = useState<HomeServicesFullType | null>(
+    null
+  );
+  const [filteredFooterData, setFilteredFooterData] = useState<string[]>([]);
 
-  const [productsAboutData, setProductsAboutData] = useState([
-    {
-      Title: "Sign",
-      Context: SignsData,
-    },
-    {
-      Title: "Labels & Packaging",
-      Context: LabelsAndPackagingData,
-    },
-    {
-      Title: "Tradeshows & Events",
-      Context: TradeshowsAndEventsData,
-    },
-    {
-      Title: "Industry Specific",
-      Context: IndustrySpecificData,
-    },
-    {
-      Title: "Printing & Copying",
-      Context: PrintingAndCopyingData,
-    },
-  ]);
+  const ICON_DATA = useMemo(
+    () => [FACEBOOK, INSTAGRAM, XTWITTER, LINKEDIN],
+    []
+  );
 
-  const ICON_DATA = [FACEBOOK, INSTAGRAM, XTWITTER, LINKEDIN];
+  useEffect(() => {
+    const getFooterFullData = async () => {
+      const data = await fetchHomeServicesData();
+      if (data && data.left && data.left.length > 0) {
+        setFooterData(data);
+        filterFooterData(data.left);
+      }
+    };
+    getFooterFullData();
+  }, []);
+
+  const filterFooterData = useCallback((data: string[]) => {
+    const screenWidth = window.innerWidth;
+    let filteredData = data;
+
+    if (screenWidth < 650) {
+      filteredData = data.filter((item) => item === "Printing & Copying");
+    } else if (screenWidth < 900) {
+      filteredData = data.filter((item) =>
+        ["Printing & Copying", "Labels & Packaging"].includes(item)
+      );
+    } else if (screenWidth < 1150) {
+      filteredData = data.filter((item) =>
+        [
+          "Printing & Copying",
+          "Labels & Packaging",
+          "Tradeshows & Events",
+        ].includes(item)
+      );
+    } else if (screenWidth < 1450) {
+      filteredData = data.filter((item) =>
+        [
+          "Printing & Copying",
+          "Labels & Packaging",
+          "Tradeshows & Events",
+          "Industry Specific",
+        ].includes(item)
+      );
+    } else if (screenWidth < 1680) {
+      filteredData = data.filter((item) =>
+        [
+          "Printing & Copying",
+          "Labels & Packaging",
+          "Tradeshows & Events",
+          "Industry Specific",
+          "Signs",
+        ].includes(item)
+      );
+    } else if (screenWidth < 2100) {
+      filteredData = data.filter((item) =>
+        [
+          "Printing & Copying",
+          "Labels & Packaging",
+          "Tradeshows & Events",
+          "Industry Specific",
+          "Signs",
+          "Tradeshows & Events",
+        ].includes(item)
+      );
+    } else {
+      filteredData = data.filter((item) =>
+        [
+          "Printing & Copying",
+          "Labels & Packaging",
+          "Tradeshows & Events",
+          "Industry Specific",
+          "Signs",
+          "Tradeshows & Events",
+          "Direct Mail & Mailing Services",
+        ].includes(item)
+      );
+    }
+
+    setFilteredFooterData(filteredData);
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
-      const screenWidth = window.innerWidth;
-      let updatedData = [
-        {
-          Title: "Signs",
-          Context: SignsData,
-        },
-        {
-          Title: "Labels & Packaging",
-          Context: LabelsAndPackagingData,
-        },
-        {
-          Title: "Tradeshows & Events",
-          Context: TradeshowsAndEventsData,
-        },
-        {
-          Title: "Industry Specific",
-          Context: IndustrySpecificData,
-        },
-        {
-          Title: "Printing & Copying",
-          Context: PrintingAndCopyingData,
-        },
-      ];
-
-      if (screenWidth < 1480) {
-        updatedData = updatedData.filter(
-          (item) => item.Title !== "Printing & Copying"
-        );
+      if (footerData?.left) {
+        filterFooterData(footerData.left);
       }
-      if (screenWidth < 1150) {
-        updatedData = updatedData.filter(
-          (item) => item.Title !== "Industry Specific"
-        );
-      }
-      if (screenWidth < 878) {
-        updatedData = updatedData.filter(
-          (item) => item.Title !== "Tradeshows & Events"
-        );
-      }
-      if (screenWidth < 600) {
-        updatedData = updatedData.filter(
-          (item) => item.Title !== "Labels & Packaging"
-        );
-      }
-
-      setProductsAboutData(updatedData);
     };
 
     window.addEventListener("resize", handleResize);
@@ -118,7 +130,41 @@ export default function Footer() {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [footerData, filterFooterData]);
+
+  const getRightSideData = useCallback(
+    (title: string) => {
+      if (!footerData) return [];
+
+      switch (title) {
+        case "Printing & Copying":
+          return footerData.PrintingAndCopying || [];
+        case "Direct Mail & Mailing Services":
+          return footerData.DirectMailAndMailingServices || [];
+        case "Signs":
+          return footerData.Signs || [];
+        case "Online Ordering Portals":
+          return footerData.OnlineOrderingPortals
+            ? [footerData.OnlineOrderingPortals]
+            : [];
+        case "Graphic Design":
+          return footerData.GraphicDesign ? [footerData.GraphicDesign] : [];
+        case "Labels & Packaging":
+          return footerData.LabelsAndPackaging || [];
+        case "Marketing Services":
+          return footerData.MarketingServices || [];
+        case "Tradeshows & Events":
+          return footerData.TradeshowsAndEvents || [];
+        case "Fulfillment Services":
+          return footerData.FulfillmentServices || [];
+        case "Industry Specific":
+          return footerData.IndustrySpecific || [];
+        default:
+          return [];
+      }
+    },
+    [footerData]
+  );
 
   return (
     <FooterContainer>
@@ -132,20 +178,15 @@ export default function Footer() {
       </DividingLineBox>
       <ProductsAboutContainer>
         <ProductsAboutUsBox>
-          {productsAboutData.map((data) => (
-            <ProductsAboutUsCont key={data.Title}>
+          {filteredFooterData.map((data, index) => (
+            <ProductsAboutUsCont key={data}>
               <ProductsAboutUsColumn>
-                <ColumnTitle>{data.Title}</ColumnTitle>
-                {data.Context.map((context) => (
+                <ColumnTitle>{data}</ColumnTitle>
+                {getRightSideData(data).map((context: string) => (
                   <ColumnContext key={context}>{context}</ColumnContext>
                 ))}
               </ProductsAboutUsColumn>
-              {data.Title !==
-              productsAboutData[productsAboutData.length - 1].Title ? (
-                <VerticalLine />
-              ) : (
-                ""
-              )}
+              {index < filteredFooterData.length - 1 && <VerticalLine />}
             </ProductsAboutUsCont>
           ))}
         </ProductsAboutUsBox>

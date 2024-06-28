@@ -4,7 +4,6 @@ import { GlobalButton } from "./GlobalStyle";
 
 export const HeaderContainer = styled(ColumnFlex)`
   width: 100%;
-  max-width: 2100px;
   margin: 0 auto;
   height: 230px;
   box-sizing: border-box;
