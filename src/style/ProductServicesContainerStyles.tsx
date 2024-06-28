@@ -26,7 +26,7 @@ export const ProductsServicesContainerStyle = styled(RowFlex)`
 export const LeftSideContainer = styled(ColumnFlex)`
   width: 250px;
   height: 100%;
-  border-right: 1px solid ${(props) => props.theme.MediumBlue};
+  border-right: 1px solid ${(props) => props.theme.Black};
   justify-content: flex-start;
   @media (max-width: 550px) {
     width: 180px;
@@ -40,7 +40,7 @@ export const LeftSideText = styled.button`
   font-size: 16px;
   border: 0;
   background-color: ${(props) => props.theme.Transparent};
-  /* color: ${(props) => props.theme.MediumBlue}; */
+  color: ${(props) => props.theme.Black};
   transition: 0.3s;
   white-space: nowrap;
   cursor: pointer;
@@ -83,7 +83,7 @@ export const RightSideContainer = styled.div`
 
 export const RightSideText = styled.div`
   background-color: ${(props) => props.theme.LightGray};
-  border: 1px solid ${(props) => props.theme.MediumBlue};
+  border: 1px solid ${(props) => props.theme.Black};
   border-radius: 5px;
   padding: 5px 10px; // Padding: top/bottom 5px, left/right 10px
   text-align: center;
@@ -92,8 +92,9 @@ export const RightSideText = styled.div`
   text-overflow: ellipsis;
   cursor: pointer;
   font-weight: 500;
+  color: ${(props) => props.theme.Black};
   &:hover {
-    background-color: ${(props) => props.theme.MediumBlue};
+    background-color: ${(props) => props.theme.Black};
     color: ${(props) => props.theme.White};
   }
 `;
