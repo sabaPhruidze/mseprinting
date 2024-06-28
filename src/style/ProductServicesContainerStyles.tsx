@@ -12,8 +12,9 @@ export const ProductsServicesContainerStyle = styled(RowFlex)`
   border-radius: 0 0 20px 20px;
   padding: 10px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  @media (max-width: 760px) {
+  @media (max-width: 800px) {
     width: 500px;
+    left: 10px;
   }
   @media (max-width: 550px) {
     font-size: 12px; // Smaller font size for smaller screens
@@ -52,7 +53,7 @@ export const LeftSideText = styled.button`
   @media (max-width: 550px) {
     font-size: 12px;
     &:hover {
-      font-size: 14px;
+      font-size: 12px;
     }
   }
 `;
