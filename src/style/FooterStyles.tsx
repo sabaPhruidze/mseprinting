@@ -11,7 +11,7 @@ export const FooterContainer = styled(ColumnFlex)`
 export const DividingLineBox = styled(RowFlex)`
   width: 100%;
   height: 50px;
-  background-color: ${(props) => props.theme.DarkBlue};
+  background-color: ${(props) => props.theme.Black};
   text-align: center;
   padding: 0 60px 0 80px;
 
@@ -86,12 +86,11 @@ export const ProductsAboutUsColumn = styled(ColumnFlex)`
 `;
 
 export const VerticalLine = styled.div`
-  border-left: 1px solid ${(props) => props.theme.MediumBlue};
+  border-left: 1px solid ${(props) => props.theme.Black};
   height: 70%;
 
   @media (max-width: 600px) {
     border-left: none;
-    border-top: 1px solid ${(props) => props.theme.MediumBlue};
     width: 70%;
   }
 `;
@@ -105,7 +104,7 @@ export const ColumnTitle = styled(Quote)`
 
 export const ColumnContext = styled(Quote)`
   font-size: 14px;
-  color: ${(props) => props.theme.MediumBlue};
+  color: ${(props) => props.theme.Black};
   font-weight: 300;
   cursor: pointer;
   padding: 5px 0;
@@ -117,7 +116,7 @@ export const ColumnContext = styled(Quote)`
 `;
 
 export const HorzontalLine = styled.div`
-  border-top: 1px solid ${(props) => props.theme.MediumBlue};
+  border-top: 1px solid ${(props) => props.theme.Black};
   width: 60%;
 `;
 
@@ -125,7 +124,7 @@ export const TermsConditionsBox = styled(RowFlex)`
   width: 100%;
   height: 80px;
   padding: 0 80px;
-
+  background-color: ${(props) => props.theme.Black};
   @media (max-width: 1300px) {
     flex-direction: column;
     height: auto;
@@ -141,7 +140,7 @@ export const TermsConditionsBox = styled(RowFlex)`
 
 export const Address = styled.p`
   font-size: 14px;
-  color: black;
+  color: ${(props) => props.theme.White};
   width: 500px;
   margin-bottom: 0;
   text-align: left;
@@ -157,7 +156,7 @@ export const Address = styled.p`
 
 export const TermsConditionsLinks = styled(RowFlex)`
   font-size: 14px;
-  color: black;
+  color: ${(props) => props.theme.White};
   flex-wrap: wrap;
 
   @media (max-width: 800px) {
@@ -169,7 +168,7 @@ export const TermsConditionsLinks = styled(RowFlex)`
 export const TermsConditionsLink = styled(ColumnContext)`
   font-size: 14px;
   font-weight: 200;
-  color: black;
+  color: ${(props) => props.theme.White};
   margin: 2px;
 
   @media (max-width: 800px) {

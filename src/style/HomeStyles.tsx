@@ -139,10 +139,8 @@ export const WWDCContainer = styled(RowFlex)`
 export const WWDCCSpecialitiesContainers = styled(ColumnFlex)`
   width: 100%;
   max-width: 400px;
-  color: ${(props) => props.theme.DarkBlue};
-
+  color: ${(props) => props.theme.Black};
   margin-bottom: 20px;
-
   @media (min-width: 768px) {
     margin-bottom: 0;
   }
