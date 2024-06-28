@@ -12,6 +12,13 @@ export const ProductsServicesContainerStyle = styled(RowFlex)`
   border-radius: 0 0 20px 20px;
   padding: 10px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  @media (max-width: 760px) {
+    width: 500px;
+  }
+  @media (max-width: 550px) {
+    font-size: 12px; // Smaller font size for smaller screens
+    width: 400px;
+  }
 `;
 
 // Left side
@@ -20,6 +27,9 @@ export const LeftSideContainer = styled(ColumnFlex)`
   height: 100%;
   border-right: 1px solid ${(props) => props.theme.MediumBlue};
   justify-content: flex-start;
+  @media (max-width: 550px) {
+    width: 180px;
+  }
 `;
 
 export const LeftSideText = styled.button`
@@ -39,6 +49,12 @@ export const LeftSideText = styled.button`
     padding-left: 2px;
     font-size: 18px;
   }
+  @media (max-width: 550px) {
+    font-size: 12px;
+    &:hover {
+      font-size: 14px;
+    }
+  }
 `;
 
 // Right side
@@ -55,8 +71,12 @@ export const RightSideContainer = styled.div`
   overflow-y: auto;
   padding: 15px;
   font-size: 14px; // Default font size
-  @media (max-width: 700px) {
+  @media (max-width: 750px) {
     font-size: 12px; // Smaller font size for smaller screens
+    width: 250px;
+  }
+  @media (max-width: 550px) {
+    width: 220px;
   }
 `;
 
