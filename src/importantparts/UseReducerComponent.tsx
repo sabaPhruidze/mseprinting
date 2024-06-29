@@ -34,6 +34,9 @@ const reducer = (state: typeof initialState, action: ActionType) => {
     case "SWITCH_LOG_REG":
       newState.radioForRegLog = action.payload;
       break;
+    case "SET_USER":
+      newState.user = action.payload;
+      break;
     case "USER_INFO":
       newState.user = action.payload;
       break;

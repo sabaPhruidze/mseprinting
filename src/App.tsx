@@ -26,6 +26,7 @@ import EnvironmentalMessage from "./sub-category/EnvironmentalMessage";
 import EoeDiversity from "./sub-category/EoeDiversity";
 import PrivacyAndPolicy from "./sub-category/PrivacyAndPolicy";
 import Blog from "./sub-category/Blog";
+import Register from "./category/Register";
 
 function App() {
   const router = createBrowserRouter(
@@ -33,8 +34,8 @@ function App() {
       <Route path="/" element={<Root />}>
         <Route index element={<Home />} />
         {/* header */}
-        <Route path="/Login" element={<Login />} />
-        <Route path="/Register" element={<Login />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/productsservices" element={<Productsservices />} />
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/resources" element={<Resources />} />

@@ -64,6 +64,9 @@ export default function HeaderTrue() {
   const handleNavigationLogin = () => {
     if (!state.user) navigate("/login");
   };
+  const handleNavigationRegister = () => {
+    if (!state.user) navigate("/register");
+  };
   const handleNavigationHome = () => {
     navigate("/");
   };
@@ -117,7 +120,7 @@ export default function HeaderTrue() {
                 : "Sign in"}
             </HeaderAccSignButton>
             <HeaderOneSimbyol>{state.user ? "" : "or"}</HeaderOneSimbyol>
-            <HeaderAccSignButton>
+            <HeaderAccSignButton onClick={handleNavigationRegister}>
               {" "}
               {state.user ? "" : "Sign up"}
             </HeaderAccSignButton>
