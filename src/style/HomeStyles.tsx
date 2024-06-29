@@ -121,18 +121,11 @@ export const WWDCContainer = styled(RowFlex)`
   height: auto;
   min-height: 600px;
 
-  /* @media (min-width: 768px) {
-    padding: 0 30px;
-    min-height: 700px;
-  }
-
-  @media (min-width: 1024px) {
-    padding: 0 40px;
-    min-height: 800px;
-  } */
-
   @media (max-width: 1400px) {
     flex-direction: column;
+  }
+  @media (min-width: 1600px) {
+    justify-content: space-evenly;
   }
 `;
 
@@ -141,8 +134,11 @@ export const WWDCCSpecialitiesContainers = styled(ColumnFlex)`
   max-width: 400px;
   color: ${(props) => props.theme.Black};
   margin-bottom: 20px;
-  @media (min-width: 768px) {
-    margin-bottom: 0;
+  @media (max-width: 1400px) {
+    max-width: 80%;
+  }
+  @media (min-width: 1900px) {
+    max-width: 40%;
   }
 `;
 
