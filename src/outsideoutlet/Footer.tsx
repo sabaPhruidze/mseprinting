@@ -56,25 +56,25 @@ export default function Footer() {
     const screenWidth = window.innerWidth;
     let filteredData = data;
 
-    if (screenWidth < 650) {
+    if (screenWidth < 700) {
       filteredData = data.filter((item) => item === "Printing & Copying");
-    } else if (screenWidth < 900) {
+    } else if (screenWidth < 1000) {
       filteredData = data.filter((item) =>
-        ["Printing & Copying", "Labels & Packaging"].includes(item)
+        ["Printing & Copying", "Direct Mail & Mailing Services"].includes(item)
       );
-    } else if (screenWidth < 1150) {
+    } else if (screenWidth < 1350) {
       filteredData = data.filter((item) =>
         [
           "Printing & Copying",
-          "Labels & Packaging",
-          "Tradeshows & Events",
+          "Direct Mail & Mailing Services",
+          "Signs",
         ].includes(item)
       );
-    } else if (screenWidth < 1450) {
+    } else if (screenWidth < 1700) {
       filteredData = data.filter((item) =>
         [
           "Printing & Copying",
-          "Labels & Packaging",
+          "Direct Mail & Mailing Services",
           "Tradeshows & Events",
           "Industry Specific",
         ].includes(item)
@@ -83,7 +83,7 @@ export default function Footer() {
       filteredData = data.filter((item) =>
         [
           "Printing & Copying",
-          "Labels & Packaging",
+          "Direct Mail & Mailing Services",
           "Tradeshows & Events",
           "Industry Specific",
           "Signs",
@@ -93,7 +93,7 @@ export default function Footer() {
       filteredData = data.filter((item) =>
         [
           "Printing & Copying",
-          "Labels & Packaging",
+          "Direct Mail & Mailing Services",
           "Tradeshows & Events",
           "Industry Specific",
           "Signs",
@@ -104,12 +104,12 @@ export default function Footer() {
       filteredData = data.filter((item) =>
         [
           "Printing & Copying",
+          "Direct Mail & Mailing Services",
           "Labels & Packaging",
           "Tradeshows & Events",
           "Industry Specific",
           "Signs",
           "Tradeshows & Events",
-          "Direct Mail & Mailing Services",
         ].includes(item)
       );
     }
@@ -190,12 +190,15 @@ export default function Footer() {
             </ProductsAboutUsCont>
           ))}
         </ProductsAboutUsBox>
-        <HorzontalLine />
+        {/* <HorzontalLine /> */}
       </ProductsAboutContainer>
       <TermsConditionsBox>
-        <Address>
-          © MSE Inc., 25 Fairmount Ave, East Providence, RI 02914, USA -
-          Registered in the United States of America.
+        <Address
+          href="https://www.google.com/maps/place/Highlight+Printing/@-37.7148319,144.8896027,18.5z/data=!4m6!3m5!1s0x6ad65bea297b0ba7:0xa72aaac9642bf35d!8m2!3d-37.714703!4d144.889527!16s%2Fg%2F1vppsnqj?entry=ttu"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          3839 Washington Ave N Ste 101, Minneapolis, MN 55412
         </Address>
         <TermsConditionsLinks>
           {BlogAndPoliciesData.map((data) => (
