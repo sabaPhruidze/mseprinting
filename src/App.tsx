@@ -17,6 +17,9 @@ import RequestQuote from "./category/RequestQuote";
 import SendFile from "./category/SendFile";
 
 //sub Categorry
+import CommercialDigitalPrinting from "./sub-category/CommercialDigitalPrinting";
+import CommercialOffsetPrinting from "./sub-category/CommercialOffsetPrinting";
+
 import Accessibility from "./sub-category/Accessibility";
 import TermsAndConditions from "./sub-category/TermsAndConditions";
 import EnvironmentalMessage from "./sub-category/EnvironmentalMessage";
@@ -38,6 +41,15 @@ function App() {
         <Route path="/request-quote" element={<RequestQuote />} />
         <Route path="/send-file" element={<SendFile />} />
         {/* sub-category */}
+        <Route
+          path="/commercial-digital-printing"
+          element={<CommercialDigitalPrinting />}
+        />
+        <Route
+          path="/commercial-offset-printing"
+          element={<CommercialOffsetPrinting />}
+        />
+
         <Route path="/accessibility" element={<Accessibility />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/privacy-policy" element={<PrivacyAndPolicy />} />

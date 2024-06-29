@@ -26,27 +26,38 @@ export default function Root() {
   const { state, dispatching } = UseReducerComponent();
   const { showProductsServicesWindow } = state;
   const [loading, setLoading] = useState(true);
+  const [dots, setDots] = useState(1);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        await fetchHeaderMainLogo(), fetchHeaderMenuData(), fetchCarouselData(); // Fetch data
+        await fetchHeaderMainLogo();
+        await fetchHeaderMenuData();
+        await fetchCarouselData();
       } catch (error) {
         console.error("Error fetching header menu data: ", error);
       } finally {
-        setLoading(false); // Set loading to false once data is fetched
+        setLoading(false);
       }
     };
 
     fetchData();
   }, []);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDots((prev) => (prev % 3) + 1);
+    }, 500);
+
+    return () => clearInterval(interval);
+  }, []);
+
   if (loading) {
     return (
       <RootLoading>
-        <div>Loading...</div>
+        <div>Loading{".".repeat(dots)}</div>
       </RootLoading>
-    ); // Show a loading indicator
+    );
   }
 
   return (
