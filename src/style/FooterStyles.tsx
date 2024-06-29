@@ -4,7 +4,7 @@ import { WWDCTitle } from "./HomeStyles";
 
 export const FooterContainer = styled(ColumnFlex)`
   width: 100%;
-  height: 640px;
+  height: 580px;
   background-color: ${(props) => props.theme.White};
 `;
 
@@ -46,7 +46,7 @@ export const Quote = styled(WWDCTitle)`
 
 export const ProductsAboutContainer = styled(ColumnFlex)`
   width: 100%;
-  height: 512px;
+  height: 480px;
 `;
 
 export const ProductsAboutUsBox = styled(RowFlex)`
@@ -59,7 +59,7 @@ export const ProductsAboutUsBox = styled(RowFlex)`
 `;
 
 export const ProductsAboutUsCont = styled(RowFlex)`
-  width: 320px;
+  width: 350px;
   height: 510px;
   justify-content: center; /* Center the container horizontally */
   align-items: flex-start; /* Ensure the container content aligns properly */
@@ -73,7 +73,7 @@ export const ProductsAboutUsCont = styled(RowFlex)`
 
 export const ProductsAboutUsColumn = styled(ColumnFlex)`
   height: 100%;
-  width: 300px;
+  width: 330px;
   justify-content: flex-start; /* Align column content to the start */
   align-items: center; /* Ensure column content is centered horizontally */
   text-align: center; /* Ensure text content is centered horizontally */
@@ -122,7 +122,7 @@ export const HorzontalLine = styled.div`
 
 export const TermsConditionsBox = styled(RowFlex)`
   width: 100%;
-  height: 80px;
+  height: 50px;
   padding: 0 80px;
   background-color: ${(props) => props.theme.Black};
   @media (max-width: 1300px) {
@@ -138,7 +138,7 @@ export const TermsConditionsBox = styled(RowFlex)`
   }
 `;
 
-export const Address = styled.p`
+export const Address = styled.a`
   font-size: 14px;
   color: ${(props) => props.theme.White};
   width: 500px;
