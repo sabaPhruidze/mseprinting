@@ -9,9 +9,15 @@ import HeaderTrue from "./outsideoutlet/HeaderTrue";
 import { Outlet } from "react-router-dom";
 import Footer from "./outsideoutlet/Footer";
 import { InitialState } from "./importantparts/UseReducerComponent";
-import { fetchHeaderMenuData, fetchHeaderMainLogo } from "./data/HeaderData"; // Adjust the path as needed
+
+import { fetchHeaderMenuData, fetchHeaderMainLogo } from "./data/HeaderData";
 import { fetchCarouselData } from "./data/CarouselData";
-import ProductsServicesContainer from "./importantparts/ProductsServicesContainer"; // Import your ProductsServicesContainer
+import { fetchWWDCCardData } from "./data/CardData";
+import { fetchDoubleCardsDarkData } from "./data/DoubleCardsData";
+import { fetchHomeServicesBannerData } from "./data/HomeServicesData";
+import { fetchHomeServicesData } from "./data/ProductsServicesContainerData";
+
+import ProductsServicesContainer from "./importantparts/ProductsServicesContainer";
 
 interface RootContextProps {
   state: InitialState;
@@ -34,6 +40,10 @@ export default function Root() {
         await fetchHeaderMainLogo();
         await fetchHeaderMenuData();
         await fetchCarouselData();
+        await fetchWWDCCardData();
+        await fetchDoubleCardsDarkData();
+        await fetchHomeServicesBannerData();
+        await fetchHomeServicesData();
       } catch (error) {
         console.error("Error fetching header menu data: ", error);
       } finally {
