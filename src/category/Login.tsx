@@ -1,28 +1,14 @@
+// Login.tsx
 import { useContext } from "react";
 import { rootContext } from "../Root";
 import { auth, db } from "../config/Firebase";
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
-import { doc, setDoc, getDoc } from "firebase/firestore";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import {
-  RegisterContainer,
-  RegisterForm,
-  LoginButton,
-  LoginContainer,
-  LoginForm,
-} from "../style/LoginStyles";
-import {
-  UseFormFirstPart,
-  UseFormLogin,
-  UseFormSecondPart,
-} from "../data/LoginData";
+import { LoginButton, LoginContainer, LoginForm } from "../style/LoginStyles";
+import { UseFormLogin } from "../data/LoginData";
 import LoginInputs from "../importantparts/LoginInputs";
-import LoginRadio from "../importantparts/LoginRadio";
-import RegisterInputs from "../importantparts/RegisterInputs";
 
 function Login() {
   const loginContext = useContext(rootContext);
@@ -31,63 +17,14 @@ function Login() {
     throw new Error("rootContext must be used within a Root provider");
   }
 
-  const { state, dispatching } = loginContext;
+  const { dispatching } = loginContext;
   const navigate = useNavigate();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<(UseFormFirstPart & UseFormSecondPart) | UseFormLogin>();
-
-  const onSubmitRegister = async (
-    data: UseFormFirstPart & UseFormSecondPart
-  ) => {
-    const {
-      email,
-      emailVerification,
-      password,
-      passwordVerification,
-      firstname,
-      lastname,
-      jobTitle,
-      company,
-    } = data;
-
-    if (email === emailVerification && password === passwordVerification) {
-      try {
-        const userCredential = await createUserWithEmailAndPassword(
-          auth,
-          email,
-          password
-        );
-        const user = userCredential.user;
-
-        // Save additional user info in Firestore
-        await setDoc(doc(db, "users", user.uid), {
-          firstname,
-          lastname,
-          email,
-          jobTitle,
-          company,
-          createdAt: new Date(),
-        });
-
-        dispatching("SET_USER", {
-          firstname,
-          lastname,
-          email,
-          uid: user.uid,
-        });
-
-        navigate("/");
-      } catch (error) {
-        console.error("Error registering user:", error);
-      }
-    } else {
-      console.error("Email or password verification does not match");
-    }
-  };
+  } = useForm<UseFormLogin>();
 
   const onSubmitLogin = async (data: UseFormLogin) => {
     const { email, password } = data;
@@ -120,25 +57,12 @@ function Login() {
   };
 
   return (
-    <>
-      {state.radioForRegLog ? (
-        <RegisterContainer>
-          <RegisterForm onSubmit={handleSubmit(onSubmitRegister as any)}>
-            <LoginRadio />
-            <RegisterInputs register={register} errors={errors} />
-            <LoginButton type="submit">Register</LoginButton>
-          </RegisterForm>
-        </RegisterContainer>
-      ) : (
-        <LoginContainer>
-          <LoginForm onSubmit={handleSubmit(onSubmitLogin as any)}>
-            <LoginRadio />
-            <LoginInputs register={register} errors={errors} />
-            <LoginButton type="submit">Login</LoginButton>
-          </LoginForm>
-        </LoginContainer>
-      )}
-    </>
+    <LoginContainer>
+      <LoginForm onSubmit={handleSubmit(onSubmitLogin as any)}>
+        <LoginInputs register={register} errors={errors} />
+        <LoginButton type="submit">Login</LoginButton>
+      </LoginForm>
+    </LoginContainer>
   );
 }
 
