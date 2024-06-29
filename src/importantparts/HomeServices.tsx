@@ -7,7 +7,7 @@ import {
   HomeServicesButton,
 } from "../style/HomeStyles";
 
-import { fetchHomeServicesData } from "../data/HomeServicesData";
+import { fetchHomeServicesBannerData } from "../data/HomeServicesData";
 import { HomeServicesType } from "../types/DataTypes";
 
 export default function HomeServices() {
@@ -20,7 +20,7 @@ export default function HomeServices() {
 
   useEffect(() => {
     const getHomeServicesData = async () => {
-      const data = await fetchHomeServicesData();
+      const data = await fetchHomeServicesBannerData();
 
       if (data.image && data.image.length > 0) {
         setHomeServicesData(data);
