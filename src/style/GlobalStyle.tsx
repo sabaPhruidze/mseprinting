@@ -54,7 +54,7 @@ export const GlobalBoxColumnStart = styled(ColumnFlex)`
 
 export const Globalh2Title = styled.h2`
   margin-bottom: 20px;
-  font-size: 30px;
+  font-size: 24px;
 `;
 
 export const Globalh3Title = styled.h3`

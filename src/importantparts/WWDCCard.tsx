@@ -32,7 +32,7 @@ function WWDCCard() {
               <CardContainer.Img
                 variant="top"
                 src={card.image}
-                style={{ height: 180, objectFit: "cover" }}
+                style={{ height: 200, objectFit: "cover" }}
               />
               <CardContainer.Body>
                 <CardContainer.Title>{card.title}</CardContainer.Title>
