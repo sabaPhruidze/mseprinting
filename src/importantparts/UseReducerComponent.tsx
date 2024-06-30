@@ -1,5 +1,11 @@
 import { useReducer } from "react";
 
+interface SearchResult {
+  id: number;
+  title: string;
+  link: string;
+}
+
 export interface InitialState {
   radioForRegLog: boolean;
   user: null | {
@@ -12,6 +18,9 @@ export interface InitialState {
     showProductFromMenu: boolean;
     showProductFromBox: boolean;
   };
+  SearchQuery: string;
+  SearchResults: SearchResult[];
+  SearchDone: boolean;
 }
 
 const initialState: InitialState = {
@@ -21,6 +30,9 @@ const initialState: InitialState = {
     showProductFromMenu: false,
     showProductFromBox: false,
   },
+  SearchQuery: "",
+  SearchResults: [],
+  SearchDone: false,
 };
 
 type ActionType = {
@@ -45,6 +57,15 @@ const reducer = (state: typeof initialState, action: ActionType) => {
       break;
     case "SHOW_PRODUCT_SERVICES_WINDOW_FROM_BOX":
       newState.showProductsServicesWindow.showProductFromBox = action.payload;
+      break;
+    case "SEARCH_QUERY_CHANGE":
+      newState.SearchQuery = action.payload;
+      break;
+    case "SEARCH_RESULTS":
+      newState.SearchResults = action.payload;
+      break;
+    case "SEARCH_DONE":
+      newState.SearchDone = action.payload;
       break;
     default:
       throw new Error("Unknown action type");

@@ -16,7 +16,6 @@ import {
   TermsConditionsLinks,
   Address,
   TermsConditionsLink,
-  HorzontalLine,
   ProductsAboutContainer,
 } from "../style/FooterStyles";
 
