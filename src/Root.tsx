@@ -17,7 +17,9 @@ import { fetchDoubleCardsDarkData } from "./data/DoubleCardsData";
 import { fetchHomeServicesBannerData } from "./data/HomeServicesData";
 import { fetchHomeServicesData } from "./data/ProductsServicesContainerData";
 
+// important components
 import ProductsServicesContainer from "./importantparts/ProductsServicesContainer";
+import SearchEngineResultList from "./importantparts/SearchEngineResultList";
 
 interface RootContextProps {
   state: InitialState;
@@ -30,7 +32,7 @@ export const rootContext = createContext<RootContextProps | undefined>(
 
 export default function Root() {
   const { state, dispatching } = UseReducerComponent();
-  const { showProductsServicesWindow } = state;
+  const { showProductsServicesWindow, SearchDone, SearchResults } = state;
   const [loading, setLoading] = useState(true);
   const [dots, setDots] = useState(1);
 
@@ -79,6 +81,14 @@ export default function Root() {
           {showProductsServicesWindow.showProductFromBox ||
           showProductsServicesWindow.showProductFromMenu ? (
             <ProductsServicesContainer />
+          ) : (
+            ""
+          )}
+          {SearchDone ? (
+            <SearchEngineResultList
+              results={SearchResults}
+              dispatching={dispatching}
+            />
           ) : (
             ""
           )}

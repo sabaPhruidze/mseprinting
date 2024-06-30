@@ -1,4 +1,3 @@
-// Imports
 import styled from "styled-components";
 import { RowFlex, ColumnFlex } from "./GlobalStyle";
 
@@ -112,21 +111,33 @@ export const SearchEngineIcon = styled.img`
   height: 20px;
 `;
 
-export const ResultsList = styled.div`
+interface ResultsListProps {
+  resultsCount: number;
+}
+
+export const ResultsList = styled.div<ResultsListProps>`
   display: flex;
   flex-direction: column;
+  position: absolute;
+  top: 33px;
+  right: 40px;
+  z-index: 1000;
   margin-top: 5px;
-  width: 100%;
+  width: 405px;
   background-color: ${(props) => props.theme.White};
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  height: 40px;
+  height: ${(props) =>
+    props.resultsCount >= 3
+      ? "120px"
+      : props.resultsCount === 2
+      ? "80px"
+      : "40px"};
 `;
 
 export const ResultItem = styled.div`
   padding: 10px;
   border-bottom: 1px solid ${(props) => props.theme.LightGray};
-
   &:last-child {
     border-bottom: none;
   }
@@ -141,6 +152,7 @@ export const ResultTitle = styled.h3`
   margin: 0;
   color: ${(props) => props.theme.DarkBlue};
   font-size: 16px;
+  cursor: pointer;
 `;
 
 // Header Menu
