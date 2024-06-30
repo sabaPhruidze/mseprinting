@@ -21,7 +21,7 @@ function Register() {
     throw new Error("rootContext must be used within a Root provider");
   }
 
-  const { state, dispatching } = registerContext;
+  const { dispatching } = registerContext;
   const navigate = useNavigate();
 
   const {
