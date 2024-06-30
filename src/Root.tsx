@@ -57,7 +57,7 @@ export default function Root() {
   useEffect(() => {
     const interval = setInterval(() => {
       setDots((prev) => (prev % 3) + 1);
-    }, 500);
+    }, 800);
 
     return () => clearInterval(interval);
   }, []);

@@ -20,25 +20,24 @@ export const RegisterContainer = styled(ColumnFlex)`
   height: 800px;
   justify-content: center;
   align-items: center;
-  border-top: 3px solid ${(props) => props.theme.MediumBlue};
   @media (max-width: 900px) {
-    height: 1150px;
+    height: 1200px;
   }
 `;
 
 export const RegisterForm = styled.form`
-  width: 100%;
+  width: calc(100% - 40px);
   max-width: 700px;
   padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 3px solid ${(props) => props.theme.MediumBlue};
+  border: 3px solid ${(props) => props.theme.Black};
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
   border-radius: 10px; /* Rounded corners */
   @media (max-width: 900px) {
-    padding: 5px 10px;
+    padding: 50px 0px;
   }
 `;
 
@@ -68,8 +67,8 @@ export const RegisterInput = styled.input`
   width: 300px;
   height: 50px;
   font-size: 18px;
-  color: ${(props) => props.theme.DarkBlue};
-  border: 1px solid ${(props) => props.theme.MediumBlue};
+  color: ${(props) => props.theme.Black};
+  border: 1px solid ${(props) => props.theme.Black};
   border-radius: 10px;
   padding-left: 10px;
   margin-bottom: 20px;
@@ -77,16 +76,16 @@ export const RegisterInput = styled.input`
 
   &:hover {
     outline: 0;
-    border: 2px solid ${(props) => props.theme.MediumBlue};
+    border: 2px solid ${(props) => props.theme.Black};
   }
   &:focus {
     outline: 0;
-    border: 2px solid ${(props) => props.theme.MediumBlue};
+    border: 2px solid ${(props) => props.theme.Black};
   }
 `;
 
 export const ErrorMessage = styled.div`
-  width: 100%;
+  width: 300px;
   color: red;
   font-size: 12px;
   margin-top: -15px;
@@ -98,17 +97,20 @@ export const LoginButton = styled(GlobalButton)`
   max-width: 300px;
   height: 50px;
   font-size: 18px;
-  background: ${(props) => props.theme.DarkBlue};
-  color: #fff;
+  background: ${(props) => props.theme.Black};
+  color: ${(props) => props.theme.White};
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, color 0.3s;
 
   &:hover {
-    background: ${(props) => props.theme.LightBlue};
+    background: ${(props) => props.theme.White};
+    color: ${(props) => props.theme.Black};
+    border: 1px solid ${(props) => props.theme.Black};
   }
 `;
+
 //login
 
 export const LoginContainer = styled(RegisterContainer)`
