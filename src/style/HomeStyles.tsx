@@ -17,12 +17,12 @@ export const HomeLoading = styled(ColumnFlex)`
 export const CarouselContainer = styled.div`
   position: relative;
   width: 100%;
-  height: 300px;
+  height: 400px;
   @media (max-width: 630px) {
-    height: 400px;
+    height: 500px;
   }
   @media (max-width: 540px) {
-    height: 500px;
+    height: 600px;
   }
 `;
 
@@ -32,7 +32,7 @@ export const CarouselOverlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.2);
 `;
 
 export const CarouselControl = styled.button`
@@ -73,8 +73,8 @@ export const CarouselImg = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: 50% 20%; /* Adjust the second value as needed */
 `;
-
 export const CarouselIcon = styled.span`
   width: 20px;
   height: 20px;
