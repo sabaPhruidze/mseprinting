@@ -1,10 +1,4 @@
-import React, {
-  useContext,
-  useState,
-  useEffect,
-  useCallback,
-  useMemo,
-} from "react";
+import { useContext, useState, useEffect, useCallback, useMemo } from "react";
 import { rootContext } from "../Root";
 import { HomeServicesFullType } from "../types/DataTypes";
 import { fetchHomeServicesData } from "../data/ProductsServicesContainerData";
