@@ -4,7 +4,7 @@ export const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   margin: 50px 0;
-  background-color: ${(props) => props.theme.lightGray};
+  background-color: ${(props) => props.theme.MediumGray};
   padding: 20px 0;
 `;
 

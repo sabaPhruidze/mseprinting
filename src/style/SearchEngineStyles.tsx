@@ -71,20 +71,22 @@ export const ResultsList = styled.div<ResultsListProps>`
 
 export const ResultItem = styled.div`
   padding: 10px;
-  border-bottom: 1px solid ${(props) => props.theme.LightGray};
+  border-bottom: 1px solid ${(props) => props.theme.MediumGray};
+  color: ${(props) => props.theme.Black};
   &:last-child {
     border-bottom: none;
   }
 
   &:hover {
-    background-color: ${(props) => props.theme.LightBlue};
+    background-color: ${(props) => props.theme.Purple};
     border-radius: 10px;
+    color: ${(props) => props.theme.White};
   }
 `;
 
 export const ResultTitle = styled.h3`
   margin: 0;
-  color: ${(props) => props.theme.DarkBlue};
+
   font-size: 16px;
   cursor: pointer;
 `;

@@ -14,7 +14,7 @@ export const HeaderTopBox = styled(RowFlex)`
   height: 45px;
   justify-content: flex-end;
   padding-right: 20px;
-  background-color: ${(props) => props.theme.lightGray};
+  background-color: ${(props) => props.theme.MediumGray};
 `;
 
 export const HeaderAccSignDiv = styled(RowFlex)`
