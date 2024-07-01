@@ -336,7 +336,6 @@ export const RequsetQuoteBGHalf = styled.img`
   z-index: 2;
   opacity: 0.9;
   border-radius: 25px;
-  border-top: 3px solid ${(props) => props.theme.MediumBlue};
 `;
 
 export const RequestQuoteTitle = styled(WWDCTitle)`

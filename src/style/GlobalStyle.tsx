@@ -30,8 +30,8 @@ export const GlobalButton = styled.button`
   transition: 0.3s ease;
   border-radius: 20px;
   &:hover {
-    background-color: #102948; /* DarkBlue */
-    color: #1d6a8c; /* MediumBlue */
+    background-color: #102948;
+    color: #1d6a8c;
   }
   &:focus {
     transform: scale(0.9);

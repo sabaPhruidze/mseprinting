@@ -82,7 +82,7 @@ export const RightSideContainer = styled.div`
 `;
 
 export const RightSideText = styled.div`
-  background-color: ${(props) => props.theme.LightGray};
+  background-color: ${(props) => props.theme.White};
   border: 1px solid ${(props) => props.theme.Black};
   border-radius: 5px;
   padding: 5px 10px; // Padding: top/bottom 5px, left/right 10px
