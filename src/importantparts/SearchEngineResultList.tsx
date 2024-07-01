@@ -1,6 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { ResultsList, ResultItem, ResultTitle } from "../style/HeaderStyles";
+import {
+  ResultsList,
+  ResultItem,
+  ResultTitle,
+} from "../style/SearchEngineStyles";
 
 interface SearchResult {
   id: number;

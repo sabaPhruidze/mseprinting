@@ -6,7 +6,7 @@ import {
   SearchEngineInput,
   SearchEngineButton,
   SearchEngineIcon,
-} from "../style/HeaderStyles";
+} from "../style/SearchEngineStyles";
 
 import SEARCHICON from "../assets/icon/header/SEARCH.svg";
 
