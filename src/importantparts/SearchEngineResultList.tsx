@@ -24,7 +24,7 @@ const SearchEngineResultList: React.FC<SearchResultsProps> = ({
   const navigate = useNavigate();
 
   return (
-    <ResultsList resultsCount={results.length}>
+    <ResultsList resultscount={results.length}>
       {results.map((result) => (
         <ResultItem
           key={result.id}

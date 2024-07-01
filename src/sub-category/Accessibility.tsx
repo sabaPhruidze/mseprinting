@@ -1,24 +1,20 @@
 import { useState, useEffect } from "react";
 import { fetchAccessibilityData } from "../data/sub-category data/AccessibilityData";
-
 import {
   AccessibilityDocument,
   StartContent,
   EndContent,
   ContentPart,
 } from "../types/DataTypes";
-
 import {
-  AccesibilityContainer,
-  AccesibilityBox,
-  AccesibilityMail,
-  AccesibilityPartBox,
-  AccesibilityContent,
-  AccesibilityStarth2Title,
-  AccesibilityStarth3Title,
-  AccesibilityPart,
-  AccesibilityInsideBox,
-} from "../style/sub-category styles/AccessibilityStyles";
+  GlobalContainerColumn,
+  GlobalBoxColumnStart,
+  Globalh2Title,
+  Globalh3Title,
+  GlobalPartBox,
+  GlobalPart,
+  GlobalSpecialPart,
+} from "../style/GlobalStyle";
 
 export default function Accessibility() {
   const [accessibilityData, setAccessibilityData] =
@@ -37,64 +33,54 @@ export default function Accessibility() {
   }, []);
 
   return (
-    <AccesibilityContainer>
+    <GlobalContainerColumn>
       {accessibilityData?.start.map((data: StartContent) => (
-        <AccesibilityBox key={data.title}>
-          <AccesibilityStarth2Title>{data.title}</AccesibilityStarth2Title>
-          <AccesibilityContent>{data.content}</AccesibilityContent>
-        </AccesibilityBox>
+        <GlobalBoxColumnStart key={data.title}>
+          <Globalh2Title>{data.title}</Globalh2Title>
+          <GlobalPart>{data.content}</GlobalPart>
+        </GlobalBoxColumnStart>
       ))}
-      <AccesibilityBox>
-        <AccesibilityStarth2Title>
-          {accessibilityData?.help.title}
-        </AccesibilityStarth2Title>
-        <AccesibilityPartBox>
+      <GlobalBoxColumnStart>
+        <Globalh2Title>{accessibilityData?.help.title}</Globalh2Title>
+        <GlobalPartBox>
           {accessibilityData?.help.firstPart}
-          <AccesibilityMail> {accessibilityData?.help.mail} </AccesibilityMail>
+          <GlobalSpecialPart>{accessibilityData?.help.mail}</GlobalSpecialPart>
           {accessibilityData?.help.secondPart}
-        </AccesibilityPartBox>
-      </AccesibilityBox>
-      <AccesibilityBox>
-        <AccesibilityStarth2Title>
+        </GlobalPartBox>
+      </GlobalBoxColumnStart>
+      <GlobalBoxColumnStart style={{ margin: 0 }}>
+        <Globalh2Title>
           {accessibilityData?.accessibility.mainTitle}
-        </AccesibilityStarth2Title>
-        <AccesibilityContent>
-          {accessibilityData?.accessibility.firstPart}
-        </AccesibilityContent>
+        </Globalh2Title>
+        <GlobalPart>{accessibilityData?.accessibility.firstPart}</GlobalPart>
         {accessibilityData?.accessibility.middlePart.map(
           (data: ContentPart) => (
-            <AccesibilityInsideBox key={data.title}>
-              <AccesibilityStarth3Title>{data.title}</AccesibilityStarth3Title>
-              <AccesibilityPart>{data.content}</AccesibilityPart>
-            </AccesibilityInsideBox>
+            <GlobalBoxColumnStart key={data.title}>
+              <Globalh3Title>{data.title}</Globalh3Title>
+              <GlobalPart>{data.content}</GlobalPart>
+            </GlobalBoxColumnStart>
           )
         )}
-      </AccesibilityBox>
-      <AccesibilityBox>
-        {accessibilityData?.end.map((data: EndContent) => (
-          <AccesibilityInsideBox key={data.title}>
-            {data.content.firstPart?.length > 0 ? (
-              <>
-                <AccesibilityStarth2Title>
-                  {data.title}
-                </AccesibilityStarth2Title>
-                <AccesibilityPartBox>
-                  {data.content.firstPart}
-                  <AccesibilityMail> {data.content.mail} </AccesibilityMail>
-                  {data.content.secondPart}
-                </AccesibilityPartBox>
-              </>
-            ) : (
-              <AccesibilityBox>
-                <AccesibilityStarth2Title>
-                  {data.title}
-                </AccesibilityStarth2Title>
-                <AccesibilityContent>{data.content}</AccesibilityContent>
-              </AccesibilityBox>
-            )}
-          </AccesibilityInsideBox>
-        ))}
-      </AccesibilityBox>
-    </AccesibilityContainer>
+      </GlobalBoxColumnStart>
+      {accessibilityData?.end.map((data: EndContent) => (
+        <GlobalBoxColumnStart key={data.title}>
+          {data.content.firstPart?.length > 0 ? (
+            <>
+              <Globalh2Title>{data.title}</Globalh2Title>
+              <GlobalPartBox>
+                {data.content.firstPart}
+                <GlobalSpecialPart> {data.content.mail} </GlobalSpecialPart>
+                {data.content.secondPart}
+              </GlobalPartBox>
+            </>
+          ) : (
+            <>
+              <Globalh2Title>{data.title}</Globalh2Title>
+              <GlobalPart>{data.content}</GlobalPart>
+            </>
+          )}
+        </GlobalBoxColumnStart>
+      ))}
+    </GlobalContainerColumn>
   );
 }
