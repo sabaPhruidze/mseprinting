@@ -46,7 +46,7 @@ export const SearchEngineIcon = styled.img`
 `;
 
 interface ResultsListProps {
-  resultsCount: number;
+  resultscount: number;
 }
 
 export const ResultsList = styled.div<ResultsListProps>`
@@ -62,9 +62,9 @@ export const ResultsList = styled.div<ResultsListProps>`
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   height: ${(props) =>
-    props.resultsCount >= 3
+    props.resultscount >= 3
       ? "120px"
-      : props.resultsCount === 2
+      : props.resultscount === 2
       ? "80px"
       : "40px"};
 `;
