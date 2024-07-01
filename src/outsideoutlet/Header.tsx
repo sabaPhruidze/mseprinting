@@ -1,67 +1,81 @@
 import {
-  useContext,
-  useMemo,
-  useEffect,
-  useState,
   useCallback,
+  useState,
+  useEffect,
+  useMemo,
+  useContext,
   useRef,
 } from "react";
-import { useNavigate } from "react-router-dom";
 import { rootContext } from "../Root";
-import SearchEngine from "../importantparts/SearchEngine";
-import { fetchHeaderMenuData, fetchHeaderMainLogo } from "../data/HeaderData";
-import { HMenuType, LogoType } from "../types/DataTypes";
+import { useNavigate } from "react-router-dom";
 import {
   HeaderContainer,
-  HeaderMainContainer,
-  HeaderMainSpan,
-  HeaderButton,
+  HeaderMenuBox,
+  HeaderRSBox,
+  HeaderTopBox,
+  HeaderAccSignButton,
+  HeaderAccSignDiv,
   HeaderOneSimbyol,
-  HeaderMenuContainer,
-  HeaderMenuButton,
+  HeaderAccSignSearchDiv,
   HeaderMainLogo,
-  HeaderMenuText,
+  HeaderMenuCountDiv,
+  HeaderMenuCountDivButton,
+  HeaderTagline,
+  HeaderMenuCountDivText,
+  HeaderRSButton,
 } from "../style/HeaderStyles";
+import SearchEngine from "../importantparts/SearchEngine";
+import MAIN_LOGO from "../assets/icon/header/MSEPRINTING.png";
+import { fetchHeaderMenuData } from "../data/HeaderData";
+import { HMenuType } from "../types/DataTypes";
 
 export default function Header() {
+  const navigate = useNavigate();
   const context = useContext(rootContext);
   if (!context) {
     throw new Error("rootContext must be used within a Root provider");
   }
   const { state, dispatching } = context;
-  const { showProductsServicesWindow } = state;
-  const navigate = useNavigate();
-
-  const [menuData, setMenuData] = useState<HMenuType[]>([]);
-  const [logoLink, setLogoLink] = useState<LogoType>({ logo: null });
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
+  const handleMenuNavigation = useCallback(
+    (data: HMenuType) => {
+      if (data.page !== "Products & Services") {
+        navigate(data.path);
+      }
+    },
+    [navigate]
+  );
+
+  const [menuData, setMenuData] = useState<HMenuType[]>([]);
+
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const [menuData, logoData] = await Promise.all([
-          fetchHeaderMenuData(),
-          fetchHeaderMainLogo(),
-        ]);
-        setMenuData(menuData);
-        setLogoLink(logoData);
-      } catch (error) {
-        console.error("Error fetching data:", error);
+    const getMenuData = async () => {
+      const data = await fetchHeaderMenuData();
+      if (data && data.length > 0 && data[0].page) {
+        setMenuData(data);
+      } else if (data && data.length > 0 && (data[0] as any).Data) {
+        setMenuData((data[0] as any).Data);
       }
     };
-    fetchData();
+
+    getMenuData();
   }, []);
-
-  const handleNavigationHome = () => navigate("/");
-
   const handleNavigationLogin = () => {
     if (!state.user) navigate("/login");
   };
-
-  const handleMenuNavigation = (data: HMenuType) => {
-    if (data.page !== "Products & Services") navigate(data.path);
+  const handleNavigationRegister = () => {
+    if (!state.user) navigate("/register");
   };
-
+  const handleNavigationHome = () => {
+    navigate("/");
+  };
+  const handleNavigationRequest = () => {
+    navigate("/request-quote");
+  };
+  const handleNavigationSend = () => {
+    navigate("/send-file");
+  };
   const handleMouseEnter = useCallback(() => {
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
@@ -75,63 +89,62 @@ export default function Header() {
       dispatching("SHOW_PRODUCT_SERVICES_WINDOW_FROM_MENU", false);
     }, 150);
   }, [dispatching]);
-
-  const menuItems = useMemo(
+  const renderMenuItems = useCallback(
     () =>
       menuData.map((data) => (
-        <HeaderMenuButton
+        <HeaderMenuCountDivButton
           key={data.page}
           onMouseEnter={
             data.page === "Products & Services" ? handleMouseEnter : undefined
           }
           onMouseLeave={handleMouseLeave}
         >
-          <HeaderMenuText
-            onClick={() => handleMenuNavigation(data)}
-            active={
-              showProductsServicesWindow.showProductFromBox &&
-              data.page === "Products & Services"
-            }
-          >
+          <HeaderMenuCountDivText onClick={() => handleMenuNavigation(data)}>
             {data.page}
-          </HeaderMenuText>
-        </HeaderMenuButton>
+          </HeaderMenuCountDivText>
+        </HeaderMenuCountDivButton>
       )),
-    [
-      menuData,
-      handleMouseEnter,
-      handleMouseLeave,
-      showProductsServicesWindow.showProductFromBox,
-    ]
+    [menuData, handleMenuNavigation]
   );
+
+  const menuItems = useMemo(() => renderMenuItems(), [renderMenuItems]);
 
   return (
     <HeaderContainer>
-      <HeaderMainContainer>
-        {logoLink.logo ? (
-          <HeaderMainLogo
-            src={logoLink.logo}
-            alt="MSE PRINTING"
-            onClick={handleNavigationHome}
-          />
-        ) : (
-          "Loading..."
-        )}
-        <HeaderMainSpan>
-          <HeaderButton>Account</HeaderButton>
-          <HeaderOneSimbyol>|</HeaderOneSimbyol>
-          <HeaderButton
-            style={{ marginRight: 10 }}
-            onClick={handleNavigationLogin}
-          >
-            {state.user
-              ? `${state.user.firstname} ${state.user.lastname}`
-              : "Sign in"}
-          </HeaderButton>
+      <HeaderTopBox>
+        <HeaderAccSignSearchDiv>
+          <HeaderAccSignDiv>
+            <HeaderAccSignButton onClick={handleNavigationLogin}>
+              {state.user
+                ? `${state.user.firstname} ${state.user.lastname}`
+                : "Sign in"}
+            </HeaderAccSignButton>
+            <HeaderOneSimbyol>{state.user ? "" : "or"}</HeaderOneSimbyol>
+            <HeaderAccSignButton onClick={handleNavigationRegister}>
+              {" "}
+              {state.user ? "" : "Sign up"}
+            </HeaderAccSignButton>
+          </HeaderAccSignDiv>
           <SearchEngine />
-        </HeaderMainSpan>
-      </HeaderMainContainer>
-      <HeaderMenuContainer>{menuItems}</HeaderMenuContainer>
+        </HeaderAccSignSearchDiv>
+      </HeaderTopBox>
+      <HeaderMenuBox>
+        <HeaderMainLogo
+          src={MAIN_LOGO}
+          alt="Main logo"
+          onClick={handleNavigationHome}
+        />
+        <HeaderTagline>PRINT ● SIGNS ● MARKETING</HeaderTagline>
+        <HeaderMenuCountDiv>{menuItems}</HeaderMenuCountDiv>
+      </HeaderMenuBox>
+      <HeaderRSBox>
+        <HeaderRSButton onClick={handleNavigationRequest}>
+          Request a Quote
+        </HeaderRSButton>
+        <HeaderRSButton onClick={handleNavigationSend}>
+          Send a File
+        </HeaderRSButton>
+      </HeaderRSBox>
     </HeaderContainer>
   );
 }
