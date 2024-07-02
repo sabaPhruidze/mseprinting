@@ -67,6 +67,12 @@ export const ResultsList = styled.div<ResultsListProps>`
       : props.resultscount === 2
       ? "80px"
       : "40px"};
+  @media (max-width: 768px) {
+    width: 275px;
+  }
+  @media (max-width: 510px) {
+    width: 205px;
+  }
 `;
 
 export const ResultItem = styled.div`
