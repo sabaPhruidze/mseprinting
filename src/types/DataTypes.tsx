@@ -184,3 +184,36 @@ export interface PrivacyAndPolicyNine {
   thirdPart: string;
   title: string;
 }
+// Terms and Conditions
+export interface TermsAndConditionsDocument {
+  one: TermsAndConditionsOne;
+  two: TermsAndConditionsTwo[];
+  three: TermsAndConditionsThree[];
+  four: TermsAndConditionsTwo[];
+  five: TermsAndConditionsFive;
+}
+export interface TermsAndConditionsOne {
+  firstPart: string;
+  secondPartOne: string;
+  secondPartSpecial: string;
+  secondPartTwo: string;
+  title: string;
+}
+export interface TermsAndConditionsTwo {
+  title: string;
+  content: string;
+}
+export interface TermsAndConditionsThree {
+  firstPartOne: string;
+  firstPartSpecial: string;
+  firstPartTwo: string;
+  title: string;
+}
+
+export interface TermsAndConditionsFive {
+  firstPartOne: string;
+  firstPartSpecial: string;
+  firstPartTwo: string;
+  secondPart: string;
+  title: string;
+}
