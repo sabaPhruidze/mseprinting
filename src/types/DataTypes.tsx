@@ -44,21 +44,6 @@ export interface HomeServicesType {
   text: string | null;
   title: string | null;
 }
-//Double Cards
-
-export interface DoubleCardsDarkType {
-  imageDark: string;
-  imageRQ: string | null;
-  link: string | null;
-  title: string | null;
-}
-
-export interface DoubleCardsLightType {
-  imageLight: string;
-  imageSF: string | null;
-  link: string | null;
-  title: string | null;
-}
 
 // products and services
 export interface HomeServicesFullType {
