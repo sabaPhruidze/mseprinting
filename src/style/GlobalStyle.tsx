@@ -76,4 +76,5 @@ export const GlobalPart = styled.p`
 
 export const GlobalSpecialPart = styled.span`
   color: ${(props) => props.theme.MediumBlue};
+  cursor: pointer;
 `;

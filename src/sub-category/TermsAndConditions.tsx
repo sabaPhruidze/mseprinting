@@ -2,10 +2,8 @@ import { useState, useEffect } from "react";
 import { fetchPrivacyAndPolicyData } from "../data/sub-category data/TermsAndConditionsData";
 import {
   TermsAndConditionsDocument,
-  TermsAndConditionsOne,
   TermsAndConditionsTwo,
   TermsAndConditionsThree,
-  TermsAndConditionsFive,
 } from "../types/DataTypes";
 import {
   GlobalContainerColumn,
@@ -16,6 +14,7 @@ import {
   GlobalPart,
   GlobalSpecialPart,
 } from "../style/GlobalStyle";
+import NavigateAndScroll from "../importantparts/NavigateAndScroll";
 
 export default function TermsAndConditions() {
   const [termsData, setTermsData] = useState<TermsAndConditionsDocument>();
@@ -41,8 +40,10 @@ export default function TermsAndConditions() {
             <GlobalPartBox>
               {termsData.one.firstPart}
               <GlobalSpecialPart>
-                {" "}
-                {termsData.one.secondPartSpecial}{" "}
+                <NavigateAndScroll path="/">
+                  {" "}
+                  {termsData.one.secondPartSpecial}{" "}
+                </NavigateAndScroll>
               </GlobalSpecialPart>
               {termsData.one.secondPartOne}
               {termsData.one.secondPartTwo}
@@ -61,7 +62,12 @@ export default function TermsAndConditions() {
               <Globalh3Title>{data.title}</Globalh3Title>
               <GlobalPartBox>
                 {data.firstPartOne}
-                <GlobalSpecialPart> {data.firstPartSpecial} </GlobalSpecialPart>
+                <GlobalSpecialPart>
+                  <NavigateAndScroll path="/">
+                    {" "}
+                    {data.firstPartSpecial}{" "}
+                  </NavigateAndScroll>
+                </GlobalSpecialPart>
                 {data.firstPartTwo}
               </GlobalPartBox>
             </GlobalBoxColumnStart>
@@ -79,8 +85,10 @@ export default function TermsAndConditions() {
             <GlobalPartBox>
               {termsData.five.firstPartOne}
               <GlobalSpecialPart>
-                {" "}
-                {termsData.five.firstPartSpecial}{" "}
+                <NavigateAndScroll path="/privacy-policy">
+                  {" "}
+                  {termsData.five.firstPartSpecial}{" "}
+                </NavigateAndScroll>
               </GlobalSpecialPart>
               {termsData.five.firstPartTwo}
               {termsData.five.secondPart}

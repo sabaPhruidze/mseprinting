@@ -28,6 +28,8 @@ import INSTAGRAM from "../assets/icon/footer/social/INSTAGRAM.svg";
 import XTWITTER from "../assets/icon/footer/social/XTWITTER.svg";
 import LINKEDIN from "../assets/icon/footer/social/LINKEDIN.svg";
 
+import NavigateAndScroll from "../importantparts/NavigateAndScroll"; // Adjust the import path as necessary
+
 export default function Footer() {
   const navigate = useNavigate();
   const [footerData, setFooterData] = useState<HomeServicesFullType | null>(
@@ -189,7 +191,6 @@ export default function Footer() {
             </ProductsAboutUsCont>
           ))}
         </ProductsAboutUsBox>
-        {/* <HorzontalLine /> */}
       </ProductsAboutContainer>
       <TermsConditionsBox>
         <Address
@@ -201,11 +202,10 @@ export default function Footer() {
         </Address>
         <TermsConditionsLinks>
           {BlogAndPoliciesData.map((data) => (
-            <TermsConditionsLink
-              key={data.name}
-              onClick={() => navigate(data.link)}
-            >
-              {data.name} {data.name !== "Environmental Message" ? "|" : ""}
+            <TermsConditionsLink key={data.name}>
+              <NavigateAndScroll path={data.link}>
+                {data.name} {data.name !== "Environmental Message" ? "|" : ""}
+              </NavigateAndScroll>
             </TermsConditionsLink>
           ))}
         </TermsConditionsLinks>
