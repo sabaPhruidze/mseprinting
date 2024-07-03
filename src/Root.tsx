@@ -13,7 +13,6 @@ import { InitialState } from "./importantparts/UseReducerComponent";
 import { fetchHeaderMenuData, fetchHeaderMainLogo } from "./data/HeaderData";
 import { fetchCarouselData } from "./data/CarouselData";
 import { fetchWWDCCardData } from "./data/CardData";
-import { fetchDoubleCardsDarkData } from "./data/DoubleCardsData";
 import { fetchHomeServicesBannerData } from "./data/HomeServicesData";
 import { fetchHomeServicesData } from "./data/ProductsServicesContainerData";
 
@@ -40,12 +39,7 @@ export default function Root() {
     const fetchData = async () => {
       try {
         await fetchHeaderMainLogo();
-        await fetchHeaderMenuData();
         await fetchCarouselData();
-        await fetchWWDCCardData();
-        await fetchDoubleCardsDarkData();
-        await fetchHomeServicesBannerData();
-        await fetchHomeServicesData();
       } catch (error) {
         console.error("Error fetching header menu data: ", error);
       } finally {
