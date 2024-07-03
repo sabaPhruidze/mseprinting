@@ -10,11 +10,9 @@ import { Outlet } from "react-router-dom";
 import Footer from "./outsideoutlet/Footer";
 import { InitialState } from "./importantparts/UseReducerComponent";
 
-import { fetchHeaderMenuData, fetchHeaderMainLogo } from "./data/HeaderData";
+import { fetchHeaderMainLogo } from "./data/HeaderData";
 import { fetchCarouselData } from "./data/CarouselData";
 import { fetchWWDCCardData } from "./data/CardData";
-import { fetchHomeServicesBannerData } from "./data/HomeServicesData";
-import { fetchHomeServicesData } from "./data/ProductsServicesContainerData";
 
 // important components
 import ProductsServicesContainer from "./importantparts/ProductsServicesContainer";
@@ -40,6 +38,7 @@ export default function Root() {
       try {
         await fetchHeaderMainLogo();
         await fetchCarouselData();
+        await fetchWWDCCardData();
       } catch (error) {
         console.error("Error fetching header menu data: ", error);
       } finally {
