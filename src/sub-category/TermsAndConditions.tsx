@@ -38,14 +38,14 @@ export default function TermsAndConditions() {
           <GlobalBoxColumnStart>
             <Globalh2Title>{termsData.one.title}</Globalh2Title>
             <GlobalPartBox>
-              {termsData.one.firstPart}
+              <GlobalPart>{termsData.one.firstPart} </GlobalPart>
+              {termsData.one.secondPartOne}{" "}
               <GlobalSpecialPart>
                 <NavigateAndScroll path="/">
                   {" "}
                   {termsData.one.secondPartSpecial}{" "}
                 </NavigateAndScroll>
               </GlobalSpecialPart>
-              {termsData.one.secondPartOne}
               {termsData.one.secondPartTwo}
             </GlobalPartBox>
           </GlobalBoxColumnStart>
@@ -82,17 +82,20 @@ export default function TermsAndConditions() {
 
           <GlobalBoxColumnStart>
             <Globalh2Title>{termsData.five.title}</Globalh2Title>
-            <GlobalPartBox>
-              {termsData.five.firstPartOne}
-              <GlobalSpecialPart>
-                <NavigateAndScroll path="/privacy-policy">
-                  {" "}
-                  {termsData.five.firstPartSpecial}{" "}
-                </NavigateAndScroll>
-              </GlobalSpecialPart>
-              {termsData.five.firstPartTwo}
-              {termsData.five.secondPart}
-            </GlobalPartBox>
+            <GlobalPart>
+              {" "}
+              <GlobalPartBox>
+                {termsData.five.firstPartOne}
+                <GlobalSpecialPart>
+                  <NavigateAndScroll path="/privacy-policy">
+                    {" "}
+                    {termsData.five.firstPartSpecial}{" "}
+                  </NavigateAndScroll>
+                </GlobalSpecialPart>
+                {termsData.five.firstPartTwo}
+              </GlobalPartBox>
+            </GlobalPart>
+            <GlobalPart> {termsData.five.secondPart}</GlobalPart>
           </GlobalBoxColumnStart>
         </>
       )}
