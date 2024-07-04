@@ -202,3 +202,26 @@ export interface TermsAndConditionsFive {
   secondPart: string;
   title: string;
 }
+// EOE Diversity
+export interface EOEDiversityDocument {
+  mainTitle: string;
+  one: EOEDiversityOne;
+  two: EOEDiversityTwo;
+  three: EOEDiversityThree;
+}
+export interface EOEDiversityOne {
+  firstPart: string;
+  secondPart: string;
+  title: string;
+}
+export interface EOEDiversityTwo {
+  title: string;
+  content: string;
+}
+export interface EOEDiversityThree {
+  title: string;
+  firstPart: string;
+  secondPart: string;
+  thirdPart: string;
+  fourthPart: String;
+}
