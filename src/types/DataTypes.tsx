@@ -225,3 +225,17 @@ export interface EOEDiversityThree {
   thirdPart: string;
   fourthPart: String;
 }
+// Environmental Message
+
+export interface EnvironmentalMessageDocument {
+  title: string;
+  firstPart: string;
+  secondPart: string;
+  thirdPart: string;
+  fourthPart: EnvironmentalMessageArray[];
+  fifthPart: string;
+}
+export interface EnvironmentalMessageArray {
+  title: string;
+  content: string;
+}

@@ -43,7 +43,13 @@ export const GlobalButton = styled.button`
 export const GlobalContainerColumn = styled(ColumnFlex)`
   width: 100%;
   min-height: 100%;
-  padding: 40px 50px;
+  padding: 40px 80px;
+  @media (max-width: 1024px) {
+    padding: 40px;
+  }
+  @media (max-width: 768px) {
+    padding: 40px 10px;
+  }
 `;
 
 export const GlobalContainerRow = styled(RowFlex)`
@@ -58,8 +64,9 @@ export const GlobalBoxColumnStart = styled(ColumnFlex)`
 `;
 
 export const Globalh2Title = styled.h2`
-  margin-bottom: 20px;
-  font-size: 24px;
+  margin-bottom: 0;
+  font-size: 18px;
+  font-weight: bold;
 `;
 
 export const Globalh3Title = styled.h3`
@@ -72,6 +79,24 @@ export const GlobalPartBox = styled.span`
 
 export const GlobalPart = styled.p`
   font-size: 18px;
+  margin-bottom: 20px;
+`;
+
+export const GlobalRow = styled.li`
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  list-style: none;
+
+  &::before {
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 10px;
+    background-color: ${(props) => props.theme.Black};
+    border-radius: 50%;
+  }
 `;
 
 export const GlobalSpecialPart = styled.span`
