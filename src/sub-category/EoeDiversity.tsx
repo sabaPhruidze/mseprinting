@@ -5,8 +5,6 @@ import {
   GlobalBoxColumnStart,
   Globalh2Title,
   GlobalPart,
-  GlobalSpecialPart,
-  GlobalPartBox,
 } from "../style/GlobalStyle";
 import { fetchAccessibilityData } from "../data/sub-category data/EoeDiversityData";
 import { EOEDiversityDocument } from "../types/DataTypes";
