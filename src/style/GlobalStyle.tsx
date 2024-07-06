@@ -62,15 +62,19 @@ export const GlobalBoxColumnStart = styled(ColumnFlex)`
   align-items: flex-start;
   margin-bottom: 30px;
 `;
+export const GlobalMainTitle = styled.h1`
+  color: ${(props) => props.theme.Black};
+  margin-bottom: 50px;
+`;
 
 export const Globalh2Title = styled.h2`
   margin-bottom: 0;
-  font-size: 18px;
+  font-size: 22px;
   font-weight: bold;
 `;
 
 export const Globalh3Title = styled.h3`
-  font-size: 22px;
+  font-size: 18px;
 `;
 
 export const GlobalPartBox = styled.span`
