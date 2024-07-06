@@ -14,6 +14,7 @@ import {
   GlobalPartBox,
   GlobalPart,
   GlobalSpecialPart,
+  GlobalMainTitle,
 } from "../style/GlobalStyle";
 
 export default function Accessibility() {
@@ -36,7 +37,12 @@ export default function Accessibility() {
     <GlobalContainerColumn>
       {accessibilityData?.start.map((data: StartContent) => (
         <GlobalBoxColumnStart key={data.title}>
-          <Globalh2Title>{data.title}</Globalh2Title>
+          {data.title === "MSE Printing Accessibility Statement" ? (
+            <GlobalMainTitle>{data.title}</GlobalMainTitle>
+          ) : (
+            <Globalh2Title>{data.title}</Globalh2Title>
+          )}
+
           <GlobalPart>{data.content}</GlobalPart>
         </GlobalBoxColumnStart>
       ))}
@@ -55,9 +61,17 @@ export default function Accessibility() {
         <GlobalPart>{accessibilityData?.accessibility.firstPart}</GlobalPart>
         {accessibilityData?.accessibility.middlePart.map(
           (data: ContentPart) => (
-            <GlobalBoxColumnStart key={data.title}>
+            <GlobalBoxColumnStart
+              key={data.title}
+              style={{
+                marginBottom:
+                  data.title === "Readable Fonts and Contrast" ? 40 : 10,
+              }}
+            >
               <Globalh3Title>{data.title}</Globalh3Title>
-              <GlobalPart>{data.content}</GlobalPart>
+              <GlobalPart style={{ marginBottom: 0 }}>
+                {data.content}
+              </GlobalPart>
             </GlobalBoxColumnStart>
           )
         )}

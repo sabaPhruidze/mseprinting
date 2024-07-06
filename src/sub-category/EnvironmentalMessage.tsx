@@ -7,6 +7,7 @@ import {
   Globalh2Title,
   GlobalRow,
   GlobalPartBox,
+  GlobalMainTitle,
 } from "../style/GlobalStyle";
 import { fetchEnvironmentalMessageData } from "../data/sub-category data/EnvironmentalMessageData";
 import { EnvironmentalMessageDocument } from "../types/DataTypes";
@@ -29,7 +30,7 @@ export default function EnvironmentalMessage() {
 
   return (
     <GlobalContainerColumn>
-      <MainTitle>{environmentalData?.title}</MainTitle>
+      <GlobalMainTitle>{environmentalData?.title}</GlobalMainTitle>
       <GlobalBoxColumnStart>
         <GlobalPart>{environmentalData?.firstPart}</GlobalPart>
         <GlobalPart>{environmentalData?.secondPart}</GlobalPart>
@@ -49,10 +50,3 @@ export default function EnvironmentalMessage() {
     </GlobalContainerColumn>
   );
 }
-
-// One time use style
-
-const MainTitle = styled.h1`
-  color: ${(props) => props.theme.Black};
-  margin-bottom: 50px;
-`;
