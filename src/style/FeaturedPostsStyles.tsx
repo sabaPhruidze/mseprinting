@@ -1,11 +1,13 @@
 import styled from "styled-components";
-import { Carousel, Card } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export const Container = styled.div`
   position: relative;
   min-width: 100%;
-  padding: 80px;
+  padding: 10px 80px;
+  margin-bottom: 80px;
+  background-color: ${(props) => props.theme.MediumGray};
   @media (max-width: 1024px) {
     padding: 40px;
   }
