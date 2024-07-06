@@ -6,6 +6,6 @@ export const BlogAndPoliciesData: {
   { name: "Blog", link: "/blog" },
   { name: "Privacy Policy", link: "/privacy-policy" },
   { name: "Terms & Conditions", link: "/terms-conditions" },
-  { name: "EOE & Diversity", link: "eoe-diversity" },
-  { name: "Environmental Message", link: "environmental-message" },
+  { name: "EOE & Diversity", link: "/eoe-diversity" },
+  { name: "Environmental Message", link: "/environmental-message" },
 ];

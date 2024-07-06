@@ -1,3 +1,10 @@
+import React from "react";
+import FeaturedPosts from "../importantparts/FeaturedPosts";
+
 export default function Blog() {
-  return <div>Blog</div>;
+  return (
+    <div>
+      <FeaturedPosts />
+    </div>
+  );
 }
