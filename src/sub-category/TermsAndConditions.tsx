@@ -13,6 +13,7 @@ import {
   GlobalPartBox,
   GlobalPart,
   GlobalSpecialPart,
+  GlobalMainTitle,
 } from "../style/GlobalStyle";
 import NavigateAndScroll from "../importantparts/NavigateAndScroll";
 
@@ -35,8 +36,8 @@ export default function TermsAndConditions() {
     <GlobalContainerColumn>
       {termsData && (
         <>
+          <GlobalMainTitle>{termsData.one.title}</GlobalMainTitle>
           <GlobalBoxColumnStart>
-            <Globalh2Title>{termsData.one.title}</Globalh2Title>
             <GlobalPartBox>
               <GlobalPart>{termsData.one.firstPart} </GlobalPart>
               {termsData.one.secondPartOne}{" "}
@@ -49,14 +50,12 @@ export default function TermsAndConditions() {
               {termsData.one.secondPartTwo}
             </GlobalPartBox>
           </GlobalBoxColumnStart>
-
           {termsData.two.map((data: TermsAndConditionsTwo) => (
             <GlobalBoxColumnStart key={data.title}>
               <Globalh3Title>{data.title}</Globalh3Title>
               <GlobalPart>{data.content}</GlobalPart>
             </GlobalBoxColumnStart>
           ))}
-
           {termsData.three.map((data: TermsAndConditionsThree) => (
             <GlobalBoxColumnStart key={data.title}>
               <Globalh3Title>{data.title}</Globalh3Title>
@@ -72,14 +71,12 @@ export default function TermsAndConditions() {
               </GlobalPartBox>
             </GlobalBoxColumnStart>
           ))}
-
           {termsData.four.map((data: TermsAndConditionsTwo) => (
             <GlobalBoxColumnStart key={data.title}>
               <Globalh3Title>{data.title}</Globalh3Title>
               <GlobalPart>{data.content}</GlobalPart>
             </GlobalBoxColumnStart>
           ))}
-
           <GlobalBoxColumnStart>
             <Globalh2Title>{termsData.five.title}</Globalh2Title>
             <GlobalPart>

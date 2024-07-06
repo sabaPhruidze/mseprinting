@@ -35,22 +35,27 @@ export default function Accessibility() {
 
   return (
     <GlobalContainerColumn>
+      <GlobalMainTitle>{accessibilityData?.start[0].title}</GlobalMainTitle>
       {accessibilityData?.start.map((data: StartContent) => (
         <GlobalBoxColumnStart key={data.title}>
           {data.title === "MSE Printing Accessibility Statement" ? (
-            <GlobalMainTitle>{data.title}</GlobalMainTitle>
+            <GlobalPart>{data.content}</GlobalPart>
           ) : (
-            <Globalh2Title>{data.title}</Globalh2Title>
+            <>
+              <Globalh2Title>{data.title}</Globalh2Title>
+              <GlobalPart>{data.content}</GlobalPart>
+            </>
           )}
-
-          <GlobalPart>{data.content}</GlobalPart>
         </GlobalBoxColumnStart>
       ))}
       <GlobalBoxColumnStart>
         <Globalh2Title>{accessibilityData?.help.title}</Globalh2Title>
         <GlobalPartBox>
           {accessibilityData?.help.firstPart}
-          <GlobalSpecialPart>{accessibilityData?.help.mail}</GlobalSpecialPart>
+          <GlobalSpecialPart>
+            {" "}
+            {accessibilityData?.help.mail}{" "}
+          </GlobalSpecialPart>
           {accessibilityData?.help.secondPart}
         </GlobalPartBox>
       </GlobalBoxColumnStart>
