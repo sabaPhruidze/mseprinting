@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Carousel, Card } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import styled from "styled-components";
+
 import {
   Container,
   CarouselItemWrapper,
@@ -12,55 +12,14 @@ import {
   CarouselIcon,
   CardImage,
 } from "../style/FeaturedPostsStyles";
-import TEST from "../assets/icon/test.jpg";
+import { PostsArray } from "../types/DataTypes";
 
-const posts = [
-  {
-    title:
-      "How Great Leave-Behinds Make Your Presentations Even More Effective",
-    date: "Jul 02, 2024",
-    image: TEST,
-  },
-  {
-    title: "Boost Fundraising for Nonprofits",
-    date: "Jun 25, 2024",
-    image: TEST,
-  },
-  {
-    title: "Elevate Your On-site Event with Marketing",
-    date: "Jun 18, 2024",
-    image: TEST,
-  },
-  {
-    title: "Creating Your Brand Style Guide",
-    date: "Jun 11, 2024",
-    image: TEST,
-  },
-  {
-    title: "New Post 5",
-    date: "Jun 04, 2024",
-    image: TEST,
-  },
-  {
-    title: "New Post 6",
-    date: "May 28, 2024",
-    image: TEST,
-  },
-  {
-    title: "New Post 7",
-    date: "May 28, 2024",
-    image: TEST,
-  },
-  {
-    title: "New Post 8",
-    date: "May 28, 2024",
-    image: TEST,
-  },
-];
+interface FeaturedPostsProps {
+  posts: PostsArray[];
+}
 
-const FeaturedPosts = () => {
+const FeaturedPosts: React.FC<FeaturedPostsProps> = ({ posts }) => {
   const [index, setIndex] = useState(0);
-
   const itemsPerPage = 4;
   const totalPages = Math.ceil(posts.length / itemsPerPage);
 

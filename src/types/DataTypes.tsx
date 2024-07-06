@@ -239,3 +239,15 @@ export interface EnvironmentalMessageArray {
   title: string;
   content: string;
 }
+// Blog
+export interface BlogDocument {
+  content: string;
+  mainTitle: string;
+  postArray: PostsArray[];
+}
+export interface PostsArray {
+  date: String;
+  image: string;
+  link: string;
+  title: string;
+}
