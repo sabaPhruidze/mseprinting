@@ -6,6 +6,7 @@ import {
   GlobalPart,
   GlobalSpecialPart,
   GlobalPartBox,
+  GlobalMainTitle,
 } from "../style/GlobalStyle";
 import { fetchPrivacyAndPolicyData } from "../data/sub-category data/PrivacyAndPolicyData";
 import { PrivacyAndPolicyDocument } from "../types/DataTypes";
@@ -28,8 +29,8 @@ export default function PrivacyAndPolicy() {
 
   return (
     <GlobalContainerColumn>
+      <GlobalMainTitle>{privacyPolicyData?.one.title}</GlobalMainTitle>
       <GlobalBoxColumnStart>
-        <Globalh2Title>{privacyPolicyData?.one.title}</Globalh2Title>
         <GlobalPart>
           <GlobalPartBox>{privacyPolicyData?.one.firstPartOne} </GlobalPartBox>
           <GlobalSpecialPart>
