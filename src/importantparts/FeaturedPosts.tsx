@@ -2,41 +2,49 @@ import React, { useState } from "react";
 import { Carousel, Card } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import styled from "styled-components";
-import { GlobalContainerColumn } from "../style/GlobalStyle";
+import TEST from "../assets/icon/test.jpg";
 
 const posts = [
   {
     title:
       "How Great Leave-Behinds Make Your Presentations Even More Effective",
     date: "Jul 02, 2024",
+    image: TEST,
   },
   {
     title: "Boost Fundraising for Nonprofits",
     date: "Jun 25, 2024",
+    image: TEST,
   },
   {
     title: "Elevate Your On-site Event with Marketing",
     date: "Jun 18, 2024",
+    image: TEST,
   },
   {
     title: "Creating Your Brand Style Guide",
     date: "Jun 11, 2024",
+    image: TEST,
   },
   {
     title: "New Post 5",
     date: "Jun 04, 2024",
+    image: TEST,
   },
   {
     title: "New Post 6",
     date: "May 28, 2024",
+    image: TEST,
   },
   {
     title: "New Post 7",
     date: "May 28, 2024",
+    image: TEST,
   },
   {
     title: "New Post 8",
     date: "May 28, 2024",
+    image: TEST,
   },
 ];
 
@@ -63,18 +71,36 @@ const StyledCard = styled(Card)`
   margin: 1%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out;
-  height: 100%;
-
+  height: 250px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
   &:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
   }
 
   .card-body {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 40%;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
+    justify-content: center;
+    align-items: end;
+    padding: 10px;
+    text-align: left;
   }
+`;
+
+const CardImage = styled.div<{ src: string }>`
+  height: 100%;
+  width: 100%;
+  background-image: url(${(props) => props.src});
+  background-size: cover;
+  background-position: center;
 `;
 
 const CardTitle = styled(Card.Title)`
@@ -84,7 +110,7 @@ const CardTitle = styled(Card.Title)`
 
 const CardText = styled(Card.Text)`
   font-size: 1rem;
-  color: gray;
+  color: white;
 `;
 
 const CarouselControl = styled.button`
@@ -125,28 +151,36 @@ const CarouselIcon = styled.span`
 const FeaturedPosts = () => {
   const [index, setIndex] = useState(0);
 
+  const itemsPerPage = 4;
+  const totalPages = Math.ceil(posts.length / itemsPerPage);
+
   const handleSelect = (selectedIndex: number) => {
     setIndex(selectedIndex);
   };
 
   const handlePrev = () => {
-    setIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : prevIndex));
+    setIndex((prevIndex) => {
+      const newIndex = prevIndex - 1;
+      return newIndex < 0 ? totalPages - 1 : newIndex;
+    });
   };
 
   const handleNext = () => {
-    setIndex((prevIndex) =>
-      prevIndex < posts.length / 4 - 1 ? prevIndex + 1 : prevIndex
-    );
+    setIndex((prevIndex) => {
+      const newIndex = prevIndex + 1;
+      return newIndex >= totalPages ? 0 : newIndex;
+    });
   };
 
   const renderCarouselItems = () => {
     const items = [];
-    for (let i = 0; i < posts.length; i += 4) {
+    for (let i = 0; i < posts.length; i += itemsPerPage) {
       items.push(
         <Carousel.Item key={i}>
           <CarouselItemWrapper>
-            {posts.slice(i, i + 4).map((post, idx) => (
+            {posts.slice(i, i + itemsPerPage).map((post, idx) => (
               <StyledCard key={idx}>
+                <CardImage src={post.image} />
                 <Card.Body>
                   <CardTitle>{post.title}</CardTitle>
                   <CardText>{post.date}</CardText>
@@ -167,6 +201,7 @@ const FeaturedPosts = () => {
         onSelect={handleSelect}
         interval={null}
         indicators={false}
+        controls={false}
       >
         {renderCarouselItems()}
       </Carousel>
