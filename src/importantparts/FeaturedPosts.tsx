@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Carousel, Card } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -19,8 +19,31 @@ interface FeaturedPostsProps {
 }
 
 const FeaturedPosts: React.FC<FeaturedPostsProps> = ({ posts }) => {
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [index, setIndex] = useState(0);
-  const itemsPerPage = 4;
+
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const itemsPerPage =
+    screenWidth > 1350
+      ? 4
+      : screenWidth < 1350 && screenWidth > 1050
+      ? 3
+      : screenWidth < 1050 && screenWidth > 775
+      ? 2
+      : screenWidth < 775 && screenWidth > 400
+      ? 1
+      : 1;
   const totalPages = Math.ceil(posts.length / itemsPerPage);
 
   const handleSelect = (selectedIndex: number) => {
