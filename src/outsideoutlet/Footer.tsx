@@ -31,7 +31,6 @@ import LINKEDIN from "../assets/icon/footer/social/LINKEDIN.svg";
 import NavigateAndScroll from "../importantparts/NavigateAndScroll"; // Adjust the import path as necessary
 
 export default function Footer() {
-  const navigate = useNavigate();
   const [footerData, setFooterData] = useState<HomeServicesFullType | null>(
     null
   );

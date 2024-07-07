@@ -34,7 +34,15 @@ export const StyledCard = styled(Card)`
   &:hover {
     transform: scale(1.1);
   }
-
+  @media (max-width: 1350px) {
+    min-width: 30%;
+  }
+  @media (max-width: 1050px) {
+    min-width: 40%;
+  }
+  @media (max-width: 775px) {
+    min-width: 60%;
+  }
   .card-body {
     position: absolute;
     bottom: 0;
