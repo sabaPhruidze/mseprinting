@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { rootContext } from "../Root";
 import { auth, db } from "../config/Firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
@@ -10,6 +10,7 @@ import {
   RegisterContainer,
   RegisterForm,
   LoginButton,
+  ErrorMessage,
 } from "../style/LoginStyles";
 import { UseFormFirstPart, UseFormSecondPart } from "../data/LoginData";
 
@@ -30,6 +31,9 @@ function Register() {
     handleSubmit,
     formState: { errors },
   } = useForm<UseFormFirstPart & UseFormSecondPart>();
+
+  // State to manage the verification error message display
+  const [verificationError, setVerificationError] = useState("");
 
   const onSubmitRegister = async (
     data: UseFormFirstPart & UseFormSecondPart
@@ -71,12 +75,12 @@ function Register() {
           uid: user.uid,
         });
 
-        navigate("/login");
+        navigate("/");
       } catch (error) {
         console.error("Error registering user:", error);
       }
     } else {
-      console.error("Email or password verification does not match");
+      setVerificationError("Email or password verification does not match");
     }
   };
 
@@ -84,6 +88,7 @@ function Register() {
     <RegisterContainer>
       <RegisterForm onSubmit={handleSubmit(onSubmitRegister)}>
         <RegisterInputs register={register} errors={errors} />
+        {verificationError && <ErrorMessage>{verificationError}</ErrorMessage>}
         <LoginButton type="submit">Register</LoginButton>
       </RegisterForm>
     </RegisterContainer>

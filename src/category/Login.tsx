@@ -1,12 +1,16 @@
-// Login.tsx
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { rootContext } from "../Root";
 import { auth, db } from "../config/Firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { LoginButton, LoginContainer, LoginForm } from "../style/LoginStyles";
+import {
+  ErrorMessage,
+  LoginButton,
+  LoginContainer,
+  LoginForm,
+} from "../style/LoginStyles";
 import { UseFormLogin } from "../data/LoginData";
 import LoginInputs from "../importantparts/LoginInputs";
 
@@ -25,6 +29,9 @@ function Login() {
     handleSubmit,
     formState: { errors },
   } = useForm<UseFormLogin>();
+
+  // State to manage the error message display
+  const [loginError, setLoginError] = useState(false);
 
   const onSubmitLogin = async (data: UseFormLogin) => {
     const { email, password } = data;
@@ -50,9 +57,11 @@ function Login() {
         navigate("/");
       } else {
         console.error("No such document!");
+        setLoginError(true); // Set error state
       }
     } catch (error) {
       console.error("Error logging in user:", error);
+      setLoginError(true); // Set error state
     }
   };
 
@@ -60,6 +69,9 @@ function Login() {
     <LoginContainer>
       <LoginForm onSubmit={handleSubmit(onSubmitLogin as any)}>
         <LoginInputs register={register} errors={errors} />
+        {loginError && (
+          <ErrorMessage>User Email or Password is not correct</ErrorMessage>
+        )}
         <LoginButton type="submit">Login</LoginButton>
       </LoginForm>
     </LoginContainer>
