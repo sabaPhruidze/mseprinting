@@ -73,7 +73,7 @@ export const CarouselImg = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 20%; /* Adjust the second value as needed */
+  object-position: 60% 60%;
 `;
 export const CarouselIcon = styled.span`
   width: 20px;
