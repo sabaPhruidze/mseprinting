@@ -70,15 +70,15 @@ export const REGISTERDATASECONDPART: FormField<UseFormSecondPart>[] = [
     registerName: "password",
     required: true,
     message:
-      "Enter at least 3 English alphabet characters, one number and one symbol (e.g., mse1@)",
-    value: /^(?=.*[a-zA-Z]{3,})(?=.*\d)(?=.*[@$!%*?&])[a-zA-Z\d@$!%*?&]+$/,
+      "Enter at least 6 English alphabet characters, one number and one symbol (e.g., mse1@)",
+    value: /^(?=.*[a-zA-Z]{6,})(?=.*\d).+$/,
   },
   {
     placeholder: "Password verification",
     registerName: "passwordVerification",
     required: true,
     message: "The password address entered is invalid.",
-    value: /^(?=.*[a-zA-Z]{3,})(?=.*\d)(?=.*[@$!%*?&])[a-zA-Z\d@$!%*?&]+$/,
+    value: /^(?=.*[a-zA-Z]{6,})(?=.*\d).+$/,
   },
   {
     placeholder: "Job title",
@@ -86,7 +86,7 @@ export const REGISTERDATASECONDPART: FormField<UseFormSecondPart>[] = [
     required: true,
     message:
       "enter at least 3 English alphabet characters.If you do not have a Job title, please write 'NaN' in the Job title field.",
-    value: /^[a-zA-Z]{3,}$/,
+    value: /^[a-zA-Z\s]{3,}$/,
   },
   {
     placeholder: "Company",
@@ -94,7 +94,7 @@ export const REGISTERDATASECONDPART: FormField<UseFormSecondPart>[] = [
     required: true,
     message:
       "Please enter at least 3 English alphabet character.If you do not have a company affiliation, please write 'NaN' in the company field.",
-    value: /^[a-zA-Z]{3,}$/,
+    value: /^[a-zA-Z\s]{3,}$/,
   },
 ];
 export const LOGINDATA: FormField<UseFormLogin>[] = [
@@ -106,11 +106,11 @@ export const LOGINDATA: FormField<UseFormLogin>[] = [
     value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
   },
   {
-    placeholder: "Password",
+    placeholder: "Password (e.g., mseprinting1)",
     registerName: "password",
     required: true,
     message:
-      "Enter at least 3 English alphabet characters, one number and one symbol (e.g., mse1@)",
-    value: /^(?=.*[a-zA-Z]{3,})(?=.*\d)(?=.*[@$!%*?&])[a-zA-Z\d@$!%*?&]+$/,
+      "Enter at least 6 English alphabet characters, one number (e.g., mseprinting1)",
+    value: /^(?=.*[a-zA-Z]{6,})(?=.*\d).+$/,
   },
 ];
