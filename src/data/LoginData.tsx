@@ -30,14 +30,16 @@ export const REGISTERDATAFIRSTPART: FormField<UseFormFirstPart>[] = [
     placeholder: "First name",
     registerName: "firstname",
     required: true,
-    message: "Please enter at least 3 English alphabet characters.",
+    message:
+      "Please enter at least 3 English alphabet characters (without space)",
     value: /^[a-zA-Z]{3,}$/,
   },
   {
     placeholder: "Last name",
     registerName: "lastname",
     required: true,
-    message: "Please enter at least 3 English alphabet characters.",
+    message:
+      "Please enter at least 3 English alphabet characters (without space)",
     value: /^[a-zA-Z]{3,}$/,
   },
   {
@@ -66,11 +68,11 @@ export const REGISTERDATAFIRSTPART: FormField<UseFormFirstPart>[] = [
 
 export const REGISTERDATASECONDPART: FormField<UseFormSecondPart>[] = [
   {
-    placeholder: "Password",
+    placeholder: "Password (e.g., mseprinting1)",
     registerName: "password",
     required: true,
     message:
-      "Enter at least 6 English alphabet characters, one number and one symbol (e.g., mse1@)",
+      "Enter at least 6 English alphabet characters, one number and one symbol (e.g., mseprinting1)",
     value: /^(?=.*[a-zA-Z]{6,})(?=.*\d).+$/,
   },
   {
