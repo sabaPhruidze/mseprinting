@@ -10,13 +10,34 @@ import {
   GlobalContainerColumn,
   GlobalBoxColumnStart,
 } from "../style/GlobalStyle";
+import { useForm } from "react-hook-form";
+import {
+  RQUseFormFirstPart,
+  RQUseFormSecondPart,
+} from "../data/RequestQuoteData";
+import RequestQouteInputs from "../data/RequestQuoteInputs";
+import RQProjectDetailsLeft from "../importantparts/RQProjectDetailsLeft";
+import {
+  RQFileUploadContainer,
+  RQFileUploadButton,
+  RQWarningText,
+} from "../style/RequestQuoteStyle";
+import RQProjectDetailsRight from "../importantparts/RQProjectDetailsRight";
 
 export default function RequestQuote() {
-  // const onSubmitRQ = {() => console.log('onsubmit')}
+  const {
+    register: collectInfo,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<RQUseFormFirstPart & RQUseFormSecondPart>();
+
+  const onSubmitRQ = (data: RQUseFormFirstPart & RQUseFormSecondPart) => {
+    console.log(data);
+  };
 
   return (
     <GlobalContainerColumn>
-      <RQForm>
+      <RQForm onSubmit={handleSubmit(onSubmitRQ)}>
         <GlobalBoxColumnStart>
           <RQPartBox>
             STEP 1 OF 2 <RQSpecialPart>PERSONAL INFORMATION</RQSpecialPart>
@@ -25,12 +46,22 @@ export default function RequestQuote() {
         <RowContainer>
           <RQContainerColumn>
             <RQh3Title>Required information</RQh3Title>
+            <RequestQouteInputs
+              collectInfo={collectInfo}
+              errors={errors}
+              section="firstPart"
+            />
           </RQContainerColumn>
           <RQContainerColumn>
             <RQh3Title>Optional Details</RQh3Title>
+            <RequestQouteInputs
+              collectInfo={collectInfo}
+              errors={errors}
+              section="secondPart"
+            />
           </RQContainerColumn>
         </RowContainer>
-
+        {/* before it */}
         <GlobalBoxColumnStart>
           <RQPartBox>
             STEP 2 OF 2 <RQSpecialPart>ABOUT PROJECT</RQSpecialPart>
@@ -38,8 +69,13 @@ export default function RequestQuote() {
         </GlobalBoxColumnStart>
 
         <RowContainer>
-          <GlobalContainerColumn></GlobalContainerColumn>
-          <GlobalContainerColumn></GlobalContainerColumn>
+          <RQContainerColumn>
+            <RQh3Title>About Project</RQh3Title>
+            <RQProjectDetailsLeft />
+          </RQContainerColumn>
+          <RQContainerColumn>
+            <RQProjectDetailsRight />
+          </RQContainerColumn>
         </RowContainer>
       </RQForm>
     </GlobalContainerColumn>

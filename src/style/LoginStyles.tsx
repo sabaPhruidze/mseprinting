@@ -70,7 +70,7 @@ export const RegisterInput = styled.input`
   color: ${(props) => props.theme.Black};
   border: 1px solid ${(props) => props.theme.Black};
   border-radius: 10px;
-  padding-left: 10px;
+  padding: 0 10px;
   margin-bottom: 20px;
   transition: border-color 0.3s;
 

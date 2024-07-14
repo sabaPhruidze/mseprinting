@@ -12,6 +12,14 @@ export type RQUseFormSecondPart = {
   extention: string;
 };
 
+export type RQUseFormThirdPart = {
+  projectName: string;
+  quantity: number;
+  description: string;
+  dueDate: string;
+  terms: boolean;
+};
+
 type FormField<T> = {
   placeholder: string;
   registerName: keyof T;
@@ -19,6 +27,7 @@ type FormField<T> = {
   message: string;
   value: RegExp;
 };
+
 export const RQDATAFIRSTPART: FormField<RQUseFormFirstPart>[] = [
   {
     placeholder: "First name",
@@ -64,7 +73,7 @@ export const RQDATASECONDPART: FormField<RQUseFormSecondPart>[] = [
     registerName: "jobTitle",
     required: true,
     message:
-      "enter at least 3 English alphabet characters.If you do not have a Job title, please write 'NaN' in the Job title field.",
+      "Enter at least 3 English alphabet characters. If you do not have a Job title, please write 'NaN' in the Job title field.",
     value: /^[a-zA-Z\s]{3,}$/,
   },
   {
@@ -72,15 +81,53 @@ export const RQDATASECONDPART: FormField<RQUseFormSecondPart>[] = [
     registerName: "company",
     required: true,
     message:
-      "Please enter at least 3 English alphabet character.If you do not have a company affiliation, please write 'NaN' in the company field.",
+      "Please enter at least 3 English alphabet characters. If you do not have a company affiliation, please write 'NaN' in the company field.",
     value: /^[a-zA-Z\s]{3,}$/,
   },
   {
     placeholder: "Extension",
-    registerName: "jobTitle",
+    registerName: "extention",
     required: true,
     message:
-      "You can enter any additional information You fill like you want to be provided",
+      "You can enter any additional information you feel like you want to be provided.",
     value: /^.*$/,
+  },
+];
+
+export const RQDATATHIRDPART: FormField<RQUseFormThirdPart>[] = [
+  {
+    placeholder: "Project Name",
+    registerName: "projectName",
+    required: true,
+    message: "Please enter the project name.",
+    value: /^.*$/,
+  },
+  {
+    placeholder: "Quantity",
+    registerName: "quantity",
+    required: true,
+    message: "Quantity must be greater than 0.",
+    value: /^\d+$/,
+  },
+  {
+    placeholder: "Project Description",
+    registerName: "description",
+    required: true,
+    message: "Max 700 characters for description.",
+    value: /^.{1,700}$/,
+  },
+  {
+    placeholder: "Project Due Date",
+    registerName: "dueDate",
+    required: true,
+    message: "Please enter the project due date.",
+    value: /^\d{4}-\d{2}-\d{2}$/,
+  },
+  {
+    placeholder: "Terms and Conditions",
+    registerName: "terms",
+    required: true,
+    message: "This field is required.",
+    value: /true|false/,
   },
 ];
