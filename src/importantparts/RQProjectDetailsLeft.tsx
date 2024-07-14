@@ -2,34 +2,37 @@ import React from "react";
 import {
   RQFormGroup,
   RQFormLabel,
-  RQFormInput,
   RQFormTextarea,
-  RQSubmitButton,
   RQInput,
 } from "../style/RequestQuoteStyle";
-
 import { LoginButton } from "../style/LoginStyles";
+import { UseFormRegister, FieldErrors } from "react-hook-form";
+import {
+  RQUseFormFirstPart,
+  RQUseFormSecondPart,
+  RQUseFormThirdPart,
+} from "../data/RequestQuoteData";
 
-import { useForm } from "react-hook-form";
+interface RQProjectDetailsLeftProps {
+  collectInfoLeft: UseFormRegister<
+    RQUseFormFirstPart & RQUseFormSecondPart & RQUseFormThirdPart
+  >;
+  errors: FieldErrors<
+    RQUseFormFirstPart & RQUseFormSecondPart & RQUseFormThirdPart
+  >;
+}
 
-export default function RQProjectDetailsLeft() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-
-  const onSubmit = (data: any) => {
-    console.log(data);
-  };
-
+const RQProjectDetailsLeft: React.FC<RQProjectDetailsLeftProps> = ({
+  collectInfoLeft,
+  errors,
+}) => {
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <>
       <RQFormGroup>
         <RQInput
           placeholder="Project Name"
           type="text"
-          {...register("projectName", { required: true })}
+          {...collectInfoLeft("projectName", { required: true })}
         />
         {errors.projectName && <span>This field is required</span>}
       </RQFormGroup>
@@ -38,7 +41,7 @@ export default function RQProjectDetailsLeft() {
         <RQInput
           placeholder="Quantity"
           type="number"
-          {...register("quantity", { required: true, min: 1 })}
+          {...collectInfoLeft("quantity", { required: true, min: 1 })}
         />
         {errors.quantity && <span>Quantity must be greater than 0</span>}
       </RQFormGroup>
@@ -47,7 +50,10 @@ export default function RQProjectDetailsLeft() {
         <RQFormLabel htmlFor="description">Project Description</RQFormLabel>
         <RQFormTextarea
           id="description"
-          {...register("description", { required: true, maxLength: 700 })}
+          {...collectInfoLeft("description", {
+            required: true,
+            maxLength: 700,
+          })}
         />
         {errors.description && <span>Max 700 characters for description</span>}
       </RQFormGroup>
@@ -57,7 +63,7 @@ export default function RQProjectDetailsLeft() {
         <RQInput
           id="dueDate"
           type="date"
-          {...register("dueDate", { required: true })}
+          {...collectInfoLeft("dueDate", { required: true })}
           style={{ cursor: "pointer" }}
         />
         {errors.dueDate && <span>This field is required</span>}
@@ -66,7 +72,7 @@ export default function RQProjectDetailsLeft() {
       <RQFormGroup style={{ display: "flex", alignItems: "center" }}>
         <input
           type="checkbox"
-          {...register("terms", { required: true })}
+          {...collectInfoLeft("terms", { required: true })}
           style={{ margin: "0 5px 2px 0" }}
         />
         <RQFormLabel htmlFor="terms">
@@ -78,6 +84,8 @@ export default function RQProjectDetailsLeft() {
       <LoginButton type="submit" style={{ minWidth: "100%" }}>
         Submit
       </LoginButton>
-    </form>
+    </>
   );
-}
+};
+
+export default RQProjectDetailsLeft;

@@ -71,7 +71,7 @@ export const RQDATASECONDPART: FormField<RQUseFormSecondPart>[] = [
   {
     placeholder: "Job title",
     registerName: "jobTitle",
-    required: true,
+    required: false,
     message:
       "Enter at least 3 English alphabet characters. If you do not have a Job title, please write 'NaN' in the Job title field.",
     value: /^[a-zA-Z\s]{3,}$/,
@@ -79,7 +79,7 @@ export const RQDATASECONDPART: FormField<RQUseFormSecondPart>[] = [
   {
     placeholder: "Company",
     registerName: "company",
-    required: true,
+    required: false,
     message:
       "Please enter at least 3 English alphabet characters. If you do not have a company affiliation, please write 'NaN' in the company field.",
     value: /^[a-zA-Z\s]{3,}$/,
@@ -87,7 +87,7 @@ export const RQDATASECONDPART: FormField<RQUseFormSecondPart>[] = [
   {
     placeholder: "Extension",
     registerName: "extention",
-    required: true,
+    required: false,
     message:
       "You can enter any additional information you feel like you want to be provided.",
     value: /^.*$/,
