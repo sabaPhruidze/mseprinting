@@ -14,24 +14,22 @@ import { useForm } from "react-hook-form";
 import {
   RQUseFormFirstPart,
   RQUseFormSecondPart,
+  RQUseFormThirdPart,
 } from "../data/RequestQuoteData";
 import RequestQouteInputs from "../data/RequestQuoteInputs";
 import RQProjectDetailsLeft from "../importantparts/RQProjectDetailsLeft";
-import {
-  RQFileUploadContainer,
-  RQFileUploadButton,
-  RQWarningText,
-} from "../style/RequestQuoteStyle";
 import RQProjectDetailsRight from "../importantparts/RQProjectDetailsRight";
 
 export default function RequestQuote() {
   const {
-    register: collectInfo,
+    register,
     handleSubmit,
     formState: { errors },
-  } = useForm<RQUseFormFirstPart & RQUseFormSecondPart>();
+  } = useForm<RQUseFormFirstPart & RQUseFormSecondPart & RQUseFormThirdPart>();
 
-  const onSubmitRQ = (data: RQUseFormFirstPart & RQUseFormSecondPart) => {
+  const onSubmitRQ = (
+    data: RQUseFormFirstPart & RQUseFormSecondPart & RQUseFormThirdPart
+  ) => {
     console.log(data);
   };
 
@@ -47,7 +45,7 @@ export default function RequestQuote() {
           <RQContainerColumn>
             <RQh3Title>Required information</RQh3Title>
             <RequestQouteInputs
-              collectInfo={collectInfo}
+              collectInfo={register}
               errors={errors}
               section="firstPart"
             />
@@ -55,23 +53,21 @@ export default function RequestQuote() {
           <RQContainerColumn>
             <RQh3Title>Optional Details</RQh3Title>
             <RequestQouteInputs
-              collectInfo={collectInfo}
+              collectInfo={register}
               errors={errors}
               section="secondPart"
             />
           </RQContainerColumn>
         </RowContainer>
-        {/* before it */}
         <GlobalBoxColumnStart>
           <RQPartBox>
             STEP 2 OF 2 <RQSpecialPart>ABOUT PROJECT</RQSpecialPart>
           </RQPartBox>
         </GlobalBoxColumnStart>
-
         <RowContainer>
           <RQContainerColumn>
             <RQh3Title>About Project</RQh3Title>
-            <RQProjectDetailsLeft />
+            <RQProjectDetailsLeft collectInfoLeft={register} errors={errors} />
           </RQContainerColumn>
           <RQContainerColumn>
             <RQProjectDetailsRight />

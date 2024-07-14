@@ -5,14 +5,19 @@ import { RQInput } from "../style/RequestQuoteStyle";
 import {
   RQUseFormFirstPart,
   RQUseFormSecondPart,
+  RQUseFormThirdPart,
   RQDATAFIRSTPART,
   RQDATASECONDPART,
 } from "../data/RequestQuoteData";
 import styled from "styled-components";
 
 interface RQInputsProps {
-  collectInfo: UseFormRegister<RQUseFormFirstPart & RQUseFormSecondPart>;
-  errors: FieldErrors<RQUseFormFirstPart & RQUseFormSecondPart>;
+  collectInfo: UseFormRegister<
+    RQUseFormFirstPart & RQUseFormSecondPart & RQUseFormThirdPart
+  >;
+  errors: FieldErrors<
+    RQUseFormFirstPart & RQUseFormSecondPart & RQUseFormThirdPart
+  >;
   section: "firstPart" | "secondPart";
 }
 
@@ -51,7 +56,8 @@ const RequestQouteInputs: React.FC<RQInputsProps> = ({
               placeholder={data.placeholder}
               {...collectInfo(
                 data.registerName as keyof (RQUseFormFirstPart &
-                  RQUseFormSecondPart),
+                  RQUseFormSecondPart &
+                  RQUseFormThirdPart),
                 {
                   required: data.required,
                   pattern: {
