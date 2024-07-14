@@ -85,7 +85,7 @@ export const RQFormInput = styled.input`
 
 export const RQFormTextarea = styled.textarea`
   min-height: 200px;
-  width: 100%;
+  width: 400px;
   resize: vertical;
   border-radius: 10px;
   font-size: 18px;
@@ -94,6 +94,7 @@ export const RQFormTextarea = styled.textarea`
   border-radius: 10px;
   transition: border-color 0.3s;
   padding: 5px 10px;
+  margin-bottom: 15px;
   &:hover {
     outline: 0;
     border: 2px solid ${(props) => props.theme.Black};

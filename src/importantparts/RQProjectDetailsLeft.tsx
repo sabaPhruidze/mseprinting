@@ -12,6 +12,7 @@ import {
   RQUseFormSecondPart,
   RQUseFormThirdPart,
 } from "../data/RequestQuoteData";
+import { ErrorMessage } from "../style/LoginStyles";
 
 interface RQProjectDetailsLeftProps {
   collectInfoLeft: UseFormRegister<
@@ -34,7 +35,9 @@ const RQProjectDetailsLeft: React.FC<RQProjectDetailsLeftProps> = ({
           type="text"
           {...collectInfoLeft("projectName", { required: true })}
         />
-        {errors.projectName && <span>This field is required</span>}
+        {errors.projectName && (
+          <ErrorMessage>This field is required</ErrorMessage>
+        )}
       </RQFormGroup>
 
       <RQFormGroup>
@@ -43,7 +46,9 @@ const RQProjectDetailsLeft: React.FC<RQProjectDetailsLeftProps> = ({
           type="number"
           {...collectInfoLeft("quantity", { required: true, min: 1 })}
         />
-        {errors.quantity && <span>Quantity must be greater than 0</span>}
+        {errors.quantity && (
+          <ErrorMessage>Quantity must be greater than 0</ErrorMessage>
+        )}
       </RQFormGroup>
 
       <RQFormGroup>
@@ -55,7 +60,9 @@ const RQProjectDetailsLeft: React.FC<RQProjectDetailsLeftProps> = ({
             maxLength: 700,
           })}
         />
-        {errors.description && <span>Max 700 characters for description</span>}
+        {errors.description && (
+          <ErrorMessage>Max 700 characters for description</ErrorMessage>
+        )}
       </RQFormGroup>
 
       <RQFormGroup>
@@ -66,20 +73,22 @@ const RQProjectDetailsLeft: React.FC<RQProjectDetailsLeftProps> = ({
           {...collectInfoLeft("dueDate", { required: true })}
           style={{ cursor: "pointer" }}
         />
-        {errors.dueDate && <span>This field is required</span>}
+        {errors.dueDate && <ErrorMessage>This field is required</ErrorMessage>}
       </RQFormGroup>
 
-      <RQFormGroup style={{ display: "flex", alignItems: "center" }}>
-        <input
-          type="checkbox"
-          {...collectInfoLeft("terms", { required: true })}
-          style={{ margin: "0 5px 2px 0" }}
-        />
-        <RQFormLabel htmlFor="terms">
-          Yes, I agree to the terms and conditions *
-        </RQFormLabel>
-        {errors.terms && <span>This field is required</span>}
-      </RQFormGroup>
+      <div style={{ display: "flex", flexDirection: "column" }}>
+        <RQFormGroup style={{ display: "flex", alignItems: "center" }}>
+          <input
+            type="checkbox"
+            {...collectInfoLeft("terms", { required: true })}
+            style={{ margin: "0 5px 2px 0" }}
+          />
+          <RQFormLabel htmlFor="terms">
+            Yes, I agree to the terms and conditions *
+          </RQFormLabel>
+        </RQFormGroup>
+        {errors.terms && <ErrorMessage>This field is required</ErrorMessage>}
+      </div>
 
       <LoginButton type="submit" style={{ minWidth: "100%" }}>
         Submit
