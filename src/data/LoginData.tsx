@@ -27,7 +27,7 @@ type FormField<T> = {
 
 export const REGISTERDATAFIRSTPART: FormField<UseFormFirstPart>[] = [
   {
-    placeholder: "First name",
+    placeholder: "First name *",
     registerName: "firstname",
     required: true,
     message:
@@ -35,7 +35,7 @@ export const REGISTERDATAFIRSTPART: FormField<UseFormFirstPart>[] = [
     value: /^[a-zA-Z]{3,}$/,
   },
   {
-    placeholder: "Last name",
+    placeholder: "Last name *",
     registerName: "lastname",
     required: true,
     message:
@@ -43,7 +43,7 @@ export const REGISTERDATAFIRSTPART: FormField<UseFormFirstPart>[] = [
     value: /^[a-zA-Z]{3,}$/,
   },
   {
-    placeholder: "Email",
+    placeholder: "Email *",
     registerName: "email",
     required: true,
     message:
@@ -51,14 +51,14 @@ export const REGISTERDATAFIRSTPART: FormField<UseFormFirstPart>[] = [
     value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
   },
   {
-    placeholder: "Email verification",
+    placeholder: "Email verification *",
     registerName: "emailVerification",
     required: true,
     message: "The email address entered is invalid.",
     value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
   },
   {
-    placeholder: "Phone",
+    placeholder: "Phone *",
     registerName: "phone",
     required: true,
     message: "Please provide the phone number in the 'xxx-xxx-xxxx' format.",
@@ -68,7 +68,7 @@ export const REGISTERDATAFIRSTPART: FormField<UseFormFirstPart>[] = [
 
 export const REGISTERDATASECONDPART: FormField<UseFormSecondPart>[] = [
   {
-    placeholder: "Password (e.g., mseprinting1)",
+    placeholder: "Password (e.g., mseprinting1) *",
     registerName: "password",
     required: true,
     message:
@@ -76,7 +76,7 @@ export const REGISTERDATASECONDPART: FormField<UseFormSecondPart>[] = [
     value: /^(?=.*[a-zA-Z]{6,})(?=.*\d).+$/,
   },
   {
-    placeholder: "Password verification",
+    placeholder: "Password verification *",
     registerName: "passwordVerification",
     required: true,
     message: "The password address entered is invalid.",
@@ -85,13 +85,12 @@ export const REGISTERDATASECONDPART: FormField<UseFormSecondPart>[] = [
   {
     placeholder: "Job title",
     registerName: "jobTitle",
-    required: true,
-    message:
-      "enter at least 3 English alphabet characters.If you do not have a Job title, please write 'NaN' in the Job title field.",
+    required: false,
+    message: "",
     value: /^[a-zA-Z\s]{3,}$/,
   },
   {
-    placeholder: "Company",
+    placeholder: "Company *",
     registerName: "company",
     required: true,
     message:
