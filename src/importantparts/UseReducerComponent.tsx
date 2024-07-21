@@ -12,6 +12,9 @@ export interface InitialState {
     firstname: string;
     lastname: string;
     email: string;
+    jobTitle: string;
+    company: string;
+    phone: string;
     uid: string;
   };
   showProductsServicesWindow: {

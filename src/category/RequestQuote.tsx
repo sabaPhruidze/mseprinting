@@ -1,3 +1,4 @@
+import React, { useContext, useMemo } from "react";
 import {
   RowContainer,
   RQPartBox,
@@ -16,16 +17,45 @@ import {
   RQUseFormSecondPart,
   RQUseFormThirdPart,
 } from "../data/RequestQuoteData";
-import RequestQouteInputs from "../data/RequestQuoteInputs";
+import RequestQuoteInputs from "../data/RequestQuoteInputs";
 import RQProjectDetailsLeft from "../importantparts/RQProjectDetailsLeft";
 import RQProjectDetailsRight from "../importantparts/RQProjectDetailsRight";
+import { rootContext } from "../Root";
 
 export default function RequestQuote() {
+  const context = useContext(rootContext);
+  if (!context) {
+    throw new Error("rootContext must be used within a Root provider");
+  }
+  const { state } = context;
+
+  const defaultValues = useMemo(() => {
+    return state.user
+      ? {
+          firstname: state.user.firstname,
+          lastname: state.user.lastname,
+          email: state.user.email,
+          emailVerification: state.user.email,
+          phone: state.user.phone || "",
+          jobTitle: state.user.jobTitle || "",
+          company: state.user.company || "",
+          extension: "",
+          projectName: "",
+          quantity: 0,
+          description: "",
+          dueDate: "",
+          terms: false,
+        }
+      : {};
+  }, [state.user]);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<RQUseFormFirstPart & RQUseFormSecondPart & RQUseFormThirdPart>();
+  } = useForm<RQUseFormFirstPart & RQUseFormSecondPart & RQUseFormThirdPart>({
+    defaultValues,
+  });
 
   const onSubmitRQ = (
     data: RQUseFormFirstPart & RQUseFormSecondPart & RQUseFormThirdPart
@@ -44,7 +74,7 @@ export default function RequestQuote() {
         <RowContainer>
           <RQContainerColumn>
             <RQh3Title>Required information</RQh3Title>
-            <RequestQouteInputs
+            <RequestQuoteInputs
               collectInfo={register}
               errors={errors}
               section="firstPart"
@@ -52,7 +82,7 @@ export default function RequestQuote() {
           </RQContainerColumn>
           <RQContainerColumn>
             <RQh3Title>Optional Details</RQh3Title>
-            <RequestQouteInputs
+            <RequestQuoteInputs
               collectInfo={register}
               errors={errors}
               section="secondPart"
