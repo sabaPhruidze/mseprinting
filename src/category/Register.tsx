@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { rootContext } from "../Root";
 import { auth, db } from "../config/Firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
@@ -13,9 +13,13 @@ import {
   ErrorMessage,
 } from "../style/LoginStyles";
 
-import { RUseFormFirstPart, RUseFormSecondPart } from "../types/DataTypes";
-
+import {
+  RUseFormFirstPart,
+  RUseFormSecondPart,
+  FormField,
+} from "../types/DataTypes";
 import RegisterInputs from "../importantparts/RegisterInputs";
+import { fetchRegisterDataRFP, fetchRegisterDataRSP } from "../data/LoginData";
 
 function Register() {
   const registerContext = useContext(rootContext);
@@ -26,6 +30,24 @@ function Register() {
 
   const { dispatching } = registerContext;
   const navigate = useNavigate();
+
+  const [firstPartFields, setFirstPartFields] = useState<
+    FormField<RUseFormFirstPart>[]
+  >([]);
+  const [secondPartFields, setSecondPartFields] = useState<
+    FormField<RUseFormSecondPart>[]
+  >([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const firstPart = await fetchRegisterDataRFP();
+      setFirstPartFields(firstPart);
+      const secondPart = await fetchRegisterDataRSP();
+      setSecondPartFields(secondPart);
+    };
+
+    fetchData();
+  }, []);
 
   const {
     register,
@@ -88,7 +110,12 @@ function Register() {
   return (
     <RegisterContainer>
       <RegisterForm onSubmit={handleSubmit(onSubmitRegister)}>
-        <RegisterInputs register={register} errors={errors} />
+        <RegisterInputs
+          register={register}
+          errors={errors}
+          firstPartFields={firstPartFields}
+          secondPartFields={secondPartFields}
+        />
         {verificationError && <ErrorMessage>{verificationError}</ErrorMessage>}
         <LoginButton type="submit">Register</LoginButton>
       </RegisterForm>

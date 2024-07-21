@@ -1,9 +1,9 @@
 // components/LoginInputs.tsx
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { UseFormRegister, FieldErrors } from "react-hook-form";
 import { RegisterInput, ErrorMessage } from "../style/LoginStyles";
-import { LOGINDATA } from "../data/LoginData";
-import { LUseForm } from "../types/DataTypes";
+import { fetchRegisterDataL } from "../data/LoginData"; // Ensure this function is defined
+import { FormField, LUseForm } from "../types/DataTypes";
 
 interface LoginInputsProps {
   register: UseFormRegister<LUseForm>;
@@ -11,9 +11,20 @@ interface LoginInputsProps {
 }
 
 const LoginInputs: React.FC<LoginInputsProps> = ({ register, errors }) => {
+  const [loginData, setLoginData] = useState<FormField<LUseForm>[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await fetchRegisterDataL();
+      setLoginData(data);
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <>
-      {LOGINDATA.map((data) => (
+      {loginData.map((data) => (
         <div key={data.placeholder}>
           <RegisterInput
             placeholder={data.placeholder}
@@ -21,7 +32,7 @@ const LoginInputs: React.FC<LoginInputsProps> = ({ register, errors }) => {
               required: data.required,
               pattern: {
                 message: data.message,
-                value: data.value,
+                value: new RegExp(data.value), // Ensure value is a RegExp
               },
             })}
           />

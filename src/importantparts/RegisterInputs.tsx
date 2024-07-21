@@ -8,20 +8,23 @@ import {
   RegLogContainer,
 } from "../style/LoginStyles";
 import {
-  REGISTERDATAFIRSTPART,
-  REGISTERDATASECONDPART,
-} from "../data/LoginData";
-
-import { RUseFormFirstPart, RUseFormSecondPart } from "../types/DataTypes";
+  FormField,
+  RUseFormFirstPart,
+  RUseFormSecondPart,
+} from "../types/DataTypes";
 
 interface RegisterInputsProps {
   register: UseFormRegister<RUseFormFirstPart & RUseFormSecondPart>;
   errors: FieldErrors<RUseFormFirstPart & RUseFormSecondPart>;
+  firstPartFields: FormField<RUseFormFirstPart>[];
+  secondPartFields: FormField<RUseFormSecondPart>[];
 }
 
 const RegisterInputs: React.FC<RegisterInputsProps> = ({
   register,
   errors,
+  firstPartFields,
+  secondPartFields,
 }) => {
   // Function to format phone number
   const formatPhoneNumber = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -41,7 +44,7 @@ const RegisterInputs: React.FC<RegisterInputsProps> = ({
   return (
     <RegLogContainer>
       <RegisterBoxOne>
-        {REGISTERDATAFIRSTPART.map((data) => (
+        {firstPartFields.map((data) => (
           <div key={data.placeholder}>
             <RegisterInput
               placeholder={data.placeholder}
@@ -52,7 +55,7 @@ const RegisterInputs: React.FC<RegisterInputsProps> = ({
                   required: data.required,
                   pattern: {
                     message: data.message,
-                    value: data.value,
+                    value: new RegExp(data.value), // Ensure value is a RegExp
                   },
                 }
               )}
@@ -68,7 +71,7 @@ const RegisterInputs: React.FC<RegisterInputsProps> = ({
         ))}
       </RegisterBoxOne>
       <RegisterBoxTwo>
-        {REGISTERDATASECONDPART.map((data) => (
+        {secondPartFields.map((data) => (
           <div key={data.placeholder}>
             <RegisterInput
               placeholder={data.placeholder}
@@ -79,7 +82,7 @@ const RegisterInputs: React.FC<RegisterInputsProps> = ({
                   required: data.required,
                   pattern: {
                     message: data.message,
-                    value: data.value,
+                    value: new RegExp(data.value), // Ensure value is a RegExp
                   },
                 }
               )}
