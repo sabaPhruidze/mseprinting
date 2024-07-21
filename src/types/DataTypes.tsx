@@ -251,3 +251,32 @@ export interface PostsArray {
   link: string;
   title: string;
 }
+
+// registration / login
+
+export type RUseFormFirstPart = {
+  firstname: string;
+  lastname: string;
+  email: string;
+  emailVerification: string;
+  phone: string;
+};
+
+export type RUseFormSecondPart = {
+  password: string;
+  passwordVerification: string;
+  jobTitle: string;
+  company: string;
+};
+export type LUseForm = {
+  email: string;
+  password: string;
+};
+
+export type FormField<T> = {
+  placeholder: string;
+  registerName: keyof T;
+  required: boolean;
+  message: string;
+  value: RegExp;
+};

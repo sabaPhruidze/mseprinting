@@ -11,7 +11,7 @@ import {
   LoginContainer,
   LoginForm,
 } from "../style/LoginStyles";
-import { UseFormLogin } from "../data/LoginData";
+import { LUseForm } from "../types/DataTypes";
 import LoginInputs from "../importantparts/LoginInputs";
 
 function Login() {
@@ -28,12 +28,12 @@ function Login() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<UseFormLogin>();
+  } = useForm<LUseForm>();
 
   // State to manage the error message display
   const [loginError, setLoginError] = useState(false);
 
-  const onSubmitLogin = async (data: UseFormLogin) => {
+  const onSubmitLogin = async (data: LUseForm) => {
     const { email, password } = data;
     try {
       const userCredential = await signInWithEmailAndPassword(

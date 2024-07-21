@@ -12,7 +12,8 @@ import {
   LoginButton,
   ErrorMessage,
 } from "../style/LoginStyles";
-import { UseFormFirstPart, UseFormSecondPart } from "../data/LoginData";
+
+import { RUseFormFirstPart, RUseFormSecondPart } from "../types/DataTypes";
 
 import RegisterInputs from "../importantparts/RegisterInputs";
 
@@ -30,13 +31,13 @@ function Register() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<UseFormFirstPart & UseFormSecondPart>();
+  } = useForm<RUseFormFirstPart & RUseFormSecondPart>();
 
   // State to manage the verification error message display
   const [verificationError, setVerificationError] = useState("");
 
   const onSubmitRegister = async (
-    data: UseFormFirstPart & UseFormSecondPart
+    data: RUseFormFirstPart & RUseFormSecondPart
   ) => {
     const {
       email,
