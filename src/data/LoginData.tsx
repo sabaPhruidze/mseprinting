@@ -1,31 +1,11 @@
-export type UseFormFirstPart = {
-  firstname: string;
-  lastname: string;
-  email: string;
-  emailVerification: string;
-  phone: string;
-};
+import {
+  RUseFormFirstPart,
+  RUseFormSecondPart,
+  FormField,
+  LUseForm,
+} from "../types/DataTypes";
 
-export type UseFormSecondPart = {
-  password: string;
-  passwordVerification: string;
-  jobTitle: string;
-  company: string;
-};
-export type UseFormLogin = {
-  email: string;
-  password: string;
-};
-
-type FormField<T> = {
-  placeholder: string;
-  registerName: keyof T;
-  required: boolean;
-  message: string;
-  value: RegExp;
-};
-
-export const REGISTERDATAFIRSTPART: FormField<UseFormFirstPart>[] = [
+export const REGISTERDATAFIRSTPART: FormField<RUseFormFirstPart>[] = [
   {
     placeholder: "First name *",
     registerName: "firstname",
@@ -66,7 +46,7 @@ export const REGISTERDATAFIRSTPART: FormField<UseFormFirstPart>[] = [
   },
 ];
 
-export const REGISTERDATASECONDPART: FormField<UseFormSecondPart>[] = [
+export const REGISTERDATASECONDPART: FormField<RUseFormSecondPart>[] = [
   {
     placeholder: "Password (e.g., mseprinting1) *",
     registerName: "password",
@@ -98,7 +78,7 @@ export const REGISTERDATASECONDPART: FormField<UseFormSecondPart>[] = [
     value: /^[a-zA-Z\s]{3,}$/,
   },
 ];
-export const LOGINDATA: FormField<UseFormLogin>[] = [
+export const LOGINDATA: FormField<LUseForm>[] = [
   {
     placeholder: "Email",
     registerName: "email",

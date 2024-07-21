@@ -2,11 +2,12 @@
 import React from "react";
 import { UseFormRegister, FieldErrors } from "react-hook-form";
 import { RegisterInput, ErrorMessage } from "../style/LoginStyles";
-import { LOGINDATA, UseFormLogin } from "../data/LoginData";
+import { LOGINDATA } from "../data/LoginData";
+import { LUseForm } from "../types/DataTypes";
 
 interface LoginInputsProps {
-  register: UseFormRegister<UseFormLogin>;
-  errors: FieldErrors<UseFormLogin>;
+  register: UseFormRegister<LUseForm>;
+  errors: FieldErrors<LUseForm>;
 }
 
 const LoginInputs: React.FC<LoginInputsProps> = ({ register, errors }) => {
@@ -16,7 +17,7 @@ const LoginInputs: React.FC<LoginInputsProps> = ({ register, errors }) => {
         <div key={data.placeholder}>
           <RegisterInput
             placeholder={data.placeholder}
-            {...register(data.registerName as keyof UseFormLogin, {
+            {...register(data.registerName as keyof LUseForm, {
               required: data.required,
               pattern: {
                 message: data.message,

@@ -10,13 +10,13 @@ import {
 import {
   REGISTERDATAFIRSTPART,
   REGISTERDATASECONDPART,
-  UseFormFirstPart,
-  UseFormSecondPart,
 } from "../data/LoginData";
 
+import { RUseFormFirstPart, RUseFormSecondPart } from "../types/DataTypes";
+
 interface RegisterInputsProps {
-  register: UseFormRegister<UseFormFirstPart & UseFormSecondPart>;
-  errors: FieldErrors<UseFormFirstPart & UseFormSecondPart>;
+  register: UseFormRegister<RUseFormFirstPart & RUseFormSecondPart>;
+  errors: FieldErrors<RUseFormFirstPart & RUseFormSecondPart>;
 }
 
 const RegisterInputs: React.FC<RegisterInputsProps> = ({
@@ -46,8 +46,8 @@ const RegisterInputs: React.FC<RegisterInputsProps> = ({
             <RegisterInput
               placeholder={data.placeholder}
               {...register(
-                data.registerName as keyof (UseFormFirstPart &
-                  UseFormSecondPart),
+                data.registerName as keyof (RUseFormFirstPart &
+                  RUseFormSecondPart),
                 {
                   required: data.required,
                   pattern: {
@@ -73,8 +73,8 @@ const RegisterInputs: React.FC<RegisterInputsProps> = ({
             <RegisterInput
               placeholder={data.placeholder}
               {...register(
-                data.registerName as keyof (UseFormFirstPart &
-                  UseFormSecondPart),
+                data.registerName as keyof (RUseFormFirstPart &
+                  RUseFormSecondPart),
                 {
                   required: data.required,
                   pattern: {
