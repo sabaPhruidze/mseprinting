@@ -30,21 +30,21 @@ type FormField<T> = {
 
 export const RQDATAFIRSTPART: FormField<RQUseFormFirstPart>[] = [
   {
-    placeholder: "First name",
+    placeholder: "First name *",
     registerName: "firstname",
     required: true,
     message: "Please enter at least 3 English alphabet characters.",
     value: /^[a-zA-Z]{3,}$/,
   },
   {
-    placeholder: "Last name",
+    placeholder: "Last name *",
     registerName: "lastname",
     required: true,
     message: "Please enter at least 3 English alphabet characters.",
     value: /^[a-zA-Z]{3,}$/,
   },
   {
-    placeholder: "Email",
+    placeholder: "Email *",
     registerName: "email",
     required: true,
     message:
@@ -52,14 +52,14 @@ export const RQDATAFIRSTPART: FormField<RQUseFormFirstPart>[] = [
     value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
   },
   {
-    placeholder: "Email verification",
+    placeholder: "Email verification *",
     registerName: "emailVerification",
     required: true,
     message: "The email address entered is invalid.",
     value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
   },
   {
-    placeholder: "Phone",
+    placeholder: "Phone *",
     registerName: "phone",
     required: true,
     message: "Please provide the phone number in the 'xxx-xxx-xxxx' format.",
@@ -72,24 +72,21 @@ export const RQDATASECONDPART: FormField<RQUseFormSecondPart>[] = [
     placeholder: "Job title",
     registerName: "jobTitle",
     required: false,
-    message:
-      "Enter at least 3 English alphabet characters. If you do not have a Job title, please write 'NaN' in the Job title field.",
+    message: "",
     value: /^[a-zA-Z\s]{3,}$/,
   },
   {
     placeholder: "Company",
     registerName: "company",
     required: false,
-    message:
-      "Please enter at least 3 English alphabet characters. If you do not have a company affiliation, please write 'NaN' in the company field.",
+    message: "",
     value: /^[a-zA-Z\s]{3,}$/,
   },
   {
     placeholder: "Extension",
     registerName: "extention",
     required: false,
-    message:
-      "You can enter any additional information you feel like you want to be provided.",
+    message: "",
     value: /^.*$/,
   },
 ];
