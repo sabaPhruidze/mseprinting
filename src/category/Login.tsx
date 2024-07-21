@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import React, { useContext, useState, useCallback } from "react";
 import { rootContext } from "../Root";
 import { auth, db } from "../config/Firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -30,10 +30,9 @@ function Login() {
     formState: { errors },
   } = useForm<LUseForm>();
 
-  // State to manage the error message display
   const [loginError, setLoginError] = useState(false);
 
-  const onSubmitLogin = async (data: LUseForm) => {
+  const onSubmitLogin = useCallback(async (data: LUseForm) => {
     const { email, password } = data;
     try {
       const userCredential = await signInWithEmailAndPassword(
@@ -43,7 +42,6 @@ function Login() {
       );
       const user = userCredential.user;
 
-      // Fetch additional user info from Firestore
       const userDoc = await getDoc(doc(db, "users", user.uid));
       const userData = userDoc.data();
 
@@ -52,22 +50,25 @@ function Login() {
           firstname: userData.firstname,
           lastname: userData.lastname,
           email: userData.email,
+          jobTitle: userData.jobTitle,
+          phone: userData.phone,
+          company: userData.company,
           uid: user.uid,
         });
         navigate("/");
       } else {
         console.error("No such document!");
-        setLoginError(true); // Set error state
+        setLoginError(true);
       }
     } catch (error) {
       console.error("Error logging in user:", error);
-      setLoginError(true); // Set error state
+      setLoginError(true);
     }
-  };
+  }, []);
 
   return (
     <LoginContainer>
-      <LoginForm onSubmit={handleSubmit(onSubmitLogin as any)}>
+      <LoginForm onSubmit={handleSubmit(onSubmitLogin)}>
         <LoginInputs register={register} errors={errors} />
         {loginError && (
           <ErrorMessage>User Email or Password is not correct</ErrorMessage>
