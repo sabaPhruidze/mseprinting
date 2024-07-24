@@ -27,7 +27,6 @@ import { fetchRegisterDataRFP, fetchRegisterDataRSP } from "../data/LoginData";
 
 function Register() {
   const registerContext = useContext(rootContext);
-  console.log("Register component rendered");
 
   if (!registerContext) {
     throw new Error("rootContext must be used within a Root provider");
@@ -42,7 +41,7 @@ function Register() {
   const [secondPartFields, setSecondPartFields] = useState<
     FormField<RUseFormSecondPart>[]
   >([]);
-  console.log("fe");
+
   useEffect(() => {
     const fetchData = async () => {
       const firstPart = await fetchRegisterDataRFP();
@@ -52,7 +51,7 @@ function Register() {
     };
 
     fetchData();
-  }, []);
+  }, []); // Only run once when the component mounts
 
   const defaultValues = useMemo(() => {
     return state.user
@@ -68,7 +67,7 @@ function Register() {
           passwordVerification: "",
         }
       : {};
-  }, []);
+  }, [state.user]); // Include dependencies to prevent unnecessary recalculations
 
   const {
     register,
@@ -131,7 +130,7 @@ function Register() {
         setVerificationError("Email or password verification does not match");
       }
     },
-    [dispatching, navigate]
+    [dispatching, navigate] // Include dependencies to prevent unnecessary re-renders
   );
 
   return (

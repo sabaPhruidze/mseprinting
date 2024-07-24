@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from "react";
+import { useContext, useMemo } from "react";
 import {
   RowContainer,
   RQPartBox,
@@ -47,7 +47,7 @@ export default function RequestQuote() {
           terms: false,
         }
       : {};
-  }, [state.user]);
+  }, [state.user]); // Include dependencies to prevent unnecessary recalculations
 
   const {
     register,
