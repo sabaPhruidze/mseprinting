@@ -18,6 +18,7 @@ export type RQUseFormThirdPart = {
   description: string;
   dueDate: string;
   terms: boolean;
+  uploadedFiles?: File[];
 };
 
 type FormField<T> = {
@@ -126,5 +127,12 @@ export const RQDATATHIRDPART: FormField<RQUseFormThirdPart>[] = [
     required: true,
     message: "This field is required.",
     value: /true|false/,
+  },
+  {
+    placeholder: "Uploaded Files",
+    registerName: "uploadedFiles",
+    required: false,
+    message: "",
+    value: /^.*$/,
   },
 ];
