@@ -22,6 +22,8 @@ import RQProjectDetailsLeft from "../importantparts/RQProjectDetailsLeft";
 import RQProjectDetailsRight from "../importantparts/RQProjectDetailsRight";
 import { rootContext } from "../Root";
 
+type FormData = RQUseFormFirstPart & RQUseFormSecondPart & RQUseFormThirdPart;
+
 export default function RequestQuote() {
   const context = useContext(rootContext);
   if (!context) {
@@ -45,21 +47,21 @@ export default function RequestQuote() {
           description: "",
           dueDate: "",
           terms: false,
+          uploadedFiles: [],
         }
       : {};
-  }, [state.user]); // Include dependencies to prevent unnecessary recalculations
+  }, [state.user]);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<RQUseFormFirstPart & RQUseFormSecondPart & RQUseFormThirdPart>({
+    setValue,
+  } = useForm<FormData>({
     defaultValues,
   });
 
-  const onSubmitRQ = (
-    data: RQUseFormFirstPart & RQUseFormSecondPart & RQUseFormThirdPart
-  ) => {
+  const onSubmitRQ = (data: FormData) => {
     console.log(data);
   };
 
@@ -100,7 +102,7 @@ export default function RequestQuote() {
             <RQProjectDetailsLeft collectInfoLeft={register} errors={errors} />
           </RQContainerColumn>
           <RQContainerColumn>
-            <RQProjectDetailsRight />
+            <RQProjectDetailsRight setValue={setValue} />
           </RQContainerColumn>
         </RowContainer>
       </RQForm>
