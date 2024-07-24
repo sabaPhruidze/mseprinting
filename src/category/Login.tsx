@@ -1,4 +1,4 @@
-import React, { useContext, useState, useCallback } from "react";
+import { useContext, useState, useCallback } from "react";
 import { rootContext } from "../Root";
 import { auth, db } from "../config/Firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -32,39 +32,42 @@ function Login() {
 
   const [loginError, setLoginError] = useState(false);
 
-  const onSubmitLogin = useCallback(async (data: LUseForm) => {
-    const { email, password } = data;
-    try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      const user = userCredential.user;
+  const onSubmitLogin = useCallback(
+    async (data: LUseForm) => {
+      const { email, password } = data;
+      try {
+        const userCredential = await signInWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+        const user = userCredential.user;
 
-      const userDoc = await getDoc(doc(db, "users", user.uid));
-      const userData = userDoc.data();
+        const userDoc = await getDoc(doc(db, "users", user.uid));
+        const userData = userDoc.data();
 
-      if (userData) {
-        dispatching("USER_INFO", {
-          firstname: userData.firstname,
-          lastname: userData.lastname,
-          email: userData.email,
-          jobTitle: userData.jobTitle,
-          phone: userData.phone,
-          company: userData.company,
-          uid: user.uid,
-        });
-        navigate("/");
-      } else {
-        console.error("No such document!");
+        if (userData) {
+          dispatching("USER_INFO", {
+            firstname: userData.firstname,
+            lastname: userData.lastname,
+            email: userData.email,
+            jobTitle: userData.jobTitle,
+            phone: userData.phone,
+            company: userData.company,
+            uid: user.uid,
+          });
+          navigate("/");
+        } else {
+          console.error("No such document!");
+          setLoginError(true);
+        }
+      } catch (error) {
+        console.error("Error logging in user:", error);
         setLoginError(true);
       }
-    } catch (error) {
-      console.error("Error logging in user:", error);
-      setLoginError(true);
-    }
-  }, []);
+    },
+    [dispatching, navigate]
+  ); // Include dependencies to prevent unnecessary re-renders
 
   return (
     <LoginContainer>
