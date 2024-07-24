@@ -21,6 +21,7 @@ import RequestQuoteInputs from "../data/RequestQuoteInputs";
 import RQProjectDetailsLeft from "../importantparts/RQProjectDetailsLeft";
 import RQProjectDetailsRight from "../importantparts/RQProjectDetailsRight";
 import { rootContext } from "../Root";
+import { sendEmail } from "../config/EmailService";
 
 type FormData = RQUseFormFirstPart & RQUseFormSecondPart & RQUseFormThirdPart;
 
@@ -63,6 +64,7 @@ export default function RequestQuote() {
 
   const onSubmitRQ = (data: FormData) => {
     console.log(data);
+    sendEmail(data);
   };
 
   return (

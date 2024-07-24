@@ -28,7 +28,9 @@ type FormField<T> = {
   message: string;
   value: RegExp;
 };
-
+export type RQFormData = RQUseFormFirstPart &
+  RQUseFormSecondPart &
+  RQUseFormThirdPart;
 export const RQDATAFIRSTPART: FormField<RQUseFormFirstPart>[] = [
   {
     placeholder: "First name *",
