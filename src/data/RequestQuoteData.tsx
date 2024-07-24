@@ -28,6 +28,11 @@ type FormField<T> = {
   message: string;
   value: RegExp;
 };
+type UploadedFile = {
+  name: string;
+  url: string;
+};
+
 export type RQFormData = RQUseFormFirstPart &
   RQUseFormSecondPart &
   RQUseFormThirdPart;
