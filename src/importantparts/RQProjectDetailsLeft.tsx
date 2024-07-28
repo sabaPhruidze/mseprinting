@@ -6,7 +6,7 @@ import {
   RQInput,
   RQButton,
 } from "../style/RequestQuoteStyle";
-import { LoginButton } from "../style/LoginStyles";
+
 import { UseFormRegister, FieldErrors } from "react-hook-form";
 import {
   RQUseFormFirstPart,
@@ -32,7 +32,7 @@ const RQProjectDetailsLeft: React.FC<RQProjectDetailsLeftProps> = ({
     <>
       <RQFormGroup>
         <RQInput
-          placeholder="Project Name"
+          placeholder="Project Name *"
           type="text"
           {...collectInfoLeft("projectName", { required: true })}
         />
@@ -43,7 +43,7 @@ const RQProjectDetailsLeft: React.FC<RQProjectDetailsLeftProps> = ({
 
       <RQFormGroup>
         <RQInput
-          placeholder="Quantity"
+          placeholder="Quantity *"
           type="number"
           {...collectInfoLeft("quantity", { required: true, min: 1 })}
         />
@@ -53,7 +53,7 @@ const RQProjectDetailsLeft: React.FC<RQProjectDetailsLeftProps> = ({
       </RQFormGroup>
 
       <RQFormGroup>
-        <RQFormLabel htmlFor="description">Project Description</RQFormLabel>
+        <RQFormLabel htmlFor="description">Project Description *</RQFormLabel>
         <RQFormTextarea
           id="description"
           {...collectInfoLeft("description", {
@@ -67,7 +67,7 @@ const RQProjectDetailsLeft: React.FC<RQProjectDetailsLeftProps> = ({
       </RQFormGroup>
 
       <RQFormGroup>
-        <RQFormLabel htmlFor="dueDate">Project Due Date</RQFormLabel>
+        <RQFormLabel htmlFor="dueDate">Project Due Date *</RQFormLabel>
         <RQInput
           id="dueDate"
           type="date"

@@ -41,7 +41,7 @@ export default function RQProjectDetailsRight({ setValue }: Props) {
 
       // Wait for all files to be uploaded and get their URLs
       const urls = await Promise.all(uploadPromises);
-      setValue("uploadedFiles", urls);
+      setValue("uploadedFiles", urls); // Update the form state
       console.log("Uploaded file URLs:", urls);
     }
   };
