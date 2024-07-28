@@ -1,4 +1,5 @@
 import { useContext, useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   RowContainer,
   RQPartBox,
@@ -35,7 +36,7 @@ export default function RequestQuote() {
   }
   const { state, dispatching } = context;
   const { rqSubmit } = state;
-
+  const navigate = useNavigate();
   const defaultValues = useMemo(() => {
     return state.user
       ? {
@@ -71,9 +72,9 @@ export default function RequestQuote() {
       const dataWithFiles = { ...data, uploadedFiles };
       console.log("Form data:", dataWithFiles);
       sendEmail(dataWithFiles)
-        .then((response) => {
-          console.log("Email sent successfully:", response);
+        .then(() => {
           dispatching("REQUEST_QUOTE_CHANGE", false);
+          navigate("/");
         })
         .catch((error) => {
           console.error("Error sending email:", error);
