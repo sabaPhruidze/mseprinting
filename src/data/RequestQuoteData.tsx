@@ -18,7 +18,7 @@ export type RQUseFormThirdPart = {
   description: string;
   dueDate: string;
   terms: boolean;
-  uploadedFiles?: File[];
+  uploadedFiles?: string[];
 };
 
 type FormField<T> = {
@@ -27,10 +27,6 @@ type FormField<T> = {
   required: boolean;
   message: string;
   value: RegExp;
-};
-type UploadedFile = {
-  name: string;
-  url: string;
 };
 
 export type RQFormData = RQUseFormFirstPart &

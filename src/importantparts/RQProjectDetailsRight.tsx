@@ -11,6 +11,8 @@ import {
   RQUseFormSecondPart,
   RQUseFormThirdPart,
 } from "../data/RequestQuoteData";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage"; // Import Firebase Storage functions
+import { storage } from "../config/Firebase";
 
 type FormData = RQUseFormFirstPart & RQUseFormSecondPart & RQUseFormThirdPart;
 
@@ -20,14 +22,29 @@ interface Props {
 
 export default function RQProjectDetailsRight({ setValue }: Props) {
   const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
+  const [fileUrls, setFileUrls] = useState<string[]>([]); // State to store file URLs
 
-  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileUpload = async (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     const files = event.target.files;
     if (files) {
       const filesArray = Array.from(files);
       setUploadedFiles(filesArray);
-      setValue("uploadedFiles", filesArray); // Ensure this line sets the value properly
-      console.log(filesArray); // This will log the uploaded files
+
+      // Upload files to Firebase Storage
+      const uploadPromises = filesArray.map(async (file) => {
+        const fileRef = ref(storage, `uploads/${file.name}`);
+        await uploadBytes(fileRef, file);
+        const fileUrl = await getDownloadURL(fileRef);
+        return fileUrl;
+      });
+
+      // Wait for all files to be uploaded and get their URLs
+      const urls = await Promise.all(uploadPromises);
+      setFileUrls(urls);
+      setValue("uploadedFiles", urls);
+      console.log("Uploaded file URLs:", urls);
     }
   };
 
