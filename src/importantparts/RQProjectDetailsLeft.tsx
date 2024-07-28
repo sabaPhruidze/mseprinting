@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { rootContext } from "../Root";
 import {
   RQFormGroup,
   RQFormLabel,
@@ -6,7 +7,6 @@ import {
   RQInput,
   RQButton,
 } from "../style/RequestQuoteStyle";
-
 import { UseFormRegister, FieldErrors } from "react-hook-form";
 import {
   RQUseFormFirstPart,
@@ -90,8 +90,6 @@ const RQProjectDetailsLeft: React.FC<RQProjectDetailsLeftProps> = ({
         </RQFormGroup>
         {errors.terms && <ErrorMessage>This field is required</ErrorMessage>}
       </div>
-
-      <RQButton type="submit">Submit</RQButton>
     </>
   );
 };

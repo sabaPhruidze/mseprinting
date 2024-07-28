@@ -1,5 +1,4 @@
-import { useContext, useMemo } from "react";
-
+import { useContext, useMemo, useState } from "react";
 import {
   RowContainer,
   RQPartBox,
@@ -7,6 +6,7 @@ import {
   RQh3Title,
   RQContainerColumn,
   RQForm,
+  RQButton,
 } from "../style/RequestQuoteStyle";
 import {
   GlobalContainerColumn,
@@ -28,11 +28,13 @@ type FormData = RQUseFormFirstPart & RQUseFormSecondPart & RQUseFormThirdPart;
 
 export default function RequestQuote() {
   const context = useContext(rootContext);
+  const [uploadedFiles, setUploadedFiles] = useState<string[]>([]);
 
   if (!context) {
     throw new Error("rootContext must be used within a Root provider");
   }
-  const { state } = context;
+  const { state, dispatching } = context;
+  const { rqSubmit } = state;
 
   const defaultValues = useMemo(() => {
     return state.user
@@ -59,20 +61,24 @@ export default function RequestQuote() {
     register,
     handleSubmit,
     formState: { errors },
-    setValue,
   } = useForm<FormData>({
     defaultValues,
   });
 
   const onSubmitRQ = (data: FormData) => {
-    console.log("Form data:", data);
-    sendEmail(data)
-      .then((response) => {
-        console.log("Email sent successfully:", response);
-      })
-      .catch((error) => {
-        console.error("Error sending email:", error);
-      });
+    dispatching("REQUEST_QUOTE_CHANGE", true);
+    if (rqSubmit && uploadedFiles[0].length > 1) {
+      const dataWithFiles = { ...data, uploadedFiles };
+      console.log("Form data:", dataWithFiles);
+      sendEmail(dataWithFiles)
+        .then((response) => {
+          console.log("Email sent successfully:", response);
+          dispatching("REQUEST_QUOTE_CHANGE", false);
+        })
+        .catch((error) => {
+          console.error("Error sending email:", error);
+        });
+    }
   };
 
   return (
@@ -112,9 +118,10 @@ export default function RequestQuote() {
             <RQProjectDetailsLeft collectInfoLeft={register} errors={errors} />
           </RQContainerColumn>
           <RQContainerColumn>
-            <RQProjectDetailsRight setValue={setValue} />
+            <RQProjectDetailsRight setUploadedFiles={setUploadedFiles} />
           </RQContainerColumn>
         </RowContainer>
+        <RQButton type="submit">Submit</RQButton>
       </RQForm>
     </GlobalContainerColumn>
   );

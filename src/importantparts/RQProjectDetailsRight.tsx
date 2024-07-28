@@ -5,32 +5,23 @@ import {
   RQFileUploadContainer,
   RQWarningText,
 } from "../style/RequestQuoteStyle";
-import { UseFormSetValue } from "react-hook-form";
-import {
-  RQUseFormFirstPart,
-  RQUseFormSecondPart,
-  RQUseFormThirdPart,
-} from "../data/RequestQuoteData";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage"; // Import Firebase Storage functions
 import { storage } from "../config/Firebase";
 
-type FormData = RQUseFormFirstPart & RQUseFormSecondPart & RQUseFormThirdPart;
-
 interface Props {
-  setValue: UseFormSetValue<FormData>;
+  setUploadedFiles: (files: string[]) => void;
 }
 
-export default function RQProjectDetailsRight({ setValue }: Props) {
-  const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
+export default function RQProjectDetailsRight({ setUploadedFiles }: Props) {
+  const [uploadedFiles, setUploadedFilesState] = useState<File[]>([]);
 
-  const handleFileUpload = async (
+  const handleFilesUpload = async (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     const files = event.target.files;
     if (files) {
       const filesArray = Array.from(files);
-      setUploadedFiles(filesArray);
-
+      setUploadedFilesState(filesArray);
       // Upload files to Firebase Storage
       const uploadPromises = filesArray.map(async (file) => {
         const fileRef = ref(storage, `uploads/${file.name}`);
@@ -41,7 +32,7 @@ export default function RQProjectDetailsRight({ setValue }: Props) {
 
       // Wait for all files to be uploaded and get their URLs
       const urls = await Promise.all(uploadPromises);
-      setValue("uploadedFiles", urls); // Update the form state
+      setUploadedFiles(urls); // Update the form state
       console.log("Uploaded file URLs:", urls);
     }
   };
@@ -58,12 +49,12 @@ export default function RQProjectDetailsRight({ setValue }: Props) {
         <input
           type="file"
           multiple
-          onChange={handleFileUpload}
+          onChange={handleFilesUpload}
           style={{ display: "none" }}
-          id="fileUpload"
+          id="fileUploads"
         />
         <RQFileUploadButton
-          onClick={() => document.getElementById("fileUpload")!.click()}
+          onClick={() => document.getElementById("fileUploads")!.click()}
         >
           Files
         </RQFileUploadButton>
