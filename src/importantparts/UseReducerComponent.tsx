@@ -24,6 +24,7 @@ export interface InitialState {
   SearchQuery: string;
   SearchResults: SearchResult[];
   SearchDone: boolean;
+  rqSubmit: boolean;
 }
 
 const initialState: InitialState = {
@@ -36,6 +37,7 @@ const initialState: InitialState = {
   SearchQuery: "",
   SearchResults: [],
   SearchDone: false,
+  rqSubmit: false,
 };
 
 type ActionType = {
@@ -69,6 +71,9 @@ const reducer = (state: typeof initialState, action: ActionType) => {
       break;
     case "SEARCH_DONE":
       newState.SearchDone = action.payload;
+      break;
+    case "REQUEST_QUOTE_CHANGE":
+      newState.rqSubmit = action.payload;
       break;
     default:
       throw new Error("Unknown action type");

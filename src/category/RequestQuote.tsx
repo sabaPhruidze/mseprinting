@@ -1,5 +1,5 @@
-import { useContext, useMemo, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useContext, useMemo } from "react";
+
 import {
   RowContainer,
   RQPartBox,
@@ -28,7 +28,7 @@ type FormData = RQUseFormFirstPart & RQUseFormSecondPart & RQUseFormThirdPart;
 
 export default function RequestQuote() {
   const context = useContext(rootContext);
-  const navigate = useNavigate();
+
   if (!context) {
     throw new Error("rootContext must be used within a Root provider");
   }
@@ -69,7 +69,6 @@ export default function RequestQuote() {
     sendEmail(data)
       .then((response) => {
         console.log("Email sent successfully:", response);
-        navigate("/");
       })
       .catch((error) => {
         console.error("Error sending email:", error);

@@ -11,7 +11,6 @@ import {
 
 import { RegisterInput } from "./LoginStyles";
 import { RegisterForm } from "./LoginStyles";
-import { StyledButton } from "./TwoButtonsStyles";
 
 export const RowContainer = styled(GlobalContainerRow)`
   justify-content: flex-start;
