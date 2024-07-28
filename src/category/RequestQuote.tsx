@@ -63,8 +63,14 @@ export default function RequestQuote() {
   });
 
   const onSubmitRQ = (data: FormData) => {
-    console.log(data);
-    sendEmail(data);
+    console.log("Form data:", data);
+    sendEmail(data)
+      .then((response) => {
+        console.log("Email sent successfully:", response);
+      })
+      .catch((error) => {
+        console.error("Error sending email:", error);
+      });
   };
 
   return (

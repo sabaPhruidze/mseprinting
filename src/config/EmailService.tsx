@@ -1,7 +1,7 @@
-import emailjs from "emailjs-com";
+import emailjs, { EmailJSResponseStatus } from "emailjs-com";
 import { RQFormData } from "../data/RequestQuoteData";
 
-export const sendEmail = (data: RQFormData) => {
+export const sendEmail = (data: RQFormData): Promise<EmailJSResponseStatus> => {
   // Create a form element
   const form = document.createElement("form");
   form.style.display = "none";
@@ -19,23 +19,31 @@ export const sendEmail = (data: RQFormData) => {
   form.appendChild(createInput("dueDate", data.dueDate));
   form.appendChild(createInput("terms", data.terms.toString()));
 
-  // Append uploaded files to the form
-  data.uploadedFiles?.forEach((file: File, index: number) => {
-    const fileInput = createFileInput(`file${index + 1}`, file);
-    form.appendChild(fileInput);
+  // Append uploaded file URLs to the form with correct placeholders
+  data.uploadedFiles?.forEach((fileUrl: string, index: number) => {
+    const fileUrlInput = createInput(`file${index + 1}`, fileUrl);
+    form.appendChild(fileUrlInput);
   });
+
+  // Log form data for debugging
+  const formData = new FormData(form);
+  for (const pair of formData.entries()) {
+    console.log(`${pair[0]}: ${pair[1]}`);
+  }
 
   document.body.appendChild(form);
 
   // Send the form using emailjs
-  emailjs
+  return emailjs
     .sendForm("info_mseprinting", "template_rbodn39", form, "o8M8gRSBk1LAfvoAE")
     .then(
-      (result) => {
+      (result: EmailJSResponseStatus) => {
         console.log(result.text);
+        return result;
       },
       (error) => {
-        console.log(error.text);
+        console.error(error.text);
+        throw error;
       }
     )
     .finally(() => {
@@ -48,16 +56,5 @@ const createInput = (name: string, value: string): HTMLInputElement => {
   input.setAttribute("type", "hidden");
   input.setAttribute("name", name);
   input.setAttribute("value", value);
-  return input;
-};
-
-const createFileInput = (name: string, file: File): HTMLInputElement => {
-  const input = document.createElement("input");
-  input.setAttribute("type", "file");
-  input.setAttribute("name", name);
-  input.files = new DataTransfer().files;
-  const dt = new DataTransfer();
-  dt.items.add(file);
-  input.files = dt.files;
   return input;
 };
