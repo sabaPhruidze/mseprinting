@@ -22,7 +22,6 @@ interface Props {
 
 export default function RQProjectDetailsRight({ setValue }: Props) {
   const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
-  const [fileUrls, setFileUrls] = useState<string[]>([]); // State to store file URLs
 
   const handleFileUpload = async (
     event: React.ChangeEvent<HTMLInputElement>
@@ -42,7 +41,6 @@ export default function RQProjectDetailsRight({ setValue }: Props) {
 
       // Wait for all files to be uploaded and get their URLs
       const urls = await Promise.all(uploadPromises);
-      setFileUrls(urls);
       setValue("uploadedFiles", urls);
       console.log("Uploaded file URLs:", urls);
     }
@@ -70,7 +68,7 @@ export default function RQProjectDetailsRight({ setValue }: Props) {
           Files
         </RQFileUploadButton>
         <p style={{ marginTop: "20px", fontSize: "18px" }}>
-          File size limit: 1GB
+          File size limit: 0.5GB
         </p>
         {uploadedFiles.length > 0 && (
           <div>

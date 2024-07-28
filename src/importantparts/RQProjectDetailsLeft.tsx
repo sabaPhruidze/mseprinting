@@ -4,6 +4,7 @@ import {
   RQFormLabel,
   RQFormTextarea,
   RQInput,
+  RQButton,
 } from "../style/RequestQuoteStyle";
 import { LoginButton } from "../style/LoginStyles";
 import { UseFormRegister, FieldErrors } from "react-hook-form";
@@ -90,9 +91,7 @@ const RQProjectDetailsLeft: React.FC<RQProjectDetailsLeftProps> = ({
         {errors.terms && <ErrorMessage>This field is required</ErrorMessage>}
       </div>
 
-      <LoginButton type="submit" style={{ minWidth: "100%" }}>
-        Submit
-      </LoginButton>
+      <RQButton type="submit">Submit</RQButton>
     </>
   );
 };
