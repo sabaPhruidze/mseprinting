@@ -119,7 +119,11 @@ export default function RequestQuote() {
             <RQProjectDetailsLeft collectInfoLeft={register} errors={errors} />
           </RQContainerColumn>
           <RQContainerColumn>
-            <RQProjectDetailsRight setUploadedFiles={setUploadedFiles} />
+            <RQProjectDetailsRight
+              setUploadedFiles={setUploadedFiles}
+              firstname={defaultValues.firstname || ""}
+              lastname={defaultValues.lastname || ""}
+            />
           </RQContainerColumn>
         </RowContainer>
         <RQButton type="submit">Submit</RQButton>
