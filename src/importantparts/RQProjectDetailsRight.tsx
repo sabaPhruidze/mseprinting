@@ -1,4 +1,5 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useContext } from "react";
+import { rootContext } from "../Root";
 import { useDropzone } from "react-dropzone";
 import JSZip from "jszip";
 
@@ -23,7 +24,13 @@ export default function RQProjectDetailsRight({
   lastname,
 }: Props) {
   const [uploadedFiles, setUploadedFilesState] = useState<File[]>([]);
+  const context = useContext(rootContext);
 
+  if (!context) {
+    throw new Error("rootContext must be used within a Root provider");
+  }
+
+  const { dispatching } = context;
   const onDrop = useCallback(
     async (acceptedFiles: File[]) => {
       setUploadedFilesState(acceptedFiles);
@@ -45,6 +52,7 @@ export default function RQProjectDetailsRight({
 
       setUploadedFiles([fileUrl]);
       console.log("Uploaded file URL:", fileUrl);
+      dispatching("REQUEST_QUOTE_SUCCESS_SEND", true);
     },
     [firstname, lastname, setUploadedFiles]
   );
