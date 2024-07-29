@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useMemo } from "react";
 import { rootContext } from "../Root";
 import CarouselComponent from "../importantparts/CarouselComponent";
 import WhatWeDoCards from "../importantparts/WhatWeDoCards";
@@ -14,7 +14,8 @@ export default function Home() {
   }
 
   const { state } = context;
-  const { rqSSend } = state;
+  const { rqSSend } = useMemo(() => state, [state.rqSSend]);
+
   return (
     <div style={{ position: "relative" }}>
       <CarouselComponent />
