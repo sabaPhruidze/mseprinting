@@ -148,7 +148,7 @@ export const RQFileUploadContainer = styled.div`
 `;
 
 export const RQFileUploadButton = styled.button`
-  background-color: red;
+  background-color: ${(props) => props.theme.darkGray};
   color: white;
   border: none;
   padding: 10px 50px;
@@ -156,8 +156,9 @@ export const RQFileUploadButton = styled.button`
   font-weight: bold;
   cursor: pointer;
   border-radius: 4px;
+  transition: 0.5s;
   &:hover {
-    background-color: darkred;
+    background-color: #090909;
   }
 `;
 
@@ -203,6 +204,7 @@ export const RQFormLabel = styled.label`
   display: block;
 `;
 export const RQButton = styled(LoginButton)`
+  background-color: ${(props) => props.theme.red};
   max-width: 600px;
   @media (max-width: 900px) {
     width: 400px;

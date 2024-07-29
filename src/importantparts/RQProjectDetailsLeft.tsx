@@ -42,12 +42,10 @@ const RQProjectDetailsLeft: React.FC<RQProjectDetailsLeftProps> = ({
       <RQFormGroup>
         <RQInput
           placeholder="Quantity *"
-          type="number"
-          {...collectInfoLeft("quantity", { required: true, min: 1 })}
+          type="text"
+          {...collectInfoLeft("quantity", { required: true })}
         />
-        {errors.quantity && (
-          <ErrorMessage>Quantity must be greater than 0</ErrorMessage>
-        )}
+        {errors.quantity && <ErrorMessage>This field is required</ErrorMessage>}
       </RQFormGroup>
 
       <RQFormGroup>
