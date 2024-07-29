@@ -1,4 +1,4 @@
-import { useState, useCallback, useContext } from "react";
+import { useState, useCallback, useContext, memo } from "react";
 import { rootContext } from "../Root";
 import { useDropzone } from "react-dropzone";
 import JSZip from "jszip";
@@ -18,11 +18,11 @@ interface Props {
   lastname: string | null;
 }
 
-export default function RQProjectDetailsRight({
+const RQProjectDetailsRight: React.FC<Props> = ({
   setUploadedFiles,
   firstname,
   lastname,
-}: Props) {
+}) => {
   const [uploadedFiles, setUploadedFilesState] = useState<File[]>([]);
   const context = useContext(rootContext);
 
@@ -31,6 +31,7 @@ export default function RQProjectDetailsRight({
   }
 
   const { dispatching } = context;
+
   const onDrop = useCallback(
     async (acceptedFiles: File[]) => {
       setUploadedFilesState(acceptedFiles);
@@ -54,7 +55,7 @@ export default function RQProjectDetailsRight({
       console.log("Uploaded file URL:", fileUrl);
       dispatching("REQUEST_QUOTE_SUCCESS_SEND", true);
     },
-    [firstname, lastname, setUploadedFiles]
+    [firstname, lastname, setUploadedFiles, dispatching]
   );
 
   const { getRootProps, getInputProps } = useDropzone({
@@ -97,4 +98,6 @@ export default function RQProjectDetailsRight({
       </RQWarningText>
     </>
   );
-}
+};
+
+export default memo(RQProjectDetailsRight);
