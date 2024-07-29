@@ -9,7 +9,7 @@ export const ButtonContainer = styled.div`
 `;
 
 export const StyledButton = styled.button`
-  background-color: red;
+  background-color: ${(props) => props.theme.red};
   color: white;
   border: none;
   padding: 10px 20px;
