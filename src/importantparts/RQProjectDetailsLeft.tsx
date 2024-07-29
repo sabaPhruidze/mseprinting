@@ -1,11 +1,8 @@
-import React, { useContext } from "react";
-import { rootContext } from "../Root";
 import {
   RQFormGroup,
   RQFormLabel,
   RQFormTextarea,
   RQInput,
-  RQButton,
 } from "../style/RequestQuoteStyle";
 import { UseFormRegister, FieldErrors } from "react-hook-form";
 import {
