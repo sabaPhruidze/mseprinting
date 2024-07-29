@@ -1,4 +1,4 @@
-import { useContext, useMemo, useState } from "react";
+import { useContext, useMemo, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   RowContainer,
@@ -37,6 +37,7 @@ export default function RequestQuote() {
   const { state, dispatching } = context;
   const { rqSubmit } = state;
   const navigate = useNavigate();
+
   const defaultValues = useMemo(() => {
     return state.user
       ? {
@@ -66,21 +67,28 @@ export default function RequestQuote() {
     defaultValues,
   });
 
-  const onSubmitRQ = (data: FormData) => {
-    dispatching("REQUEST_QUOTE_CHANGE", true);
-    if (rqSubmit && uploadedFiles[0].length > 1) {
-      const dataWithFiles = { ...data, uploadedFiles };
-      console.log("Form data:", dataWithFiles);
-      sendEmail(dataWithFiles)
-        .then(() => {
-          dispatching("REQUEST_QUOTE_CHANGE", false);
-          navigate("/");
-        })
-        .catch((error) => {
-          console.error("Error sending email:", error);
-        });
-    }
-  };
+  const onSubmitRQ = useCallback(
+    (data: FormData) => {
+      dispatching("REQUEST_QUOTE_CHANGE", true);
+      if (rqSubmit && uploadedFiles.length > 0) {
+        const dataWithFiles = { ...data, uploadedFiles };
+        sendEmail(dataWithFiles)
+          .then(() => {
+            dispatching("REQUEST_QUOTE_CHANGE", false);
+            navigate("/");
+          })
+          .catch((error) => {
+            console.error("Error sending email:", error);
+            dispatching("REQUEST_QUOTE_CHANGE", false);
+          });
+      }
+    },
+    [rqSubmit, uploadedFiles, dispatching, navigate]
+  );
+
+  const handleFilesUpload = useCallback((files: string[]) => {
+    setUploadedFiles(files);
+  }, []);
 
   return (
     <GlobalContainerColumn>
@@ -120,7 +128,7 @@ export default function RequestQuote() {
           </RQContainerColumn>
           <RQContainerColumn>
             <RQProjectDetailsRight
-              setUploadedFiles={setUploadedFiles}
+              setUploadedFiles={handleFilesUpload}
               firstname={defaultValues.firstname || ""}
               lastname={defaultValues.lastname || ""}
             />
