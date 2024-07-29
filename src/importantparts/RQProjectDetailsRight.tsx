@@ -1,5 +1,7 @@
-import React, { useState, useCallback } from "react";
+import { useState, useCallback } from "react";
 import { useDropzone } from "react-dropzone";
+import JSZip from "jszip";
+
 import {
   RQh3Title,
   RQFileUploadButton,
@@ -11,26 +13,40 @@ import { storage } from "../config/Firebase";
 
 interface Props {
   setUploadedFiles: (files: string[]) => void;
+  firstname: string | null;
+  lastname: string | null;
 }
 
-export default function RQProjectDetailsRight({ setUploadedFiles }: Props) {
+export default function RQProjectDetailsRight({
+  setUploadedFiles,
+  firstname,
+  lastname,
+}: Props) {
   const [uploadedFiles, setUploadedFilesState] = useState<File[]>([]);
 
   const onDrop = useCallback(
     async (acceptedFiles: File[]) => {
       setUploadedFilesState(acceptedFiles);
-      const uploadPromises = acceptedFiles.map(async (file) => {
-        const fileRef = ref(storage, `uploads/${file.name}`);
-        await uploadBytes(fileRef, file);
-        const fileUrl = await getDownloadURL(fileRef);
-        return fileUrl;
+
+      const zip = new JSZip();
+      acceptedFiles.forEach((file) => {
+        zip.file(file.name, file);
       });
 
-      const urls = await Promise.all(uploadPromises);
-      setUploadedFiles(urls);
-      console.log("Uploaded file URLs:", urls);
+      const zipBlob = await zip.generateAsync({ type: "blob" });
+      const zipFileName = `${firstname}_${lastname}.zip`;
+      const zipFile = new File([zipBlob], zipFileName, {
+        type: "application/zip",
+      });
+
+      const fileRef = ref(storage, `uploads/${zipFileName}`);
+      await uploadBytes(fileRef, zipFile);
+      const fileUrl = await getDownloadURL(fileRef);
+
+      setUploadedFiles([fileUrl]);
+      console.log("Uploaded file URL:", fileUrl);
     },
-    [setUploadedFiles]
+    [firstname, lastname, setUploadedFiles]
   );
 
   const { getRootProps, getInputProps } = useDropzone({
