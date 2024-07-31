@@ -19,6 +19,8 @@ import SendFile from "./category/SendFile";
 //sub Categorry
 import CommercialDigitalPrinting from "./sub-category/CommercialDigitalPrinting";
 import CommercialOffsetPrinting from "./sub-category/CommercialOffsetPrinting";
+import PrintingCopying from "./sub-category/PrintingCopying";
+import DirectMailing from "./sub-category/DirectMailing";
 
 import Accessibility from "./sub-category/Accessibility";
 import TermsAndConditions from "./sub-category/TermsAndConditions";
@@ -27,6 +29,8 @@ import EoeDiversity from "./sub-category/EoeDiversity";
 import PrivacyAndPolicy from "./sub-category/PrivacyAndPolicy";
 import Blog from "./sub-category/Blog";
 import Register from "./category/Register";
+import Signs from "./sub-category/Signs";
+import OnlinePortal from "./sub-category/OnlinePortal";
 
 function App() {
   const router = createBrowserRouter(
@@ -50,6 +54,13 @@ function App() {
           path="/commercial-offset-printing"
           element={<CommercialOffsetPrinting />}
         />
+        <Route path="/printing-copying" element={<PrintingCopying />} />
+        <Route
+          path="/direct-mail-mailing-services"
+          element={<DirectMailing />}
+        />
+        <Route path="/signs" element={<Signs />} />
+        <Route path="/online-ordering-portals" element={<OnlinePortal />} />
 
         <Route path="/accessibility" element={<Accessibility />} />
         <Route path="/blog" element={<Blog />} />
