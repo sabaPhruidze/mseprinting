@@ -112,6 +112,10 @@ export const CarouselContent = styled.p`
 export const CarouselButton = styled(GlobalButton)`
   text-align: left;
   width: 150px;
+  &:hover {
+    background-color: ${(props) => props.theme.MediumBlue};
+    color: white;
+  }
 `;
 //card
 export const WWDCContainer = styled(RowFlex)`
