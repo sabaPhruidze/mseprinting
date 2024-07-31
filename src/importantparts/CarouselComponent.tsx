@@ -1,4 +1,5 @@
 import { useState, useCallback, useMemo, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { fetchCarouselData } from "../data/CarouselData";
 import { CarouselType } from "../types/DataTypes";
 import Carousel from "react-bootstrap/Carousel";
@@ -19,7 +20,7 @@ import "../style/CustomCarousel.css";
 export default function CarouselComponent() {
   const [index, setIndex] = useState(0);
   const [carouselMainData, setCarouselMainData] = useState<CarouselType[]>([]);
-
+  const navigate = useNavigate();
   const handleSelect = useCallback((selectedIndex: number) => {
     setIndex(selectedIndex);
   }, []);
@@ -60,7 +61,9 @@ export default function CarouselComponent() {
             <Carousel.Caption className="custom-carousel-caption">
               <CarouselTitle>{data.title}</CarouselTitle>
               <CarouselContent>{data.text}</CarouselContent>
-              <CarouselButton>Learn more ...</CarouselButton>
+              <CarouselButton onClick={() => navigate(data.link)}>
+                Learn more ...
+              </CarouselButton>
             </Carousel.Caption>
           </CarouselContainer>
         </Carousel.Item>
