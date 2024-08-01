@@ -113,6 +113,10 @@ export const GlobalSpecialPart = styled.span`
   color: ${(props) => props.theme.MediumBlue};
   cursor: pointer;
 `;
+export const GlobalSpecialPartDark = styled(GlobalSpecialPart)`
+  color: ${(props) => props.theme.Black};
+  font-weight: 600;
+`;
 export const GlobalList = styled.ul`
   padding-left: 20px;
   margin-bottom: 20px;
@@ -133,4 +137,14 @@ export const GlobalOrderedListItem = styled.li`
   font-size: 18px;
   margin-bottom: 10px;
   list-style: decimal;
+`;
+export const GlobalNestedList = styled.ul`
+  padding-left: 20px;
+  margin-top: 10px;
+`;
+
+export const GlobalNestedListItem = styled.li`
+  font-size: 18px;
+  margin-bottom: 10px;
+  list-style: disc;
 `;
