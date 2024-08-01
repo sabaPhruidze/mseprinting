@@ -11,6 +11,9 @@ import {
   GlobalList,
   GlobalOrderedList,
   GlobalOrderedListItem,
+  GlobalNestedList,
+  GlobalNestedListItem,
+  GlobalSpecialPartDark,
 } from "../style/GlobalStyle";
 import { fetchOffsetPrintingData } from "../data/sub-category data/CommercialOffsetPrintingData";
 import { OffsetPrintingDocument } from "../types/DataTypes";
@@ -54,13 +57,25 @@ export default function CommercialOffsetPrinting() {
         <GlobalOrderedList>
           {offsetPrintingData?.subThree.map((item, index) => (
             <GlobalOrderedListItem key={index}>
-              <GlobalPartBox>{item.contentOne}</GlobalPartBox>
-              {item.specialOne && (
-                <GlobalSpecialPart>{item.specialOne}</GlobalSpecialPart>
-              )}
-              {item.contentTwo && (
-                <GlobalPartBox>{item.contentTwo}</GlobalPartBox>
-              )}
+              {item.title}
+              <GlobalNestedList>
+                {item.specialOne && (
+                  <GlobalNestedListItem>
+                    <GlobalSpecialPartDark>
+                      {item.specialOne}{" "}
+                    </GlobalSpecialPartDark>
+                    <GlobalPartBox> {item.contentOne}</GlobalPartBox>
+                  </GlobalNestedListItem>
+                )}
+                {item.specialTwo && (
+                  <GlobalNestedListItem>
+                    <GlobalSpecialPartDark>
+                      {item.specialTwo}{" "}
+                    </GlobalSpecialPartDark>
+                    <GlobalPartBox>{item.contentTwo}</GlobalPartBox>
+                  </GlobalNestedListItem>
+                )}
+              </GlobalNestedList>
             </GlobalOrderedListItem>
           ))}
         </GlobalOrderedList>
