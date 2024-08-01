@@ -72,6 +72,12 @@ export const Globalh2Title = styled.h2`
   font-size: 22px;
   font-weight: bold;
 `;
+export const Globalh2TitleWithMB20 = styled.h2`
+  margin-bottom: 0;
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 20px;
+`;
 
 export const Globalh3Title = styled.h3`
   font-size: 18px;
@@ -106,4 +112,25 @@ export const GlobalRow = styled.li`
 export const GlobalSpecialPart = styled.span`
   color: ${(props) => props.theme.MediumBlue};
   cursor: pointer;
+`;
+export const GlobalList = styled.ul`
+  padding-left: 20px;
+  margin-bottom: 20px;
+`;
+
+export const GlobalListItem = styled.li`
+  font-size: 18px;
+  margin-bottom: 10px;
+  list-style: disc;
+`;
+
+export const GlobalOrderedList = styled.ol`
+  padding-left: 20px;
+  margin-bottom: 20px;
+`;
+
+export const GlobalOrderedListItem = styled.li`
+  font-size: 18px;
+  margin-bottom: 10px;
+  list-style: decimal;
 `;

@@ -280,3 +280,43 @@ export type FormField<T> = {
   message: string;
   value: RegExp;
 };
+// Commercial Offset Printing
+export interface OffsetPrintingDocument {
+  one: OffsetPrintingOneType;
+  two: OffsetPrintingTCType;
+  three: OffsetPrintingTCType;
+  subThree: OffsetPrintingSubThreeType[];
+  four: OffsetPrintingTCType;
+  fourSub: OffsetPrintingTCType[];
+  five: OffsetPrintingTCType;
+  fiveSub: OffsetPrintingTCType[];
+  six: OffsetPrintingTCType;
+  sixSub: OffsetPrintingTCType[];
+  seven: OffsetPrintingTCType;
+  sevenSub: OffsetPrintingTCType[];
+  eight: OffsetPrintingTCType;
+  eightSub: OffsetPrintingTCType[];
+  nine: OffsetPrintingNineType;
+}
+
+export interface OffsetPrintingOneType {
+  title: string;
+  mainTitle: string;
+  content: string;
+}
+export interface OffsetPrintingTCType {
+  title: string;
+  content?: string;
+}
+export interface OffsetPrintingSubThreeType {
+  title: string;
+  specialOne: string;
+  contentOne: String;
+  specialTwo?: string;
+  contentTwo?: string;
+}
+export interface OffsetPrintingNineType {
+  title: string;
+  firstPart: string;
+  secondPart: String;
+}
