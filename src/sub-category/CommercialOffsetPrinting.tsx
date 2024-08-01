@@ -1,10 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import {
   GlobalContainerColumn,
   GlobalBoxColumnStart,
   Globalh2TitleWithMB20,
   GlobalPart,
-  GlobalSpecialPart,
   GlobalPartBox,
   GlobalMainTitle,
   GlobalListItem,
@@ -33,49 +32,49 @@ export default function CommercialOffsetPrinting() {
     getOffsetPrintingData();
   }, []);
 
+  const memoizedData = useMemo(() => offsetPrintingData, [offsetPrintingData]);
+
+  const renderSpecialPart = useCallback((item: any) => {
+    return (
+      <>
+        {item.specialOne && (
+          <GlobalNestedListItem key={`specialOne-${item.specialOne}`}>
+            <GlobalSpecialPartDark>{item.specialOne} </GlobalSpecialPartDark>
+            <GlobalPartBox> {item.contentOne}</GlobalPartBox>
+          </GlobalNestedListItem>
+        )}
+        {item.specialTwo && (
+          <GlobalNestedListItem key={`specialTwo-${item.specialTwo}`}>
+            <GlobalSpecialPartDark>{item.specialTwo} </GlobalSpecialPartDark>
+            <GlobalPartBox>{item.contentTwo}</GlobalPartBox>
+          </GlobalNestedListItem>
+        )}
+      </>
+    );
+  }, []);
+
   return (
     <GlobalContainerColumn>
-      <GlobalMainTitle>{offsetPrintingData?.one.mainTitle}</GlobalMainTitle>
+      <GlobalMainTitle>{memoizedData?.one.mainTitle}</GlobalMainTitle>
       <GlobalBoxColumnStart>
-        <Globalh2TitleWithMB20>
-          {offsetPrintingData?.one.title}
-        </Globalh2TitleWithMB20>
-        <GlobalPart>{offsetPrintingData?.one.content}</GlobalPart>
+        <Globalh2TitleWithMB20>{memoizedData?.one.title}</Globalh2TitleWithMB20>
+        <GlobalPart>{memoizedData?.one.content}</GlobalPart>
+      </GlobalBoxColumnStart>
+
+      <GlobalBoxColumnStart>
+        <Globalh2TitleWithMB20>{memoizedData?.two.title}</Globalh2TitleWithMB20>
+        <GlobalPart>{memoizedData?.two.content}</GlobalPart>
       </GlobalBoxColumnStart>
 
       <GlobalBoxColumnStart>
         <Globalh2TitleWithMB20>
-          {offsetPrintingData?.two.title}
-        </Globalh2TitleWithMB20>
-        <GlobalPart>{offsetPrintingData?.two.content}</GlobalPart>
-      </GlobalBoxColumnStart>
-
-      <GlobalBoxColumnStart>
-        <Globalh2TitleWithMB20>
-          {offsetPrintingData?.three.title}
+          {memoizedData?.three.title}
         </Globalh2TitleWithMB20>
         <GlobalOrderedList>
-          {offsetPrintingData?.subThree.map((item, index) => (
+          {memoizedData?.subThree.map((item, index) => (
             <GlobalOrderedListItem key={index}>
               {item.title}
-              <GlobalNestedList>
-                {item.specialOne && (
-                  <GlobalNestedListItem>
-                    <GlobalSpecialPartDark>
-                      {item.specialOne}{" "}
-                    </GlobalSpecialPartDark>
-                    <GlobalPartBox> {item.contentOne}</GlobalPartBox>
-                  </GlobalNestedListItem>
-                )}
-                {item.specialTwo && (
-                  <GlobalNestedListItem>
-                    <GlobalSpecialPartDark>
-                      {item.specialTwo}{" "}
-                    </GlobalSpecialPartDark>
-                    <GlobalPartBox>{item.contentTwo}</GlobalPartBox>
-                  </GlobalNestedListItem>
-                )}
-              </GlobalNestedList>
+              <GlobalNestedList>{renderSpecialPart(item)}</GlobalNestedList>
             </GlobalOrderedListItem>
           ))}
         </GlobalOrderedList>
@@ -83,10 +82,10 @@ export default function CommercialOffsetPrinting() {
 
       <GlobalBoxColumnStart>
         <Globalh2TitleWithMB20>
-          {offsetPrintingData?.four.title}
+          {memoizedData?.four.title}
         </Globalh2TitleWithMB20>
         <GlobalList>
-          {offsetPrintingData?.fourSub.map((item, index) => (
+          {memoizedData?.fourSub.map((item, index) => (
             <GlobalListItem key={index}>{item.content}</GlobalListItem>
           ))}
         </GlobalList>
@@ -94,10 +93,21 @@ export default function CommercialOffsetPrinting() {
 
       <GlobalBoxColumnStart>
         <Globalh2TitleWithMB20>
-          {offsetPrintingData?.five.title}
+          {memoizedData?.five.title}
         </Globalh2TitleWithMB20>
         <GlobalOrderedList>
-          {offsetPrintingData?.fiveSub.map((item, index) => (
+          {memoizedData?.fiveSub.map((item, index) => (
+            <GlobalOrderedListItem key={index}>
+              <GlobalPartBox>{item.content}</GlobalPartBox>
+            </GlobalOrderedListItem>
+          ))}
+        </GlobalOrderedList>
+      </GlobalBoxColumnStart>
+
+      <GlobalBoxColumnStart>
+        <Globalh2TitleWithMB20>{memoizedData?.six.title}</Globalh2TitleWithMB20>
+        <GlobalOrderedList>
+          {memoizedData?.sixSub.map((item, index) => (
             <GlobalOrderedListItem key={index}>
               <GlobalPartBox>{item.content}</GlobalPartBox>
             </GlobalOrderedListItem>
@@ -107,10 +117,10 @@ export default function CommercialOffsetPrinting() {
 
       <GlobalBoxColumnStart>
         <Globalh2TitleWithMB20>
-          {offsetPrintingData?.six.title}
+          {memoizedData?.seven.title}
         </Globalh2TitleWithMB20>
         <GlobalOrderedList>
-          {offsetPrintingData?.sixSub.map((item, index) => (
+          {memoizedData?.sevenSub.map((item, index) => (
             <GlobalOrderedListItem key={index}>
               <GlobalPartBox>{item.content}</GlobalPartBox>
             </GlobalOrderedListItem>
@@ -120,10 +130,10 @@ export default function CommercialOffsetPrinting() {
 
       <GlobalBoxColumnStart>
         <Globalh2TitleWithMB20>
-          {offsetPrintingData?.seven.title}
+          {memoizedData?.eight.title}
         </Globalh2TitleWithMB20>
         <GlobalOrderedList>
-          {offsetPrintingData?.sevenSub.map((item, index) => (
+          {memoizedData?.eightSub.map((item, index) => (
             <GlobalOrderedListItem key={index}>
               <GlobalPartBox>{item.content}</GlobalPartBox>
             </GlobalOrderedListItem>
@@ -133,23 +143,10 @@ export default function CommercialOffsetPrinting() {
 
       <GlobalBoxColumnStart>
         <Globalh2TitleWithMB20>
-          {offsetPrintingData?.eight.title}
+          {memoizedData?.nine.title}
         </Globalh2TitleWithMB20>
-        <GlobalOrderedList>
-          {offsetPrintingData?.eightSub.map((item, index) => (
-            <GlobalOrderedListItem key={index}>
-              <GlobalPartBox>{item.content}</GlobalPartBox>
-            </GlobalOrderedListItem>
-          ))}
-        </GlobalOrderedList>
-      </GlobalBoxColumnStart>
-
-      <GlobalBoxColumnStart>
-        <Globalh2TitleWithMB20>
-          {offsetPrintingData?.nine.title}
-        </Globalh2TitleWithMB20>
-        <GlobalPart>{offsetPrintingData?.nine.firstPart}</GlobalPart>
-        <GlobalPart>{offsetPrintingData?.nine.secondPart}</GlobalPart>
+        <GlobalPart>{memoizedData?.nine.firstPart}</GlobalPart>
+        <GlobalPart>{memoizedData?.nine.secondPart}</GlobalPart>
       </GlobalBoxColumnStart>
     </GlobalContainerColumn>
   );
