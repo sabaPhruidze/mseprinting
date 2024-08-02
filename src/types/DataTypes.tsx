@@ -283,28 +283,28 @@ export type FormField<T> = {
 // Commercial Offset Printing
 export interface OffsetPrintingDocument {
   one: OffsetPrintingOneType;
-  two: OffsetPrintingTCType;
-  three: OffsetPrintingTCType;
+  two: titleWithContentType;
+  three: titleWithContentType;
   subThree: OffsetPrintingSubThreeType[];
-  four: OffsetPrintingTCType;
-  fourSub: OffsetPrintingTCType[];
-  five: OffsetPrintingTCType;
-  fiveSub: OffsetPrintingTCType[];
-  six: OffsetPrintingTCType;
-  sixSub: OffsetPrintingTCType[];
-  seven: OffsetPrintingTCType;
-  sevenSub: OffsetPrintingTCType[];
-  eight: OffsetPrintingTCType;
-  eightSub: OffsetPrintingTCType[];
+  four: titleWithContentType;
+  fourSub: titleWithContentType[];
+  five: titleWithContentType;
+  fiveSub: titleWithContentType[];
+  six: titleWithContentType;
+  sixSub: titleWithContentType[];
+  seven: titleWithContentType;
+  sevenSub: titleWithContentType[];
+  eight: titleWithContentType;
+  eightSub: titleWithContentType[];
   nine: OffsetPrintingNineType;
 }
 
 export interface OffsetPrintingOneType {
-  title: string;
+  title?: string;
   mainTitle: string;
-  content: string;
+  content?: string;
 }
-export interface OffsetPrintingTCType {
+export interface titleWithContentType {
   title: string;
   content?: string;
 }
@@ -319,4 +319,23 @@ export interface OffsetPrintingNineType {
   title: string;
   firstPart: string;
   secondPart: String;
+}
+// Digital printing
+
+export interface DigitalPrintingDocument {
+  one: OffsetPrintingOneType;
+  two: titleWithContentType[];
+  three: titleWithContentType;
+  threeSub: OffsetPrintingSubThreeType[];
+  four: titleWithContentType;
+  fourSub: titleWithContentType[];
+  five: titleWithContentType;
+  fiveSub: titleWithContentType[];
+  six: titleWithContentType;
+  sixSub: titleWithContentType[];
+  seven: titleWithContentType;
+  sevenSub: titleWithContentType[];
+  eight: titleWithContentType;
+  eightSub: titleWithContentType[];
+  nine: OffsetPrintingNineType;
 }
