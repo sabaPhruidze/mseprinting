@@ -1,6 +1,6 @@
 // components/PrintingCopying.tsx
 
-import { useState, useEffect, useMemo, useCallback } from "react";
+import { useState, useEffect, useMemo } from "react";
 import {
   GlobalContainerColumn,
   GlobalBoxColumnStart,
