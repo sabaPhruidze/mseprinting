@@ -1,5 +1,9 @@
 import { GeneralizedFetch } from "../../importantparts/GeneralizedFetch";
-import { DigitalPrintingDocument } from "../../types/DataTypes";
+import {
+  DigitalPrintingDocument,
+  PrintingCopyingDocument,
+  DirectMailDocument,
+} from "../../types/DataTypes";
 
 export const fetchDigitalPrintingData =
   async (): Promise<DigitalPrintingDocument | null> => {
@@ -7,4 +11,16 @@ export const fetchDigitalPrintingData =
       "sub-category",
       "DigitalPrinting"
     );
+  };
+
+export const fetchCopyPrintingData =
+  async (): Promise<PrintingCopyingDocument | null> => {
+    return GeneralizedFetch<PrintingCopyingDocument>(
+      "sub-category",
+      "PrintingCopying"
+    );
+  };
+export const fetchDirectMailingData =
+  async (): Promise<DirectMailDocument | null> => {
+    return GeneralizedFetch<DirectMailDocument>("sub-category", "DirectMail");
   };
