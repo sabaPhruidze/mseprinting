@@ -298,7 +298,7 @@ export interface OffsetPrintingDocument {
   eightSub: titleWithContentType[];
   nine: OffsetPrintingNineType;
 }
-
+// special     special
 export interface OffsetPrintingOneType {
   title?: string;
   mainTitle: string;
@@ -338,4 +338,15 @@ export interface DigitalPrintingDocument {
   eight: titleWithContentType;
   eightSub: titleWithContentType[];
   nine: OffsetPrintingNineType;
+}
+// printing and copying
+export interface PrintingCopyingDocument {
+  one: titleWithContentType;
+  two: titleWithContentType[];
+  three: OffsetPrintingNineType;
+}
+// Direct mail
+export interface DirectMailDocument {
+  one: titleWithContentType;
+  two: titleWithContentType[];
 }
