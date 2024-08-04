@@ -2,7 +2,7 @@ import { GeneralizedFetch } from "../../importantparts/GeneralizedFetch";
 import {
   DigitalPrintingDocument,
   PrintingCopyingDocument,
-  DirectMailDocument,
+  CommonDocument,
 } from "../../types/DataTypes";
 
 export const fetchDigitalPrintingData =
@@ -21,6 +21,14 @@ export const fetchCopyPrintingData =
     );
   };
 export const fetchDirectMailingData =
-  async (): Promise<DirectMailDocument | null> => {
-    return GeneralizedFetch<DirectMailDocument>("sub-category", "DirectMail");
+  async (): Promise<CommonDocument | null> => {
+    return GeneralizedFetch<CommonDocument>("sub-category", "DirectMail");
+  };
+
+export const fetchSignsData = async (): Promise<CommonDocument | null> => {
+  return GeneralizedFetch<CommonDocument>("sub-category", "Signs");
+};
+export const fetchOnlinePortalData =
+  async (): Promise<CommonDocument | null> => {
+    return GeneralizedFetch<CommonDocument>("sub-category", "OrderingPortals");
   };

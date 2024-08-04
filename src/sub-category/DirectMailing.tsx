@@ -9,11 +9,11 @@ import {
   GlobalMainTitle,
 } from "../style/GlobalStyle";
 import { fetchDirectMailingData } from "../data/sub-category data/AllSubCategoryData";
-import { DirectMailDocument } from "../types/DataTypes";
+import { CommonDocument } from "../types/DataTypes";
 
 export default function DirectMailing() {
   const [directMailingData, setDirectMailingData] =
-    useState<DirectMailDocument | null>(null);
+    useState<CommonDocument | null>(null);
 
   useEffect(() => {
     const getDirectMailingData = async () => {
