@@ -1,18 +1,14 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState, useCallback } from "react";
 import { ThemeProvider } from "styled-components";
 import UseReducerComponent from "./importantparts/UseReducerComponent";
 import { GlobalStyle } from "./style/GlobalStyle";
 import { RootContainer, RootLoading } from "./style/RootStyle";
 import { defaultTheme } from "./style/Themes";
-// import Header from "./outsideoutlet/Header";
 import Header from "./outsideoutlet/Header";
 import { Outlet } from "react-router-dom";
 import Footer from "./outsideoutlet/Footer";
 import { InitialState } from "./importantparts/UseReducerComponent";
-
 import { fetchHeaderMainLogo } from "./data/HeaderData";
-import { fetchCarouselData } from "./data/CarouselData";
-import { fetchWWDCCardData } from "./data/CardData";
 
 // important components
 import ProductsServicesContainer from "./importantparts/ProductsServicesContainer";
@@ -33,21 +29,19 @@ export default function Root() {
   const [loading, setLoading] = useState(true);
   const [dots, setDots] = useState(1);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        await fetchHeaderMainLogo();
-        await fetchCarouselData();
-        await fetchWWDCCardData();
-      } catch (error) {
-        console.error("Error fetching header menu data: ", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
+  const fetchData = useCallback(async () => {
+    try {
+      await fetchHeaderMainLogo();
+    } catch (error) {
+      console.error("Error fetching header menu data: ", error);
+    } finally {
+      setLoading(false);
+    }
   }, []);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -74,17 +68,13 @@ export default function Root() {
           {showProductsServicesWindow.showProductFromBox ||
           showProductsServicesWindow.showProductFromMenu ? (
             <ProductsServicesContainer />
-          ) : (
-            ""
-          )}
+          ) : null}
           {SearchDone ? (
             <SearchEngineResultList
               results={SearchResults}
               dispatching={dispatching}
             />
-          ) : (
-            ""
-          )}
+          ) : null}
           <Outlet />
           <Footer />
         </RootContainer>
