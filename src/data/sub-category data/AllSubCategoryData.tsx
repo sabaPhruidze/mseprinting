@@ -3,8 +3,9 @@ import {
   DigitalPrintingDocument,
   PrintingCopyingDocument,
   CommonDocument,
+  CommonDocumentWAS,
 } from "../../types/DataTypes";
-
+// subCategories
 export const fetchDigitalPrintingData =
   async (): Promise<DigitalPrintingDocument | null> => {
     return GeneralizedFetch<DigitalPrintingDocument>(
@@ -31,4 +32,9 @@ export const fetchSignsData = async (): Promise<CommonDocument | null> => {
 export const fetchOnlinePortalData =
   async (): Promise<CommonDocument | null> => {
     return GeneralizedFetch<CommonDocument>("sub-category", "OrderingPortals");
+  };
+// cards pages
+export const fetchBannersPostersData =
+  async (): Promise<CommonDocumentWAS | null> => {
+    return GeneralizedFetch<CommonDocumentWAS>("CardsPages", "BannersPosters");
   };
