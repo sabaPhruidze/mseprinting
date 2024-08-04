@@ -13,7 +13,6 @@ import { fetchWWDCSpecialitiesContentData } from "../data/CardData";
 export default function WhatWeDoCards() {
   const [WWDCSpecialitiesData, setWWDCSpecialitiesData] =
     useState<WWDCSpecialitiesContentType>({ paragraph: "", title: "" });
-  // const DATA = useMemo(() => CardData(), []);
 
   useEffect(() => {
     const getWWDCSpecialitiesData = async () => {

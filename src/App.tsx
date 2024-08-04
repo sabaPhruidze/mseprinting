@@ -31,6 +31,11 @@ import Blog from "./sub-category/Blog";
 import Register from "./category/Register";
 import Signs from "./sub-category/Signs";
 import OnlinePortal from "./sub-category/OnlinePortal";
+import MCBooklets from "./sub-category/cards/MCBooklets";
+import LabelsPackaging from "./sub-category/cards/LabelsPackaging";
+import BusinessForms from "./sub-category/cards/BusinessForms";
+import BrochuresCollateral from "./sub-category/cards/BrochuresCollateral";
+import BannersPosters from "./sub-category/cards/BannersPosters";
 
 function App() {
   const router = createBrowserRouter(
@@ -46,6 +51,8 @@ function App() {
         <Route path="/request-quote" element={<RequestQuote />} />
         <Route path="/send-file" element={<SendFile />} />
         {/* sub-category */}
+
+        {/* Carousel */}
         <Route
           path="/commercial-digital-printing"
           element={<CommercialDigitalPrinting />}
@@ -61,7 +68,13 @@ function App() {
         />
         <Route path="/signs" element={<Signs />} />
         <Route path="/online-ordering-portals" element={<OnlinePortal />} />
-
+        {/* Cards */}
+        <Route path="/banners-posters" element={<BannersPosters />} />
+        <Route path="/brochures-collateral" element={<BrochuresCollateral />} />
+        <Route path="/business-forms" element={<BusinessForms />} />
+        <Route path="/labels-packaging" element={<LabelsPackaging />} />
+        <Route path="/manuals-catalogs-booklets" element={<MCBooklets />} />
+        {/* Bottom */}
         <Route path="/accessibility" element={<Accessibility />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/privacy-policy" element={<PrivacyAndPolicy />} />
