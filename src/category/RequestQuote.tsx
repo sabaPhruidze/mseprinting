@@ -69,17 +69,16 @@ export default function RequestQuote() {
 
   const onSubmitRQ = useCallback(
     (data: FormData) => {
-      dispatching("REQUEST_QUOTE_CHANGE", true);
       if (rqSubmit && uploadedFiles.length > 0) {
         const dataWithFiles = { ...data, uploadedFiles };
         sendEmail(dataWithFiles)
           .then(() => {
+            dispatching("REQUEST_QUOTE_SUCCESS_SEND", true);
             dispatching("REQUEST_QUOTE_CHANGE", false);
             navigate("/");
           })
           .catch((error) => {
             console.error("Error sending email:", error);
-            dispatching("REQUEST_QUOTE_CHANGE", false);
           });
       }
     },

@@ -77,14 +77,14 @@ export const RQDATASECONDPART: FormField<RQUseFormSecondPart>[] = [
     registerName: "jobTitle",
     required: false,
     message: "",
-    value: /^[a-zA-Z\s]{3,}$/,
+    value: /^.*$/,
   },
   {
     placeholder: "Company",
     registerName: "company",
     required: false,
     message: "",
-    value: /^[a-zA-Z\s]{3,}$/,
+    value: /^.*$/,
   },
   {
     placeholder: "Extension",
