@@ -25,6 +25,7 @@ export default function WhatWeDoCards() {
 
     getWWDCSpecialitiesData();
   }, []);
+
   const specialitiesContent = useMemo(
     () => (
       <>
