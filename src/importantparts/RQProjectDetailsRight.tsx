@@ -2,14 +2,20 @@ import { useState, useCallback, useContext, memo } from "react";
 import { rootContext } from "../Root";
 import { useDropzone } from "react-dropzone";
 import JSZip from "jszip";
-
 import {
   RQh3Title,
   RQFileUploadButton,
   RQFileUploadContainer,
   RQWarningText,
 } from "../style/RequestQuoteStyle";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import {
+  ref,
+  uploadBytes,
+  getDownloadURL,
+  listAll,
+  getMetadata,
+  deleteObject,
+} from "firebase/storage";
 import { storage } from "../config/Firebase";
 
 interface Props {
@@ -17,6 +23,8 @@ interface Props {
   firstname: string | null;
   lastname: string | null;
 }
+
+const STORAGE_LIMIT = 4 * 1024 * 1024 * 1024; // 4GB in bytes
 
 const RQProjectDetailsRight: React.FC<Props> = ({
   setUploadedFiles,
@@ -32,6 +40,43 @@ const RQProjectDetailsRight: React.FC<Props> = ({
 
   const { dispatching } = context;
 
+  const manageStorageLimit = async (newFileSize: number) => {
+    const storageRef = ref(storage, "uploads");
+    const fileList = await listAll(storageRef);
+    let totalSize = 0;
+    const files = [];
+
+    // Fetch all files and their metadata
+    for (const itemRef of fileList.items) {
+      const metadata = await getMetadata(itemRef);
+      totalSize += metadata.size;
+      files.push({
+        ref: itemRef,
+        size: metadata.size,
+        timeCreated: metadata.timeCreated,
+      });
+    }
+
+    // Sort files by creation time
+    files.sort(
+      (a, b) =>
+        new Date(a.timeCreated).getTime() - new Date(b.timeCreated).getTime()
+    );
+
+    // If the total size exceeds the limit, delete the oldest files
+    if (totalSize + newFileSize > STORAGE_LIMIT) {
+      let spaceNeeded = totalSize + newFileSize - STORAGE_LIMIT;
+
+      while (spaceNeeded > 0 && files.length > 0) {
+        const file = files.shift();
+        if (file) {
+          await deleteObject(file.ref);
+          spaceNeeded -= file.size;
+        }
+      }
+    }
+  };
+
   const onDrop = useCallback(
     async (acceptedFiles: File[]) => {
       setUploadedFilesState(acceptedFiles);
@@ -42,17 +87,19 @@ const RQProjectDetailsRight: React.FC<Props> = ({
       });
 
       const zipBlob = await zip.generateAsync({ type: "blob" });
-      const zipFileName = `${firstname}_${lastname}.zip`;
+      const timestamp = new Date().toISOString().replace(/[-:.]/g, "");
+      const zipFileName = `${firstname}_${lastname}_${timestamp}.zip`;
       const zipFile = new File([zipBlob], zipFileName, {
         type: "application/zip",
       });
+
+      await manageStorageLimit(zipFile.size);
 
       const fileRef = ref(storage, `uploads/${zipFileName}`);
       await uploadBytes(fileRef, zipFile);
       const fileUrl = await getDownloadURL(fileRef);
       setUploadedFiles([fileUrl]);
       dispatching("REQUEST_QUOTE_CHANGE", true);
-      console.log("Uploaded file URL:", fileUrl);
     },
     [firstname, lastname, setUploadedFiles, dispatching]
   );
@@ -60,7 +107,7 @@ const RQProjectDetailsRight: React.FC<Props> = ({
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
     multiple: true,
-    maxSize: 0.5 * 1024 * 1024 * 1024, // 0.5GB
+    maxSize: 0.5 * 1024 * 1024 * 1024, // 0.5GB per file
   });
 
   return (
@@ -75,7 +122,7 @@ const RQProjectDetailsRight: React.FC<Props> = ({
         </p>
         <RQFileUploadButton>Files</RQFileUploadButton>
         <p style={{ marginTop: "20px", fontSize: "18px" }}>
-          File size limit: 0.5GB
+          File size limit: 0.5GB per file
         </p>
         {uploadedFiles.length > 0 && (
           <div>
