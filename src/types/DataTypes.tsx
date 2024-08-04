@@ -350,3 +350,8 @@ export interface CommonDocument {
   one: titleWithContentType;
   two: titleWithContentType[];
 }
+//With Array string
+export interface CommonDocumentWAS {
+  one: titleWithContentType;
+  two: string[];
+}
