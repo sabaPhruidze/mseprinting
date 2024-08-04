@@ -17,10 +17,16 @@ import {
 } from "../style/HomeStyles";
 import "../style/CustomCarousel.css";
 
+const prefetchImage = (url: string) => {
+  const img = new Image();
+  img.src = url;
+};
+
 export default function CarouselComponent() {
   const [index, setIndex] = useState(0);
   const [carouselMainData, setCarouselMainData] = useState<CarouselType[]>([]);
   const navigate = useNavigate();
+
   const handleSelect = useCallback((selectedIndex: number) => {
     setIndex(selectedIndex);
   }, []);
@@ -41,6 +47,7 @@ export default function CarouselComponent() {
 
       if (data && data.length > 0) {
         setCarouselMainData(data);
+        data.forEach((item) => prefetchImage(item.image));
       }
     };
 
@@ -56,6 +63,7 @@ export default function CarouselComponent() {
               className="d-block w-100"
               src={data.image}
               alt={data.alt}
+              loading="lazy"
             />
             <CarouselOverlay />
             <Carousel.Caption className="custom-carousel-caption">
@@ -68,7 +76,7 @@ export default function CarouselComponent() {
           </CarouselContainer>
         </Carousel.Item>
       )),
-    [carouselMainData]
+    [carouselMainData, navigate]
   );
 
   return (
