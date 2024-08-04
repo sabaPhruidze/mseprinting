@@ -345,8 +345,8 @@ export interface PrintingCopyingDocument {
   two: titleWithContentType[];
   three: OffsetPrintingNineType;
 }
-// Direct mail
-export interface DirectMailDocument {
+// Direct mail , Signs , Online ordering portals
+export interface CommonDocument {
   one: titleWithContentType;
   two: titleWithContentType[];
 }
