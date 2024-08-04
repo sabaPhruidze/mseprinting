@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
@@ -11,7 +12,7 @@ import { WWDCCardType } from "../types/DataTypes";
 function WWDCCard() {
   const [WWDCCardMainData, setWWDCCardMainData] = useState<WWDCCardType[]>([]);
   // const DATA = useMemo(() => CardData(), []);
-
+  const navigate = useNavigate();
   useEffect(() => {
     const getCarouselData = async () => {
       const data = await fetchWWDCCardData();
@@ -27,7 +28,7 @@ function WWDCCard() {
     <Container>
       <Row xs={1} sm={2} md={3} className="g-4">
         {WWDCCardMainData.map((card, idx) => (
-          <Col key={idx}>
+          <Col key={idx} onClick={() => navigate(card.link)}>
             <CardContainer className="h-100">
               <CardContainer.Img
                 variant="top"
