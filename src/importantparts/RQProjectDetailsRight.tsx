@@ -50,10 +50,9 @@ const RQProjectDetailsRight: React.FC<Props> = ({
       const fileRef = ref(storage, `uploads/${zipFileName}`);
       await uploadBytes(fileRef, zipFile);
       const fileUrl = await getDownloadURL(fileRef);
-
       setUploadedFiles([fileUrl]);
+      dispatching("REQUEST_QUOTE_CHANGE", true);
       console.log("Uploaded file URL:", fileUrl);
-      dispatching("REQUEST_QUOTE_SUCCESS_SEND", true);
     },
     [firstname, lastname, setUploadedFiles, dispatching]
   );
