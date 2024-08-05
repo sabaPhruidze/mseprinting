@@ -1,19 +1,39 @@
-//header
+// Common Types
+
+export interface TitleWithContent {
+  title: string;
+  content?: string;
+}
+
+export interface ContentPart {
+  content: string;
+  title?: string;
+}
+
+export interface PartWithSpecialContent {
+  title: string;
+  specialOne: string;
+  contentOne: string;
+  specialTwo?: string;
+  contentTwo?: string;
+}
+
+export interface MainContentWithParts {
+  title: string;
+  parts: PartWithSpecialContent[];
+}
+
+// Header
 export interface HMenuType {
   page: string;
   path: string;
 }
+
 export interface LogoType {
   logo: string | null;
 }
-//footer
 
-//categories
-
-//Home
-
-//CarouselDataType
-
+// Carousel
 export interface CarouselType {
   image: string;
   alt: string;
@@ -22,22 +42,7 @@ export interface CarouselType {
   link: string;
 }
 
-//WWDCCardType
-
-export interface WWDCCardType {
-  image: string;
-  link: string;
-  text: string;
-  title: string;
-}
-
-export interface WWDCSpecialitiesContentType {
-  paragraph: string | null;
-  title: string | null;
-}
-
-// home services
-
+// Home Services
 export interface HomeServicesType {
   image: string | null;
   link: string | null;
@@ -45,7 +50,6 @@ export interface HomeServicesType {
   title: string | null;
 }
 
-// products and services
 export interface HomeServicesFullType {
   DirectMailAndMailingServices: string[] | null;
   FulfillmentServices: string[] | null;
@@ -60,22 +64,28 @@ export interface HomeServicesFullType {
   left: string[] | null;
 }
 
-// sub-categories
-
-//Accessibility
-export interface ContentPart {
-  content: string;
-  title?: string;
+// WWDCCard
+export interface WWDCCardType {
+  image: string;
+  link: string;
+  text: string;
+  title: string;
 }
 
+export interface WWDCSpecialitiesContentType {
+  paragraph: string | null;
+  title: string | null;
+}
+
+// Accessibility
 export interface AccessibilityContent {
   firstPart: string;
   mainTitle: string;
   middlePart: ContentPart[];
 }
 
-export interface EndContent {
-  content: any;
+export interface StartContent {
+  content: string;
   title: string;
 }
 
@@ -86,8 +96,8 @@ export interface HelpContent {
   title: string;
 }
 
-export interface StartContent {
-  content: string;
+export interface EndContent {
+  content: any;
   title: string;
 }
 
@@ -97,18 +107,20 @@ export interface AccessibilityDocument {
   end: EndContent[];
   accessibility: AccessibilityContent;
 }
-// privacy and policy
+
+// Privacy and Policy
 export interface PrivacyAndPolicyDocument {
   one: PrivacyAndPolicyOne;
-  two: PrivacyAndPolicyTwo;
-  three: PrivacyAndPolicyThree;
-  four: PrivacyAndPolicyFour;
-  five: PrivacyAndPolicyFive;
-  six: PrivacyAndPolicySix;
-  seven: PrivacyAndPolicySeven;
-  eight: PrivacyAndPolicyEight;
-  nine: PrivacyAndPolicyNine;
+  two: TitleWithContent;
+  three: TitleWithContent & { parts: string[] };
+  four: TitleWithContent;
+  five: TitleWithContent & { parts: string[] };
+  six: TitleWithContent & { parts: string[] };
+  seven: TitleWithContent;
+  eight: TitleWithContent & { parts: string[] };
+  nine: TitleWithContent & { parts: string[] };
 }
+
 export interface PrivacyAndPolicyOne {
   firstPartOne: string;
   firstPartTwo: string;
@@ -118,65 +130,15 @@ export interface PrivacyAndPolicyOne {
   title: string;
 }
 
-export interface PrivacyAndPolicyTwo {
-  title: string;
-  content: string;
-}
-export interface PrivacyAndPolicyThree {
-  thirdPart: string;
-  sixthPart: string;
-  secondPart: string;
-  fourthPart: string;
-  firstPart: string;
-  fifthPart: string;
-  title: string;
-}
-export interface PrivacyAndPolicyFour {
-  title: string;
-  firstPart: string;
-  secondPart: string;
-}
-export interface PrivacyAndPolicyFive {
-  firstPart: string;
-  secondPartOne: string;
-  secondPartTwo: string;
-  secondSpecialPart: string;
-  title: string;
-}
-export interface PrivacyAndPolicySix {
-  firstPartOne: string;
-  firstPartTwo: string;
-  firstSpecialPart: string;
-  title: string;
-}
-export interface PrivacyAndPolicySeven {
-  content: string;
-  title: string;
-}
-export interface PrivacyAndPolicyEight {
-  firstPartOne: string;
-  firstPartTwo: string;
-  firstSpecialPart: string;
-  title: string;
-}
-export interface PrivacyAndPolicyNine {
-  fifthPart: string;
-  firstPart: string;
-  fourthPartOne: string;
-  fourthPartTwo: string;
-  fourthSpecialPart: string;
-  secondPart: string;
-  thirdPart: string;
-  title: string;
-}
 // Terms and Conditions
 export interface TermsAndConditionsDocument {
   one: TermsAndConditionsOne;
-  two: TermsAndConditionsTwo[];
-  three: TermsAndConditionsThree[];
-  four: TermsAndConditionsTwo[];
-  five: TermsAndConditionsFive;
+  two: TitleWithContent[];
+  three: TitleWithContent & { parts: string[] };
+  four: TitleWithContent[];
+  five: TitleWithContent & { parts: string[] };
 }
+
 export interface TermsAndConditionsOne {
   firstPart: string;
   secondPartOne: string;
@@ -184,76 +146,40 @@ export interface TermsAndConditionsOne {
   secondPartTwo: string;
   title: string;
 }
-export interface TermsAndConditionsTwo {
-  title: string;
-  content: string;
-}
-export interface TermsAndConditionsThree {
-  firstPartOne: string;
-  firstPartSpecial: string;
-  firstPartTwo: string;
-  title: string;
-}
 
-export interface TermsAndConditionsFive {
-  firstPartOne: string;
-  firstPartSpecial: string;
-  firstPartTwo: string;
-  secondPart: string;
-  title: string;
-}
 // EOE Diversity
 export interface EOEDiversityDocument {
   mainTitle: string;
-  one: EOEDiversityOne;
-  two: EOEDiversityTwo;
-  three: EOEDiversityThree;
+  one: TitleWithContent;
+  two: TitleWithContent;
+  three: TitleWithContent & { parts: string[] };
 }
-export interface EOEDiversityOne {
-  firstPart: string;
-  secondPart: string;
-  title: string;
-}
-export interface EOEDiversityTwo {
-  title: string;
-  content: string;
-}
-export interface EOEDiversityThree {
-  title: string;
-  firstPart: string;
-  secondPart: string;
-  thirdPart: string;
-  fourthPart: String;
-}
-// Environmental Message
 
+// Environmental Message
 export interface EnvironmentalMessageDocument {
   title: string;
   firstPart: string;
   secondPart: string;
   thirdPart: string;
-  fourthPart: EnvironmentalMessageArray[];
+  fourthPart: TitleWithContent[];
   fifthPart: string;
 }
-export interface EnvironmentalMessageArray {
-  title: string;
-  content: string;
-}
+
 // Blog
 export interface BlogDocument {
   content: string;
   mainTitle: string;
   postArray: PostsArray[];
 }
+
 export interface PostsArray {
-  date: String;
+  date: string;
   image: string;
   link: string;
   title: string;
 }
 
-// registration / login
-
+// Registration / Login
 export type RUseFormFirstPart = {
   firstname: string;
   lastname: string;
@@ -268,6 +194,7 @@ export type RUseFormSecondPart = {
   jobTitle: string;
   company: string;
 };
+
 export type LUseForm = {
   email: string;
   password: string;
@@ -280,78 +207,70 @@ export type FormField<T> = {
   message: string;
   value: RegExp;
 };
+
 // Commercial Offset Printing
 export interface OffsetPrintingDocument {
-  one: OffsetPrintingOneType;
-  two: titleWithContentType;
-  three: titleWithContentType;
-  subThree: OffsetPrintingSubThreeType[];
-  four: titleWithContentType;
-  fourSub: titleWithContentType[];
-  five: titleWithContentType;
-  fiveSub: titleWithContentType[];
-  six: titleWithContentType;
-  sixSub: titleWithContentType[];
-  seven: titleWithContentType;
-  sevenSub: titleWithContentType[];
-  eight: titleWithContentType;
-  eightSub: titleWithContentType[];
-  nine: OffsetPrintingNineType;
+  one: TitleWithContent;
+  two: TitleWithContent;
+  three: MainContentWithParts;
+  subThree: PartWithSpecialContent[];
+  four: TitleWithContent;
+  fourSub: TitleWithContent[];
+  five: TitleWithContent;
+  fiveSub: TitleWithContent[];
+  six: TitleWithContent;
+  sixSub: TitleWithContent[];
+  seven: TitleWithContent;
+  sevenSub: TitleWithContent[];
+  eight: TitleWithContent;
+  eightSub: TitleWithContent[];
+  nine: TitleWithContent & { parts: string[] };
 }
-// special     special
-export interface OffsetPrintingOneType {
-  title?: string;
-  mainTitle: string;
-  content?: string;
-}
-export interface titleWithContentType {
-  title: string;
-  content?: string;
-}
-export interface OffsetPrintingSubThreeType {
-  title: string;
-  specialOne: string;
-  contentOne: String;
-  specialTwo?: string;
-  contentTwo?: string;
-}
-export interface OffsetPrintingNineType {
-  title: string;
-  firstPart: string;
-  secondPart: String;
-}
-// Digital printing
 
+// Digital Printing
 export interface DigitalPrintingDocument {
-  one: OffsetPrintingOneType;
-  two: titleWithContentType[];
-  three: titleWithContentType;
-  threeSub: OffsetPrintingSubThreeType[];
-  four: titleWithContentType;
-  fourSub: titleWithContentType[];
-  five: titleWithContentType;
-  fiveSub: titleWithContentType[];
-  six: titleWithContentType;
-  sixSub: titleWithContentType[];
-  seven: titleWithContentType;
-  sevenSub: titleWithContentType[];
-  eight: titleWithContentType;
-  eightSub: titleWithContentType[];
-  nine: OffsetPrintingNineType;
+  one: TitleWithContent;
+  two: TitleWithContent[];
+  three: MainContentWithParts;
+  threeSub: PartWithSpecialContent[];
+  four: TitleWithContent;
+  fourSub: TitleWithContent[];
+  five: TitleWithContent;
+  fiveSub: TitleWithContent[];
+  six: TitleWithContent;
+  sixSub: TitleWithContent[];
+  seven: TitleWithContent;
+  sevenSub: TitleWithContent[];
+  eight: TitleWithContent;
+  eightSub: TitleWithContent[];
+  nine: TitleWithContent & { parts: string[] };
 }
-// printing and copying
+
+// Printing and Copying
 export interface PrintingCopyingDocument {
-  one: titleWithContentType;
-  two: titleWithContentType[];
-  three: OffsetPrintingNineType;
+  one: TitleWithContent;
+  two: TitleWithContent[];
+  three: TitleWithContent & { parts: string[] };
 }
-// Direct mail , Signs , Online ordering portals
+
+// Common Document
 export interface CommonDocument {
-  one: titleWithContentType;
-  two: titleWithContentType[];
+  one: TitleWithContent;
+  two: TitleWithContent[];
 }
-//With Array string
+
+// Common Document With Array of Strings
 export interface CommonDocumentWAS {
-  one: titleWithContentType;
+  one: TitleWithContent;
   two: string[];
+}
+export interface BusinessFormsType {
+  one: TitleWithContent;
+  two: string[];
+  three: BFThree;
+}
+export interface BFThree {
+  firstPart: string;
+  secondPart: string;
+  circle: string[];
 }
