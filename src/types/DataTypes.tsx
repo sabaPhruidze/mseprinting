@@ -264,11 +264,13 @@ export interface CommonDocumentWAS {
   one: TitleWithContent;
   two: string[];
 }
+// business forms
 export interface BusinessFormsType {
   one: TitleWithContent;
   two: string[];
   three: BFThree;
 }
+
 export interface BFThree {
   firstPart: string;
   secondPart: string;
