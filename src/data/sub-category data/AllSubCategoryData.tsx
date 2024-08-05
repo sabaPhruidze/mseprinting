@@ -4,6 +4,7 @@ import {
   PrintingCopyingDocument,
   CommonDocument,
   CommonDocumentWAS,
+  BusinessFormsType,
 } from "../../types/DataTypes";
 // subCategories
 export const fetchDigitalPrintingData =
@@ -37,4 +38,17 @@ export const fetchOnlinePortalData =
 export const fetchBannersPostersData =
   async (): Promise<CommonDocumentWAS | null> => {
     return GeneralizedFetch<CommonDocumentWAS>("CardsPages", "BannersPosters");
+  };
+
+export const fetchBrochuresCollateralData =
+  async (): Promise<CommonDocumentWAS | null> => {
+    return GeneralizedFetch<CommonDocumentWAS>(
+      "CardsPages",
+      "BrochuresCollateral"
+    );
+  };
+
+export const fetchBusinessFormsData =
+  async (): Promise<BusinessFormsType | null> => {
+    return GeneralizedFetch<BusinessFormsType>("CardsPages", "BusinessForms");
   };
