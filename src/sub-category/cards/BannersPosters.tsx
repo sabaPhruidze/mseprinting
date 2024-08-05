@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo } from "react";
 import {
   GlobalContainerColumn,
   GlobalBoxColumnStart,
-  Globalh2TitleWithMB20,
   GlobalPart,
   GlobalMainTitle,
 } from "../../style/GlobalStyle";
