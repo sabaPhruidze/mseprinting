@@ -2,7 +2,7 @@ import { createContext, useEffect, useState, useCallback } from "react";
 import { ThemeProvider } from "styled-components";
 import UseReducerComponent from "./importantparts/UseReducerComponent";
 import { GlobalStyle } from "./style/GlobalStyle";
-import { RootContainer, RootLoading } from "./style/RootStyle";
+import { RootContainer } from "./style/RootStyle";
 import { defaultTheme } from "./style/Themes";
 import Header from "./outsideoutlet/Header";
 import { Outlet } from "react-router-dom";
@@ -26,38 +26,18 @@ export const rootContext = createContext<RootContextProps | undefined>(
 export default function Root() {
   const { state, dispatching } = UseReducerComponent();
   const { showProductsServicesWindow, SearchDone, SearchResults } = state;
-  const [loading, setLoading] = useState(true);
-  const [dots, setDots] = useState(1);
 
   const fetchData = useCallback(async () => {
     try {
       await fetchHeaderMainLogo();
     } catch (error) {
       console.error("Error fetching header menu data: ", error);
-    } finally {
-      setLoading(false);
     }
   }, []);
 
   useEffect(() => {
     fetchData();
   }, [fetchData]);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setDots((prev) => (prev % 3) + 1);
-    }, 800);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  if (loading) {
-    return (
-      <RootLoading>
-        <div>Loading{".".repeat(dots)}</div>
-      </RootLoading>
-    );
-  }
 
   return (
     <rootContext.Provider value={{ state, dispatching }}>
