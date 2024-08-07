@@ -1,7 +1,7 @@
 // Common Types
 
 export interface TitleWithContent {
-  title: string;
+  title?: string;
   content?: string;
 }
 
@@ -275,4 +275,9 @@ export interface BFThree {
   firstPart: string;
   secondPart: string;
   circle: string[];
+}
+export interface LabelsPackagingDocument {
+  one: TitleWithContent;
+  two: TitleWithContent[];
+  three: TitleWithContent;
 }

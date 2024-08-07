@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState, useCallback } from "react";
+import { createContext, useEffect, useCallback } from "react";
 import { ThemeProvider } from "styled-components";
 import UseReducerComponent from "./importantparts/UseReducerComponent";
 import { GlobalStyle } from "./style/GlobalStyle";
