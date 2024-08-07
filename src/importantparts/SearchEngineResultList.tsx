@@ -7,7 +7,6 @@ import {
 } from "../style/SearchEngineStyles";
 
 interface SearchResult {
-  id: number;
   title: string;
   link: string;
 }
@@ -27,7 +26,7 @@ const SearchEngineResultList: React.FC<SearchResultsProps> = ({
     <ResultsList resultscount={results.length}>
       {results.map((result) => (
         <ResultItem
-          key={result.id}
+          key={result.link}
           onClick={() => {
             navigate(result.link);
             dispatching("SEARCH_DONE", false);

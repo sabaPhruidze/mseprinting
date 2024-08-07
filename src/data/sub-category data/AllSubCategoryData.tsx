@@ -6,7 +6,16 @@ import {
   CommonDocumentWAS,
   BusinessFormsType,
   LabelsPackagingDocument,
+  SearchResultDocument,
 } from "../../types/DataTypes";
+
+// special
+export const fetchSearchEngineData = async (): Promise<
+  SearchResultDocument[] | null
+> => {
+  return GeneralizedFetch<SearchResultDocument[]>("SearchEngine", "Search");
+};
+
 // subCategories
 export const fetchDigitalPrintingData =
   async (): Promise<DigitalPrintingDocument | null> => {

@@ -11,7 +11,6 @@ import {
 import SEARCHICON from "../assets/icon/header/SEARCH.svg";
 
 interface SearchResult {
-  id: number;
   title: string;
   link: string;
 }
@@ -28,17 +27,14 @@ const SearchEngine: React.FC = () => {
   const handleSearch = useCallback(() => {
     const data: SearchResult[] = [
       {
-        id: 1,
         title: "home",
         link: "/",
       },
       {
-        id: 2,
         title: "request a quote",
         link: "/request-quote",
       },
       {
-        id: 3,
         title: "Send a File",
         link: "/send-file",
       },

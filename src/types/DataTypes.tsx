@@ -22,6 +22,11 @@ export interface MainContentWithParts {
   title: string;
   parts: PartWithSpecialContent[];
 }
+// search engine
+export interface SearchResultDocument {
+  title: string;
+  link: string;
+}
 
 // Header
 export interface HMenuType {
@@ -150,11 +155,17 @@ export interface TermsAndConditionsOne {
 // EOE Diversity
 export interface EOEDiversityDocument {
   mainTitle: string;
-  one: TitleWithContent;
+  one: EOEDiversitySpecial;
   two: TitleWithContent;
-  three: TitleWithContent & { parts: string[] };
+  three: EOEDiversitySpecial;
 }
-
+export interface EOEDiversitySpecial {
+  title: string;
+  firstPart: string;
+  secondPart: string;
+  thirdPart?: string;
+  fourthPart?: string;
+}
 // Environmental Message
 export interface EnvironmentalMessageDocument {
   title: string;
