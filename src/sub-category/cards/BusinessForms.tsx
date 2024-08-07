@@ -5,6 +5,7 @@ import {
   GlobalPart,
   GlobalMainTitle,
   GlobalRow,
+  Globalh2TitleWithMB20,
 } from "../../style/GlobalStyle";
 import { fetchBusinessFormsData } from "../../data/sub-category data/AllSubCategoryData";
 import { BusinessFormsType } from "../../types/DataTypes";
@@ -40,7 +41,6 @@ export default function BusinessForms() {
         {memoizedData?.three.circle.map((item, index) => (
           <GlobalRow key={index}>{item}</GlobalRow>
         ))}
-
         <GlobalPart>{memoizedData?.three.secondPart}</GlobalPart>
       </div>
     </GlobalContainerColumn>
