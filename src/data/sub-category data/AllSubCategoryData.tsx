@@ -13,7 +13,18 @@ import {
 export const fetchSearchEngineData = async (): Promise<
   SearchResultDocument[] | null
 > => {
-  return GeneralizedFetch<SearchResultDocument[]>("SearchEngine", "Search");
+  try {
+    const data = await GeneralizedFetch<any>("SearchEngine", "Search");
+    if (data && Array.isArray(data.List)) {
+      return data.List;
+    } else {
+      console.error("Fetched data is not an array:", data);
+      return null;
+    }
+  } catch (error) {
+    console.error("Error fetching search engine data:", error);
+    return null;
+  }
 };
 
 // subCategories
