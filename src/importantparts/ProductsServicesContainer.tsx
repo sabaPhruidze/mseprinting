@@ -1,14 +1,8 @@
 import { useContext, useState, useEffect, useCallback, useMemo } from "react";
 import { rootContext } from "../Root";
 import { useNavigate } from "react-router-dom";
-import {
-  HomeServicesFullType,
-  HomeServicesFullDatasType,
-} from "../types/DataTypes";
-import {
-  fetchHomeServicesData,
-  fetchHomeServicesDatas,
-} from "../data/ProductsServicesContainerData";
+import { HomeServicesFullDatasType } from "../types/DataTypes";
+import { fetchHomeServicesDatas } from "../data/ProductsServicesContainerData";
 import {
   ProductsServicesContainerStyle,
   LeftSideText,

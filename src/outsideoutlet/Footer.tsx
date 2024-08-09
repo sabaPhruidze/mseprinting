@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
-
+import { useNavigate } from "react-router-dom";
 import {
   FooterContainer,
   DividingLineBox,
@@ -20,8 +20,8 @@ import {
 } from "../style/FooterStyles";
 
 import { BlogAndPoliciesData } from "../data/FooterData";
-import { fetchHomeServicesData } from "../data/ProductsServicesContainerData";
-import { HomeServicesFullType } from "../types/DataTypes";
+import { fetchHomeServicesDatas } from "../data/ProductsServicesContainerData";
+import { HomeServicesFullDatasType } from "../types/DataTypes";
 
 import FACEBOOK from "../assets/icon/footer/social/FACEBOOK.svg";
 import INSTAGRAM from "../assets/icon/footer/social/INSTAGRAM.svg";
@@ -31,9 +31,8 @@ import LINKEDIN from "../assets/icon/footer/social/LINKEDIN.svg";
 import NavigateAndScroll from "../importantparts/NavigateAndScroll"; // Adjust the import path as necessary
 
 export default function Footer() {
-  const [footerData, setFooterData] = useState<HomeServicesFullType | null>(
-    null
-  );
+  const [footerData, setFooterData] =
+    useState<HomeServicesFullDatasType | null>(null);
   const [filteredFooterData, setFilteredFooterData] = useState<string[]>([]);
 
   const ICON_DATA = useMemo(
@@ -43,7 +42,7 @@ export default function Footer() {
 
   useEffect(() => {
     const getFooterFullData = async () => {
-      const data = await fetchHomeServicesData();
+      const data = await fetchHomeServicesDatas();
       if (data && data.left && data.left.length > 0) {
         setFooterData(data);
         filterFooterData(data.left);
@@ -165,7 +164,7 @@ export default function Footer() {
     },
     [footerData]
   );
-
+  const navigate = useNavigate();
   return (
     <FooterContainer>
       <DividingLineBox>
@@ -182,8 +181,13 @@ export default function Footer() {
             <ProductsAboutUsCont key={data}>
               <ProductsAboutUsColumn>
                 <ColumnTitle>{data}</ColumnTitle>
-                {getRightSideData(data).map((context: string) => (
-                  <ColumnContext key={context}>{context}</ColumnContext>
+                {getRightSideData(data).map((context) => (
+                  <ColumnContext
+                    key={context.title}
+                    onClick={() => navigate(context.link)}
+                  >
+                    {context.title}
+                  </ColumnContext>
                 ))}
               </ProductsAboutUsColumn>
               {index < filteredFooterData.length - 1 && <VerticalLine />}
