@@ -69,6 +69,25 @@ export interface HomeServicesFullType {
   left: string[] | null;
 }
 
+export interface HomeServicesFullDatasType {
+  DirectMailAndMailingServices: HSFDataEach[] | null;
+  FulfillmentServices: HSFDataEach[] | null;
+  GraphicDesign: HSFDataEach | null;
+  IndustrySpecific: HSFDataEach[] | null;
+  LabelsAndPackaging: HSFDataEach[] | null;
+  MarketingServices: HSFDataEach[] | null;
+  OnlineOrderingPortals: HSFDataEach | null;
+  PrintingAndCopying: HSFDataEach[] | null;
+  Signs: HSFDataEach[] | null;
+  TradeshowsAndEvents: HSFDataEach[] | null;
+  left: string[] | null;
+}
+
+export interface HSFDataEach {
+  link: string;
+  title: string;
+}
+
 // WWDCCard
 export interface WWDCCardType {
   image: string;

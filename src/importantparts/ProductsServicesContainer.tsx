@@ -1,7 +1,14 @@
 import { useContext, useState, useEffect, useCallback, useMemo } from "react";
 import { rootContext } from "../Root";
-import { HomeServicesFullType } from "../types/DataTypes";
-import { fetchHomeServicesData } from "../data/ProductsServicesContainerData";
+import { useNavigate } from "react-router-dom";
+import {
+  HomeServicesFullType,
+  HomeServicesFullDatasType,
+} from "../types/DataTypes";
+import {
+  fetchHomeServicesData,
+  fetchHomeServicesDatas,
+} from "../data/ProductsServicesContainerData";
 import {
   ProductsServicesContainerStyle,
   LeftSideText,
@@ -12,11 +19,11 @@ import {
 
 export default function ProductsServicesContainer() {
   const [productsAndServicesData, setProductsAndServicesData] =
-    useState<HomeServicesFullType | null>(null);
+    useState<HomeServicesFullDatasType | null>(null);
 
   useEffect(() => {
     const getHomeServicesFullData = async () => {
-      const data = await fetchHomeServicesData();
+      const data = await fetchHomeServicesDatas();
       if (data && (data.left?.length ?? 0) > 0) {
         setProductsAndServicesData(data);
       }
@@ -47,7 +54,7 @@ export default function ProductsServicesContainer() {
     dispatching("SHOW_PRODUCT_SERVICES_WINDOW_FROM_BOX", false);
     setHoveredItem(null);
   }, [dispatching]);
-
+  const navigate = useNavigate();
   const getRightSideData = useCallback(() => {
     if (!productsAndServicesData) return [];
 
@@ -99,7 +106,9 @@ export default function ProductsServicesContainer() {
       </LeftSideContainer>
       <RightSideContainer>
         {getRightSideData().map((item, index) => (
-          <RightSideText key={index}>{item}</RightSideText>
+          <RightSideText key={index} onClick={() => navigate(item.link)}>
+            {item.title}
+          </RightSideText>
         ))}
       </RightSideContainer>
     </ProductsServicesContainerStyle>

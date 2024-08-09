@@ -79,7 +79,7 @@ function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/privacy-policy" element={<PrivacyAndPolicy />} />
         <Route path="/terms-conditions" element={<TermsAndConditions />} />
-        <Route path="eoe-diversity" element={<EoeDiversity />} />
+        <Route path="/eoe-diversity" element={<EoeDiversity />} />
         <Route
           path="/environmental-message"
           element={<EnvironmentalMessage />}
