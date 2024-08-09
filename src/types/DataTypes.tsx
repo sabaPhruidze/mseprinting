@@ -55,20 +55,6 @@ export interface HomeServicesType {
   title: string | null;
 }
 
-export interface HomeServicesFullType {
-  DirectMailAndMailingServices: string[] | null;
-  FulfillmentServices: string[] | null;
-  GraphicDesign: string | null;
-  IndustrySpecific: string[] | null;
-  LabelsAndPackaging: string[] | null;
-  MarketingServices: string[] | null;
-  OnlineOrderingPortals: string | null;
-  PrintingAndCopying: string[] | null;
-  Signs: string[] | null;
-  TradeshowsAndEvents: string[] | null;
-  left: string[] | null;
-}
-
 export interface HomeServicesFullDatasType {
   DirectMailAndMailingServices: HSFDataEach[] | null;
   FulfillmentServices: HSFDataEach[] | null;
