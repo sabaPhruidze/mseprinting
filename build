@@ -1,0 +1,33 @@
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Allow read access to the "home" collection
+    match /home/{document} {
+      allow read: if true;
+    }
+    match /products-services/{document} {
+      allow read: if true;
+    }
+    // Existing user-specific rule
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+    
+    // Allow read access to the "header" collection
+    match /header/{document} {
+      allow read: if true;
+    }
+    match /sub-category/{document} {
+      allow read: if true;
+    }
+    match /SearchEngine/{document} {
+      allow read: if true;
+    }
+    
+    match /CardsPages/{document} {
+      allow read: if true;
+    }
+     match /authentication/{document} {
+      allow read: if true;
+    }
+  }
+}
