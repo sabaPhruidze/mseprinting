@@ -67,7 +67,7 @@ export default function PrivacyAndPolicy() {
             {privacyPolicyData?.five.secondPartOne}{" "}
           </GlobalPartBox>
           <GlobalSpecialPart>
-            {privacyPolicyData?.five.secondSpecialPart}
+            {privacyPolicyData?.five.secondPartSpecial}
           </GlobalSpecialPart>
           <GlobalPartBox>
             {" "}
@@ -80,7 +80,7 @@ export default function PrivacyAndPolicy() {
         <GlobalPart>
           <GlobalPartBox>{privacyPolicyData?.six.firstPartOne} </GlobalPartBox>
           <GlobalSpecialPart>
-            {privacyPolicyData?.six.firstSpecialPart}
+            {privacyPolicyData?.six.firstPartSpecial}
           </GlobalSpecialPart>
           <GlobalPartBox> {privacyPolicyData?.six.firstPartTwo}</GlobalPartBox>
         </GlobalPart>
@@ -96,7 +96,7 @@ export default function PrivacyAndPolicy() {
             {privacyPolicyData?.eight.firstPartOne}{" "}
           </GlobalPartBox>
           <GlobalSpecialPart>
-            {privacyPolicyData?.eight.firstSpecialPart}
+            {privacyPolicyData?.eight.firstPartSpecial}
           </GlobalSpecialPart>
           <GlobalPartBox>
             {" "}

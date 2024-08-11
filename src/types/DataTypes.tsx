@@ -122,13 +122,13 @@ export interface AccessibilityDocument {
 export interface PrivacyAndPolicyDocument {
   one: PrivacyAndPolicyOne;
   two: TitleWithContent;
-  three: TitleWithContent & { parts: string[] };
-  four: TitleWithContent;
-  five: TitleWithContent & { parts: string[] };
-  six: TitleWithContent & { parts: string[] };
+  three: PrivacyAndPolicyThree;
+  four: BFThree;
+  five: TermsAndConditionsOne;
+  six: TermsAndConditionsThree;
   seven: TitleWithContent;
-  eight: TitleWithContent & { parts: string[] };
-  nine: TitleWithContent & { parts: string[] };
+  eight: TermsAndConditionsThree;
+  nine: PrivacyAndPolicyNine;
 }
 
 export interface PrivacyAndPolicyOne {
@@ -139,7 +139,25 @@ export interface PrivacyAndPolicyOne {
   thirdPart: string;
   title: string;
 }
-
+export interface PrivacyAndPolicyThree {
+  title: string;
+  firstPart: string;
+  secondPart: string;
+  thirdPart: string;
+  fourthPart: string;
+  fifthPart: string;
+  sixthPart: string;
+}
+export interface PrivacyAndPolicyNine {
+  title: string;
+  firstPart: string;
+  secondPart: string;
+  thirdPart: string;
+  fourthPartOne: string;
+  fourthSpecialPart: string;
+  fourthPartTwo: string;
+  fifthPart: string;
+}
 // Terms and Conditions
 export interface TermsAndConditionsDocument {
   one: TermsAndConditionsOne;
@@ -276,7 +294,7 @@ export interface DigitalPrintingDocument {
 export interface PrintingCopyingDocument {
   one: TitleWithContent;
   two: TitleWithContent[];
-  three: TitleWithContent & { parts: string[] };
+  three: BFThree;
 }
 
 // Common Document
@@ -301,6 +319,7 @@ export interface BFThree {
   firstPart: string;
   secondPart: string;
   circle: string[];
+  title?: string;
 }
 export interface LabelsPackagingDocument {
   one: TitleWithContent;
