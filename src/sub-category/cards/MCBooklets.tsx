@@ -1,10 +1,9 @@
-import React, { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo } from "react";
 import {
   GlobalContainerColumn,
   GlobalBoxColumnStart,
   GlobalPart,
   GlobalMainTitle,
-  GlobalRow,
 } from "../../style/GlobalStyle";
 import { fetchMKBookletsData } from "../../data/sub-category data/AllSubCategoryData";
 import { CommonDocumentWAS } from "../../types/DataTypes";

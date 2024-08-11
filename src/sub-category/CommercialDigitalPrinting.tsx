@@ -60,7 +60,7 @@ export default function CommercialDigitalPrinting() {
 
   return (
     <GlobalContainerColumn>
-      <GlobalMainTitle>{memoizedData?.one.mainTitle}</GlobalMainTitle>
+      <GlobalMainTitle>{memoizedData?.one.title}</GlobalMainTitle>
       <GlobalBoxColumnStart>
         {memoizedData?.one.title && (
           <Globalh2TitleWithMB20>
