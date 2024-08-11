@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
-import { useNavigate } from "react-router-dom";
+
 import {
   FooterContainer,
   DividingLineBox,
@@ -164,7 +164,7 @@ export default function Footer() {
     },
     [footerData]
   );
-  const navigate = useNavigate();
+
   return (
     <FooterContainer>
       <DividingLineBox>
@@ -182,11 +182,10 @@ export default function Footer() {
               <ProductsAboutUsColumn>
                 <ColumnTitle>{data}</ColumnTitle>
                 {getRightSideData(data).map((context) => (
-                  <ColumnContext
-                    key={context.title}
-                    onClick={() => navigate(context.link)}
-                  >
-                    {context.title}
+                  <ColumnContext key={context.title}>
+                    <NavigateAndScroll path={context.link}>
+                      {context.title}
+                    </NavigateAndScroll>
                   </ColumnContext>
                 ))}
               </ProductsAboutUsColumn>
