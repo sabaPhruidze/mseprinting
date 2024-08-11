@@ -7,6 +7,7 @@ import {
   HomeServicesButton,
 } from "../style/HomeStyles";
 
+import { useNavigate } from "react-router-dom";
 import { fetchHomeServicesBannerData } from "../data/HomeServicesData";
 import { HomeServicesType } from "../types/DataTypes";
 
@@ -17,6 +18,7 @@ export default function HomeServices() {
     text: "",
     title: "",
   });
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getHomeServicesData = async () => {
@@ -35,15 +37,25 @@ export default function HomeServices() {
       <>
         <HomeServicesTitle>{homeServicesData.title}</HomeServicesTitle>
         <HomeServicesContext>{homeServicesData.text}</HomeServicesContext>
-        <HomeServicesButton>Learn More ...</HomeServicesButton>
+        {homeServicesData.link && (
+          <HomeServicesButton
+            onClick={() =>
+              navigate(homeServicesData.link || "/productsservices")
+            }
+          >
+            Learn More ...
+          </HomeServicesButton>
+        )}
       </>
     ),
-    [homeServicesData]
+    [homeServicesData, navigate]
   );
 
   return (
     <HomeServicesContainer $backgroundimage={homeServicesData.image}>
-      <HomeServicesDarkCover>{content}</HomeServicesDarkCover>
+      {homeServicesData.link && (
+        <HomeServicesDarkCover>{content}</HomeServicesDarkCover>
+      )}
     </HomeServicesContainer>
   );
 }
