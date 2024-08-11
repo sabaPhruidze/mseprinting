@@ -226,7 +226,7 @@ export type FormField<T> = {
 
 // Commercial Offset Printing
 export interface OffsetPrintingDocument {
-  one: TitleWithContent;
+  one: OffsetPrintingOne;
   two: TitleWithContent;
   three: MainContentWithParts;
   subThree: PartWithSpecialContent[];
@@ -240,9 +240,13 @@ export interface OffsetPrintingDocument {
   sevenSub: TitleWithContent[];
   eight: TitleWithContent;
   eightSub: TitleWithContent[];
-  nine: TitleWithContent & { parts: string[] };
+  nine: EOEDiversitySpecial;
 }
-
+export interface OffsetPrintingOne {
+  mainTitle: string;
+  title: string;
+  content: string;
+}
 // Digital Printing
 export interface DigitalPrintingDocument {
   one: TitleWithContent;
@@ -259,7 +263,7 @@ export interface DigitalPrintingDocument {
   sevenSub: TitleWithContent[];
   eight: TitleWithContent;
   eightSub: TitleWithContent[];
-  nine: TitleWithContent & { parts: string[] };
+  nine: EOEDiversitySpecial;
 }
 
 // Printing and Copying

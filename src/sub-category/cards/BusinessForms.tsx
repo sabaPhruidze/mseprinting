@@ -5,7 +5,6 @@ import {
   GlobalPart,
   GlobalMainTitle,
   GlobalRow,
-  Globalh2TitleWithMB20,
 } from "../../style/GlobalStyle";
 import { fetchBusinessFormsData } from "../../data/sub-category data/AllSubCategoryData";
 import { BusinessFormsType } from "../../types/DataTypes";
