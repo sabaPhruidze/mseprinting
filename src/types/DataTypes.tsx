@@ -144,9 +144,9 @@ export interface PrivacyAndPolicyOne {
 export interface TermsAndConditionsDocument {
   one: TermsAndConditionsOne;
   two: TitleWithContent[];
-  three: TitleWithContent & { parts: string[] };
+  three: TermsAndConditionsThree[];
   four: TitleWithContent[];
-  five: TitleWithContent & { parts: string[] };
+  five: TermsAndConditionsThree;
 }
 
 export interface TermsAndConditionsOne {
@@ -156,7 +156,13 @@ export interface TermsAndConditionsOne {
   secondPartTwo: string;
   title: string;
 }
-
+export interface TermsAndConditionsThree {
+  firstPartOne: string;
+  firstPartSpecial: string;
+  firstPartTwo: string;
+  secondPart?: string;
+  title: string;
+}
 // EOE Diversity
 export interface EOEDiversityDocument {
   mainTitle: string;

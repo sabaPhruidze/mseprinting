@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { fetchPrivacyAndPolicyData } from "../data/sub-category data/TermsAndConditionsData";
 import {
   TermsAndConditionsDocument,
-  TermsAndConditionsTwo,
   TermsAndConditionsThree,
 } from "../types/DataTypes";
 import {
@@ -50,7 +49,7 @@ export default function TermsAndConditions() {
               {termsData.one.secondPartTwo}
             </GlobalPartBox>
           </GlobalBoxColumnStart>
-          {termsData.two.map((data: TermsAndConditionsTwo) => (
+          {termsData.two.map((data) => (
             <GlobalBoxColumnStart key={data.title}>
               <Globalh3Title>{data.title}</Globalh3Title>
               <GlobalPart>{data.content}</GlobalPart>
@@ -71,7 +70,7 @@ export default function TermsAndConditions() {
               </GlobalPartBox>
             </GlobalBoxColumnStart>
           ))}
-          {termsData.four.map((data: TermsAndConditionsTwo) => (
+          {termsData.four.map((data) => (
             <GlobalBoxColumnStart key={data.title}>
               <Globalh3Title>{data.title}</Globalh3Title>
               <GlobalPart>{data.content}</GlobalPart>
