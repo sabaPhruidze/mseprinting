@@ -39,6 +39,7 @@ export interface LogoType {
 }
 
 // Carousel
+
 export interface CarouselType {
   image: string;
   alt: string;

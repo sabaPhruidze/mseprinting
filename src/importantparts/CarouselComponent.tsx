@@ -16,6 +16,7 @@ import {
   CarouselOverlay,
 } from "../style/HomeStyles";
 import "../style/CustomCarousel.css";
+import { CAROUSEL_DATA } from "../data/CarouselData";
 
 const prefetchImage = (url: string) => {
   const img = new Image();
@@ -61,7 +62,7 @@ export default function CarouselComponent() {
           <CarouselContainer>
             <CarouselImg
               className="d-block w-100"
-              src={data.image}
+              src={CAROUSEL_DATA[idx]}
               alt={data.alt}
               loading="lazy"
             />
