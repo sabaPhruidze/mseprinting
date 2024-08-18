@@ -35,7 +35,7 @@ export const sendEmail = (data: RQFormData): Promise<EmailJSResponseStatus> => {
 
   // Send the form using emailjs
   return emailjs
-    .sendForm("info_mseprinting", "template_rbodn39", form, "o8M8gRSBk1LAfvoAE")
+    .sendForm("service_murz7qv", "template_rbodn39", form, "n0fNJ32On4BeZAq6d")
     .then(
       (result: EmailJSResponseStatus) => {
         console.log(result.text);
@@ -58,3 +58,4 @@ const createInput = (name: string, value: string): HTMLInputElement => {
   input.setAttribute("value", value);
   return input;
 };
+//   last version
