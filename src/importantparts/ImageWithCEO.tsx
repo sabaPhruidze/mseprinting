@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 
 interface ImageWithSEOProps {
@@ -10,6 +10,7 @@ interface ImageWithSEOProps {
     longitude: string;
     location: string;
   };
+  loading?: "eager" | "lazy"; // Add loading prop to the interface
 }
 
 const SEOImage = styled.img`
@@ -17,6 +18,12 @@ const SEOImage = styled.img`
   height: 100%;
   object-fit: cover;
   object-position: 60% 60%;
+  transition: opacity 0.5s ease-in-out; // Add smooth loading transition
+  opacity: 0;
+
+  &.loaded {
+    opacity: 1;
+  }
 `;
 
 const ImageWithSEO: React.FC<ImageWithSEOProps> = ({
@@ -24,8 +31,9 @@ const ImageWithSEO: React.FC<ImageWithSEOProps> = ({
   alt,
   title,
   geoData,
+  loading = "eager", // Default to "eager" loading for immediate display
 }) => {
-  React.useEffect(() => {
+  useEffect(() => {
     if (geoData) {
       console.log(`Geo-tagging: ${geoData.latitude}, ${geoData.longitude}`);
     }
@@ -64,7 +72,15 @@ const ImageWithSEO: React.FC<ImageWithSEOProps> = ({
     };
   }, [src, alt, title, geoData]);
 
-  return <SEOImage src={src} alt={alt} loading="eager" />;
+  return (
+    <SEOImage
+      src={src}
+      alt={alt}
+      loading={loading}
+      className="image"
+      onLoad={(e) => (e.currentTarget.className += " loaded")} // Apply loaded class on image load
+    />
+  );
 };
 
 export default ImageWithSEO;

@@ -5,6 +5,8 @@ export const usePrefetchImages = (images: string[]) => {
     images.forEach((src) => {
       const img = new Image();
       img.src = src;
+      img.loading = "eager"; // Ensure images are preloaded eagerly
+      img.decoding = "sync"; // Synchronously decode the image to speed up rendering
     });
   }, [images]);
 };
