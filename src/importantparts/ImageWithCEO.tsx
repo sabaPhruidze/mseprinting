@@ -26,13 +26,10 @@ const ImageWithSEO: React.FC<ImageWithSEOProps> = ({
   geoData,
 }) => {
   React.useEffect(() => {
-    // Adding geo-tagging to the image metadata (EXIF data)
     if (geoData) {
-      // You would need a library to manipulate EXIF data in real use case
       console.log(`Geo-tagging: ${geoData.latitude}, ${geoData.longitude}`);
     }
 
-    // Structured Data Markup
     const structuredData = {
       "@context": "http://schema.org",
       "@type": "ImageObject",
@@ -57,7 +54,6 @@ const ImageWithSEO: React.FC<ImageWithSEOProps> = ({
         : undefined,
     };
 
-    // Injecting structured data as a script tag
     const script = document.createElement("script");
     script.type = "application/ld+json";
     script.innerHTML = JSON.stringify(structuredData);
@@ -68,7 +64,7 @@ const ImageWithSEO: React.FC<ImageWithSEOProps> = ({
     };
   }, [src, alt, title, geoData]);
 
-  return <SEOImage src={src} alt={alt} />;
+  return <SEOImage src={src} alt={alt} loading="eager" />;
 };
 
 export default ImageWithSEO;

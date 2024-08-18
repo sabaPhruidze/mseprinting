@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo, useEffect } from "react";
+import { useState, useCallback, useMemo, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { fetchCarouselData } from "../data/CarouselData";
 import { CarouselType } from "../types/DataTypes";
@@ -15,7 +15,6 @@ import {
   CarouselOverlay,
 } from "../style/HomeStyles";
 import "../style/CustomCarousel.css";
-import { CAROUSEL_DATA } from "../data/CarouselData";
 import ImageWithSEO from "./ImageWithCEO";
 import { usePrefetchImages } from "./UsePrefechImages";
 
@@ -41,18 +40,15 @@ export default function CarouselComponent() {
   useEffect(() => {
     const getCarouselData = async () => {
       const data = await fetchCarouselData();
-
       if (data && data.length > 0) {
         setCarouselMainData(data);
         const imageUrls = data.map((item) => item.image); // Collect all image URLs
-        usePrefetchImages(imageUrls); // Pass the array of URLs to the hook
+        usePrefetchImages(imageUrls); // Prefetch images
       }
     };
 
     getCarouselData();
   }, []);
-
-  usePrefetchImages(CAROUSEL_DATA);
 
   const carouselItems = useMemo(
     () =>
@@ -60,7 +56,7 @@ export default function CarouselComponent() {
         <Carousel.Item key={idx}>
           <CarouselContainer>
             <ImageWithSEO
-              src={CAROUSEL_DATA[idx]}
+              src={data.image} // Use data.image
               alt={data.alt}
               title={data.title}
               geoData={{
