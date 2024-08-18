@@ -28,12 +28,12 @@ export default function CarouselComponent() {
   }, []);
 
   const handlePrev = useCallback(() => {
-    setIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : prevIndex));
+    setIndex((prevIndex) => Math.max(prevIndex - 1, 0));
   }, []);
 
   const handleNext = useCallback(() => {
     setIndex((prevIndex) =>
-      prevIndex < carouselMainData.length - 1 ? prevIndex + 1 : prevIndex
+      Math.min(prevIndex + 1, carouselMainData.length - 1)
     );
   }, [carouselMainData.length]);
 
@@ -42,8 +42,8 @@ export default function CarouselComponent() {
       const data = await fetchCarouselData();
       if (data && data.length > 0) {
         setCarouselMainData(data);
-        const imageUrls = data.map((item) => item.image); // Collect all image URLs
-        usePrefetchImages(imageUrls); // Prefetch images
+        const imageUrls = data.map((item) => item.image);
+        usePrefetchImages(imageUrls);
       }
     };
 
@@ -56,7 +56,7 @@ export default function CarouselComponent() {
         <Carousel.Item key={idx}>
           <CarouselContainer>
             <ImageWithSEO
-              src={data.image} // Use data.image
+              src={data.image}
               alt={data.alt}
               title={data.title}
               geoData={{
@@ -64,6 +64,7 @@ export default function CarouselComponent() {
                 longitude: "-93.28393",
                 location: "Minneapolis, MN, USA",
               }}
+              loading="eager"
             />
             <CarouselOverlay />
             <Carousel.Caption className="custom-carousel-caption">
