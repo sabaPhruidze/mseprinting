@@ -16,7 +16,6 @@ import {
 } from "../style/HomeStyles";
 import "../style/CustomCarousel.css";
 import ImageWithSEO from "./ImageWithCEO";
-import { usePrefetchImages } from "./UsePrefechImages";
 
 export default function CarouselComponent() {
   const [index, setIndex] = useState(0);
@@ -42,8 +41,13 @@ export default function CarouselComponent() {
       const data = await fetchCarouselData();
       if (data && data.length > 0) {
         setCarouselMainData(data);
-        const imageUrls = data.map((item) => item.image);
-        usePrefetchImages(imageUrls);
+        // Prefetch images individually within the useEffect
+        data.forEach((item) => {
+          const img = new Image();
+          img.src = item.image;
+          img.loading = "eager";
+          img.decoding = "sync";
+        });
       }
     };
 
