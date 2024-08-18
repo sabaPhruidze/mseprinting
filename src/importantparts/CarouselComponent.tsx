@@ -1,4 +1,4 @@
-import { useState, useCallback, useMemo, useEffect } from "react";
+import React, { useState, useCallback, useMemo, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { fetchCarouselData } from "../data/CarouselData";
 import { CarouselType } from "../types/DataTypes";
@@ -8,7 +8,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import {
   CarouselControl,
   CarouselContainer,
-  CarouselImg,
   CarouselIcon,
   CarouselTitle,
   CarouselContent,
@@ -17,11 +16,8 @@ import {
 } from "../style/HomeStyles";
 import "../style/CustomCarousel.css";
 import { CAROUSEL_DATA } from "../data/CarouselData";
-
-const prefetchImage = (url: string) => {
-  const img = new Image();
-  img.src = url;
-};
+import ImageWithSEO from "./ImageWithCEO";
+import { usePrefetchImages } from "./UsePrefechImages";
 
 export default function CarouselComponent() {
   const [index, setIndex] = useState(0);
@@ -48,23 +44,30 @@ export default function CarouselComponent() {
 
       if (data && data.length > 0) {
         setCarouselMainData(data);
-        data.forEach((item) => prefetchImage(item.image));
+        const imageUrls = data.map((item) => item.image); // Collect all image URLs
+        usePrefetchImages(imageUrls); // Pass the array of URLs to the hook
       }
     };
 
     getCarouselData();
   }, []);
 
+  usePrefetchImages(CAROUSEL_DATA);
+
   const carouselItems = useMemo(
     () =>
       carouselMainData.map((data, idx) => (
         <Carousel.Item key={idx}>
           <CarouselContainer>
-            <CarouselImg
-              className="d-block w-100"
+            <ImageWithSEO
               src={CAROUSEL_DATA[idx]}
               alt={data.alt}
-              loading="lazy"
+              title={data.title}
+              geoData={{
+                latitude: "45.02524",
+                longitude: "-93.28393",
+                location: "Minneapolis, MN, USA",
+              }}
             />
             <CarouselOverlay />
             <Carousel.Caption className="custom-carousel-caption">
