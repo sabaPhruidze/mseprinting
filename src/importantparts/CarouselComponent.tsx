@@ -41,13 +41,25 @@ export default function CarouselComponent() {
       const data = await fetchCarouselData();
       if (data && data.length > 0) {
         setCarouselMainData(data);
-        // Prefetch images individually within the useEffect
-        data.forEach((item) => {
+
+        // Immediately prefetch the first two images
+        const firstTwoImages = data.slice(0, 2);
+        firstTwoImages.forEach((item) => {
           const img = new Image();
           img.src = item.image;
           img.loading = "eager";
           img.decoding = "sync";
         });
+
+        // Prefetch the remaining images after the first two
+        setTimeout(() => {
+          data.slice(2).forEach((item) => {
+            const img = new Image();
+            img.src = item.image;
+            img.loading = "eager";
+            img.decoding = "sync";
+          });
+        }, 0); // Prefetch after the main event loop tick
       }
     };
 

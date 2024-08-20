@@ -71,12 +71,15 @@ const ImageWithSEO: React.FC<ImageWithSEOProps> = ({
   }, [src, alt, title, geoData]);
 
   useEffect(() => {
-    // Prefetch the image directly in the component
+    // Immediately set the image as loaded when it finishes loading
     const img = new Image();
     img.src = src;
-    img.loading = "eager";
+    img.loading = loading;
     img.decoding = "sync";
-  }, [src]);
+    img.onload = () => {
+      setIsLoaded(true);
+    };
+  }, [src, loading]);
 
   return (
     <SEOImage
