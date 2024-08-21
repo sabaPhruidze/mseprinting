@@ -1,9 +1,10 @@
-import { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import {
   GlobalContainerColumn,
-  GlobalBoxColumnStart,
-  GlobalPart,
   GlobalMainTitle,
+  GlobalImageWrapperWithFloat,
+  GlobalTextContainer,
+  GlobalPart,
 } from "../../style/GlobalStyle";
 import { fetchBannersPostersData } from "../../data/sub-category data/AllSubCategoryData";
 import { CommonDocumentWAS } from "../../types/DataTypes";
@@ -28,11 +29,14 @@ export default function BannersPosters() {
   return (
     <GlobalContainerColumn>
       <GlobalMainTitle>{memoizedData?.one.title}</GlobalMainTitle>
-      {memoizedData?.two.map((item, index) => (
-        <GlobalBoxColumnStart key={index}>
-          <GlobalPart>{item}</GlobalPart>
-        </GlobalBoxColumnStart>
-      ))}
+      <GlobalTextContainer>
+        <GlobalImageWrapperWithFloat>
+          <img src={memoizedData?.three} alt={memoizedData?.one.title} />
+        </GlobalImageWrapperWithFloat>
+        {memoizedData?.two.map((item, index) => (
+          <GlobalPart key={index}>{item}</GlobalPart>
+        ))}
+      </GlobalTextContainer>
     </GlobalContainerColumn>
   );
 }

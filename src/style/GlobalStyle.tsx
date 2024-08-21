@@ -72,6 +72,35 @@ export const Globalh2Title = styled.h2`
   font-size: 22px;
   font-weight: bold;
 `;
+// special for image
+export const GlobalImageWrapperWithFloat = styled.div`
+  float: right;
+  width: 40%;
+  margin-left: 20px;
+  margin-bottom: 20px;
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  @media (max-width: 1000px) {
+    float: none; // Disable float
+    width: 100%; // Full width on small screens
+    margin-left: 0;
+    margin-bottom: 20px; // Space below the image
+  }
+`;
+
+export const GlobalTextContainer = styled.div`
+  overflow: hidden; // To clear the float and wrap content properly
+
+  @media (max-width: 1000px) {
+    width: 100%; // Ensure text takes full width on small screens
+  }
+`;
+// special for image
 export const Globalh2TitleWithMB20 = styled.h2`
   margin-bottom: 0;
   font-size: 22px;
