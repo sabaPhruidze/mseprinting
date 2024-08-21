@@ -7,6 +7,18 @@ import NavigateAndScroll from "./NavigateAndScroll";
 import { fetchWWDCCardData, CARDS_DATA } from "../data/CardData";
 import { WWDCCardType } from "../types/DataTypes";
 import ImageWithSEO from "./ImageWithCEO";
+import styled from "styled-components";
+
+// Create a styled wrapper for the card images with fixed height
+const CardImageWrapper = styled.div`
+  height: 200px;
+  overflow: hidden;
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover; // Ensure the image covers the area while maintaining aspect ratio
+  }
+`;
 
 // Type guard to check if the card is of type WWDCCardType
 const isWWDCCardType = (card: string | WWDCCardType): card is WWDCCardType => {
@@ -35,24 +47,22 @@ const WWDCCard: React.FC = () => {
             const imageSrc = isWWDCCardType(card)
               ? card.image
               : CARDS_DATA[idx];
-            const title = isWWDCCardType(card)
-              ? card.title
-              : `Title ${idx + 1}`;
-            const text = isWWDCCardType(card)
-              ? card.text
-              : `Description ${idx + 1}`;
+            const title = isWWDCCardType(card) ? card.title : ``;
+            const text = isWWDCCardType(card) ? card.text : ``;
             const path = isWWDCCardType(card) ? card.link : "#";
 
             return (
               <NavigateAndScroll path={path} key={idx}>
                 <Col>
                   <CardContainer className="h-100">
-                    <ImageWithSEO
-                      src={imageSrc}
-                      alt={title}
-                      title={title}
-                      loading="eager"
-                    />
+                    <CardImageWrapper>
+                      <ImageWithSEO
+                        src={imageSrc}
+                        alt={title}
+                        title={title}
+                        loading="eager"
+                      />
+                    </CardImageWrapper>
                     <CardContainer.Body
                       style={{ height: 200, overflow: "hidden" }}
                     >
