@@ -308,6 +308,7 @@ export interface CommonDocument {
 export interface CommonDocumentWAS {
   one: TitleWithContent;
   two: string[];
+  three?: string;
 }
 // business forms
 export interface BusinessFormsType {
