@@ -1,50 +1,73 @@
-import { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { CardContainer } from "../style/HomeStyles";
 import NavigateAndScroll from "./NavigateAndScroll";
-import { fetchWWDCCardData } from "../data/CardData";
+import { fetchWWDCCardData, CARDS_DATA } from "../data/CardData";
 import { WWDCCardType } from "../types/DataTypes";
+import ImageWithSEO from "./ImageWithCEO";
 
-function WWDCCard() {
+// Type guard to check if the card is of type WWDCCardType
+const isWWDCCardType = (card: string | WWDCCardType): card is WWDCCardType => {
+  return (card as WWDCCardType).title !== undefined;
+};
+
+const WWDCCard: React.FC = () => {
   const [WWDCCardMainData, setWWDCCardMainData] = useState<WWDCCardType[]>([]);
 
   useEffect(() => {
-    const getCarouselData = async () => {
+    const getCardData = async () => {
       const data = await fetchWWDCCardData();
-
       if (data && data.length > 0) {
         setWWDCCardMainData(data);
       }
     };
 
-    getCarouselData();
+    getCardData();
   }, []);
 
   return (
     <Container>
       <Row xs={1} sm={2} md={3} className="g-4">
-        {WWDCCardMainData.map((card, idx) => (
-          <NavigateAndScroll path={card.link} key={idx}>
-            <Col>
-              <CardContainer className="h-100">
-                <CardContainer.Img
-                  variant="top"
-                  src={card.image}
-                  style={{ height: 200, objectFit: "fill" }}
-                />
-                <CardContainer.Body style={{ height: 200, overflow: "hidden" }}>
-                  <CardContainer.Title>{card.title}</CardContainer.Title>
-                  <CardContainer.Text>{card.text}</CardContainer.Text>
-                </CardContainer.Body>
-              </CardContainer>
-            </Col>
-          </NavigateAndScroll>
-        ))}
+        {(WWDCCardMainData.length > 0 ? WWDCCardMainData : CARDS_DATA).map(
+          (card, idx) => {
+            const imageSrc = isWWDCCardType(card)
+              ? card.image
+              : CARDS_DATA[idx];
+            const title = isWWDCCardType(card)
+              ? card.title
+              : `Title ${idx + 1}`;
+            const text = isWWDCCardType(card)
+              ? card.text
+              : `Description ${idx + 1}`;
+            const path = isWWDCCardType(card) ? card.link : "#";
+
+            return (
+              <NavigateAndScroll path={path} key={idx}>
+                <Col>
+                  <CardContainer className="h-100">
+                    <ImageWithSEO
+                      src={imageSrc}
+                      alt={title}
+                      title={title}
+                      loading="eager"
+                    />
+                    <CardContainer.Body
+                      style={{ height: 200, overflow: "hidden" }}
+                    >
+                      <CardContainer.Title>{title}</CardContainer.Title>
+                      <CardContainer.Text>{text}</CardContainer.Text>
+                    </CardContainer.Body>
+                  </CardContainer>
+                </Col>
+              </NavigateAndScroll>
+            );
+          }
+        )}
       </Row>
     </Container>
   );
-}
+};
 
 export default WWDCCard;
