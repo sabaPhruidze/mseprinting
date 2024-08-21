@@ -1,7 +1,6 @@
 import { useState, useCallback, useMemo, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { fetchCarouselData } from "../data/CarouselData";
-import { CarouselType } from "../types/DataTypes";
 import Carousel from "react-bootstrap/Carousel";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -16,6 +15,8 @@ import {
 } from "../style/HomeStyles";
 import "../style/CustomCarousel.css";
 import ImageWithSEO from "./ImageWithCEO";
+import { CAROUSEL_DATA } from "../data/CarouselData";
+import { CarouselType } from "../types/DataTypes";
 
 export default function CarouselComponent() {
   const [index, setIndex] = useState(0);
@@ -41,25 +42,6 @@ export default function CarouselComponent() {
       const data = await fetchCarouselData();
       if (data && data.length > 0) {
         setCarouselMainData(data);
-
-        // Immediately prefetch the first two images
-        const firstTwoImages = data.slice(0, 2);
-        firstTwoImages.forEach((item) => {
-          const img = new Image();
-          img.src = item.image;
-          img.loading = "eager";
-          img.decoding = "sync";
-        });
-
-        // Prefetch the remaining images after the first two
-        setTimeout(() => {
-          data.slice(2).forEach((item) => {
-            const img = new Image();
-            img.src = item.image;
-            img.loading = "eager";
-            img.decoding = "sync";
-          });
-        }, 0); // Prefetch after the main event loop tick
       }
     };
 
@@ -68,31 +50,42 @@ export default function CarouselComponent() {
 
   const carouselItems = useMemo(
     () =>
-      carouselMainData.map((data, idx) => (
-        <Carousel.Item key={idx}>
-          <CarouselContainer>
-            <ImageWithSEO
-              src={data.image}
-              alt={data.alt}
-              title={data.title}
-              geoData={{
-                latitude: "45.02524",
-                longitude: "-93.28393",
-                location: "Minneapolis, MN, USA",
-              }}
-              loading="eager"
-            />
-            <CarouselOverlay />
-            <Carousel.Caption className="custom-carousel-caption">
-              <CarouselTitle>{data.title}</CarouselTitle>
-              <CarouselContent>{data.text}</CarouselContent>
-              <CarouselButton onClick={() => navigate(data.link)}>
-                Learn more ...
-              </CarouselButton>
-            </Carousel.Caption>
-          </CarouselContainer>
-        </Carousel.Item>
-      )),
+      carouselMainData.length > 0
+        ? carouselMainData.map((data, idx) => (
+            <Carousel.Item key={idx}>
+              <CarouselContainer>
+                <ImageWithSEO
+                  src={CAROUSEL_DATA[idx]} // Using the static image sources
+                  alt={data.alt} // Fetched from the API
+                  title={data.title} // Fetched from the API
+                  loading="eager"
+                />
+                <CarouselOverlay />
+                <Carousel.Caption className="custom-carousel-caption">
+                  <CarouselTitle>{data.title}</CarouselTitle>
+                  {data.text && <CarouselContent>{data.text}</CarouselContent>}
+                  {data.link && (
+                    <CarouselButton onClick={() => navigate(data.link)}>
+                      Learn more ...
+                    </CarouselButton>
+                  )}
+                </Carousel.Caption>
+              </CarouselContainer>
+            </Carousel.Item>
+          ))
+        : CAROUSEL_DATA.map((src, idx) => (
+            <Carousel.Item key={idx}>
+              <CarouselContainer>
+                <ImageWithSEO
+                  src={src}
+                  alt={`Image ${idx + 1}`} // Placeholder alt text
+                  title={`Image ${idx + 1}`} // Placeholder title
+                  loading="eager"
+                />
+                <CarouselOverlay />
+              </CarouselContainer>
+            </Carousel.Item>
+          )),
     [carouselMainData, navigate]
   );
 
