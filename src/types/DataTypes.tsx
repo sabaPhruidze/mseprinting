@@ -315,6 +315,7 @@ export interface BusinessFormsType {
   one: TitleWithContent;
   two: string[];
   three: BFThree;
+  fourth: string;
 }
 
 export interface BFThree {

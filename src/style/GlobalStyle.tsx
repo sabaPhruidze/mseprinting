@@ -75,7 +75,7 @@ export const Globalh2Title = styled.h2`
 // special for image
 export const GlobalImageWrapperWithFloat = styled.div`
   float: right;
-  width: 40%;
+  width: 30%; // Reduced width to allow more space for text
   margin-left: 20px;
   margin-bottom: 20px;
 
@@ -86,10 +86,10 @@ export const GlobalImageWrapperWithFloat = styled.div`
   }
 
   @media (max-width: 1000px) {
-    float: none; // Disable float
-    width: 100%; // Full width on small screens
+    float: none;
+    width: 100%;
     margin-left: 0;
-    margin-bottom: 20px; // Space below the image
+    margin-bottom: 20px;
   }
 `;
 
@@ -106,6 +106,12 @@ export const Globalh2TitleWithMB20 = styled.h2`
   font-size: 22px;
   font-weight: bold;
   margin-bottom: 20px;
+`;
+export const AlignedTextContainer = styled.div`
+  text-align: left;
+  margin-left: 0; // No extra margin on the left
+  padding-left: 0; // No extra padding on the left
+  width: 100%; // Takes full width of the container
 `;
 
 export const Globalh3Title = styled.h3`
