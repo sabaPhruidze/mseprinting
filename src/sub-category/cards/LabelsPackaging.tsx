@@ -5,6 +5,8 @@ import {
   GlobalPart,
   GlobalMainTitle,
   Globalh2TitleWithMB20,
+  GlobalImageWrapperWithFloat, // Import the styled component for image wrapping
+  GlobalTextContainer, // Import the styled component for text wrapping
 } from "../../style/GlobalStyle";
 import { fetchLabelsPackagingData } from "../../data/sub-category data/AllSubCategoryData";
 import { LabelsPackagingDocument } from "../../types/DataTypes";
@@ -33,15 +35,21 @@ export default function LabelsPackaging() {
   return (
     <GlobalContainerColumn>
       <GlobalMainTitle>{memoizedData?.one.title}</GlobalMainTitle>
-      {memoizedData?.two.map((item, index) => (
-        <GlobalBoxColumnStart key={index}>
-          <Globalh2TitleWithMB20>{item.title}</Globalh2TitleWithMB20>
-          <GlobalPart>{item.content}</GlobalPart>
-        </GlobalBoxColumnStart>
-      ))}
-      <GlobalBoxColumnStart>
+
+      <GlobalTextContainer>
+        <GlobalImageWrapperWithFloat>
+          <img src={memoizedData?.four} alt={memoizedData?.one.title} />
+        </GlobalImageWrapperWithFloat>
+
+        {memoizedData?.two.map((item, index) => (
+          <div key={index}>
+            <Globalh2TitleWithMB20>{item.title}</Globalh2TitleWithMB20>
+            <GlobalPart>{item.content}</GlobalPart>
+          </div>
+        ))}
+
         <GlobalPart>{memoizedData?.three.content}</GlobalPart>
-      </GlobalBoxColumnStart>
+      </GlobalTextContainer>
     </GlobalContainerColumn>
   );
 }

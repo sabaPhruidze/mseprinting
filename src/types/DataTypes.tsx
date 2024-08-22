@@ -329,4 +329,5 @@ export interface LabelsPackagingDocument {
   one: TitleWithContent;
   two: TitleWithContent[];
   three: TitleWithContent;
+  four: string;
 }
