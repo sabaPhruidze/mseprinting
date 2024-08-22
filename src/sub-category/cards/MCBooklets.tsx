@@ -1,9 +1,10 @@
 import { useState, useEffect, useMemo } from "react";
 import {
   GlobalContainerColumn,
-  GlobalBoxColumnStart,
   GlobalPart,
   GlobalMainTitle,
+  GlobalImageWrapperWithFloat, // Import the styled component for image wrapping
+  GlobalTextContainer, // Import the styled component for text wrapping
 } from "../../style/GlobalStyle";
 import { fetchMKBookletsData } from "../../data/sub-category data/AllSubCategoryData";
 import { CommonDocumentWAS } from "../../types/DataTypes";
@@ -28,12 +29,18 @@ export default function MCBooklets() {
   return (
     <GlobalContainerColumn>
       <GlobalMainTitle>{memoizedData?.one.title}</GlobalMainTitle>
-      <GlobalPart>{memoizedData?.one.content}</GlobalPart>
-      {memoizedData?.two.map((item, index) => (
-        <GlobalBoxColumnStart key={index}>
-          <GlobalPart>{item}</GlobalPart>
-        </GlobalBoxColumnStart>
-      ))}
+
+      <GlobalTextContainer>
+        <GlobalImageWrapperWithFloat>
+          <img src={memoizedData?.three} alt={memoizedData?.one.title} />
+        </GlobalImageWrapperWithFloat>
+
+        <GlobalPart>{memoizedData?.one.content}</GlobalPart>
+
+        {memoizedData?.two.map((item, index) => (
+          <GlobalPart key={index}>{item}</GlobalPart>
+        ))}
+      </GlobalTextContainer>
     </GlobalContainerColumn>
   );
 }
