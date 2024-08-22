@@ -1,9 +1,6 @@
-// components/CommercialDigitalPrinting.tsx
-
 import { useState, useEffect, useMemo, useCallback } from "react";
 import {
   GlobalContainerColumn,
-  GlobalBoxColumnStart,
   Globalh2TitleWithMB20,
   GlobalPart,
   GlobalPartBox,
@@ -15,6 +12,8 @@ import {
   GlobalNestedList,
   GlobalNestedListItem,
   GlobalSpecialPartDark,
+  GlobalImageWrapperWithFloat, // Styled component for image wrapping
+  GlobalTextContainer, // Styled component for text wrapping
 } from "../style/GlobalStyle";
 import { fetchDigitalPrintingData } from "../data/sub-category data/AllSubCategoryData";
 import { DigitalPrintingDocument } from "../types/DataTypes";
@@ -61,25 +60,22 @@ export default function CommercialDigitalPrinting() {
   return (
     <GlobalContainerColumn>
       <GlobalMainTitle>{memoizedData?.one.title}</GlobalMainTitle>
-      <GlobalBoxColumnStart>
-        {memoizedData?.one.title && (
-          <Globalh2TitleWithMB20>
-            {memoizedData?.one.title}
-          </Globalh2TitleWithMB20>
-        )}
-        {memoizedData?.one.content && (
-          <GlobalPart>{memoizedData?.one.content}</GlobalPart>
-        )}
-      </GlobalBoxColumnStart>
 
-      {memoizedData?.two.map((item, index) => (
-        <GlobalBoxColumnStart key={index}>
-          <Globalh2TitleWithMB20>{item.title}</Globalh2TitleWithMB20>
-          {item.content && <GlobalPart>{item.content}</GlobalPart>}
-        </GlobalBoxColumnStart>
-      ))}
+      <GlobalTextContainer>
+        <GlobalImageWrapperWithFloat>
+          <img src={memoizedData?.ten} alt={memoizedData?.one.title} />
+        </GlobalImageWrapperWithFloat>
 
-      <GlobalBoxColumnStart>
+        <Globalh2TitleWithMB20>{memoizedData?.one.title}</Globalh2TitleWithMB20>
+        <GlobalPart>{memoizedData?.one.content}</GlobalPart>
+
+        {memoizedData?.two.map((item, index) => (
+          <div key={index}>
+            <Globalh2TitleWithMB20>{item.title}</Globalh2TitleWithMB20>
+            <GlobalPart>{item.content}</GlobalPart>
+          </div>
+        ))}
+
         <Globalh2TitleWithMB20>
           {memoizedData?.three.title}
         </Globalh2TitleWithMB20>
@@ -91,9 +87,7 @@ export default function CommercialDigitalPrinting() {
             </GlobalOrderedListItem>
           ))}
         </GlobalOrderedList>
-      </GlobalBoxColumnStart>
 
-      <GlobalBoxColumnStart>
         <Globalh2TitleWithMB20>
           {memoizedData?.four.title}
         </Globalh2TitleWithMB20>
@@ -101,13 +95,11 @@ export default function CommercialDigitalPrinting() {
           {memoizedData?.fourSub.map((item, index) => (
             <GlobalOrderedListItem key={index}>
               {item.title && <strong>{item.title}</strong>}
-              {item.content && <GlobalPartBox> {item.content}</GlobalPartBox>}
+              <GlobalPartBox>{item.content}</GlobalPartBox>
             </GlobalOrderedListItem>
           ))}
         </GlobalOrderedList>
-      </GlobalBoxColumnStart>
 
-      <GlobalBoxColumnStart>
         <Globalh2TitleWithMB20>
           {memoizedData?.five.title}
         </Globalh2TitleWithMB20>
@@ -115,59 +107,48 @@ export default function CommercialDigitalPrinting() {
           {memoizedData?.fiveSub.map((item, index) => (
             <GlobalListItem key={index}>
               {item.title && <strong>{item.title}</strong>}
-              {item.content && <GlobalPartBox> {item.content}</GlobalPartBox>}
+              <GlobalPartBox>{item.content}</GlobalPartBox>
             </GlobalListItem>
           ))}
         </GlobalList>
-      </GlobalBoxColumnStart>
 
-      <GlobalBoxColumnStart>
         <Globalh2TitleWithMB20>{memoizedData?.six.title}</Globalh2TitleWithMB20>
         <GlobalOrderedList>
           {memoizedData?.sixSub.map((item, index) => (
             <GlobalOrderedListItem key={index}>
-              {item.title && <strong>{item.title}</strong>}
-              {item.content && <GlobalPartBox> {item.content}</GlobalPartBox>}
+              <GlobalPartBox>{item.content}</GlobalPartBox>
             </GlobalOrderedListItem>
           ))}
         </GlobalOrderedList>
-      </GlobalBoxColumnStart>
 
-      <GlobalBoxColumnStart>
         <Globalh2TitleWithMB20>
           {memoizedData?.seven.title}
         </Globalh2TitleWithMB20>
         <GlobalList>
           {memoizedData?.sevenSub.map((item, index) => (
             <GlobalListItem key={index}>
-              {item.title && <strong>{item.title}</strong>}
-              {item.content && <GlobalPartBox> {item.content}</GlobalPartBox>}
+              <GlobalPartBox>{item.content}</GlobalPartBox>
             </GlobalListItem>
           ))}
         </GlobalList>
-      </GlobalBoxColumnStart>
 
-      <GlobalBoxColumnStart>
         <Globalh2TitleWithMB20>
           {memoizedData?.eight.title}
         </Globalh2TitleWithMB20>
         <GlobalOrderedList>
           {memoizedData?.eightSub.map((item, index) => (
             <GlobalOrderedListItem key={index}>
-              {item.title && <strong>{item.title}</strong>}
-              {item.content && <GlobalPartBox> {item.content}</GlobalPartBox>}
+              <GlobalPartBox>{item.content}</GlobalPartBox>
             </GlobalOrderedListItem>
           ))}
         </GlobalOrderedList>
-      </GlobalBoxColumnStart>
 
-      <GlobalBoxColumnStart>
         <Globalh2TitleWithMB20>
           {memoizedData?.nine.title}
         </Globalh2TitleWithMB20>
         <GlobalPart>{memoizedData?.nine.firstPart}</GlobalPart>
         <GlobalPart>{memoizedData?.nine.secondPart}</GlobalPart>
-      </GlobalBoxColumnStart>
+      </GlobalTextContainer>
     </GlobalContainerColumn>
   );
 }
