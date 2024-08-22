@@ -11,7 +11,7 @@ import styled from "styled-components";
 
 // Create a styled wrapper for the card images with fixed height
 const CardImageWrapper = styled.div`
-  height: 200px;
+  height: 250px;
   overflow: hidden;
   img {
     height: 100%;
