@@ -302,6 +302,7 @@ export interface PrintingCopyingDocument {
 export interface CommonDocument {
   one: TitleWithContent;
   two: TitleWithContent[];
+  third?: string;
 }
 
 // Common Document With Array of Strings

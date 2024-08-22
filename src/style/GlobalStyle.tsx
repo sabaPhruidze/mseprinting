@@ -93,6 +93,37 @@ export const GlobalImageWrapperWithFloat = styled.div`
   }
 `;
 
+//
+
+export const GlobalContainerRowWithWrap = styled.div`
+  display: flex;
+  flex-wrap: wrap; // Allows text to wrap under the image if necessary
+  justify-content: space-between;
+  align-items: flex-start;
+`;
+
+export const GlobalImageWrapperWithFlex = styled.div`
+  flex: 0 0 40%; // Adjust this percentage to control the image width
+  max-width: 40%; // Ensure the image doesn't exceed the allocated space
+  padding-left: 20px; // Space between the image and text
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+`;
+
+export const GlobalBoxColumnStart1 = styled.div`
+  flex: 1; // Takes the remaining width after the image
+  align-self: flex-start; // Aligns text to the top of the container
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+`;
+
+//
+
 export const GlobalTextContainer = styled.div`
   overflow: hidden; // To clear the float and wrap content properly
 

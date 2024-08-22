@@ -1,12 +1,11 @@
-// components/DirectMailing.tsx
-
 import { useState, useEffect, useMemo } from "react";
 import {
   GlobalContainerColumn,
-  GlobalBoxColumnStart,
-  Globalh2TitleWithMB20,
-  GlobalPart,
   GlobalMainTitle,
+  GlobalImageWrapperWithFloat,
+  GlobalTextContainer,
+  GlobalPart,
+  Globalh2TitleWithMB20,
 } from "../style/GlobalStyle";
 import { fetchDirectMailingData } from "../data/sub-category data/AllSubCategoryData";
 import { CommonDocument } from "../types/DataTypes";
@@ -32,12 +31,18 @@ export default function DirectMailing() {
     <GlobalContainerColumn>
       <GlobalMainTitle>{memoizedData?.one.title}</GlobalMainTitle>
 
-      {memoizedData?.two.map((item, index) => (
-        <GlobalBoxColumnStart key={index}>
-          <Globalh2TitleWithMB20>{item.title}</Globalh2TitleWithMB20>
-          {item.content && <GlobalPart>{item.content}</GlobalPart>}
-        </GlobalBoxColumnStart>
-      ))}
+      <GlobalTextContainer>
+        <GlobalImageWrapperWithFloat>
+          <img src={memoizedData?.third} alt={memoizedData?.one.title} />
+        </GlobalImageWrapperWithFloat>
+
+        {memoizedData?.two.map((item, index) => (
+          <div key={index}>
+            <Globalh2TitleWithMB20>{item.title}</Globalh2TitleWithMB20>
+            {item.content && <GlobalPart>{item.content}</GlobalPart>}
+          </div>
+        ))}
+      </GlobalTextContainer>
     </GlobalContainerColumn>
   );
 }
