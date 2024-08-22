@@ -1,7 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import {
   GlobalContainerColumn,
-  GlobalBoxColumnStart,
   GlobalPart,
   GlobalMainTitle,
   Globalh2TitleWithMB20,
