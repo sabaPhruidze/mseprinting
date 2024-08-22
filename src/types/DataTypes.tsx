@@ -266,6 +266,7 @@ export interface OffsetPrintingDocument {
   eight: TitleWithContent;
   eightSub: TitleWithContent[];
   nine: EOEDiversitySpecial;
+  ten: string;
 }
 export interface OffsetPrintingOne {
   mainTitle: string;
@@ -289,6 +290,7 @@ export interface DigitalPrintingDocument {
   eight: TitleWithContent;
   eightSub: TitleWithContent[];
   nine: EOEDiversitySpecial;
+  ten: string;
 }
 
 // Printing and Copying

@@ -1,7 +1,6 @@
 import { useState, useEffect, useMemo, useCallback } from "react";
 import {
   GlobalContainerColumn,
-  GlobalBoxColumnStart,
   Globalh2TitleWithMB20,
   GlobalPart,
   GlobalPartBox,
@@ -13,6 +12,8 @@ import {
   GlobalNestedList,
   GlobalNestedListItem,
   GlobalSpecialPartDark,
+  GlobalImageWrapperWithFloat, // Import the styled component for image wrapping
+  GlobalTextContainer, // Import the styled component for text wrapping
 } from "../style/GlobalStyle";
 import { fetchOffsetPrintingData } from "../data/sub-category data/CommercialOffsetPrintingData";
 import { OffsetPrintingDocument } from "../types/DataTypes";
@@ -56,17 +57,18 @@ export default function CommercialOffsetPrinting() {
   return (
     <GlobalContainerColumn>
       <GlobalMainTitle>{memoizedData?.one.mainTitle}</GlobalMainTitle>
-      <GlobalBoxColumnStart>
+
+      <GlobalTextContainer>
+        <GlobalImageWrapperWithFloat>
+          <img src={memoizedData?.ten} alt={memoizedData?.one.mainTitle} />
+        </GlobalImageWrapperWithFloat>
+
         <Globalh2TitleWithMB20>{memoizedData?.one.title}</Globalh2TitleWithMB20>
         <GlobalPart>{memoizedData?.one.content}</GlobalPart>
-      </GlobalBoxColumnStart>
 
-      <GlobalBoxColumnStart>
         <Globalh2TitleWithMB20>{memoizedData?.two.title}</Globalh2TitleWithMB20>
         <GlobalPart>{memoizedData?.two.content}</GlobalPart>
-      </GlobalBoxColumnStart>
 
-      <GlobalBoxColumnStart>
         <Globalh2TitleWithMB20>
           {memoizedData?.three.title}
         </Globalh2TitleWithMB20>
@@ -78,9 +80,7 @@ export default function CommercialOffsetPrinting() {
             </GlobalOrderedListItem>
           ))}
         </GlobalOrderedList>
-      </GlobalBoxColumnStart>
 
-      <GlobalBoxColumnStart>
         <Globalh2TitleWithMB20>
           {memoizedData?.four.title}
         </Globalh2TitleWithMB20>
@@ -89,9 +89,7 @@ export default function CommercialOffsetPrinting() {
             <GlobalListItem key={index}>{item.content}</GlobalListItem>
           ))}
         </GlobalList>
-      </GlobalBoxColumnStart>
 
-      <GlobalBoxColumnStart>
         <Globalh2TitleWithMB20>
           {memoizedData?.five.title}
         </Globalh2TitleWithMB20>
@@ -102,9 +100,7 @@ export default function CommercialOffsetPrinting() {
             </GlobalOrderedListItem>
           ))}
         </GlobalOrderedList>
-      </GlobalBoxColumnStart>
 
-      <GlobalBoxColumnStart>
         <Globalh2TitleWithMB20>{memoizedData?.six.title}</Globalh2TitleWithMB20>
         <GlobalOrderedList>
           {memoizedData?.sixSub.map((item, index) => (
@@ -113,9 +109,7 @@ export default function CommercialOffsetPrinting() {
             </GlobalOrderedListItem>
           ))}
         </GlobalOrderedList>
-      </GlobalBoxColumnStart>
 
-      <GlobalBoxColumnStart>
         <Globalh2TitleWithMB20>
           {memoizedData?.seven.title}
         </Globalh2TitleWithMB20>
@@ -126,9 +120,7 @@ export default function CommercialOffsetPrinting() {
             </GlobalOrderedListItem>
           ))}
         </GlobalOrderedList>
-      </GlobalBoxColumnStart>
 
-      <GlobalBoxColumnStart>
         <Globalh2TitleWithMB20>
           {memoizedData?.eight.title}
         </Globalh2TitleWithMB20>
@@ -139,15 +131,13 @@ export default function CommercialOffsetPrinting() {
             </GlobalOrderedListItem>
           ))}
         </GlobalOrderedList>
-      </GlobalBoxColumnStart>
 
-      <GlobalBoxColumnStart>
         <Globalh2TitleWithMB20>
           {memoizedData?.nine.title}
         </Globalh2TitleWithMB20>
         <GlobalPart>{memoizedData?.nine.firstPart}</GlobalPart>
         <GlobalPart>{memoizedData?.nine.secondPart}</GlobalPart>
-      </GlobalBoxColumnStart>
+      </GlobalTextContainer>
     </GlobalContainerColumn>
   );
 }
