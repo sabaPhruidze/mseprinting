@@ -3,6 +3,8 @@ import {
   GlobalContainerColumn,
   GlobalBoxColumnStart,
   Globalh2TitleWithMB20,
+  GlobalImageWrapperWithFloat,
+  GlobalTextContainer,
   GlobalPart,
   GlobalMainTitle,
 } from "../style/GlobalStyle";
@@ -28,13 +30,18 @@ export default function OnlinePortal() {
 
   return (
     <GlobalContainerColumn>
-      <GlobalMainTitle>{memoizedData?.one.title}</GlobalMainTitle>
-      {memoizedData?.two.map((item, index) => (
-        <GlobalBoxColumnStart key={index}>
-          <Globalh2TitleWithMB20>{item.title}</Globalh2TitleWithMB20>
-          {item.content && <GlobalPart>{item.content}</GlobalPart>}
-        </GlobalBoxColumnStart>
-      ))}
+      <GlobalTextContainer>
+        <GlobalImageWrapperWithFloat>
+          <img src={memoizedData?.three} alt={memoizedData?.one.title} />
+        </GlobalImageWrapperWithFloat>
+        <GlobalMainTitle>{memoizedData?.one.title}</GlobalMainTitle>
+        {memoizedData?.two.map((item, index) => (
+          <div key={index}>
+            <Globalh2TitleWithMB20>{item.title}</Globalh2TitleWithMB20>
+            {item.content && <GlobalPart>{item.content}</GlobalPart>}
+          </div>
+        ))}
+      </GlobalTextContainer>
     </GlobalContainerColumn>
   );
 }
