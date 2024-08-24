@@ -19,8 +19,8 @@ export const fetchCarouselData = async (): Promise<CarouselType[]> => {
 export const CAROUSEL_DATA = [
   offsetPrinting,
   digitalPrinting,
-  directMail,
-  onlineOrdering,
   printingCopying,
+  directMail,
   signs,
+  onlineOrdering,
 ];
