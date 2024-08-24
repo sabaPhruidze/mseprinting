@@ -44,9 +44,6 @@ const WWDCCard: React.FC = () => {
       <Row xs={1} sm={2} md={3} className="g-4">
         {(WWDCCardMainData.length > 0 ? WWDCCardMainData : CARDS_DATA).map(
           (card, idx) => {
-            const imageSrc = isWWDCCardType(card)
-              ? card.image
-              : CARDS_DATA[idx];
             const title = isWWDCCardType(card) ? card.title : ``;
             const text = isWWDCCardType(card) ? card.text : ``;
             const path = isWWDCCardType(card) ? card.link : "#";
@@ -57,7 +54,7 @@ const WWDCCard: React.FC = () => {
                   <CardContainer className="h-100">
                     <CardImageWrapper>
                       <ImageWithSEO
-                        src={imageSrc}
+                        src={CARDS_DATA[idx]}
                         alt={title}
                         title={title}
                         loading="eager"
