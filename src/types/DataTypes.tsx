@@ -298,6 +298,7 @@ export interface PrintingCopyingDocument {
   one: TitleWithContent;
   two: TitleWithContent[];
   three: BFThree;
+  four?: string;
 }
 
 // Common Document
