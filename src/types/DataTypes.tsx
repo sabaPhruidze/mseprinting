@@ -306,6 +306,7 @@ export interface CommonDocument {
   one: TitleWithContent;
   two: TitleWithContent[];
   third?: string;
+  three?: string;
 }
 
 // Common Document With Array of Strings

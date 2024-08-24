@@ -3,15 +3,7 @@ import {
   GlobalContainerColumn,
   Globalh2TitleWithMB20,
   GlobalPart,
-  GlobalPartBox,
   GlobalMainTitle,
-  GlobalListItem,
-  GlobalList,
-  GlobalOrderedList,
-  GlobalOrderedListItem,
-  GlobalNestedList,
-  GlobalNestedListItem,
-  GlobalSpecialPartDark,
   GlobalImageWrapperWithFloat, // Styled component for image wrapping
   GlobalTextContainer, // Styled component for text wrapping
 } from "../style/GlobalStyle";

@@ -5,6 +5,8 @@ import {
   Globalh2TitleWithMB20,
   GlobalPart,
   GlobalMainTitle,
+  GlobalImageWrapperWithFloat, // Styled component for image wrapping
+  GlobalTextContainer, // Styled component for text wrapping
 } from "../style/GlobalStyle";
 import { fetchSignsData } from "../data/sub-category data/AllSubCategoryData";
 import { CommonDocument } from "../types/DataTypes";
@@ -28,12 +30,18 @@ export default function Signs() {
   return (
     <GlobalContainerColumn>
       <GlobalMainTitle>{memoizedData?.one.title}</GlobalMainTitle>
-      {memoizedData?.two.map((item, index) => (
-        <GlobalBoxColumnStart key={index}>
-          <Globalh2TitleWithMB20>{item.title}</Globalh2TitleWithMB20>
-          {item.content && <GlobalPart>{item.content}</GlobalPart>}
-        </GlobalBoxColumnStart>
-      ))}
+      <GlobalTextContainer>
+        <GlobalImageWrapperWithFloat>
+          <img src={memoizedData?.three} alt={memoizedData?.one.title} />
+        </GlobalImageWrapperWithFloat>
+
+        {memoizedData?.two.map((item, index) => (
+          <div key={index}>
+            <Globalh2TitleWithMB20>{item.title}</Globalh2TitleWithMB20>
+            {item.content && <GlobalPart>{item.content}</GlobalPart>}
+          </div>
+        ))}
+      </GlobalTextContainer>
     </GlobalContainerColumn>
   );
 }
