@@ -20,7 +20,7 @@ const RQProjectDetailsRight: React.FC<Props> = ({
   firstname,
   lastname,
 }) => {
-  const [uploadedFiles, setUploadedFilesState] = useState<File[]>([]);
+  const [files, setFiles] = useState<File[]>([]); // Store files locally
   const context = useContext(rootContext);
 
   if (!context) {
@@ -29,9 +29,9 @@ const RQProjectDetailsRight: React.FC<Props> = ({
 
   const { dispatching } = context;
 
-  const onDrop = useCallback(
+  const handleUpload = useCallback(
     async (acceptedFiles: File[]) => {
-      setUploadedFilesState(acceptedFiles);
+      if (acceptedFiles.length === 0) return;
 
       const zip = new JSZip();
       acceptedFiles.forEach((file) => {
@@ -61,6 +61,7 @@ const RQProjectDetailsRight: React.FC<Props> = ({
           const { fileUrl } = await response.json();
           setUploadedFiles([fileUrl]); // Update the uploaded file URL in parent component
           dispatching("REQUEST_QUOTE_CHANGE", true);
+          console.log("File uploaded successfully:", zipFileName);
         } else {
           console.error("File upload failed:", await response.text());
         }
@@ -69,6 +70,14 @@ const RQProjectDetailsRight: React.FC<Props> = ({
       }
     },
     [firstname, lastname, setUploadedFiles, dispatching]
+  );
+
+  const onDrop = useCallback(
+    (acceptedFiles: File[]) => {
+      setFiles((prevFiles) => [...prevFiles, ...acceptedFiles]);
+      handleUpload(acceptedFiles); // Automatically upload the files
+    },
+    [handleUpload]
   );
 
   const { getRootProps, getInputProps } = useDropzone({
@@ -91,11 +100,11 @@ const RQProjectDetailsRight: React.FC<Props> = ({
         <p style={{ marginTop: "20px", fontSize: "18px" }}>
           File size limit: 0.5GB per file
         </p>
-        {uploadedFiles.length > 0 && (
+        {files.length > 0 && (
           <div>
             <h4>Uploaded Files:</h4>
             <ul>
-              {uploadedFiles.map((file, index) => (
+              {files.map((file, index) => (
                 <li key={index}>{file.name}</li>
               ))}
             </ul>
