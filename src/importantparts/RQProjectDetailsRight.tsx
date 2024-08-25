@@ -61,7 +61,6 @@ const RQProjectDetailsRight: React.FC<Props> = ({
           const { fileUrl } = await response.json();
           setUploadedFiles([fileUrl]); // Update the uploaded file URL in parent component
           dispatching("REQUEST_QUOTE_CHANGE", true);
-          console.log("File uploaded successfully:", zipFileName);
         } else {
           console.error("File upload failed:", await response.text());
         }
