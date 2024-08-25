@@ -38,7 +38,6 @@ export const sendEmail = (data: RQFormData): Promise<EmailJSResponseStatus> => {
     .sendForm("service_murz7qv", "template_rbodn39", form, "n0fNJ32On4BeZAq6d")
     .then(
       (result: EmailJSResponseStatus) => {
-        console.log(result.text);
         return result;
       },
       (error) => {
@@ -59,3 +58,4 @@ const createInput = (name: string, value: string): HTMLInputElement => {
   return input;
 };
 //   last version
+// console.log(result.text);
