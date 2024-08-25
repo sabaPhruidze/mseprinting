@@ -1,30 +1,19 @@
 import { useState, useCallback, useContext, memo } from "react";
-import { rootContext } from "../Root";
 import { useDropzone } from "react-dropzone";
 import JSZip from "jszip";
+import { rootContext } from "../Root";
 import {
   RQh3Title,
   RQFileUploadButton,
   RQFileUploadContainer,
   RQWarningText,
 } from "../style/RequestQuoteStyle";
-import {
-  ref,
-  uploadBytes,
-  getDownloadURL,
-  listAll,
-  getMetadata,
-  deleteObject,
-} from "firebase/storage";
-import { storage } from "../config/Firebase";
 
 interface Props {
   setUploadedFiles: (files: string[]) => void;
   firstname: string | null;
   lastname: string | null;
 }
-
-const STORAGE_LIMIT = 4 * 1024 * 1024 * 1024; // 4GB in bytes
 
 const RQProjectDetailsRight: React.FC<Props> = ({
   setUploadedFiles,
@@ -39,43 +28,6 @@ const RQProjectDetailsRight: React.FC<Props> = ({
   }
 
   const { dispatching } = context;
-
-  const manageStorageLimit = async (newFileSize: number) => {
-    const storageRef = ref(storage, "uploads");
-    const fileList = await listAll(storageRef);
-    let totalSize = 0;
-    const files = [];
-
-    // Fetch all files and their metadata
-    for (const itemRef of fileList.items) {
-      const metadata = await getMetadata(itemRef);
-      totalSize += metadata.size;
-      files.push({
-        ref: itemRef,
-        size: metadata.size,
-        timeCreated: metadata.timeCreated,
-      });
-    }
-
-    // Sort files by creation time
-    files.sort(
-      (a, b) =>
-        new Date(a.timeCreated).getTime() - new Date(b.timeCreated).getTime()
-    );
-
-    // If the total size exceeds the limit, delete the oldest files
-    if (totalSize + newFileSize > STORAGE_LIMIT) {
-      let spaceNeeded = totalSize + newFileSize - STORAGE_LIMIT;
-
-      while (spaceNeeded > 0 && files.length > 0) {
-        const file = files.shift();
-        if (file) {
-          await deleteObject(file.ref);
-          spaceNeeded -= file.size;
-        }
-      }
-    }
-  };
 
   const onDrop = useCallback(
     async (acceptedFiles: File[]) => {
@@ -93,13 +45,28 @@ const RQProjectDetailsRight: React.FC<Props> = ({
         type: "application/zip",
       });
 
-      await manageStorageLimit(zipFile.size);
+      const formData = new FormData();
+      formData.append("file", zipFile);
 
-      const fileRef = ref(storage, `uploads/${zipFileName}`);
-      await uploadBytes(fileRef, zipFile);
-      const fileUrl = await getDownloadURL(fileRef);
-      setUploadedFiles([fileUrl]);
-      dispatching("REQUEST_QUOTE_CHANGE", true);
+      try {
+        const response = await fetch(
+          "https://mseprinting.com/RequestQuote/upload.php",
+          {
+            method: "POST",
+            body: formData,
+          }
+        );
+
+        if (response.ok) {
+          const { fileUrl } = await response.json();
+          setUploadedFiles([fileUrl]); // Update the uploaded file URL in parent component
+          dispatching("REQUEST_QUOTE_CHANGE", true);
+        } else {
+          console.error("File upload failed:", await response.text());
+        }
+      } catch (error) {
+        console.error("Error during file upload:", error);
+      }
     },
     [firstname, lastname, setUploadedFiles, dispatching]
   );
