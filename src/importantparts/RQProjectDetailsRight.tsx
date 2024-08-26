@@ -1,4 +1,4 @@
-import { useState, useCallback, useContext, memo } from "react";
+import { useState, useCallback, useContext, memo, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 import JSZip from "jszip";
 import { rootContext } from "../Root";
@@ -20,8 +20,9 @@ const RQProjectDetailsRight: React.FC<Props> = ({
   firstname,
   lastname,
 }) => {
-  const [files, setFiles] = useState<File[]>([]); // Store files locally
-  const [uploading, setUploading] = useState(false); // Track uploading state
+  const [files, setFiles] = useState<File[]>([]);
+  const [uploading, setUploading] = useState(false);
+  const [uploadingText, setUploadingText] = useState("Uploading");
   const context = useContext(rootContext);
 
   if (!context) {
@@ -30,11 +31,27 @@ const RQProjectDetailsRight: React.FC<Props> = ({
 
   const { dispatching } = context;
 
+  useEffect(() => {
+    if (uploading) {
+      const interval = setInterval(() => {
+        setUploadingText((prev) =>
+          prev === "Uploading..."
+            ? "Uploading."
+            : prev === "Uploading.."
+            ? "Uploading..."
+            : "Uploading.."
+        );
+      }, 500);
+
+      return () => clearInterval(interval);
+    }
+  }, [uploading]);
+
   const handleUpload = useCallback(
     async (acceptedFiles: File[]) => {
       if (acceptedFiles.length === 0) return;
 
-      setUploading(true); // Start upload
+      setUploading(true);
 
       const zip = new JSZip();
       acceptedFiles.forEach((file) => {
@@ -62,7 +79,7 @@ const RQProjectDetailsRight: React.FC<Props> = ({
 
         if (response.ok) {
           const { fileUrl } = await response.json();
-          setUploadedFiles([fileUrl]); // Update the uploaded file URL in parent component
+          setUploadedFiles([fileUrl]);
           dispatching("REQUEST_QUOTE_CHANGE", true);
         } else {
           console.error("File upload failed:", await response.text());
@@ -70,7 +87,8 @@ const RQProjectDetailsRight: React.FC<Props> = ({
       } catch (error) {
         console.error("Error during file upload:", error);
       } finally {
-        setUploading(false); // End upload
+        setUploading(false);
+        setUploadingText("Uploading");
       }
     },
     [firstname, lastname, setUploadedFiles, dispatching]
@@ -79,7 +97,7 @@ const RQProjectDetailsRight: React.FC<Props> = ({
   const onDrop = useCallback(
     (acceptedFiles: File[]) => {
       setFiles((prevFiles) => [...prevFiles, ...acceptedFiles]);
-      handleUpload(acceptedFiles); // Automatically upload the files
+      handleUpload(acceptedFiles);
     },
     [handleUpload]
   );
@@ -87,7 +105,7 @@ const RQProjectDetailsRight: React.FC<Props> = ({
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
     multiple: true,
-    maxSize: 0.5 * 1024 * 1024 * 1024, // 0.5GB per file
+    maxSize: 1 * 1024 * 1024 * 1024, // 1GB per file
   });
 
   return (
@@ -101,10 +119,10 @@ const RQProjectDetailsRight: React.FC<Props> = ({
           Drag files to upload, or
         </p>
         <RQFileUploadButton disabled={uploading}>
-          {uploading ? "Uploading..." : "Files"}
+          {uploading ? uploadingText : "Files"}
         </RQFileUploadButton>
         <p style={{ marginTop: "20px", fontSize: "18px" }}>
-          File size limit: 0.5GB per file
+          File size limit: 1GB per file
         </p>
         {files.length > 0 && (
           <div>
@@ -119,10 +137,10 @@ const RQProjectDetailsRight: React.FC<Props> = ({
       </RQFileUploadContainer>
       <RQWarningText>
         Sometimes browsers can be testy. We recommend using the latest version
-        of Chrome for an optimal experience. Please be sure the required
-        information is complete and all files are attached then select Send All
-        Projects. PLEASE NOTE: Do NOT use special characters in your project
-        name and name of your attachments.
+        of Chrome for an optimal experience. Please ensure the required
+        information is complete and all files are attached before selecting Send
+        All Projects. PLEASE NOTE: Do NOT use special characters in your project
+        name or the names of your attachments.
       </RQWarningText>
     </>
   );
