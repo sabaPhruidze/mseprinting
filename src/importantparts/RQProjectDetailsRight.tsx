@@ -21,6 +21,7 @@ const RQProjectDetailsRight: React.FC<Props> = ({
   lastname,
 }) => {
   const [files, setFiles] = useState<File[]>([]); // Store files locally
+  const [uploading, setUploading] = useState(false); // Track uploading state
   const context = useContext(rootContext);
 
   if (!context) {
@@ -32,6 +33,8 @@ const RQProjectDetailsRight: React.FC<Props> = ({
   const handleUpload = useCallback(
     async (acceptedFiles: File[]) => {
       if (acceptedFiles.length === 0) return;
+
+      setUploading(true); // Start upload
 
       const zip = new JSZip();
       acceptedFiles.forEach((file) => {
@@ -61,14 +64,13 @@ const RQProjectDetailsRight: React.FC<Props> = ({
           const { fileUrl } = await response.json();
           setUploadedFiles([fileUrl]); // Update the uploaded file URL in parent component
           dispatching("REQUEST_QUOTE_CHANGE", true);
-
-          // Add a console.log statement to log the uploaded file
-          console.log("File uploaded successfully:", fileUrl);
         } else {
           console.error("File upload failed:", await response.text());
         }
       } catch (error) {
         console.error("Error during file upload:", error);
+      } finally {
+        setUploading(false); // End upload
       }
     },
     [firstname, lastname, setUploadedFiles, dispatching]
@@ -85,7 +87,7 @@ const RQProjectDetailsRight: React.FC<Props> = ({
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
     multiple: true,
-    maxSize: 1 * 1024 * 1024 * 1024, // 1GB per file
+    maxSize: 0.5 * 1024 * 1024 * 1024, // 0.5GB per file
   });
 
   return (
@@ -98,9 +100,11 @@ const RQProjectDetailsRight: React.FC<Props> = ({
         <p style={{ marginBottom: "20px", fontSize: "18px" }}>
           Drag files to upload, or
         </p>
-        <RQFileUploadButton>Files</RQFileUploadButton>
+        <RQFileUploadButton disabled={uploading}>
+          {uploading ? "Uploading..." : "Files"}
+        </RQFileUploadButton>
         <p style={{ marginTop: "20px", fontSize: "18px" }}>
-          File size limit: 1GB per file
+          File size limit: 0.5GB per file
         </p>
         {files.length > 0 && (
           <div>
