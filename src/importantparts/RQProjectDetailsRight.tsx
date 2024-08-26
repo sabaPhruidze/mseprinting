@@ -61,6 +61,9 @@ const RQProjectDetailsRight: React.FC<Props> = ({
           const { fileUrl } = await response.json();
           setUploadedFiles([fileUrl]); // Update the uploaded file URL in parent component
           dispatching("REQUEST_QUOTE_CHANGE", true);
+
+          // Add a console.log statement to log the uploaded file
+          console.log("File uploaded successfully:", fileUrl);
         } else {
           console.error("File upload failed:", await response.text());
         }
@@ -82,7 +85,7 @@ const RQProjectDetailsRight: React.FC<Props> = ({
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
     multiple: true,
-    maxSize: 0.5 * 1024 * 1024 * 1024, // 0.5GB per file
+    maxSize: 1 * 1024 * 1024 * 1024, // 1GB per file
   });
 
   return (
@@ -97,7 +100,7 @@ const RQProjectDetailsRight: React.FC<Props> = ({
         </p>
         <RQFileUploadButton>Files</RQFileUploadButton>
         <p style={{ marginTop: "20px", fontSize: "18px" }}>
-          File size limit: 0.5GB per file
+          File size limit: 1GB per file
         </p>
         {files.length > 0 && (
           <div>
