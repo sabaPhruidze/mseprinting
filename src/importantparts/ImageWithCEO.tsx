@@ -1,3 +1,4 @@
+// ImageWithSEO.tsx
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
@@ -71,7 +72,6 @@ const ImageWithSEO: React.FC<ImageWithSEOProps> = ({
   }, [src, alt, title, geoData]);
 
   useEffect(() => {
-    // Immediately set the image as loaded when it finishes loading
     const img = new Image();
     img.src = src;
     img.loading = loading;
@@ -92,4 +92,4 @@ const ImageWithSEO: React.FC<ImageWithSEOProps> = ({
   );
 };
 
-export default ImageWithSEO;
+export default React.memo(ImageWithSEO);

@@ -24,9 +24,9 @@ export const CAROUSEL_DATA = [
     alt: "Offset Printing",
     title: "Offset Printing Services",
     geoData: {
-      latitude: "44.9778",
-      longitude: "-93.2650",
-      location: "Minneapolis",
+      latitude: "54.9778",
+      longitude: "-33.2650",
+      location: "saburtalo",
     },
   },
   {
@@ -34,9 +34,9 @@ export const CAROUSEL_DATA = [
     alt: "Digital Printing",
     title: "Digital Printing Services",
     geoData: {
-      latitude: "44.9778",
-      longitude: "-93.2650",
-      location: "Minneapolis",
+      latitude: "64.9778",
+      longitude: "-43.2650",
+      location: "vake",
     },
   },
   {
@@ -44,9 +44,9 @@ export const CAROUSEL_DATA = [
     alt: "Printing and Copying",
     title: "Printing and Copying Services",
     geoData: {
-      latitude: "44.9778",
-      longitude: "-93.2650",
-      location: "Minneapolis",
+      latitude: "74.9778",
+      longitude: "-53.2650",
+      location: "nadzaladevi",
     },
   },
   {
@@ -54,9 +54,9 @@ export const CAROUSEL_DATA = [
     alt: "Direct Mail",
     title: "Direct Mail Services",
     geoData: {
-      latitude: "44.9778",
-      longitude: "-93.2650",
-      location: "Minneapolis",
+      latitude: "47.9778",
+      longitude: "-12.2650",
+      location: "temqa",
     },
   },
   {
@@ -64,9 +64,9 @@ export const CAROUSEL_DATA = [
     alt: "Signs",
     title: "Signage Services",
     geoData: {
-      latitude: "44.9778",
-      longitude: "-93.2650",
-      location: "Minneapolis",
+      latitude: "43.4353",
+      longitude: "-55.5450",
+      location: "sanzona",
     },
   },
   {
@@ -74,9 +74,9 @@ export const CAROUSEL_DATA = [
     alt: "Online Ordering",
     title: "Online Ordering Services",
     geoData: {
-      latitude: "44.9778",
-      longitude: "-93.2650",
-      location: "Minneapolis",
+      latitude: "94.9778",
+      longitude: "-66.2650",
+      location: "gldani",
     },
   },
 ];
