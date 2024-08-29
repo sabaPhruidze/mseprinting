@@ -137,10 +137,13 @@ const RQProjectDetailsRight: React.FC<Props> = ({
       </RQFileUploadContainer>
       <RQWarningText>
         Sometimes browsers can be testy. We recommend using the latest version
-        of Chrome for an optimal experience. Please ensure the required
-        information is complete and all files are attached before selecting Send
-        All Projects. PLEASE NOTE: Do NOT use special characters in your project
-        name or the names of your attachments.
+        of Chrome for an optimal experience.Please note that file uploads may
+        take a couple of minutes depending on the size of your files and your
+        internet connection. We recommend using the latest version of Chrome for
+        the best experience. Ensure all required information is filled out and
+        all files are fully uploaded before clicking the Submit button. Do not
+        close or refresh the page during the upload process. PLEASE NOTE: Avoid
+        using special characters in your project name or file names.
       </RQWarningText>
     </>
   );
