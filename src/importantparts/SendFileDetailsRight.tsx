@@ -15,7 +15,7 @@ interface Props {
   lastname: string | null;
 }
 
-const RQProjectDetailsRight: React.FC<Props> = ({
+const SendFileDetailsRight: React.FC<Props> = ({
   setUploadedFiles,
   firstname,
   lastname,
@@ -70,7 +70,7 @@ const RQProjectDetailsRight: React.FC<Props> = ({
 
       try {
         const response = await fetch(
-          "https://mseprinting.com/RequestQuote/upload.php",
+          "https://mseprinting.com/SendFile/upload.php",
           {
             method: "POST",
             body: formData,
@@ -148,4 +148,4 @@ const RQProjectDetailsRight: React.FC<Props> = ({
   );
 };
 
-export default memo(RQProjectDetailsRight);
+export default memo(SendFileDetailsRight);
