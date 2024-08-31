@@ -70,7 +70,7 @@ const SendFileDetailsRight: React.FC<Props> = ({
 
       try {
         const response = await fetch(
-          "https://mseprinting.com/SendFile/upload.php",
+          "https://mseprinting.com/SendFile/upload_sendfile.php",
           {
             method: "POST",
             body: formData,
