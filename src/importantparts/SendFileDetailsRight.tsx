@@ -81,6 +81,7 @@ const SendFileDetailsRight: React.FC<Props> = ({
           const { fileUrl } = await response.json();
           setUploadedFiles([fileUrl]);
           dispatching("REQUEST_QUOTE_CHANGE", true);
+          setUploadingText("Uploaded");
         } else {
           console.error("File upload failed:", await response.text());
         }
@@ -119,7 +120,11 @@ const SendFileDetailsRight: React.FC<Props> = ({
           Drag files to upload, or
         </p>
         <RQFileUploadButton disabled={uploading}>
-          {uploading ? uploadingText : "Files"}
+          {files.length === 0
+            ? "Files"
+            : uploading
+            ? uploadingText
+            : "Uploaded"}
         </RQFileUploadButton>
         <p style={{ marginTop: "20px", fontSize: "18px" }}>
           File size limit: 1GB per file
