@@ -58,16 +58,6 @@ export const CARDS_DATA = [
     },
   },
   {
-    src: CATALOGYS_BOOKLETS,
-    alt: "Catalogs and Booklets",
-    title: "Catalogs and Booklets Printing",
-    geoData: {
-      latitude: "29.7604",
-      longitude: "-95.3698",
-      location: "Houston",
-    },
-  },
-  {
     src: DIRECT_MAIL,
     alt: "Direct Mail",
     title: "Direct Mail Services",
@@ -77,6 +67,7 @@ export const CARDS_DATA = [
       location: "Atlanta",
     },
   },
+
   {
     src: LABELS_PACKAGING,
     alt: "Labels and Packaging",
@@ -85,6 +76,16 @@ export const CARDS_DATA = [
       latitude: "39.7392",
       longitude: "-104.9903",
       location: "Denver",
+    },
+  },
+  {
+    src: CATALOGYS_BOOKLETS,
+    alt: "Catalogs and Booklets",
+    title: "Catalogs and Booklets Printing",
+    geoData: {
+      latitude: "29.7604",
+      longitude: "-95.3698",
+      location: "Houston",
     },
   },
 ];
