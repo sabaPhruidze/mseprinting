@@ -64,7 +64,7 @@ export const GlobalBoxColumnStart = styled(ColumnFlex)`
 `;
 export const GlobalMainTitle = styled.h1`
   color: ${(props) => props.theme.Black};
-  margin-bottom: 50px;
+  margin-bottom: 10px;
 `;
 
 export const Globalh2Title = styled.h2`
@@ -213,4 +213,55 @@ export const GlobalNestedListItem = styled.li`
   font-size: 18px;
   margin-bottom: 10px;
   list-style: disc;
+`;
+
+// added
+interface FullBackgroundContainerProps {
+  bgimage: string; // Define that the bgImage prop will be a string
+}
+// Styled component for the full-width background image section
+export const FullBackgroundContainer = styled.div<FullBackgroundContainerProps>`
+  background-image: url(${(props) => props.bgimage});
+  background-size: cover;
+  background-position: center;
+  height: 400px; // Full viewport height
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  position: relative;
+  padding: 0 80px;
+`;
+
+// Title and button container
+export const TitleAndButtonContainer = styled.div`
+  text-align: left;
+  color: ${(props) =>
+    props.theme.White}; // Ensure the text is white on a dark background
+  z-index: 2;
+`;
+
+// Style for the main title inside the image
+export const FullScreenTitle = styled.h1`
+  font-size: 46px;
+  font-weight: 900;
+  margin-bottom: 20px;
+  text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.9);
+  @media (max-width: 768px) {
+    font-size: 32px;
+  }
+`;
+
+// Button style within the full background
+export const FullScreenButton = styled(GlobalButton)`
+  background-color: #ff0015; // Request a quote button color matching the second image
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  &:hover {
+    background-color: #ff0015;
+    color: #fff;
+  }
 `;
