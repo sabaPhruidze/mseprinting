@@ -83,15 +83,21 @@ export const CarouselIcon = styled.span`
 
 export const CarouselTitle = styled.h3`
   margin: 0;
-  margin-bottom: 20px;
-  font-size: 24px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+  margin-top: 50px;
+  font-size: 50px;
+  text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.9);
   text-align: left;
-
-  /* @media (min-width: 768px) {
-    font-size: 28px;
-    text-align: left;
-  } */
+  font-weight: 900;
+  @media (max-width: 1490px) {
+    font-size: 38px;
+  }
+  @media (max-width: 1150px) {
+    font-size: 34px;
+    margin-top: 50px;
+  }
+  @media (max-width: 768px) {
+    font-size: 30px;
+  }
 `;
 
 export const CarouselContent = styled.p`

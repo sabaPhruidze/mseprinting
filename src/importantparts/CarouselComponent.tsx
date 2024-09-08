@@ -62,13 +62,13 @@ export default function CarouselComponent() {
                 />
                 <CarouselOverlay />
                 <Carousel.Caption className="custom-carousel-caption">
-                  <CarouselTitle>{data.title}</CarouselTitle>
                   {data.text && <CarouselContent>{data.text}</CarouselContent>}
                   {data.link && (
                     <CarouselButton onClick={() => navigate(data.link)}>
                       Learn more ...
                     </CarouselButton>
                   )}
+                  <CarouselTitle>{data.title}</CarouselTitle>
                 </Carousel.Caption>
               </CarouselContainer>
             </Carousel.Item>
