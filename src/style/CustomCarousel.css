@@ -55,5 +55,7 @@
   .custom-carousel-caption {
     top:calc(50% - 130px);
     width:65%;
+    align-items: center;
+    text-align: center;
   }
 }
