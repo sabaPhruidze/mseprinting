@@ -134,7 +134,10 @@ export default function Header() {
           alt="Main logo"
           onClick={handleNavigationHome}
         />
-        <HeaderTagline>PRINT ● SIGNS ● MARKETING</HeaderTagline>
+        <HeaderTagline>
+          PRINT <span> ● </span> SIGNS <span> ● </span> MARKETING
+        </HeaderTagline>
+
         <HeaderMenuCountDiv>{menuItems}</HeaderMenuCountDiv>
       </HeaderMenuBox>
       <HeaderRSBox>
