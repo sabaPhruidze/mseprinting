@@ -99,6 +99,13 @@ export const HeaderTagline = styled.div`
   width: calc(40% - 20px);
   background-color: ${(props) => props.theme.Black};
   transform: skew(-15deg);
+
+  /* Style for the circles */
+  span {
+    padding: 0 10px; /* Adds space before and after the circles */
+    transform: skew(15deg); /* Reverses the skew effect on the text */
+  }
+
   @media (max-width: 1300px) {
     font-size: 26px;
   }
