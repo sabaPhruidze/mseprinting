@@ -5,13 +5,15 @@ import {
   GlobalPart,
   Globalh2TitleWithMB20,
   GlobalTextContainer, // Import the styled component for text wrapping
-  FullBackgroundContainer, // Styled component for the full background
+  FullBackgroundContainerZERO, // Updated styled component for the full background
   TitleAndButtonContainer, // Styled component for title and button wrapping
   FullScreenTitle, // Styled component for the main title in the background
   FullScreenButton, // Styled component for the "Request a Quote" button
 } from "../../style/GlobalStyle";
 import { fetchLabelsPackagingData } from "../../data/sub-category data/AllSubCategoryData";
 import { LabelsPackagingDocument } from "../../types/DataTypes";
+import ImageWithSEO from "../../importantparts/ImageWithCEO"; // Import ImageWithSEO for handling the image
+import { LABELS_PACKAGING_IMAGE } from "../../data/sub-category data/ImageWithCEOData"; // Import the LABELS_PACKAGING_IMAGE
 
 export default function LabelsPackaging() {
   const [labelsPackagingData, setLabelsPackagingData] =
@@ -38,8 +40,15 @@ export default function LabelsPackaging() {
 
   return (
     <div>
-      {/* Full-screen section with background image */}
-      <FullBackgroundContainer bgimage={memoizedData?.four || ""}>
+      {/* Full-screen section with background image using ImageWithSEO */}
+      <FullBackgroundContainerZERO>
+        <ImageWithSEO
+          src={LABELS_PACKAGING_IMAGE.src} // Use LABELS_PACKAGING_IMAGE for the image source
+          alt={LABELS_PACKAGING_IMAGE.alt}
+          title={LABELS_PACKAGING_IMAGE.title}
+          geoData={LABELS_PACKAGING_IMAGE.geoData}
+          loading="eager"
+        />
         <TitleAndButtonContainer>
           <FullScreenTitle>{memoizedData?.one.title}</FullScreenTitle>
           {/* Add onClick event for navigation */}
@@ -47,7 +56,7 @@ export default function LabelsPackaging() {
             Request a Quote
           </FullScreenButton>
         </TitleAndButtonContainer>
-      </FullBackgroundContainer>
+      </FullBackgroundContainerZERO>
 
       {/* Text content below the background image */}
       <GlobalContainerColumn>
