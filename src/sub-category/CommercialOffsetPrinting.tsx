@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo, useCallback } from "react";
+import { OFFSET_PRINTING_IMAGE } from "../data/sub-category data/ImageWithCEOData";
 import {
   GlobalContainerColumn,
   Globalh2TitleWithMB20,
@@ -15,12 +16,13 @@ import {
   GlobalTextContainer, // Import the styled component for text wrapping
   FullBackgroundContainer,
   TitleAndButtonContainer,
+  FullBackgroundContainerZERO,
   FullScreenTitle,
   FullScreenButton,
 } from "../style/GlobalStyle";
 import { fetchOffsetPrintingData } from "../data/sub-category data/CommercialOffsetPrintingData";
 import { OffsetPrintingDocument } from "../types/DataTypes";
-
+import ImageWithCEO from "../importantparts/ImageWithCEO";
 export default function CommercialOffsetPrinting() {
   const [offsetPrintingData, setOffsetPrintingData] =
     useState<OffsetPrintingDocument | null>(null);
@@ -59,12 +61,19 @@ export default function CommercialOffsetPrinting() {
 
   return (
     <div>
-      <FullBackgroundContainer bgimage={memoizedData?.ten || ""}>
+      <FullBackgroundContainerZERO>
+        <ImageWithCEO
+          src={OFFSET_PRINTING_IMAGE.src}
+          alt={OFFSET_PRINTING_IMAGE.alt}
+          title={OFFSET_PRINTING_IMAGE.title}
+          geoData={OFFSET_PRINTING_IMAGE.geoData}
+          loading="eager"
+        />
         <TitleAndButtonContainer>
           <FullScreenTitle>{memoizedData?.one.mainTitle}</FullScreenTitle>
           <FullScreenButton>Request a Quote</FullScreenButton>
         </TitleAndButtonContainer>
-      </FullBackgroundContainer>
+      </FullBackgroundContainerZERO>
       <GlobalContainerColumn>
         {/* <GlobalMainTitle>{memoizedData?.one.mainTitle}</GlobalMainTitle> */}
 
