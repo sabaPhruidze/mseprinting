@@ -1,8 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import {
   GlobalContainerColumn,
-  GlobalMainTitle,
-  GlobalImageWrapperWithFloat,
   GlobalTextContainer,
   GlobalPart,
   FullBackgroundContainer, // Styled component for the full background

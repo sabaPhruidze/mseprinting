@@ -13,13 +13,15 @@ import {
   GlobalNestedListItem,
   GlobalSpecialPartDark,
   GlobalTextContainer, // Styled component for text wrapping
-  FullBackgroundContainer,
   TitleAndButtonContainer,
+  FullBackgroundContainerZERO, // Updated to FullBackgroundContainerZERO
   FullScreenTitle,
   FullScreenButton,
 } from "../style/GlobalStyle"; // Import new and existing styles
+import { DIGITAL_PRINTING_IMAGE } from "../data/sub-category data/ImageWithCEOData"; // Import DIGITAL_PRINTING_IMAGE
 import { fetchDigitalPrintingData } from "../data/sub-category data/AllSubCategoryData";
 import { DigitalPrintingDocument } from "../types/DataTypes";
+import ImageWithCEO from "../importantparts/ImageWithCEO"; // Import ImageWithCEO component
 
 export default function CommercialDigitalPrinting() {
   const [digitalPrintingData, setDigitalPrintingData] =
@@ -47,7 +49,7 @@ export default function CommercialDigitalPrinting() {
         {item.specialOne && (
           <GlobalNestedListItem key={`specialOne-${item.specialOne}`}>
             <GlobalSpecialPartDark>{item.specialOne} </GlobalSpecialPartDark>
-            <GlobalPartBox> {item.contentOne}</GlobalPartBox>
+            <GlobalPartBox>{item.contentOne}</GlobalPartBox>
           </GlobalNestedListItem>
         )}
         {item.specialTwo && (
@@ -62,13 +64,20 @@ export default function CommercialDigitalPrinting() {
 
   return (
     <div>
-      {/* Full-screen section with background image */}
-      <FullBackgroundContainer bgimage={memoizedData?.ten || ""}>
+      {/* Full Background Image Container */}
+      <FullBackgroundContainerZERO>
+        <ImageWithCEO
+          src={DIGITAL_PRINTING_IMAGE.src} // Using DIGITAL_PRINTING_IMAGE
+          alt={DIGITAL_PRINTING_IMAGE.alt}
+          title={DIGITAL_PRINTING_IMAGE.title}
+          geoData={DIGITAL_PRINTING_IMAGE.geoData}
+          loading="eager"
+        />
         <TitleAndButtonContainer>
           <FullScreenTitle>{memoizedData?.one.title}</FullScreenTitle>
           <FullScreenButton>Request a Quote</FullScreenButton>
         </TitleAndButtonContainer>
-      </FullBackgroundContainer>
+      </FullBackgroundContainerZERO>
 
       {/* Text content below the background image */}
       <GlobalContainerColumn>
