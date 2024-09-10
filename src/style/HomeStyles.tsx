@@ -318,7 +318,7 @@ export const DoubleCardContainer = styled(RowFlex)`
     padding: 0 50px;
   }
 `;
-export const RequestQuoteBGImage = styled(HomeServicesContainer)`
+export const RequestQuotebgimage = styled(HomeServicesContainer)`
   background: url(${(props) => props.$backgroundimage}) no-repeat center center;
   width: calc(50% - 30px);
   background-size: cover;
@@ -360,7 +360,7 @@ export const RequestQuoteTitle = styled(WWDCTitle)`
   }
 `;
 
-export const SendFileBGImage = styled(RequestQuoteBGImage)`
+export const SendFilebgimage = styled(RequestQuotebgimage)`
   background: url(${(props) => props.$backgroundimage}) no-repeat center center;
 `;
 
