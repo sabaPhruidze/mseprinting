@@ -4,13 +4,15 @@ import {
   GlobalContainerColumn,
   GlobalPart,
   GlobalTextContainer, // Import the styled component for text wrapping
-  FullBackgroundContainer, // Styled component for the full background
+  FullBackgroundContainerZERO, // Updated styled component for the full background
   TitleAndButtonContainer, // Styled component for title and button wrapping
   FullScreenTitle, // Styled component for the main title in the background
   FullScreenButton, // Styled component for the "Request a Quote" button
 } from "../../style/GlobalStyle";
 import { fetchMKBookletsData } from "../../data/sub-category data/AllSubCategoryData";
 import { CommonDocumentWAS } from "../../types/DataTypes";
+import ImageWithSEO from "../../importantparts/ImageWithCEO"; // Import ImageWithSEO for handling the image
+import { CATALOGYS_BOOKLETS_IMAGE } from "../../data/sub-category data/ImageWithCEOData"; // Import the CATALOGYS_BOOKLETS_IMAGE
 
 export default function MCBooklets() {
   const [mcBookletsData, setMcBookletsData] =
@@ -33,8 +35,15 @@ export default function MCBooklets() {
 
   return (
     <div>
-      {/* Full-screen section with background image */}
-      <FullBackgroundContainer bgimage={memoizedData?.three || ""}>
+      {/* Full-screen section with background image using ImageWithSEO */}
+      <FullBackgroundContainerZERO>
+        <ImageWithSEO
+          src={CATALOGYS_BOOKLETS_IMAGE.src} // Use CATALOGYS_BOOKLETS_IMAGE for the image source
+          alt={CATALOGYS_BOOKLETS_IMAGE.alt}
+          title={CATALOGYS_BOOKLETS_IMAGE.title}
+          geoData={CATALOGYS_BOOKLETS_IMAGE.geoData}
+          loading="eager"
+        />
         <TitleAndButtonContainer>
           <FullScreenTitle>{memoizedData?.one.title}</FullScreenTitle>
           {/* Add onClick event for navigation */}
@@ -42,7 +51,7 @@ export default function MCBooklets() {
             Request a Quote
           </FullScreenButton>
         </TitleAndButtonContainer>
-      </FullBackgroundContainer>
+      </FullBackgroundContainerZERO>
 
       {/* Text content below the background image */}
       <GlobalContainerColumn>

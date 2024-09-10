@@ -5,13 +5,15 @@ import {
   GlobalPart,
   GlobalRow,
   AlignedTextContainer, // Import the styled component for text alignment
-  FullBackgroundContainer, // Styled component for the full background
+  FullBackgroundContainerZERO, // Updated styled component for the full background
   TitleAndButtonContainer, // Styled component for title and button wrapping
   FullScreenTitle, // Styled component for the main title in the background
   FullScreenButton, // Styled component for the "Request a Quote" button
 } from "../../style/GlobalStyle";
 import { fetchBusinessFormsData } from "../../data/sub-category data/AllSubCategoryData";
 import { BusinessFormsType } from "../../types/DataTypes";
+import ImageWithSEO from "../../importantparts/ImageWithCEO"; // Import ImageWithSEO for handling the image
+import { BUSINESS_FORM_IMAGE } from "../../data/sub-category data/ImageWithCEOData"; // Import the BUSINESS_FORM_IMAGE
 
 export default function BusinessForms() {
   const [businessFormsData, setBusinessFormsData] =
@@ -34,8 +36,15 @@ export default function BusinessForms() {
 
   return (
     <div>
-      {/* Full-screen section with background image */}
-      <FullBackgroundContainer bgimage={memoizedData?.fourth || ""}>
+      {/* Full-screen section with background image using ImageWithSEO */}
+      <FullBackgroundContainerZERO>
+        <ImageWithSEO
+          src={BUSINESS_FORM_IMAGE.src} // Use BUSINESS_FORM_IMAGE for the image source
+          alt={BUSINESS_FORM_IMAGE.alt}
+          title={BUSINESS_FORM_IMAGE.title}
+          geoData={BUSINESS_FORM_IMAGE.geoData}
+          loading="eager"
+        />
         <TitleAndButtonContainer>
           <FullScreenTitle>{memoizedData?.one.title}</FullScreenTitle>
           {/* Add onClick event for navigation */}
@@ -43,7 +52,7 @@ export default function BusinessForms() {
             Request a Quote
           </FullScreenButton>
         </TitleAndButtonContainer>
-      </FullBackgroundContainer>
+      </FullBackgroundContainerZERO>
 
       {/* Text content below the background image */}
       <GlobalContainerColumn>

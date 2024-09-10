@@ -4,13 +4,15 @@ import {
   GlobalContainerColumn,
   GlobalPart,
   GlobalTextContainer, // Import the styled component for text wrapping
-  FullBackgroundContainer, // Styled component for the full background
+  FullBackgroundContainerZERO, // Updated styled component for the full background
   TitleAndButtonContainer, // Styled component for title and button wrapping
   FullScreenTitle, // Styled component for the main title in the background
   FullScreenButton, // Styled component for the "Request a Quote" button
 } from "../../style/GlobalStyle";
 import { fetchBrochuresCollateralData } from "../../data/sub-category data/AllSubCategoryData";
 import { CommonDocumentWAS } from "../../types/DataTypes";
+import ImageWithSEO from "../../importantparts/ImageWithCEO"; // Import ImageWithSEO for handling the image
+import { BROCHURES_COLLATERALS_IMAGE } from "../../data/sub-category data/ImageWithCEOData"; // Import the BROCHURES_COLLATERALS_IMAGE
 
 export default function BrochuresCollateral() {
   const [brochuresCollateralData, setBrochuresCollateralData] =
@@ -32,17 +34,25 @@ export default function BrochuresCollateral() {
     [brochuresCollateralData]
   );
   const navigate = useNavigate();
+
   return (
     <div>
-      {/* Full-screen section with background image */}
-      <FullBackgroundContainer bgimage={memoizedData?.three || ""}>
+      {/* Full-screen section with background image using ImageWithSEO */}
+      <FullBackgroundContainerZERO>
+        <ImageWithSEO
+          src={BROCHURES_COLLATERALS_IMAGE.src} // Use BROCHURES_COLLATERALS_IMAGE for the image source
+          alt={BROCHURES_COLLATERALS_IMAGE.alt}
+          title={BROCHURES_COLLATERALS_IMAGE.title}
+          geoData={BROCHURES_COLLATERALS_IMAGE.geoData}
+          loading="eager"
+        />
         <TitleAndButtonContainer>
           <FullScreenTitle>{memoizedData?.one.title}</FullScreenTitle>
           <FullScreenButton onClick={() => navigate("/request-quote")}>
             Request a Quote
           </FullScreenButton>
         </TitleAndButtonContainer>
-      </FullBackgroundContainer>
+      </FullBackgroundContainerZERO>
 
       {/* Text content below the background image */}
       <GlobalContainerColumn>
