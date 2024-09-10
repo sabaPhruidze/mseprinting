@@ -1,18 +1,18 @@
 import { useState, useEffect, useMemo } from "react";
 import {
   GlobalContainerColumn,
-  GlobalMainTitle,
-  GlobalImageWrapperWithFloat,
   GlobalTextContainer,
   GlobalPart,
   Globalh2TitleWithMB20,
-  FullBackgroundContainer, // New styled component for the background
+  FullBackgroundContainerZERO, // Updated styled component for the background
   TitleAndButtonContainer, // Styled component for title and button wrapping
   FullScreenTitle, // Styled component for the main title in the background
   FullScreenButton, // Styled component for the Request a Quote button
 } from "../style/GlobalStyle";
 import { fetchDirectMailingData } from "../data/sub-category data/AllSubCategoryData";
 import { CommonDocument } from "../types/DataTypes";
+import ImageWithSEO from "../importantparts/ImageWithCEO"; // Import ImageWithSEO for handling the image
+import { DIRECT_MAIL_IMAGE } from "../data/sub-category data/ImageWithCEOData"; // Import the DIRECT_MAIL_IMAGE
 
 export default function DirectMailing() {
   const [directMailingData, setDirectMailingData] =
@@ -33,13 +33,20 @@ export default function DirectMailing() {
 
   return (
     <div>
-      {/* Full-screen section with background image */}
-      <FullBackgroundContainer bgimage={memoizedData?.third || ""}>
+      {/* Full-screen section with background image using ImageWithSEO */}
+      <FullBackgroundContainerZERO>
+        <ImageWithSEO
+          src={DIRECT_MAIL_IMAGE.src} // Use DIRECT_MAIL_IMAGE for the image source
+          alt={DIRECT_MAIL_IMAGE.alt}
+          title={DIRECT_MAIL_IMAGE.title}
+          geoData={DIRECT_MAIL_IMAGE.geoData}
+          loading="eager"
+        />
         <TitleAndButtonContainer>
           <FullScreenTitle>{memoizedData?.one.title}</FullScreenTitle>
           <FullScreenButton>Request a Quote</FullScreenButton>
         </TitleAndButtonContainer>
-      </FullBackgroundContainer>
+      </FullBackgroundContainerZERO>
 
       {/* Text content below the background image */}
       <GlobalContainerColumn>

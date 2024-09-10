@@ -14,7 +14,6 @@ import {
   GlobalNestedListItem,
   GlobalSpecialPartDark,
   GlobalTextContainer, // Import the styled component for text wrapping
-  FullBackgroundContainer,
   TitleAndButtonContainer,
   FullBackgroundContainerZERO,
   FullScreenTitle,

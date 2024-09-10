@@ -4,13 +4,15 @@ import {
   Globalh2TitleWithMB20,
   GlobalPart,
   GlobalTextContainer, // Styled component for text wrapping
-  FullBackgroundContainer, // Styled component for the full background
+  FullBackgroundContainerZERO, // Updated styled component for the full background
   TitleAndButtonContainer, // Styled component for title and button wrapping
   FullScreenTitle, // Styled component for the main title in the background
   FullScreenButton, // Styled component for the "Request a Quote" button
 } from "../style/GlobalStyle";
 import { fetchCopyPrintingData } from "../data/sub-category data/AllSubCategoryData";
 import { PrintingCopyingDocument } from "../types/DataTypes";
+import ImageWithSEO from "../importantparts/ImageWithCEO"; // Import ImageWithSEO for handling the image
+import { PRINTING_COPYING_IMAGE } from "../data/sub-category data/ImageWithCEOData"; // Import the PRINTING_COPYING_IMAGE
 
 export default function PrintingCopying() {
   const [printingCopyingData, setPrintingCopyingData] =
@@ -34,13 +36,20 @@ export default function PrintingCopying() {
 
   return (
     <div>
-      {/* Full-screen section with background image */}
-      <FullBackgroundContainer bgimage={memoizedData?.four || ""}>
+      {/* Full-screen section with background image using ImageWithSEO */}
+      <FullBackgroundContainerZERO>
+        <ImageWithSEO
+          src={PRINTING_COPYING_IMAGE.src} // Use PRINTING_COPYING_IMAGE for the image source
+          alt={PRINTING_COPYING_IMAGE.alt}
+          title={PRINTING_COPYING_IMAGE.title}
+          geoData={PRINTING_COPYING_IMAGE.geoData}
+          loading="eager"
+        />
         <TitleAndButtonContainer>
           <FullScreenTitle>{memoizedData?.one.title}</FullScreenTitle>
           <FullScreenButton>Request a Quote</FullScreenButton>
         </TitleAndButtonContainer>
-      </FullBackgroundContainer>
+      </FullBackgroundContainerZERO>
 
       {/* Text content below the background image */}
       <GlobalContainerColumn>
