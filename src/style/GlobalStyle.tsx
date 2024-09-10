@@ -217,7 +217,7 @@ export const GlobalNestedListItem = styled.li`
 
 // added
 interface FullBackgroundContainerProps {
-  bgimage: string; // Define that the bgImage prop will be a string
+  bgimage: string; // Define that the bgimage prop will be a string
 }
 // Styled component for the full-width background image section
 export const FullBackgroundContainer = styled.div<FullBackgroundContainerProps>`
