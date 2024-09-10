@@ -232,6 +232,30 @@ export const FullBackgroundContainer = styled.div<FullBackgroundContainerProps>`
   padding: 0 80px;
 `;
 
+// Custom FullBackgroundContainer using flex properties
+export const FullBackgroundContainerZERO = styled.div`
+  height: 400px; // Fixed height for the container
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  position: relative;
+  padding: 0 80px;
+  overflow: hidden; // Ensure content doesn't overflow the container
+  position: relative; // To position the overlay content (title and button)
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; // Ensures image covers full width
+    height: 100%; // Ensures image takes full height
+    object-fit: cover; // Behaves like background-size: cover;
+    z-index: -1; // Ensures image is behind other content
+  }
+`;
+
+// Ensure TitleAndButtonContainer stays the same or can be modified as needed
+
 // Title and button container
 export const TitleAndButtonContainer = styled.div`
   text-align: left;
