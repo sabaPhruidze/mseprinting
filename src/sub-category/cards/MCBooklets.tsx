@@ -8,6 +8,7 @@ import {
   TitleAndButtonContainer, // Styled component for title and button wrapping
   FullScreenTitle, // Styled component for the main title in the background
   FullScreenButton, // Styled component for the "Request a Quote" button
+  GlobalMainContent,
 } from "../../style/GlobalStyle";
 import { fetchMKBookletsData } from "../../data/sub-category data/AllSubCategoryData";
 import { CommonDocumentWAS } from "../../types/DataTypes";
@@ -37,6 +38,7 @@ export default function MCBooklets() {
     <div>
       {/* Full-screen section with background image using ImageWithSEO */}
       <FullBackgroundContainerZERO>
+        <div className="black-overlay"></div> {/* Add this overlay div */}
         <ImageWithSEO
           src={CATALOGYS_BOOKLETS_IMAGE.src} // Use CATALOGYS_BOOKLETS_IMAGE for the image source
           alt={CATALOGYS_BOOKLETS_IMAGE.alt}
@@ -45,11 +47,9 @@ export default function MCBooklets() {
           loading="eager"
         />
         <TitleAndButtonContainer>
-          <FullScreenTitle>{memoizedData?.one.title}</FullScreenTitle>
-          {/* Add onClick event for navigation */}
-          <FullScreenButton onClick={() => navigate("/request-quote")}>
-            Request a Quote
-          </FullScreenButton>
+          <FullScreenTitle>{memoizedData?.front?.title}</FullScreenTitle>
+          <GlobalMainContent>{memoizedData?.front?.content}</GlobalMainContent>
+          <FullScreenButton>{memoizedData?.front?.button}</FullScreenButton>
         </TitleAndButtonContainer>
       </FullBackgroundContainerZERO>
 

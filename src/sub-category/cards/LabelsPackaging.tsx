@@ -9,6 +9,7 @@ import {
   TitleAndButtonContainer, // Styled component for title and button wrapping
   FullScreenTitle, // Styled component for the main title in the background
   FullScreenButton, // Styled component for the "Request a Quote" button
+  GlobalMainContent,
 } from "../../style/GlobalStyle";
 import { fetchLabelsPackagingData } from "../../data/sub-category data/AllSubCategoryData";
 import { LabelsPackagingDocument } from "../../types/DataTypes";
@@ -42,6 +43,7 @@ export default function LabelsPackaging() {
     <div>
       {/* Full-screen section with background image using ImageWithSEO */}
       <FullBackgroundContainerZERO>
+        <div className="black-overlay"></div> {/* Add this overlay div */}
         <ImageWithSEO
           src={LABELS_PACKAGING_IMAGE.src} // Use LABELS_PACKAGING_IMAGE for the image source
           alt={LABELS_PACKAGING_IMAGE.alt}
@@ -50,11 +52,9 @@ export default function LabelsPackaging() {
           loading="eager"
         />
         <TitleAndButtonContainer>
-          <FullScreenTitle>{memoizedData?.one.title}</FullScreenTitle>
-          {/* Add onClick event for navigation */}
-          <FullScreenButton onClick={() => navigate("/request-quote")}>
-            Request a Quote
-          </FullScreenButton>
+          <FullScreenTitle>{memoizedData?.front?.title}</FullScreenTitle>
+          <GlobalMainContent>{memoizedData?.front?.content}</GlobalMainContent>
+          <FullScreenButton>{memoizedData?.front?.button}</FullScreenButton>
         </TitleAndButtonContainer>
       </FullBackgroundContainerZERO>
 
