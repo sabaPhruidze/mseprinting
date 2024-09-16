@@ -49,7 +49,13 @@ export default function MCBooklets() {
         <TitleAndButtonContainer>
           <FullScreenTitle>{memoizedData?.front?.title}</FullScreenTitle>
           <GlobalMainContent>{memoizedData?.front?.content}</GlobalMainContent>
-          <FullScreenButton>{memoizedData?.front?.button}</FullScreenButton>
+          <FullScreenButton
+            onClick={() => {
+              navigate("/request-quote");
+            }}
+          >
+            {memoizedData?.front?.button}
+          </FullScreenButton>
         </TitleAndButtonContainer>
       </FullBackgroundContainerZERO>
 
