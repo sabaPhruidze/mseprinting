@@ -1,5 +1,8 @@
 import DIGITAL_PRINTING from "../../assets/img/carousel/DIGITAL_PRINTING.jpg";
 import DIRECT_MAIL from "../../assets/img/cards/DIRECT_MAIL.jpg";
+
+import DIRECT_MAIL_PAGE from "../../assets/img/cards/DIRECT_MAIL_PAGE.jpg";
+
 import OFFSET_PRINTING from "../../assets/img/carousel/OFFSET_PRINTING.jpg";
 import ONLINE_ORDERING from "../../assets/img/carousel/ONLINE_ORDERING.png";
 import PRINTING_COPYING from "../../assets/img/carousel/PRINTING_COPYING.png";
@@ -11,6 +14,7 @@ import BUSINESS_FORM from "../../assets/img/cards/BUSINESS_FORM.jpg";
 import CATALOGYS_BOOKLETS from "../../assets/img/cards/CATALOGYS_BOOKLETS.jpg";
 import LABELS_PACKAGING from "../../assets/img/cards/LABELS_PACKAGING.jpg";
 
+import LABELS_PACKAGING_PAGE from "../../assets/img/cards/LABELS_PACKAGING_PAGE.jpg";
 // Image constants
 export const DIGITAL_PRINTING_IMAGE = {
   src: DIGITAL_PRINTING,
@@ -53,6 +57,16 @@ export const DIRECT_MAIL_IMAGE = {
     latitude: "47.9778",
     longitude: "-12.2650",
     location: "Temqa",
+  },
+};
+export const DIRECT_MAIL_IMAGE_PAGE = {
+  src: DIRECT_MAIL_PAGE,
+  alt: "Mailing images for pages",
+  title: "Mailing images for pages",
+  geoData: {
+    latitude: "471.9778",
+    longitude: "-19.9950",
+    location: "norway",
   },
 };
 
@@ -120,6 +134,17 @@ export const LABELS_PACKAGING_IMAGE = {
     latitude: "39.7392",
     longitude: "-104.9903",
     location: "Denver",
+  },
+};
+
+export const LABELS_PACKAGING_IMAGE_PAGE = {
+  src: LABELS_PACKAGING_PAGE,
+  alt: "Packaging and Labels",
+  title: "Packaging Custom Labels and",
+  geoData: {
+    latitude: "29.1112",
+    longitude: "-34.3933",
+    location: "alibaba",
   },
 };
 

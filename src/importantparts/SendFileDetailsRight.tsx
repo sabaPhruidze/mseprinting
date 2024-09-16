@@ -8,6 +8,7 @@ import {
   RQFileUploadContainer,
   RQWarningText,
 } from "../style/RequestQuoteStyle";
+import { Progress } from "antd"; // Import Ant Design Progress component
 
 interface Props {
   setUploadedFiles: (files: string[]) => void;
@@ -23,6 +24,7 @@ const SendFileDetailsRight: React.FC<Props> = ({
   const [files, setFiles] = useState<File[]>([]);
   const [uploading, setUploading] = useState(false);
   const [uploadingText, setUploadingText] = useState("Uploading");
+  const [progress, setProgress] = useState<number>(0); // State for tracking upload progress
   const context = useContext(rootContext);
 
   if (!context) {
@@ -52,6 +54,7 @@ const SendFileDetailsRight: React.FC<Props> = ({
       if (acceptedFiles.length === 0) return;
 
       setUploading(true);
+      setProgress(0); // Reset progress
 
       const zip = new JSZip();
       acceptedFiles.forEach((file) => {
@@ -68,29 +71,39 @@ const SendFileDetailsRight: React.FC<Props> = ({
       const formData = new FormData();
       formData.append("file", zipFile);
 
-      try {
-        const response = await fetch(
-          "https://mseprinting.com/SendFile/upload_sendfile.php",
-          {
-            method: "POST",
-            body: formData,
-          }
-        );
+      const xhr = new XMLHttpRequest();
+      xhr.open("POST", "https://mseprinting.com/SendFile/upload_sendfile.php");
 
-        if (response.ok) {
-          const { fileUrl } = await response.json();
-          setUploadedFiles([fileUrl]);
+      // Track upload progress
+      xhr.upload.onprogress = (event) => {
+        if (event.lengthComputable) {
+          const percentComplete = Math.round(
+            (event.loaded * 100) / event.total
+          );
+          setProgress(percentComplete);
+        }
+      };
+
+      xhr.onload = () => {
+        if (xhr.status === 200) {
+          const response = JSON.parse(xhr.responseText);
+          setUploadedFiles([response.fileUrl]);
           dispatching("REQUEST_QUOTE_CHANGE", true);
           setUploadingText("Uploaded");
         } else {
-          console.error("File upload failed:", await response.text());
+          console.error("File upload failed:", xhr.responseText);
         }
-      } catch (error) {
-        console.error("Error during file upload:", error);
-      } finally {
         setUploading(false);
         setUploadingText("Uploading");
-      }
+      };
+
+      xhr.onerror = () => {
+        console.error("Error during file upload:", xhr.responseText);
+        setUploading(false);
+        setUploadingText("Uploading");
+      };
+
+      xhr.send(formData);
     },
     [firstname, lastname, setUploadedFiles, dispatching]
   );
@@ -129,6 +142,14 @@ const SendFileDetailsRight: React.FC<Props> = ({
         <p style={{ marginTop: "20px", fontSize: "18px" }}>
           File size limit: 1GB per file
         </p>
+        {uploading && (
+          <div style={{ width: "100%", marginTop: "20px" }}>
+            <Progress
+              percent={progress}
+              status={uploading ? "active" : "normal"}
+            />
+          </div>
+        )}
         {files.length > 0 && (
           <div>
             <h4>Uploaded Files:</h4>

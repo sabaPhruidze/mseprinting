@@ -14,7 +14,7 @@ import {
 import { fetchLabelsPackagingData } from "../../data/sub-category data/AllSubCategoryData";
 import { LabelsPackagingDocument } from "../../types/DataTypes";
 import ImageWithSEO from "../../importantparts/ImageWithCEO"; // Import ImageWithSEO for handling the image
-import { LABELS_PACKAGING_IMAGE } from "../../data/sub-category data/ImageWithCEOData"; // Import the LABELS_PACKAGING_IMAGE
+import { LABELS_PACKAGING_IMAGE_PAGE } from "../../data/sub-category data/ImageWithCEOData"; // Import the LABELS_PACKAGING_IMAGE
 
 export default function LabelsPackaging() {
   const [labelsPackagingData, setLabelsPackagingData] =
@@ -45,10 +45,10 @@ export default function LabelsPackaging() {
       <FullBackgroundContainerZERO>
         <div className="black-overlay"></div> {/* Add this overlay div */}
         <ImageWithSEO
-          src={LABELS_PACKAGING_IMAGE.src} // Use LABELS_PACKAGING_IMAGE for the image source
-          alt={LABELS_PACKAGING_IMAGE.alt}
-          title={LABELS_PACKAGING_IMAGE.title}
-          geoData={LABELS_PACKAGING_IMAGE.geoData}
+          src={LABELS_PACKAGING_IMAGE_PAGE.src} // Use LABELS_PACKAGING_IMAGE for the image source
+          alt={LABELS_PACKAGING_IMAGE_PAGE.alt}
+          title={LABELS_PACKAGING_IMAGE_PAGE.title}
+          geoData={LABELS_PACKAGING_IMAGE_PAGE.geoData}
           loading="eager"
         />
         <TitleAndButtonContainer>
