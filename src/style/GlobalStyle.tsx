@@ -281,7 +281,11 @@ export const FullBackgroundContainerZERO = styled.div`
 
 // Title and button container
 export const TitleAndButtonContainer = styled.div`
-  margin-top: 200px;
+  position: absolute; // Absolute position to place the text over the image
+  bottom: 20px; // Place the text 5px from the bottom of the container
+  left: 60px;
+  right: 0;
+  padding: 0 20px; // Add padding to ensure text doesn't touch edges
   text-align: left;
   color: ${(props) =>
     props.theme.White}; // Ensure the text is white on a dark background
