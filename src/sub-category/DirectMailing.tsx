@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   GlobalContainerColumn,
   GlobalTextContainer,
@@ -31,7 +32,7 @@ export default function DirectMailing() {
   }, []);
 
   const memoizedData = useMemo(() => directMailingData, [directMailingData]);
-
+  const navigate = useNavigate();
   return (
     <div>
       {/* Full-screen section with background image using ImageWithSEO */}
@@ -47,7 +48,13 @@ export default function DirectMailing() {
         <TitleAndButtonContainer>
           <FullScreenTitle>{memoizedData?.front?.title}</FullScreenTitle>
           <GlobalMainContent>{memoizedData?.front?.content}</GlobalMainContent>
-          <FullScreenButton>{memoizedData?.front?.button}</FullScreenButton>
+          <FullScreenButton
+            onClick={() => {
+              navigate("/request-quote");
+            }}
+          >
+            {memoizedData?.front?.button}
+          </FullScreenButton>
         </TitleAndButtonContainer>
       </FullBackgroundContainerZERO>
 

@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   GlobalContainerColumn,
   Globalh2TitleWithMB20,
@@ -29,7 +30,7 @@ export default function PrintingCopying() {
 
     getPrintingCopyingData();
   }, []);
-
+  const navigate = useNavigate();
   const memoizedData = useMemo(
     () => printingCopyingData,
     [printingCopyingData]
@@ -50,7 +51,13 @@ export default function PrintingCopying() {
         <TitleAndButtonContainer>
           <FullScreenTitle>{memoizedData?.front?.title}</FullScreenTitle>
           <GlobalMainContent>{memoizedData?.front?.content}</GlobalMainContent>
-          <FullScreenButton>{memoizedData?.front?.button}</FullScreenButton>
+          <FullScreenButton
+            onClick={() => {
+              navigate("/request-quote");
+            }}
+          >
+            {memoizedData?.front?.button}
+          </FullScreenButton>
         </TitleAndButtonContainer>
       </FullBackgroundContainerZERO>
 
