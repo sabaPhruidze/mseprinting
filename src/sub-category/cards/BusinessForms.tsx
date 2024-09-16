@@ -9,6 +9,7 @@ import {
   TitleAndButtonContainer, // Styled component for title and button wrapping
   FullScreenTitle, // Styled component for the main title in the background
   FullScreenButton, // Styled component for the "Request a Quote" button
+  GlobalMainContent,
 } from "../../style/GlobalStyle";
 import { fetchBusinessFormsData } from "../../data/sub-category data/AllSubCategoryData";
 import { BusinessFormsType } from "../../types/DataTypes";
@@ -38,6 +39,7 @@ export default function BusinessForms() {
     <div>
       {/* Full-screen section with background image using ImageWithSEO */}
       <FullBackgroundContainerZERO>
+        <div className="black-overlay"></div> {/* Add this overlay div */}
         <ImageWithSEO
           src={BUSINESS_FORM_IMAGE.src} // Use BUSINESS_FORM_IMAGE for the image source
           alt={BUSINESS_FORM_IMAGE.alt}
@@ -46,11 +48,9 @@ export default function BusinessForms() {
           loading="eager"
         />
         <TitleAndButtonContainer>
-          <FullScreenTitle>{memoizedData?.one.title}</FullScreenTitle>
-          {/* Add onClick event for navigation */}
-          <FullScreenButton onClick={() => navigate("/request-quote")}>
-            Request a Quote
-          </FullScreenButton>
+          <FullScreenTitle>{memoizedData?.front?.title}</FullScreenTitle>
+          <GlobalMainContent>{memoizedData?.front?.content}</GlobalMainContent>
+          <FullScreenButton>{memoizedData?.front?.button}</FullScreenButton>
         </TitleAndButtonContainer>
       </FullBackgroundContainerZERO>
 

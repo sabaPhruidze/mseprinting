@@ -323,6 +323,7 @@ export interface CommonDocumentWAS {
   one: TitleWithContent;
   two: string[];
   three?: string;
+  front: FrontType;
 }
 // business forms
 export interface BusinessFormsType {
@@ -330,6 +331,7 @@ export interface BusinessFormsType {
   two: string[];
   three: BFThree;
   fourth: string;
+  front: FrontType;
 }
 
 export interface BFThree {
@@ -343,4 +345,5 @@ export interface LabelsPackagingDocument {
   two: TitleWithContent[];
   three: TitleWithContent;
   four: string;
+  front: FrontType;
 }
