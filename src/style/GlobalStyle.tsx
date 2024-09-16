@@ -39,7 +39,20 @@ export const GlobalButton = styled.button`
     transform: scale(0.9);
   }
 `;
-
+export const GlobalMainContent = styled.p`
+  margin-top: 10px;
+  font-size: 16px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+  text-align: left;
+  margin: 0;
+  margin-bottom: 10px;
+  @media (max-width: 900px) {
+    text-align: center;
+  }
+  @media (max-width: 630px) {
+    text-align: center;
+  }
+`;
 export const GlobalContainerColumn = styled(ColumnFlex)`
   width: 100%;
   min-height: 100%;
@@ -250,7 +263,17 @@ export const FullBackgroundContainerZERO = styled.div`
     width: 100%; // Ensures image covers full width
     height: 100%; // Ensures image takes full height
     object-fit: cover; // Behaves like background-size: cover;
-    z-index: -1; // Ensures image is behind other content
+    z-index: -2; // Ensures image is behind the overlay and content
+  }
+
+  .black-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); // Black color with 0.5 opacity
+    z-index: -1; // Ensure the overlay is behind the content but above the image
   }
 `;
 
@@ -258,10 +281,12 @@ export const FullBackgroundContainerZERO = styled.div`
 
 // Title and button container
 export const TitleAndButtonContainer = styled.div`
+  margin-top: 200px;
   text-align: left;
   color: ${(props) =>
     props.theme.White}; // Ensure the text is white on a dark background
   z-index: 2;
+  max-width: 1000px;
 `;
 
 // Style for the main title inside the image

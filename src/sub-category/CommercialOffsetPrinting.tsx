@@ -18,6 +18,7 @@ import {
   FullBackgroundContainerZERO,
   FullScreenTitle,
   FullScreenButton,
+  GlobalMainContent,
 } from "../style/GlobalStyle";
 import { fetchOffsetPrintingData } from "../data/sub-category data/CommercialOffsetPrintingData";
 import { OffsetPrintingDocument } from "../types/DataTypes";
@@ -61,6 +62,7 @@ export default function CommercialOffsetPrinting() {
   return (
     <div>
       <FullBackgroundContainerZERO>
+        <div className="black-overlay"></div> {/* Add this overlay div */}
         <ImageWithCEO
           src={OFFSET_PRINTING_IMAGE.src}
           alt={OFFSET_PRINTING_IMAGE.alt}
@@ -69,8 +71,9 @@ export default function CommercialOffsetPrinting() {
           loading="eager"
         />
         <TitleAndButtonContainer>
-          <FullScreenTitle>{memoizedData?.one.mainTitle}</FullScreenTitle>
-          <FullScreenButton>Request a Quote</FullScreenButton>
+          <FullScreenTitle>{memoizedData?.front?.title}</FullScreenTitle>
+          <GlobalMainContent>{memoizedData?.front?.content}</GlobalMainContent>
+          <FullScreenButton>{memoizedData?.front?.button}</FullScreenButton>
         </TitleAndButtonContainer>
       </FullBackgroundContainerZERO>
       <GlobalContainerColumn>
