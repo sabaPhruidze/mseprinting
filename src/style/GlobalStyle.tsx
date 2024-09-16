@@ -139,9 +139,8 @@ export const GlobalBoxColumnStart1 = styled.div`
 
 export const GlobalTextContainer = styled.div`
   overflow: hidden; // To clear the float and wrap content properly
-
   @media (max-width: 1000px) {
-    width: 100%; // Ensure text takes full width on small screens
+    max-width: 100%; // Ensure text takes full width on small screens
   }
 `;
 // special for image
@@ -252,7 +251,7 @@ export const FullBackgroundContainerZERO = styled.div`
   justify-content: left;
   align-items: center;
   position: relative;
-  padding: 0 80px;
+  padding: 0px;
   overflow: hidden; // Ensure content doesn't overflow the container
   position: relative; // To position the overlay content (title and button)
 
@@ -281,16 +280,27 @@ export const FullBackgroundContainerZERO = styled.div`
 
 // Title and button container
 export const TitleAndButtonContainer = styled.div`
-  position: absolute; // Absolute position to place the text over the image
-  bottom: 20px; // Place the text 5px from the bottom of the container
+  position: absolute;
+  bottom: 20px;
   left: 60px;
   right: 0;
-  padding: 0 20px; // Add padding to ensure text doesn't touch edges
+  padding: 0 20px;
   text-align: left;
-  color: ${(props) =>
-    props.theme.White}; // Ensure the text is white on a dark background
+  color: ${(props) => props.theme.White};
   z-index: 2;
   max-width: 1000px;
+  @media (max-width: 1025px) {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    left: 0;
+    width: 100%;
+    padding: 5px;
+    bottom: 5px;
+  }
 `;
 
 // Style for the main title inside the image
@@ -301,6 +311,7 @@ export const FullScreenTitle = styled.h1`
   text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.9);
   @media (max-width: 768px) {
     font-size: 32px;
+    text-align: center;
   }
 `;
 

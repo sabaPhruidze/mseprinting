@@ -297,6 +297,7 @@ export interface DigitalPrintingDocument {
   eightSub: TitleWithContent[];
   nine: EOEDiversitySpecial;
   ten: string;
+  front: FrontType;
 }
 
 // Printing and Copying

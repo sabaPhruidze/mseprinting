@@ -17,6 +17,7 @@ import {
   FullBackgroundContainerZERO, // Updated to FullBackgroundContainerZERO
   FullScreenTitle,
   FullScreenButton,
+  GlobalMainContent,
 } from "../style/GlobalStyle"; // Import new and existing styles
 import { DIGITAL_PRINTING_IMAGE } from "../data/sub-category data/ImageWithCEOData"; // Import DIGITAL_PRINTING_IMAGE
 import { fetchDigitalPrintingData } from "../data/sub-category data/AllSubCategoryData";
@@ -66,6 +67,7 @@ export default function CommercialDigitalPrinting() {
     <div>
       {/* Full Background Image Container */}
       <FullBackgroundContainerZERO>
+        <div className="black-overlay"></div> {/* Add this overlay div */}
         <ImageWithCEO
           src={DIGITAL_PRINTING_IMAGE.src} // Using DIGITAL_PRINTING_IMAGE
           alt={DIGITAL_PRINTING_IMAGE.alt}
@@ -74,8 +76,9 @@ export default function CommercialDigitalPrinting() {
           loading="eager"
         />
         <TitleAndButtonContainer>
-          <FullScreenTitle>{memoizedData?.one.title}</FullScreenTitle>
-          <FullScreenButton>Request a Quote</FullScreenButton>
+          <FullScreenTitle>{memoizedData?.front?.title}</FullScreenTitle>
+          <GlobalMainContent>{memoizedData?.front?.content}</GlobalMainContent>
+          <FullScreenButton>{memoizedData?.front?.button}</FullScreenButton>
         </TitleAndButtonContainer>
       </FullBackgroundContainerZERO>
 
