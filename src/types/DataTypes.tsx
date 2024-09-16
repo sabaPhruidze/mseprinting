@@ -315,6 +315,7 @@ export interface CommonDocument {
   two: TitleWithContent[];
   third?: string;
   three?: string;
+  front: FrontType;
 }
 
 // Common Document With Array of Strings
