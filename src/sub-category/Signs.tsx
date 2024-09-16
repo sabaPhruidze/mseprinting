@@ -8,6 +8,7 @@ import {
   TitleAndButtonContainer, // Styled component for title and button wrapping
   FullScreenTitle, // Styled component for the main title in the background
   FullScreenButton, // Styled component for the "Request a Quote" button
+  GlobalMainContent,
 } from "../style/GlobalStyle";
 import { fetchSignsData } from "../data/sub-category data/AllSubCategoryData";
 import { CommonDocument } from "../types/DataTypes";
@@ -34,6 +35,7 @@ export default function Signs() {
     <div>
       {/* Full-screen section with background image using ImageWithSEO */}
       <FullBackgroundContainerZERO>
+        <div className="black-overlay"></div> {/* Add this overlay div */}
         <ImageWithSEO
           src={SIGNS_IMAGE.src} // Use SIGNS_IMAGE for the image source
           alt={SIGNS_IMAGE.alt}
@@ -42,8 +44,9 @@ export default function Signs() {
           loading="eager"
         />
         <TitleAndButtonContainer>
-          <FullScreenTitle>{memoizedData?.one.title}</FullScreenTitle>
-          <FullScreenButton>Request a Quote</FullScreenButton>
+          <FullScreenTitle>{memoizedData?.front?.title}</FullScreenTitle>
+          <GlobalMainContent>{memoizedData?.front?.content}</GlobalMainContent>
+          <FullScreenButton>{memoizedData?.front?.button}</FullScreenButton>
         </TitleAndButtonContainer>
       </FullBackgroundContainerZERO>
 
