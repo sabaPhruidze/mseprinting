@@ -22,6 +22,11 @@ export interface MainContentWithParts {
   title: string;
   parts: PartWithSpecialContent[];
 }
+export interface FrontType {
+  title: string;
+  content: string;
+  button: string;
+}
 // search engine
 export interface SearchResultDocument {
   title: string;
@@ -267,6 +272,7 @@ export interface OffsetPrintingDocument {
   eightSub: TitleWithContent[];
   nine: EOEDiversitySpecial;
   ten: string;
+  front: FrontType;
 }
 export interface OffsetPrintingOne {
   mainTitle: string;

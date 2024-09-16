@@ -9,10 +9,10 @@ import {
   CarouselContainer,
   CarouselIcon,
   CarouselTitle,
-  CarouselContent,
   CarouselButton,
   CarouselOverlay,
 } from "../style/HomeStyles";
+import { GlobalMainContent } from "../style/GlobalStyle";
 import "../style/CustomCarousel.css";
 import ImageWithSEO from "./ImageWithCEO";
 import { CAROUSEL_DATA } from "../data/CarouselData";
@@ -62,7 +62,9 @@ export default function CarouselComponent() {
                 />
                 <CarouselOverlay />
                 <Carousel.Caption className="custom-carousel-caption">
-                  {data.text && <CarouselContent>{data.text}</CarouselContent>}
+                  {data.text && (
+                    <GlobalMainContent>{data.text}</GlobalMainContent>
+                  )}
                   {data.link && (
                     <CarouselButton onClick={() => navigate(data.link)}>
                       Learn more ...
