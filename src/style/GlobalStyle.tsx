@@ -139,6 +139,7 @@ export const GlobalBoxColumnStart1 = styled.div`
 
 export const GlobalTextContainer = styled.div`
   overflow: hidden; // To clear the float and wrap content properly
+  max-width: 1200px;
   @media (max-width: 1000px) {
     max-width: 100%; // Ensure text takes full width on small screens
   }
