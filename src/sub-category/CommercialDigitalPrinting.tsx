@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   GlobalContainerColumn,
   Globalh2TitleWithMB20,
@@ -43,7 +44,7 @@ export default function CommercialDigitalPrinting() {
     () => digitalPrintingData,
     [digitalPrintingData]
   );
-
+  const navigate = useNavigate();
   const renderSpecialPart = useCallback((item: any) => {
     return (
       <>
@@ -78,7 +79,13 @@ export default function CommercialDigitalPrinting() {
         <TitleAndButtonContainer>
           <FullScreenTitle>{memoizedData?.front?.title}</FullScreenTitle>
           <GlobalMainContent>{memoizedData?.front?.content}</GlobalMainContent>
-          <FullScreenButton>{memoizedData?.front?.button}</FullScreenButton>
+          <FullScreenButton
+            onClick={() => {
+              navigate("/request-quote");
+            }}
+          >
+            {memoizedData?.front?.button}
+          </FullScreenButton>
         </TitleAndButtonContainer>
       </FullBackgroundContainerZERO>
 

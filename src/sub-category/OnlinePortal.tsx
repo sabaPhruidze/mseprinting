@@ -11,6 +11,7 @@ import {
   FullScreenButton, // Styled component for the Request a Quote button
   GlobalMainContent,
 } from "../style/GlobalStyle";
+import { useNavigate } from "react-router-dom";
 import { fetchOnlinePortalData } from "../data/sub-category data/AllSubCategoryData";
 import { CommonDocument } from "../types/DataTypes";
 import ImageWithSEO from "../importantparts/ImageWithCEO"; // Import ImageWithSEO for handling the image
@@ -32,7 +33,7 @@ export default function OnlinePortal() {
   }, []);
 
   const memoizedData = useMemo(() => onlinePortalData, [onlinePortalData]);
-
+  const navigate = useNavigate();
   return (
     <div>
       {/* Full-screen section with background image using ImageWithSEO */}
@@ -48,7 +49,13 @@ export default function OnlinePortal() {
         <TitleAndButtonContainer>
           <FullScreenTitle>{memoizedData?.front?.title}</FullScreenTitle>
           <GlobalMainContent>{memoizedData?.front?.content}</GlobalMainContent>
-          <FullScreenButton>{memoizedData?.front?.button}</FullScreenButton>
+          <FullScreenButton
+            onClick={() => {
+              navigate("/request-quote");
+            }}
+          >
+            {memoizedData?.front?.button}
+          </FullScreenButton>
         </TitleAndButtonContainer>
       </FullBackgroundContainerZERO>
 

@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo, useCallback } from "react";
 import { OFFSET_PRINTING_IMAGE } from "../data/sub-category data/ImageWithCEOData";
+import { useNavigate } from "react-router-dom";
 import {
   GlobalContainerColumn,
   Globalh2TitleWithMB20,
@@ -39,7 +40,7 @@ export default function CommercialOffsetPrinting() {
   }, []);
 
   const memoizedData = useMemo(() => offsetPrintingData, [offsetPrintingData]);
-
+  const navigate = useNavigate();
   const renderSpecialPart = useCallback((item: any) => {
     return (
       <>
@@ -73,7 +74,13 @@ export default function CommercialOffsetPrinting() {
         <TitleAndButtonContainer>
           <FullScreenTitle>{memoizedData?.front?.title}</FullScreenTitle>
           <GlobalMainContent>{memoizedData?.front?.content}</GlobalMainContent>
-          <FullScreenButton>{memoizedData?.front?.button}</FullScreenButton>
+          <FullScreenButton
+            onClick={() => {
+              navigate("/request-quote");
+            }}
+          >
+            {memoizedData?.front?.button}
+          </FullScreenButton>
         </TitleAndButtonContainer>
       </FullBackgroundContainerZERO>
       <GlobalContainerColumn>
