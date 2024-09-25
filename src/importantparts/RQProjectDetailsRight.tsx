@@ -1,6 +1,7 @@
 import { useState, useCallback, useContext, memo, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 import JSZip from "jszip";
+import axios from "axios"; // Import axios
 import { rootContext } from "../Root";
 import {
   RQh3Title,
@@ -15,6 +16,8 @@ interface Props {
   firstname: string | null;
   lastname: string | null;
 }
+
+const MAX_CHUNK_SIZE = 128 * 1024 * 1024; // 128MB chunk size for GoDaddy upload limit
 
 const RQProjectDetailsRight: React.FC<Props> = ({
   setUploadedFiles,
@@ -37,17 +40,34 @@ const RQProjectDetailsRight: React.FC<Props> = ({
     if (uploading) {
       const interval = setInterval(() => {
         setUploadingText((prev) =>
-          prev === "Uploading..."
-            ? "Uploading."
-            : prev === "Uploading.."
-            ? "Uploading..."
-            : "Uploading.."
+          prev === "Uploading..." ? "Uploading.." : "Uploading..."
         );
       }, 500);
 
       return () => clearInterval(interval);
     }
   }, [uploading]);
+
+  // Split a file into chunks if it exceeds the max chunk size
+  const splitFileIntoChunks = (file: File): File[] => {
+    const chunks: File[] = [];
+    let currentChunk = 0;
+
+    while (currentChunk * MAX_CHUNK_SIZE < file.size) {
+      const chunk = file.slice(
+        currentChunk * MAX_CHUNK_SIZE,
+        (currentChunk + 1) * MAX_CHUNK_SIZE
+      );
+      chunks.push(
+        new File([chunk], `${file.name}.part_${currentChunk + 1}`, {
+          type: file.type,
+        })
+      );
+      currentChunk++;
+    }
+
+    return chunks;
+  };
 
   const handleUpload = useCallback(
     async (acceptedFiles: File[]) => {
@@ -57,9 +77,17 @@ const RQProjectDetailsRight: React.FC<Props> = ({
       setProgress(0); // Reset progress
 
       const zip = new JSZip();
-      acceptedFiles.forEach((file) => {
-        zip.file(file.name, file);
-      });
+
+      for (let file of acceptedFiles) {
+        if (file.size > MAX_CHUNK_SIZE) {
+          const fileChunks = splitFileIntoChunks(file);
+          fileChunks.forEach((chunk) => {
+            zip.file(chunk.name, chunk);
+          });
+        } else {
+          zip.file(file.name, file);
+        }
+      }
 
       const zipBlob = await zip.generateAsync({ type: "blob" });
       const timestamp = new Date().toISOString().replace(/[-:.]/g, "");
@@ -71,38 +99,32 @@ const RQProjectDetailsRight: React.FC<Props> = ({
       const formData = new FormData();
       formData.append("file", zipFile);
 
-      const xhr = new XMLHttpRequest();
-      xhr.open("POST", "https://mseprinting.com/RequestQuote/upload.php");
+      try {
+        const response = await axios.post(
+          "https://mseprinting.com/RequestQuote/upload.php",
+          formData,
+          {
+            headers: { "Content-Type": "multipart/form-data" },
+            onUploadProgress: (progressEvent) => {
+              // Fallback to using loaded amount only if total is undefined
+              const total = progressEvent.total || zipFile.size;
+              const percentComplete = Math.round(
+                (progressEvent.loaded * 100) / total
+              );
+              setProgress(percentComplete);
+            },
+          }
+        );
 
-      // Track upload progress
-      xhr.upload.onprogress = (event) => {
-        if (event.lengthComputable) {
-          const percentComplete = Math.round(
-            (event.loaded * 100) / event.total
-          );
-          setProgress(percentComplete);
-        }
-      };
-
-      xhr.onload = () => {
-        if (xhr.status === 200) {
-          const response = JSON.parse(xhr.responseText);
-          setUploadedFiles([response.fileUrl]);
-          dispatching("REQUEST_QUOTE_CHANGE", true);
-        } else {
-          console.error("File upload failed:", xhr.responseText);
-        }
+        console.log("File uploaded successfully:", response.data);
+        setUploadedFiles([response.data.fileUrl]);
+        dispatching("REQUEST_QUOTE_CHANGE", true);
+      } catch (error) {
+        console.error("Error during file upload:", error);
+      } finally {
         setUploading(false);
         setUploadingText("Uploading");
-      };
-
-      xhr.onerror = () => {
-        console.error("Error during file upload:", xhr.responseText);
-        setUploading(false);
-        setUploadingText("Uploading");
-      };
-
-      xhr.send(formData);
+      }
     },
     [firstname, lastname, setUploadedFiles, dispatching]
   );
