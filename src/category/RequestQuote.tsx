@@ -25,7 +25,7 @@ import RequestQuoteInputs from "../data/RequestQuoteInputs";
 import RQProjectDetailsLeft from "../importantparts/RQProjectDetailsLeft";
 import RQProjectDetailsRight from "../importantparts/RQProjectDetailsRight";
 import { rootContext } from "../Root";
-import { sendEmail } from "../config/EmailService";
+import { sendEmail } from "../config/EmailService"; // Adjusted for your email sending function
 
 type FormData = RQUseFormFirstPart & RQUseFormSecondPart & RQUseFormThirdPart;
 
