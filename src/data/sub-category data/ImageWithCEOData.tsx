@@ -15,7 +15,7 @@ import CATALOGYS_BOOKLETS from "../../assets/img/cards/CATALOGYS_BOOKLETS.jpg";
 import LABELS_PACKAGING from "../../assets/img/cards/LABELS_PACKAGING.jpg";
 
 import BUSINESS_ANNUAL_REPORTS from "../../assets/img/printingCopyingPages/BUSINESS_CARDS_STATIONERY.webp";
-import BUSINESS_CARDS_STATIONERY from "../../assets/img/printingCopyingPages/BUSINESS_CARDS_STATIONERY.webp";
+import BUSINESS_CARDS_STATIONERY from "../../assets/img/printingCopyingPages/BUSINESS_ANNUAL_REPORTS.webp";
 import NEWSLETTERS_FLYERS_RACK_CARDS from "../../assets/img/printingCopyingPages/NEWS_LETTERS_FLYERS_RACK_CARDS.webp";
 import POSTCARDS_DIRECT_MAILERS from "../../assets/img/printingCopyingPages/POST_CARDS_DIRECT_MAILERS.webp";
 import PRESENTATION_TRAINING_MATERIALS from "../../assets/img/printingCopyingPages/PRESENTATION_TRAINING_MATERIALS.webp";
