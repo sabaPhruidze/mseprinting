@@ -106,7 +106,39 @@ export const GlobalImageWrapperWithFloat = styled.div`
   }
 `;
 
-//
+// represetative
+export const GlobalRepresentativesContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+  margin-top: 1rem;
+`;
+
+export const GlobalRepresentativeCard = styled.div`
+  display: flex;
+  align-items: center;
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 10px 20px;
+  width: calc(
+    16.6% - 10px
+  ); /* Adjusting width for 3 items per row with a 10px gap */
+
+  input {
+    margin-right: 10px;
+  }
+
+  label {
+    font-size: 1.1rem;
+    color: #333;
+  }
+
+  &:hover {
+    background-color: #e6f7ff;
+  }
+`;
 
 export const GlobalContainerRowWithWrap = styled.div`
   display: flex;

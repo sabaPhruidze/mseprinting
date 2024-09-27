@@ -1,7 +1,8 @@
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { storage } from "../config/Firebase";
 import { useState, useCallback, useContext, memo, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 import JSZip from "jszip";
-import axios from "axios"; // Import axios
 import { rootContext } from "../Root";
 import {
   RQh3Title,
@@ -17,7 +18,7 @@ interface Props {
   lastname: string | null;
 }
 
-const MAX_CHUNK_SIZE = 128 * 1024 * 1024; // 128MB chunk size for GoDaddy upload limit
+const MAX_CHUNK_SIZE = 128 * 1024 * 1024; // 128MB chunk size for large file splitting
 
 const RQProjectDetailsRight: React.FC<Props> = ({
   setUploadedFiles,
@@ -48,27 +49,40 @@ const RQProjectDetailsRight: React.FC<Props> = ({
     }
   }, [uploading]);
 
-  // Split a file into chunks if it exceeds the max chunk size
-  const splitFileIntoChunks = (file: File): File[] => {
-    const chunks: File[] = [];
-    let currentChunk = 0;
+  // Function to upload a file to Firebase Storage
+  const uploadToFirebase = useCallback(
+    async (file: File) => {
+      return new Promise<string>((resolve, reject) => {
+        const storageRef = ref(
+          storage,
+          `uploads/${firstname}_${lastname}/${file.name}`
+        );
+        const uploadTask = uploadBytesResumable(storageRef, file);
 
-    while (currentChunk * MAX_CHUNK_SIZE < file.size) {
-      const chunk = file.slice(
-        currentChunk * MAX_CHUNK_SIZE,
-        (currentChunk + 1) * MAX_CHUNK_SIZE
-      );
-      chunks.push(
-        new File([chunk], `${file.name}.part_${currentChunk + 1}`, {
-          type: file.type,
-        })
-      );
-      currentChunk++;
-    }
+        uploadTask.on(
+          "state_changed",
+          (snapshot) => {
+            const progressPercentage = Math.round(
+              (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+            );
+            setProgress(progressPercentage);
+          },
+          (error) => {
+            console.error("Error uploading file:", error);
+            reject(error);
+          },
+          () => {
+            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+              resolve(downloadURL);
+            });
+          }
+        );
+      });
+    },
+    [firstname, lastname]
+  );
 
-    return chunks;
-  };
-
+  // Handle the upload process
   const handleUpload = useCallback(
     async (acceptedFiles: File[]) => {
       if (acceptedFiles.length === 0) return;
@@ -96,29 +110,11 @@ const RQProjectDetailsRight: React.FC<Props> = ({
         type: "application/zip",
       });
 
-      const formData = new FormData();
-      formData.append("file", zipFile);
-
       try {
-        const response = await axios.post(
-          "https://mseprinting.com/RequestQuote/upload.php",
-          formData,
-          {
-            headers: { "Content-Type": "multipart/form-data" },
-            onUploadProgress: (progressEvent) => {
-              // Fallback to using loaded amount only if total is undefined
-              const total = progressEvent.total || zipFile.size;
-              const percentComplete = Math.round(
-                (progressEvent.loaded * 100) / total
-              );
-              setProgress(percentComplete);
-            },
-          }
-        );
-
-        console.log("File uploaded successfully:", response.data);
-        setUploadedFiles([response.data.fileUrl]);
+        const downloadURL = await uploadToFirebase(zipFile);
+        setUploadedFiles([downloadURL]);
         dispatching("REQUEST_QUOTE_CHANGE", true);
+        console.log("File uploaded successfully to Firebase:", downloadURL);
       } catch (error) {
         console.error("Error during file upload:", error);
       } finally {
@@ -126,8 +122,28 @@ const RQProjectDetailsRight: React.FC<Props> = ({
         setUploadingText("Uploading");
       }
     },
-    [firstname, lastname, setUploadedFiles, dispatching]
+    [firstname, lastname, setUploadedFiles, uploadToFirebase, dispatching]
   );
+
+  const splitFileIntoChunks = (file: File): File[] => {
+    const chunks: File[] = [];
+    let currentChunk = 0;
+
+    while (currentChunk * MAX_CHUNK_SIZE < file.size) {
+      const chunk = file.slice(
+        currentChunk * MAX_CHUNK_SIZE,
+        (currentChunk + 1) * MAX_CHUNK_SIZE
+      );
+      chunks.push(
+        new File([chunk], `${file.name}.part_${currentChunk + 1}`, {
+          type: file.type,
+        })
+      );
+      currentChunk++;
+    }
+
+    return chunks;
+  };
 
   const onDrop = useCallback(
     (acceptedFiles: File[]) => {

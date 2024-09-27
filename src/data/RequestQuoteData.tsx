@@ -31,7 +31,10 @@ type FormField<T> = {
 
 export type RQFormData = RQUseFormFirstPart &
   RQUseFormSecondPart &
-  RQUseFormThirdPart;
+  RQUseFormThirdPart & {
+    representative: string;
+  };
+
 export const RQDATAFIRSTPART: FormField<RQUseFormFirstPart>[] = [
   {
     placeholder: "First name *",

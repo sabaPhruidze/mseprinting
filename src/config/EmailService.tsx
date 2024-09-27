@@ -3,7 +3,6 @@ import { RQFormData } from "../data/RequestQuoteData";
 
 // Function to send email using the first template
 export const sendEmail = (data: RQFormData): Promise<EmailJSResponseStatus> => {
-  // Create a form element
   const form = document.createElement("form");
   form.style.display = "none";
 
@@ -19,28 +18,20 @@ export const sendEmail = (data: RQFormData): Promise<EmailJSResponseStatus> => {
   form.appendChild(createInput("description", data.description));
   form.appendChild(createInput("dueDate", data.dueDate));
   form.appendChild(createInput("terms", data.terms.toString()));
+  form.appendChild(createInput("representative", data.representative)); // Include representative
 
-  // Append uploaded file URLs to the form with correct placeholders
+  // Append uploaded file URLs to the form
   data.uploadedFiles?.forEach((fileUrl: string, index: number) => {
     const fileUrlInput = createInput(`file${index + 1}`, fileUrl);
     form.appendChild(fileUrlInput);
   });
 
-  // Log form data for debugging
-  const formData = new FormData(form);
-  for (const pair of formData.entries()) {
-    console.log(`${pair[0]}: ${pair[1]}`);
-  }
-
   document.body.appendChild(form);
 
-  // Send the form using emailjs
   return emailjs
     .sendForm("service_murz7qv", "template_rbodn39", form, "n0fNJ32On4BeZAq6d")
     .then(
-      (result: EmailJSResponseStatus) => {
-        return result;
-      },
+      (result: EmailJSResponseStatus) => result,
       (error) => {
         console.error(error.text);
         throw error;
@@ -55,7 +46,6 @@ export const sendEmail = (data: RQFormData): Promise<EmailJSResponseStatus> => {
 export const sendEmailSecond = (
   data: RQFormData
 ): Promise<EmailJSResponseStatus> => {
-  // Create a form element
   const form = document.createElement("form");
   form.style.display = "none";
 
@@ -71,28 +61,20 @@ export const sendEmailSecond = (
   form.appendChild(createInput("description", data.description));
   form.appendChild(createInput("dueDate", data.dueDate));
   form.appendChild(createInput("terms", data.terms.toString()));
+  form.appendChild(createInput("representative", data.representative)); // Include representative
 
-  // Append uploaded file URLs to the form with correct placeholders
+  // Append uploaded file URLs to the form
   data.uploadedFiles?.forEach((fileUrl: string, index: number) => {
     const fileUrlInput = createInput(`file${index + 1}`, fileUrl);
     form.appendChild(fileUrlInput);
   });
 
-  // Log form data for debugging
-  const formData = new FormData(form);
-  for (const pair of formData.entries()) {
-    console.log(`${pair[0]}: ${pair[1]}`);
-  }
-
   document.body.appendChild(form);
 
-  // Send the form using emailjs
   return emailjs
     .sendForm("service_murz7qv", "template_z7suxf7", form, "n0fNJ32On4BeZAq6d")
     .then(
-      (result: EmailJSResponseStatus) => {
-        return result;
-      },
+      (result: EmailJSResponseStatus) => result,
       (error) => {
         console.error(error.text);
         throw error;
@@ -103,6 +85,7 @@ export const sendEmailSecond = (
     });
 };
 
+// Function to create hidden inputs
 const createInput = (name: string, value: string): HTMLInputElement => {
   const input = document.createElement("input");
   input.setAttribute("type", "hidden");
