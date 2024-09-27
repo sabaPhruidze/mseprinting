@@ -14,6 +14,12 @@ import BUSINESS_FORM from "../../assets/img/cards/BUSINESS_FORM.jpg";
 import CATALOGYS_BOOKLETS from "../../assets/img/cards/CATALOGYS_BOOKLETS.jpg";
 import LABELS_PACKAGING from "../../assets/img/cards/LABELS_PACKAGING.jpg";
 
+import BUSINESS_ANNUAL_REPORTS from "../../assets/img/printingCopyingPages/BUSINESS_CARDS_STATIONERY.webp";
+import BUSINESS_CARDS_STATIONERY from "../../assets/img/printingCopyingPages/BUSINESS_CARDS_STATIONERY.webp";
+import NEWSLETTERS_FLYERS_RACK_CARDS from "../../assets/img/printingCopyingPages/NEWS_LETTERS_FLYERS_RACK_CARDS.webp";
+import POSTCARDS_DIRECT_MAILERS from "../../assets/img/printingCopyingPages/POST_CARDS_DIRECT_MAILERS.webp";
+import PRESENTATION_TRAINING_MATERIALS from "../../assets/img/printingCopyingPages/PRESENTATION_TRAINING_MATERIALS.webp";
+
 import LABELS_PACKAGING_PAGE from "../../assets/img/cards/LABELS_PACKAGING_PAGE.jpg";
 // Image constants
 export const DIGITAL_PRINTING_IMAGE = {
@@ -156,5 +162,55 @@ export const CATALOGYS_BOOKLETS_IMAGE = {
     latitude: "29.7604",
     longitude: "-95.3698",
     location: "Houston",
+  },
+};
+export const BUSINESS_ANNUAL_REPORTS_IMAGE = {
+  src: BUSINESS_ANNUAL_REPORTS,
+  alt: "Business and Annual Reports",
+  title: "Comprehensive Business & Annual Reports",
+  geoData: {
+    latitude: "37.7749",
+    longitude: "-122.4194",
+    location: "San Francisco",
+  },
+};
+export const BUSINESS_CARDS_STATIONERY_IMAGE = {
+  src: BUSINESS_CARDS_STATIONERY,
+  alt: "Business Cards and Stationery",
+  title: "Elegant Business Cards and Stationery",
+  geoData: {
+    latitude: "48.8566",
+    longitude: "2.3522",
+    location: "Paris",
+  },
+};
+export const NEWSLETTERS_FLYERS_RACK_CARDS_IMAGE = {
+  src: NEWSLETTERS_FLYERS_RACK_CARDS,
+  alt: "Newsletters, Flyers, and Rack Cards",
+  title: "Creative Newsletters, Flyers & Rack Cards",
+  geoData: {
+    latitude: "35.6895",
+    longitude: "139.6917",
+    location: "Tokyo",
+  },
+};
+export const POSTCARDS_DIRECT_MAILERS_IMAGE = {
+  src: POSTCARDS_DIRECT_MAILERS,
+  alt: "Postcards and Direct Mailers",
+  title: "Innovative Postcards & Direct Mailers",
+  geoData: {
+    latitude: "52.5200",
+    longitude: "13.4050",
+    location: "Berlin",
+  },
+};
+export const PRESENTATION_TRAINING_MATERIALS_IMAGE = {
+  src: PRESENTATION_TRAINING_MATERIALS,
+  alt: "Presentation and Training Materials",
+  title: "Effective Presentation & Training Materials",
+  geoData: {
+    latitude: "40.730610",
+    longitude: "-73.935242",
+    location: "New sloboda York",
   },
 };

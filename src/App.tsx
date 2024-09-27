@@ -37,6 +37,13 @@ import BusinessForms from "./sub-category/cards/BusinessForms";
 import BrochuresCollateral from "./sub-category/cards/BrochuresCollateral";
 import BannersPosters from "./sub-category/cards/BannersPosters";
 
+//printing and copying part
+import BusinessCardsStationery from "./sub-category/printingCopying/BusinessCardsStationery";
+import BusinessAnnualReports from "./sub-category/printingCopying/BusinessAnnualReports";
+import NewslettersFlyersRackCards from "./sub-category/printingCopying/NewslettersFlyersRackCards";
+import PostCardsDirectMailers from "./sub-category/printingCopying/PostCardsDirectMailers";
+import PresentationTrainingMaterials from "./sub-category/printingCopying/PresentationTrainingMaterials";
+
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -74,6 +81,27 @@ function App() {
         <Route path="/business-forms" element={<BusinessForms />} />
         <Route path="/labels-packaging" element={<LabelsPackaging />} />
         <Route path="/manuals-catalogs-booklets" element={<MCBooklets />} />
+        {/* Printing and Copying */}
+        <Route
+          path="/Business-cards-stationery"
+          element={<BusinessCardsStationery />}
+        />
+        <Route
+          path="/business-annual-reports"
+          element={<BusinessAnnualReports />}
+        />
+        <Route
+          path="/newsletters-flyers-rack-cards"
+          element={<NewslettersFlyersRackCards />}
+        />
+        <Route
+          path="/post-cards-direct-mailers"
+          element={<PostCardsDirectMailers />}
+        />
+        <Route
+          path="/presentation-training-materials"
+          element={<PresentationTrainingMaterials />}
+        />
         {/* Bottom */}
         <Route path="/accessibility" element={<Accessibility />} />
         <Route path="/blog" element={<Blog />} />

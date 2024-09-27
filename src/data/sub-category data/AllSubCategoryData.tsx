@@ -85,3 +85,39 @@ export const fetchLabelsPackagingData =
       "LabelsPackaging"
     );
   };
+
+export const fetchBusinessAnnualReportsData =
+  async (): Promise<CommonDocumentWAS | null> => {
+    return GeneralizedFetch<CommonDocumentWAS>(
+      "printingCopying",
+      "BusinessAnnualReports"
+    );
+  };
+export const fetchBusinessCardsStationeryData =
+  async (): Promise<CommonDocumentWAS | null> => {
+    return GeneralizedFetch<CommonDocumentWAS>(
+      "printingCopying",
+      "BusinessCardsStationery"
+    );
+  };
+export const fetchNewslettersFlyersRackCardsData =
+  async (): Promise<CommonDocumentWAS | null> => {
+    return GeneralizedFetch<CommonDocumentWAS>(
+      "printingCopying",
+      "NewslettersFlyersRackCards"
+    );
+  };
+export const fetchPostCardsDirectMailersData =
+  async (): Promise<CommonDocumentWAS | null> => {
+    return GeneralizedFetch<CommonDocumentWAS>(
+      "printingCopying",
+      "PostCardsDirectMailers"
+    );
+  };
+export const fetchPresentationTrainingMaterialsData =
+  async (): Promise<CommonDocumentWAS | null> => {
+    return GeneralizedFetch<CommonDocumentWAS>(
+      "printingCopying",
+      "PresentationTrainingMaterials"
+    );
+  };
