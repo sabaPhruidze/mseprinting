@@ -1,4 +1,4 @@
-import { useContext, useMemo, useState, useCallback } from "react";
+import { useContext, useMemo, useState, useCallback, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   RowContainer,
@@ -12,6 +12,8 @@ import {
 import {
   GlobalContainerColumn,
   GlobalBoxColumnStart,
+  GlobalRepresentativesContainer,
+  GlobalRepresentativeCard,
 } from "../style/GlobalStyle";
 import { useForm } from "react-hook-form";
 import {
@@ -30,6 +32,8 @@ type FormData = RQUseFormFirstPart & RQUseFormSecondPart & RQUseFormThirdPart;
 export default function SendFile() {
   const context = useContext(rootContext);
   const [uploadedFiles, setUploadedFiles] = useState<string[]>([]);
+  const [selectedRepresentative, setSelectedRepresentative] =
+    useState("No preference"); // Default selected representative
 
   if (!context) {
     throw new Error("rootContext must be used within a Root provider");
@@ -69,8 +73,12 @@ export default function SendFile() {
 
   const onSubmitSF = useCallback(
     (data: FormData) => {
-      if (rqSubmit && uploadedFiles.length > 0) {
-        const dataWithFiles = { ...data, uploadedFiles };
+      if (rqSubmit && uploadedFiles.length > 0 && selectedRepresentative) {
+        const dataWithFiles = {
+          ...data,
+          uploadedFiles,
+          representative: selectedRepresentative,
+        }; // Include representative
         sendEmailSecond(dataWithFiles)
           .then(() => {
             dispatching("REQUEST_QUOTE_SUCCESS_SEND", true);
@@ -82,11 +90,25 @@ export default function SendFile() {
           });
       }
     },
-    [rqSubmit, uploadedFiles, dispatching, navigate]
+    [rqSubmit, uploadedFiles, selectedRepresentative, dispatching, navigate]
   );
 
   const handleFilesUpload = useCallback((files: string[]) => {
     setUploadedFiles(files);
+  }, []);
+
+  const representatives = [
+    { id: "rep1", name: "Doug Snider" },
+    { id: "rep2", name: "Trish Benson" },
+    { id: "rep3", name: "John Goodrich" },
+    { id: "rep4", name: "Ethan Ellison" },
+    { id: "rep5", name: "Merabi Pruidze" },
+    { id: "rep6", name: "No preference" },
+  ];
+
+  // Automatically set "No preference" as the default checked radio button
+  useEffect(() => {
+    setSelectedRepresentative("No preference");
   }, []);
 
   return (
@@ -110,6 +132,7 @@ export default function SendFile() {
             />
           </RQContainerColumn>
         </RowContainer>
+
         <GlobalBoxColumnStart>
           <RQPartBox>
             STEP 2 OF 2 <RQSpecialPart>PERSONAL INFORMATION</RQSpecialPart>
@@ -133,7 +156,26 @@ export default function SendFile() {
             />
           </RQContainerColumn>
         </RowContainer>
-
+        {/* Representative Selection */}
+        <GlobalBoxColumnStart>
+          <RQh3Title>Select a Representative</RQh3Title>
+          <GlobalRepresentativesContainer>
+            {representatives.map((rep) => (
+              <GlobalRepresentativeCard key={rep.id}>
+                <input
+                  type="radio"
+                  id={rep.id}
+                  name="representative"
+                  value={rep.name}
+                  onChange={() => setSelectedRepresentative(rep.name)}
+                  checked={selectedRepresentative === rep.name}
+                  required
+                />
+                <label htmlFor={rep.id}>{rep.name}</label>
+              </GlobalRepresentativeCard>
+            ))}
+          </GlobalRepresentativesContainer>
+        </GlobalBoxColumnStart>
         <RQButton type="submit">Submit</RQButton>
       </RQForm>
     </GlobalContainerColumn>

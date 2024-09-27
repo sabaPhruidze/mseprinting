@@ -145,7 +145,7 @@ export default function Header() {
           Request a Quote
         </HeaderRSButton>
         <HeaderRSButton onClick={handleNavigationSend}>
-          Send a File
+          Place an Order
         </HeaderRSButton>
       </HeaderRSBox>
     </HeaderContainer>
