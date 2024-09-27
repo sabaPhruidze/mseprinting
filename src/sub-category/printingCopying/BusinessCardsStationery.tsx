@@ -3,11 +3,11 @@ import { useNavigate } from "react-router-dom";
 import {
   GlobalContainerColumn,
   GlobalPart,
-  GlobalTextContainer, // Import the styled component for text wrapping
-  FullBackgroundContainerZERO, // Updated styled component for the full background
-  TitleAndButtonContainer, // Styled component for title and button wrapping
-  FullScreenTitle, // Styled component for the main title in the background
-  FullScreenButton, // Styled component for the "Request a Quote" button
+  GlobalTextContainer,
+  FullBackgroundContainerZERO,
+  TitleAndButtonContainer,
+  FullScreenTitle,
+  FullScreenButton,
   GlobalMainContent,
 } from "../../style/GlobalStyle";
 import { fetchBusinessCardsStationeryData } from "../../data/sub-category data/AllSubCategoryData"; // Use the correct data fetching function
