@@ -25,6 +25,7 @@ import BOOK_PRINTING from "../../assets/img/printingCopyingPages/BOOK_PRINTING.w
 import CARDS_INVITATIONS from "../../assets/img/printingCopyingPages/CARDS_INVITATIONS.webp";
 import LABELS_STICKERS_DECALS from "../../assets/img/printingCopyingPages/LABELS_STICKERS_DECALS.webp";
 import LEGAL_COPYING from "../../assets/img/printingCopyingPages/LEGAL_COPYING.webp";
+import POSTER_PRINTING from "../../assets/img/printingCopyingPages/POSTER_PRINTING.webp";
 
 import LABELS_PACKAGING_PAGE from "../../assets/img/cards/LABELS_PACKAGING_PAGE.jpg";
 // Image constants
@@ -272,5 +273,15 @@ export const LEGAL_COPYING_IMAGE = {
     latitude: "59.3293",
     longitude: "18.0686",
     location: "Stockholm",
+  },
+};
+export const POSTER_PRINTING_IMAGE = {
+  src: POSTER_PRINTING, // You would need to replace this with the actual path to the image.
+  alt: "Poster Printing",
+  title: "High-Quality Poster Printing",
+  geoData: {
+    latitude: "51.5074",
+    longitude: "-0.1278",
+    location: "London",
   },
 };
