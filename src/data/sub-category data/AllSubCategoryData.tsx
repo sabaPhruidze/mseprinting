@@ -121,3 +121,40 @@ export const fetchPresentationTrainingMaterialsData =
       "PresentationTrainingMaterials"
     );
   };
+// Missing CardsPages collection fetch functions
+
+export const fetchApparelUniformsData =
+  async (): Promise<CommonDocumentWAS | null> => {
+    return GeneralizedFetch<CommonDocumentWAS>("CardsPages", "ApparelUniforms");
+  };
+
+export const fetchBookPrintingData =
+  async (): Promise<CommonDocumentWAS | null> => {
+    return GeneralizedFetch<CommonDocumentWAS>("CardsPages", "BookPrinting");
+  };
+
+export const fetchCardsAndInvitationsData =
+  async (): Promise<CommonDocumentWAS | null> => {
+    return GeneralizedFetch<CommonDocumentWAS>(
+      "CardsPages",
+      "CardsAndInvitations"
+    );
+  };
+
+export const fetchLabelsStickersDecalsData =
+  async (): Promise<CommonDocumentWAS | null> => {
+    return GeneralizedFetch<CommonDocumentWAS>(
+      "CardsPages",
+      "LabelsStickersDecals"
+    );
+  };
+
+export const fetchLegalCopyingData =
+  async (): Promise<CommonDocumentWAS | null> => {
+    return GeneralizedFetch<CommonDocumentWAS>("CardsPages", "LegalCopying");
+  };
+
+export const fetchPosterPrintingData =
+  async (): Promise<CommonDocumentWAS | null> => {
+    return GeneralizedFetch<CommonDocumentWAS>("CardsPages", "PosterPrinting");
+  };

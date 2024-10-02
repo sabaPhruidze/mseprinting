@@ -20,6 +20,12 @@ import NEWSLETTERS_FLYERS_RACK_CARDS from "../../assets/img/printingCopyingPages
 import POSTCARDS_DIRECT_MAILERS from "../../assets/img/printingCopyingPages/POST_CARDS_DIRECT_MAILERS.webp";
 import PRESENTATION_TRAINING_MATERIALS from "../../assets/img/printingCopyingPages/PRESENTATION_TRAINING_MATERIALS.webp";
 
+import APPAREL_UNIFORMS from "../../assets/img/printingCopyingPages/APPAREL_UNIFORMS.webp";
+import BOOK_PRINTING from "../../assets/img/printingCopyingPages/BOOK_PRINTING.webp";
+import CARDS_INVITATIONS from "../../assets/img/printingCopyingPages/CARDS_INVITATIONS.webp";
+import LABELS_STICKERS_DECALS from "../../assets/img/printingCopyingPages/LABELS_STICKERS_DECALS.webp";
+import LEGAL_COPYING from "../../assets/img/printingCopyingPages/LEGAL_COPYING.webp";
+
 import LABELS_PACKAGING_PAGE from "../../assets/img/cards/LABELS_PACKAGING_PAGE.jpg";
 // Image constants
 export const DIGITAL_PRINTING_IMAGE = {
@@ -212,5 +218,59 @@ export const PRESENTATION_TRAINING_MATERIALS_IMAGE = {
     latitude: "40.730610",
     longitude: "-73.935242",
     location: "New sloboda York",
+  },
+};
+export const APPAREL_UNIFORMS_IMAGE = {
+  src: APPAREL_UNIFORMS, // You would need to replace this with the actual path to the image.
+  alt: "Apparel and Uniforms",
+  title: "High-Quality Apparel and Uniforms",
+  geoData: {
+    latitude: "12.9716",
+    longitude: "77.5946",
+    location: "Bangalore",
+  },
+};
+
+export const BOOK_PRINTING_IMAGE = {
+  src: BOOK_PRINTING, // You would need to replace this with the actual path to the image.
+  alt: "Book Printing",
+  title: "Professional Book Printing Services",
+  geoData: {
+    latitude: "-33.8688",
+    longitude: "151.2093",
+    location: "Sydney",
+  },
+};
+
+export const CARDS_INVITATIONS_IMAGE = {
+  src: CARDS_INVITATIONS, // You would need to replace this with the actual path to the image.
+  alt: "Cards and Invitations",
+  title: "Custom Cards and Invitations",
+  geoData: {
+    latitude: "35.6762",
+    longitude: "139.6503",
+    location: "Tokyo",
+  },
+};
+
+export const LABELS_STICKERS_DECALS_IMAGE = {
+  src: LABELS_STICKERS_DECALS, // You would need to replace this with the actual path to the image.
+  alt: "Labels, Stickers, and Decals",
+  title: "Custom Labels, Stickers & Decals",
+  geoData: {
+    latitude: "-34.6037",
+    longitude: "-58.3816",
+    location: "Buenos Aires",
+  },
+};
+
+export const LEGAL_COPYING_IMAGE = {
+  src: LEGAL_COPYING, // You would need to replace this with the actual path to the image.
+  alt: "Legal Copying",
+  title: "Efficient Legal Copying Services",
+  geoData: {
+    latitude: "59.3293",
+    longitude: "18.0686",
+    location: "Stockholm",
   },
 };
