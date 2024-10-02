@@ -43,6 +43,12 @@ import BusinessAnnualReports from "./sub-category/printingCopying/BusinessAnnual
 import NewslettersFlyersRackCards from "./sub-category/printingCopying/NewslettersFlyersRackCards";
 import PostCardsDirectMailers from "./sub-category/printingCopying/PostCardsDirectMailers";
 import PresentationTrainingMaterials from "./sub-category/printingCopying/PresentationTrainingMaterials";
+import CardsInvitations from "./sub-category/printingCopying/CardsInvitations";
+import LabelsStickersDecals from "./sub-category/printingCopying/LabelsStickersDecals";
+import BookPrinting from "./sub-category/printingCopying/BookPrinting";
+import PosterPrinting from "./sub-category/printingCopying/PosterPrinting";
+import LegalPrinting from "./sub-category/printingCopying/LegalPrinting";
+import ApparelUniforms from "./sub-category/printingCopying/ApparelUniforms";
 
 function App() {
   const router = createBrowserRouter(
@@ -102,6 +108,16 @@ function App() {
           path="/presentation-training-materials"
           element={<PresentationTrainingMaterials />}
         />
+
+        <Route path="/cards-invitations" element={<CardsInvitations />} />
+        <Route
+          path="/labels-stickers-decals"
+          element={<LabelsStickersDecals />}
+        />
+        <Route path="/book-printing" element={<BookPrinting />} />
+        <Route path="/poster-printing" element={<PosterPrinting />} />
+        <Route path="/legal-printing" element={<LegalPrinting />} />
+        <Route path="/apparel-uniforms" element={<ApparelUniforms />} />
         {/* Bottom */}
         <Route path="/accessibility" element={<Accessibility />} />
         <Route path="/blog" element={<Blog />} />
