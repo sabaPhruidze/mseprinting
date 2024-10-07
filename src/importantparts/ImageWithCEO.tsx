@@ -34,7 +34,6 @@ const ImageWithSEO: React.FC<ImageWithSEOProps> = ({
 
   useEffect(() => {
     if (geoData) {
-      console.log(`Geo-tagging: ${geoData.latitude}, ${geoData.longitude}`);
     }
 
     const structuredData = {
