@@ -16,6 +16,8 @@ interface Props {
   lastname: string | null;
 }
 
+const MAX_CHUNK_SIZE = 128 * 1024 * 1024; // 128MB chunk size for large file splitting
+
 const SendFileDetailsRight: React.FC<Props> = ({
   setUploadedFiles,
   firstname,
@@ -25,6 +27,7 @@ const SendFileDetailsRight: React.FC<Props> = ({
   const [uploading, setUploading] = useState(false);
   const [uploadingText, setUploadingText] = useState("Uploading");
   const [progress, setProgress] = useState<number>(0); // State for tracking upload progress
+  const [uploadCount, setUploadCount] = useState({ uploading: 0, uploaded: 0 });
   const context = useContext(rootContext);
 
   if (!context) {
@@ -49,64 +52,108 @@ const SendFileDetailsRight: React.FC<Props> = ({
     }
   }, [uploading]);
 
+  const uploadChunkToGoDaddy = useCallback(
+    async (chunk: File, folderName: string) => {
+      return new Promise<string>((resolve, reject) => {
+        const formData = new FormData();
+        formData.append("file", chunk);
+        formData.append("folder", folderName); // Send folder name to server
+
+        const xhr = new XMLHttpRequest();
+        xhr.open(
+          "POST",
+          "https://mseprinting.com/SendFile/upload_sendfile.php"
+        );
+
+        xhr.upload.onprogress = (event) => {
+          if (event.lengthComputable) {
+            const percentComplete = Math.round(
+              (event.loaded * 100) / event.total
+            );
+            setProgress(percentComplete);
+          }
+        };
+
+        xhr.onload = () => {
+          if (xhr.status === 200) {
+            const response = JSON.parse(xhr.responseText);
+            resolve(response.fileUrl);
+          } else {
+            reject(new Error("File upload failed: " + xhr.responseText));
+          }
+        };
+
+        xhr.onerror = () => {
+          reject(new Error("Error during file upload: " + xhr.responseText));
+        };
+
+        xhr.send(formData);
+      });
+    },
+    []
+  );
+
   const handleUpload = useCallback(
     async (acceptedFiles: File[]) => {
       if (acceptedFiles.length === 0) return;
 
       setUploading(true);
       setProgress(0); // Reset progress
+      setUploadCount({ uploading: acceptedFiles.length, uploaded: 0 });
 
-      const zip = new JSZip();
-      acceptedFiles.forEach((file) => {
-        zip.file(file.name, file);
-      });
+      try {
+        const customerFolderName = `customer_${firstname}_${lastname}_${Date.now()}`;
 
-      const zipBlob = await zip.generateAsync({ type: "blob" });
-      const timestamp = new Date().toISOString().replace(/[-:.]/g, "");
-      const zipFileName = `${firstname}_${lastname}_${timestamp}.zip`;
-      const zipFile = new File([zipBlob], zipFileName, {
-        type: "application/zip",
-      });
+        for (let file of acceptedFiles) {
+          const folderName = `${customerFolderName}/upload_${
+            file.name
+          }_${Date.now()}`; // Create a unique folder name for each file inside the customer folder
 
-      const formData = new FormData();
-      formData.append("file", zipFile);
-
-      const xhr = new XMLHttpRequest();
-      xhr.open("POST", "https://mseprinting.com/SendFile/upload_sendfile.php");
-
-      // Track upload progress
-      xhr.upload.onprogress = (event) => {
-        if (event.lengthComputable) {
-          const percentComplete = Math.round(
-            (event.loaded * 100) / event.total
-          );
-          setProgress(percentComplete);
+          if (file.size > MAX_CHUNK_SIZE) {
+            const fileChunks = splitFileIntoChunks(file);
+            for (let chunk of fileChunks) {
+              await uploadChunkToGoDaddy(chunk, folderName);
+            }
+          } else {
+            await uploadChunkToGoDaddy(file, folderName);
+          }
+          setUploadCount((prev) => ({
+            uploading: prev.uploading - 1,
+            uploaded: prev.uploaded + 1,
+          }));
         }
-      };
-
-      xhr.onload = () => {
-        if (xhr.status === 200) {
-          const response = JSON.parse(xhr.responseText);
-          setUploadedFiles([response.fileUrl]);
-          dispatching("REQUEST_QUOTE_CHANGE", true);
-          setUploadingText("Uploaded");
-        } else {
-          console.error("File upload failed:", xhr.responseText);
-        }
+        setUploadedFiles(acceptedFiles.map((file) => file.name));
+        dispatching("REQUEST_QUOTE_CHANGE", true);
+        setUploadingText("Uploaded");
+      } catch (error) {
+        console.error("Error during file upload:", error);
+      } finally {
         setUploading(false);
         setUploadingText("Uploading");
-      };
-
-      xhr.onerror = () => {
-        console.error("Error during file upload:", xhr.responseText);
-        setUploading(false);
-        setUploadingText("Uploading");
-      };
-
-      xhr.send(formData);
+      }
     },
-    [firstname, lastname, setUploadedFiles, dispatching]
+    [firstname, lastname, setUploadedFiles, uploadChunkToGoDaddy, dispatching]
   );
+
+  const splitFileIntoChunks = (file: File): File[] => {
+    const chunks: File[] = [];
+    let currentChunk = 0;
+
+    while (currentChunk * MAX_CHUNK_SIZE < file.size) {
+      const chunk = file.slice(
+        currentChunk * MAX_CHUNK_SIZE,
+        (currentChunk + 1) * MAX_CHUNK_SIZE
+      );
+      chunks.push(
+        new File([chunk], `${file.name}.part_${currentChunk + 1}`, {
+          type: file.type,
+        })
+      );
+      currentChunk++;
+    }
+
+    return chunks;
+  };
 
   const onDrop = useCallback(
     (acceptedFiles: File[]) => {
@@ -148,6 +195,7 @@ const SendFileDetailsRight: React.FC<Props> = ({
               percent={progress}
               status={uploading ? "active" : "normal"}
             />
+            <p>{`Uploading: ${uploadCount.uploading} files, Uploaded: ${uploadCount.uploaded} files`}</p>
           </div>
         )}
         {files.length > 0 && (
