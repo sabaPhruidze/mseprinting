@@ -1,6 +1,5 @@
 import { useState, useCallback, useContext, memo, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
-import JSZip from "jszip";
 import { rootContext } from "../Root";
 import {
   RQh3Title,
