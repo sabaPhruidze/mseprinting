@@ -1,5 +1,7 @@
 import { useState, useCallback, useContext, memo, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { storage } from "../config/Firebase";
 import { rootContext } from "../Root";
 import {
   RQh3Title,
@@ -8,14 +10,13 @@ import {
   RQWarningText,
 } from "../style/RequestQuoteStyle";
 import { Progress } from "antd"; // Import Ant Design Progress component
+import JSZip from "jszip";
 
 interface Props {
   setUploadedFiles: (files: string[]) => void;
   firstname: string | null;
   lastname: string | null;
 }
-
-const MAX_CHUNK_SIZE = 128 * 1024 * 1024; // 128MB chunk size for large file splitting
 
 const SendFileDetailsRight: React.FC<Props> = ({
   setUploadedFiles,
@@ -51,46 +52,31 @@ const SendFileDetailsRight: React.FC<Props> = ({
     }
   }, [uploading]);
 
-  const uploadChunkToGoDaddy = useCallback(
-    async (chunk: File, folderName: string) => {
-      return new Promise<string>((resolve, reject) => {
-        const formData = new FormData();
-        formData.append("file", chunk);
-        formData.append("folder", folderName); // Send folder name to server
+  const uploadToFirebase = useCallback(async (file: File) => {
+    return new Promise<string>((resolve, reject) => {
+      const storageRef = ref(storage, `OrderedFiles/${file.name}`);
+      const uploadTask = uploadBytesResumable(storageRef, file);
 
-        const xhr = new XMLHttpRequest();
-        xhr.open(
-          "POST",
-          "https://mseprinting.com/SendFile/upload_sendfile.php"
-        );
-
-        xhr.upload.onprogress = (event) => {
-          if (event.lengthComputable) {
-            const percentComplete = Math.round(
-              (event.loaded * 100) / event.total
-            );
-            setProgress(percentComplete);
-          }
-        };
-
-        xhr.onload = () => {
-          if (xhr.status === 200) {
-            const response = JSON.parse(xhr.responseText);
-            resolve(response.fileUrl);
-          } else {
-            reject(new Error("File upload failed: " + xhr.responseText));
-          }
-        };
-
-        xhr.onerror = () => {
-          reject(new Error("Error during file upload: " + xhr.responseText));
-        };
-
-        xhr.send(formData);
-      });
-    },
-    []
-  );
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const progressPercentage = Math.round(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          );
+          setProgress(progressPercentage);
+        },
+        (error) => {
+          console.error("Error uploading file:", error);
+          reject(error);
+        },
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            resolve(downloadURL);
+          });
+        }
+      );
+    });
+  }, []);
 
   const handleUpload = useCallback(
     async (acceptedFiles: File[]) => {
@@ -100,28 +86,25 @@ const SendFileDetailsRight: React.FC<Props> = ({
       setProgress(0); // Reset progress
       setUploadCount({ uploading: acceptedFiles.length, uploaded: 0 });
 
+      const zip = new JSZip();
+
+      for (let file of acceptedFiles) {
+        zip.file(file.name, file);
+      }
+
+      const zipBlob = await zip.generateAsync({ type: "blob" });
+      const timestamp = new Date().toISOString().replace(/[-:.]/g, "");
+      const zipFileName =
+        firstname && lastname
+          ? `${firstname}_${lastname}.zip`
+          : `OrderedFiles_${timestamp}.zip`;
+      const zipFile = new File([zipBlob], zipFileName, {
+        type: "application/zip",
+      });
+
       try {
-        const customerFolderName = `customer_${firstname}_${lastname}_${Date.now()}`;
-
-        for (let file of acceptedFiles) {
-          const folderName = `${customerFolderName}/upload_${
-            file.name
-          }_${Date.now()}`; // Create a unique folder name for each file inside the customer folder
-
-          if (file.size > MAX_CHUNK_SIZE) {
-            const fileChunks = splitFileIntoChunks(file);
-            for (let chunk of fileChunks) {
-              await uploadChunkToGoDaddy(chunk, folderName);
-            }
-          } else {
-            await uploadChunkToGoDaddy(file, folderName);
-          }
-          setUploadCount((prev) => ({
-            uploading: prev.uploading - 1,
-            uploaded: prev.uploaded + 1,
-          }));
-        }
-        setUploadedFiles(acceptedFiles.map((file) => file.name));
+        const downloadURL = await uploadToFirebase(zipFile);
+        setUploadedFiles([downloadURL]);
         dispatching("REQUEST_QUOTE_CHANGE", true);
         setUploadingText("Uploaded");
       } catch (error) {
@@ -131,28 +114,8 @@ const SendFileDetailsRight: React.FC<Props> = ({
         setUploadingText("Uploading");
       }
     },
-    [firstname, lastname, setUploadedFiles, uploadChunkToGoDaddy, dispatching]
+    [firstname, lastname, setUploadedFiles, uploadToFirebase, dispatching]
   );
-
-  const splitFileIntoChunks = (file: File): File[] => {
-    const chunks: File[] = [];
-    let currentChunk = 0;
-
-    while (currentChunk * MAX_CHUNK_SIZE < file.size) {
-      const chunk = file.slice(
-        currentChunk * MAX_CHUNK_SIZE,
-        (currentChunk + 1) * MAX_CHUNK_SIZE
-      );
-      chunks.push(
-        new File([chunk], `${file.name}.part_${currentChunk + 1}`, {
-          type: file.type,
-        })
-      );
-      currentChunk++;
-    }
-
-    return chunks;
-  };
 
   const onDrop = useCallback(
     (acceptedFiles: File[]) => {
