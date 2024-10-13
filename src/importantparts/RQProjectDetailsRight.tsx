@@ -1,5 +1,8 @@
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { storage } from "../config/Firebase";
 import { useState, useCallback, useContext, memo, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
+import JSZip from "jszip";
 import { rootContext } from "../Root";
 import {
   RQh3Title,
@@ -15,14 +18,15 @@ interface Props {
   lastname: string | null;
 }
 
-const MAX_CHUNK_SIZE = 128 * 1024 * 1024; // 128MB chunk size for large file splitting
-
-const RQProjectDetailsRight: React.FC<Props> = ({ setUploadedFiles }) => {
+const RQProjectDetailsRightCopy: React.FC<Props> = ({
+  setUploadedFiles,
+  firstname,
+  lastname,
+}) => {
   const [files, setFiles] = useState<File[]>([]);
   const [uploading, setUploading] = useState(false);
   const [uploadingText, setUploadingText] = useState("Uploading");
   const [progress, setProgress] = useState<number>(0); // State for tracking upload progress
-  const [uploadCount, setUploadCount] = useState({ uploading: 0, uploaded: 0 });
   const context = useContext(rootContext);
 
   if (!context) {
@@ -35,11 +39,7 @@ const RQProjectDetailsRight: React.FC<Props> = ({ setUploadedFiles }) => {
     if (uploading) {
       const interval = setInterval(() => {
         setUploadingText((prev) =>
-          prev === "Uploading..."
-            ? "Uploading."
-            : prev === "Uploading."
-            ? "Uploading.."
-            : "Uploading..."
+          prev === "Uploading..." ? "Uploading.." : "Uploading..."
         );
       }, 500);
 
@@ -47,44 +47,32 @@ const RQProjectDetailsRight: React.FC<Props> = ({ setUploadedFiles }) => {
     }
   }, [uploading]);
 
-  // Function to upload a file chunk to GoDaddy via PHP server
-  const uploadChunkToGoDaddy = useCallback(
-    async (chunk: File, folderName: string) => {
-      return new Promise<string>((resolve, reject) => {
-        const formData = new FormData();
-        formData.append("file", chunk);
-        formData.append("folder", folderName); // Send folder name to server
+  // Function to upload a file to Firebase Storage
+  const uploadToFirebase = useCallback(async (file: File) => {
+    return new Promise<string>((resolve, reject) => {
+      const storageRef = ref(storage, `RequestQuoteFiles/${file.name}`);
+      const uploadTask = uploadBytesResumable(storageRef, file);
 
-        const xhr = new XMLHttpRequest();
-        xhr.open("POST", "https://mseprinting.com/RequestQuote/upload.php");
-
-        xhr.upload.onprogress = (event) => {
-          if (event.lengthComputable) {
-            const percentComplete = Math.round(
-              (event.loaded * 100) / event.total
-            );
-            setProgress(percentComplete);
-          }
-        };
-
-        xhr.onload = () => {
-          if (xhr.status === 200) {
-            const response = JSON.parse(xhr.responseText);
-            resolve(response.fileUrl);
-          } else {
-            reject(new Error("File upload failed: " + xhr.responseText));
-          }
-        };
-
-        xhr.onerror = () => {
-          reject(new Error("Error during file upload: " + xhr.responseText));
-        };
-
-        xhr.send(formData);
-      });
-    },
-    []
-  );
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const progressPercentage = Math.round(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          );
+          setProgress(progressPercentage);
+        },
+        (error) => {
+          console.error("Error uploading file:", error);
+          reject(error);
+        },
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            resolve(downloadURL);
+          });
+        }
+      );
+    });
+  }, []);
 
   // Handle the upload process
   const handleUpload = useCallback(
@@ -93,28 +81,28 @@ const RQProjectDetailsRight: React.FC<Props> = ({ setUploadedFiles }) => {
 
       setUploading(true);
       setProgress(0); // Reset progress
-      setUploadCount({ uploading: acceptedFiles.length, uploaded: 0 });
+
+      const zip = new JSZip();
+
+      for (let file of acceptedFiles) {
+        zip.file(file.name, file);
+      }
+
+      const zipBlob = await zip.generateAsync({ type: "blob" });
+      const timestamp = new Date().toISOString().replace(/[-:.]/g, "");
+      const zipFileName =
+        firstname && lastname
+          ? `${firstname}_${lastname}.zip`
+          : `RequestQuote_${timestamp}.zip`;
+      const zipFile = new File([zipBlob], zipFileName, {
+        type: "application/zip",
+      });
 
       try {
-        for (let file of acceptedFiles) {
-          const folderName = `upload_${file.name}_${Date.now()}`; // Create a unique folder name for each file
-
-          if (file.size > MAX_CHUNK_SIZE) {
-            const fileChunks = splitFileIntoChunks(file);
-            for (let chunk of fileChunks) {
-              await uploadChunkToGoDaddy(chunk, folderName);
-            }
-          } else {
-            await uploadChunkToGoDaddy(file, folderName);
-          }
-          setUploadCount((prev) => ({
-            uploading: prev.uploading - 1,
-            uploaded: prev.uploaded + 1,
-          }));
-        }
-        setUploadedFiles(acceptedFiles.map((file) => file.name));
+        const downloadURL = await uploadToFirebase(zipFile);
+        setUploadedFiles([downloadURL]);
         dispatching("REQUEST_QUOTE_CHANGE", true);
-        console.log("All files uploaded successfully to GoDaddy");
+        console.log("File uploaded successfully to Firebase:", downloadURL);
       } catch (error) {
         console.error("Error during file upload:", error);
       } finally {
@@ -122,28 +110,8 @@ const RQProjectDetailsRight: React.FC<Props> = ({ setUploadedFiles }) => {
         setUploadingText("Uploading");
       }
     },
-    [setUploadedFiles, uploadChunkToGoDaddy, dispatching]
+    [firstname, lastname, setUploadedFiles, uploadToFirebase, dispatching]
   );
-
-  const splitFileIntoChunks = (file: File): File[] => {
-    const chunks: File[] = [];
-    let currentChunk = 0;
-
-    while (currentChunk * MAX_CHUNK_SIZE < file.size) {
-      const chunk = file.slice(
-        currentChunk * MAX_CHUNK_SIZE,
-        (currentChunk + 1) * MAX_CHUNK_SIZE
-      );
-      chunks.push(
-        new File([chunk], `${file.name}.part_${currentChunk + 1}`, {
-          type: file.type,
-        })
-      );
-      currentChunk++;
-    }
-
-    return chunks;
-  };
 
   const onDrop = useCallback(
     (acceptedFiles: File[]) => {
@@ -185,7 +153,6 @@ const RQProjectDetailsRight: React.FC<Props> = ({ setUploadedFiles }) => {
               percent={progress}
               status={uploading ? "active" : "normal"}
             />
-            <p>{`Uploading: ${uploadCount.uploading} files, Uploaded: ${uploadCount.uploaded} files`}</p>
           </div>
         )}
         {files.length > 0 && (
@@ -212,4 +179,4 @@ const RQProjectDetailsRight: React.FC<Props> = ({ setUploadedFiles }) => {
   );
 };
 
-export default memo(RQProjectDetailsRight);
+export default memo(RQProjectDetailsRightCopy);

@@ -108,11 +108,15 @@ export const GlobalImageWrapperWithFloat = styled.div`
 
 // represetative
 export const GlobalRepresentativesContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 10px;
   width: 100%;
   margin-top: 1rem;
+
+  @media (min-width: 1000px) {
+    grid-template-columns: repeat(6, 1fr);
+  }
 `;
 
 export const GlobalRepresentativeCard = styled.div`
@@ -122,9 +126,7 @@ export const GlobalRepresentativeCard = styled.div`
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   padding: 10px 20px;
-  width: calc(
-    16.6% - 10px
-  ); /* Adjusting width for 3 items per row with a 10px gap */
+  width: 100%;
 
   input {
     margin-right: 10px;
@@ -142,15 +144,16 @@ export const GlobalRepresentativeCard = styled.div`
 
 export const GlobalContainerRowWithWrap = styled.div`
   display: flex;
-  flex-wrap: wrap; // Allows text to wrap under the image if necessary
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
 `;
 
 export const GlobalImageWrapperWithFlex = styled.div`
-  flex: 0 0 40%; // Adjust this percentage to control the image width
-  max-width: 40%; // Ensure the image doesn't exceed the allocated space
-  padding-left: 20px; // Space between the image and text
+  flex: 0 0 40%;
+  max-width: 40%;
+  padding-left: 20px;
+
   img {
     width: 100%;
     height: auto;
@@ -159,8 +162,8 @@ export const GlobalImageWrapperWithFlex = styled.div`
 `;
 
 export const GlobalBoxColumnStart1 = styled.div`
-  flex: 1; // Takes the remaining width after the image
-  align-self: flex-start; // Aligns text to the top of the container
+  flex: 1;
+  align-self: flex-start;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
