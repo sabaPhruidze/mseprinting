@@ -71,6 +71,10 @@ const SendFileDetailsRight: React.FC<Props> = ({
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            setUploadCount((prev) => ({
+              ...prev,
+              uploaded: prev.uploaded + 1,
+            }));
             resolve(downloadURL);
           });
         }
@@ -125,6 +129,12 @@ const SendFileDetailsRight: React.FC<Props> = ({
     [handleUpload]
   );
 
+  const handleRemoveFile = useCallback((fileIndex: number) => {
+    setFiles((prevFiles) =>
+      prevFiles.filter((_, index) => index !== fileIndex)
+    );
+  }, []);
+
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
     multiple: true,
@@ -136,18 +146,21 @@ const SendFileDetailsRight: React.FC<Props> = ({
       <RQh3Title>
         File Upload (Do not use special characters in file names)
       </RQh3Title>
-      <RQFileUploadContainer {...getRootProps()}>
-        <input {...getInputProps()} />
+      <RQFileUploadContainer>
         <p style={{ marginBottom: "20px", fontSize: "18px" }}>
           Drag files to upload, or
         </p>
-        <RQFileUploadButton disabled={uploading}>
-          {files.length === 0
-            ? "Files"
-            : uploading
-            ? uploadingText
-            : "Uploaded"}
-        </RQFileUploadButton>
+        {/* Apply dropzone only to the button */}
+        <div {...getRootProps()} style={{ display: "inline-block" }}>
+          <input {...getInputProps()} />
+          <RQFileUploadButton disabled={uploading}>
+            {files.length === 0
+              ? "Files"
+              : uploading
+              ? uploadingText
+              : "Upload More"}
+          </RQFileUploadButton>
+        </div>
         <p style={{ marginTop: "20px", fontSize: "18px" }}>
           File size limit: 1GB per file
         </p>
@@ -165,7 +178,27 @@ const SendFileDetailsRight: React.FC<Props> = ({
             <h4>Uploaded Files:</h4>
             <ul>
               {files.map((file, index) => (
-                <li key={index}>{file.name}</li>
+                <li
+                  key={index}
+                  style={{ display: "flex", alignItems: "center" }}
+                >
+                  {file.name}
+                  <button
+                    onClick={() => handleRemoveFile(index)}
+                    disabled={uploading}
+                    style={{
+                      marginLeft: "10px",
+                      color: "red",
+                      border: "none",
+                      background: "none",
+                      cursor: "pointer",
+                      fontSize: "14px",
+                      fontWeight: "800",
+                    }}
+                  >
+                    X
+                  </button>
+                </li>
               ))}
             </ul>
           </div>
