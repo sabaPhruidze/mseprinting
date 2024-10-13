@@ -27,6 +27,7 @@ const RQProjectDetailsRightCopy: React.FC<Props> = ({
   const [uploading, setUploading] = useState(false);
   const [uploadingText, setUploadingText] = useState("Uploading");
   const [progress, setProgress] = useState<number>(0); // State for tracking upload progress
+  const [uploadCount, setUploadCount] = useState({ uploading: 0, uploaded: 0 }); // Track the number of files being uploaded
   const context = useContext(rootContext);
 
   if (!context) {
@@ -67,6 +68,10 @@ const RQProjectDetailsRightCopy: React.FC<Props> = ({
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            setUploadCount((prev) => ({
+              ...prev,
+              uploaded: prev.uploaded + 1,
+            }));
             resolve(downloadURL);
           });
         }
@@ -81,6 +86,7 @@ const RQProjectDetailsRightCopy: React.FC<Props> = ({
 
       setUploading(true);
       setProgress(0); // Reset progress
+      setUploadCount({ uploading: acceptedFiles.length, uploaded: 0 });
 
       const zip = new JSZip();
 
@@ -102,7 +108,7 @@ const RQProjectDetailsRightCopy: React.FC<Props> = ({
         const downloadURL = await uploadToFirebase(zipFile);
         setUploadedFiles([downloadURL]);
         dispatching("REQUEST_QUOTE_CHANGE", true);
-        console.log("File uploaded successfully to Firebase:", downloadURL);
+        setUploadingText("Uploaded");
       } catch (error) {
         console.error("Error during file upload:", error);
       } finally {
@@ -121,6 +127,12 @@ const RQProjectDetailsRightCopy: React.FC<Props> = ({
     [handleUpload]
   );
 
+  const handleRemoveFile = useCallback((fileIndex: number) => {
+    setFiles((prevFiles) =>
+      prevFiles.filter((_, index) => index !== fileIndex)
+    );
+  }, []);
+
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
     multiple: true,
@@ -132,18 +144,21 @@ const RQProjectDetailsRightCopy: React.FC<Props> = ({
       <RQh3Title>
         File Upload (Do not use special characters in file names)
       </RQh3Title>
-      <RQFileUploadContainer {...getRootProps()}>
-        <input {...getInputProps()} />
+      <RQFileUploadContainer>
         <p style={{ marginBottom: "20px", fontSize: "18px" }}>
           Drag files to upload, or
         </p>
-        <RQFileUploadButton disabled={uploading}>
-          {files.length === 0
-            ? "Files"
-            : uploading
-            ? uploadingText
-            : "Uploaded"}
-        </RQFileUploadButton>
+        {/* Apply dropzone only to the button */}
+        <div {...getRootProps()} style={{ display: "inline-block" }}>
+          <input {...getInputProps()} />
+          <RQFileUploadButton disabled={uploading}>
+            {files.length === 0
+              ? "Files"
+              : uploading
+              ? uploadingText
+              : "Upload more"}
+          </RQFileUploadButton>
+        </div>
         <p style={{ marginTop: "20px", fontSize: "18px" }}>
           File size limit: 1GB per file
         </p>
@@ -153,6 +168,7 @@ const RQProjectDetailsRightCopy: React.FC<Props> = ({
               percent={progress}
               status={uploading ? "active" : "normal"}
             />
+            <p>{`Uploading: ${uploadCount.uploading} files, Uploaded: ${uploadCount.uploaded} files`}</p>
           </div>
         )}
         {files.length > 0 && (
@@ -160,7 +176,27 @@ const RQProjectDetailsRightCopy: React.FC<Props> = ({
             <h4>Uploaded Files:</h4>
             <ul>
               {files.map((file, index) => (
-                <li key={index}>{file.name}</li>
+                <li
+                  key={index}
+                  style={{ display: "flex", alignItems: "center" }}
+                >
+                  {file.name}
+                  <button
+                    onClick={() => handleRemoveFile(index)}
+                    disabled={uploading}
+                    style={{
+                      marginLeft: "10px",
+                      color: "red",
+                      border: "none",
+                      background: "none",
+                      cursor: "pointer",
+                      fontSize: "14px",
+                      fontWeight: "800",
+                    }}
+                  >
+                    X
+                  </button>
+                </li>
               ))}
             </ul>
           </div>
