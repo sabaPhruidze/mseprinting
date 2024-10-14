@@ -325,6 +325,10 @@ export interface CommonDocumentWAS {
   three?: string;
   front: FrontType;
 }
+export interface SubCategoryCommonTypes {
+  one: FrontType;
+  two: string[];
+}
 // business forms
 export interface BusinessFormsType {
   one: TitleWithContent;
