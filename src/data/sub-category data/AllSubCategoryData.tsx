@@ -7,6 +7,7 @@ import {
   BusinessFormsType,
   LabelsPackagingDocument,
   SearchResultDocument,
+  SubCategoryCommonTypes,
 } from "../../types/DataTypes";
 
 // special
@@ -157,4 +158,47 @@ export const fetchLegalCopyingData =
 export const fetchPosterPrintingData =
   async (): Promise<CommonDocumentWAS | null> => {
     return GeneralizedFetch<CommonDocumentWAS>("CardsPages", "PosterPrinting");
+  };
+
+export const fetchAdvancedMailingServicesData =
+  async (): Promise<SubCategoryCommonTypes | null> => {
+    return GeneralizedFetch<SubCategoryCommonTypes>(
+      "DirectMailMaillingServices",
+      "AdvancedMailingServices"
+    );
+  };
+export const fetchEveryDoorDirectMailData =
+  async (): Promise<SubCategoryCommonTypes | null> => {
+    return GeneralizedFetch<SubCategoryCommonTypes>(
+      "DirectMailMaillingServices",
+      "EveryDoorDirectMail"
+    );
+  };
+export const fetchKittingAndFulfillmentData =
+  async (): Promise<SubCategoryCommonTypes | null> => {
+    return GeneralizedFetch<SubCategoryCommonTypes>(
+      "DirectMailMaillingServices",
+      "KittingAndFulfillment"
+    );
+  };
+export const fetchStandartDirectMailData =
+  async (): Promise<SubCategoryCommonTypes | null> => {
+    return GeneralizedFetch<SubCategoryCommonTypes>(
+      "DirectMailMaillingServices",
+      "StandartDirectMail"
+    );
+  };
+export const fetchListManagementServicesData =
+  async (): Promise<SubCategoryCommonTypes | null> => {
+    return GeneralizedFetch<SubCategoryCommonTypes>(
+      "DirectMailMaillingServices",
+      "ListManagementServices"
+    );
+  };
+export const fetchTargetedDirectMailData =
+  async (): Promise<SubCategoryCommonTypes | null> => {
+    return GeneralizedFetch<SubCategoryCommonTypes>(
+      "DirectMailMaillingServices",
+      "TargetedDirectMail"
+    );
   };
