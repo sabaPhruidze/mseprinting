@@ -49,6 +49,12 @@ import BookPrinting from "./sub-category/printingCopying/BookPrinting";
 import PosterPrinting from "./sub-category/printingCopying/PosterPrinting";
 import LegalPrinting from "./sub-category/printingCopying/LegalPrinting";
 import ApparelUniforms from "./sub-category/printingCopying/ApparelUniforms";
+import AdvancedMailingServices from "./sub-category/directMailMailingServices/AdvancedMailingServices";
+import EveryDoorDirectMail from "./sub-category/directMailMailingServices/EveryDoorDirectMail";
+import KittingAndFulfillment from "./sub-category/directMailMailingServices/KittingAndFulfillment";
+import StandartDirectMail from "./sub-category/directMailMailingServices/StandartDirectMail";
+import TargetedDirectMail from "./sub-category/directMailMailingServices/TargetedDirectMail";
+import ListManagementServices from "./sub-category/directMailMailingServices/ListManagementServices";
 
 function App() {
   const router = createBrowserRouter(
@@ -118,6 +124,25 @@ function App() {
         <Route path="/poster-printing" element={<PosterPrinting />} />
         <Route path="/legal-printing" element={<LegalPrinting />} />
         <Route path="/apparel-uniforms" element={<ApparelUniforms />} />
+        {/* DirectMailMailingServices */}
+        <Route
+          path="/advanced-mailing-services"
+          element={<AdvancedMailingServices />}
+        />
+        <Route
+          path="/every-door-direct-mail"
+          element={<EveryDoorDirectMail />}
+        />
+        <Route
+          path="/kitting-and-fulfillment"
+          element={<KittingAndFulfillment />}
+        />
+        <Route path="/standard-direct-mail" element={<StandartDirectMail />} />
+        <Route path="/targeted-direct-mail" element={<TargetedDirectMail />} />
+        <Route
+          path="/list-management-services"
+          element={<ListManagementServices />}
+        />
         {/* Bottom */}
         <Route path="/accessibility" element={<Accessibility />} />
         <Route path="/blog" element={<Blog />} />
