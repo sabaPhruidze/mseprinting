@@ -51,7 +51,7 @@ function Register() {
     };
 
     fetchData();
-  }, []); // Only run once when the component mounts
+  }, []);
 
   const defaultValues = useMemo(() => {
     return state.user
@@ -67,7 +67,7 @@ function Register() {
           passwordVerification: "",
         }
       : {};
-  }, [state.user]); // Include dependencies to prevent unnecessary recalculations
+  }, [state.user]);
 
   const {
     register,
@@ -124,13 +124,13 @@ function Register() {
 
           navigate("/");
         } catch (error) {
-          console.error("Error registering user:", error);
+          setVerificationError("Error registering user");
         }
       } else {
         setVerificationError("Email or password verification does not match");
       }
     },
-    [dispatching, navigate] // Include dependencies to prevent unnecessary re-renders
+    [dispatching, navigate]
   );
 
   return (

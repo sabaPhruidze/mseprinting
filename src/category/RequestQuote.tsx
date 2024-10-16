@@ -25,7 +25,7 @@ import RequestQuoteInputs from "../data/RequestQuoteInputs";
 import RQProjectDetailsLeft from "../importantparts/RQProjectDetailsLeft";
 import RQProjectDetailsRight from "../importantparts/RQProjectDetailsRight";
 import { rootContext } from "../Root";
-import { sendEmail } from "../config/EmailService"; // Adjusted for your email sending function
+import { sendEmail } from "../config/EmailService";
 
 type FormData = RQUseFormFirstPart & RQUseFormSecondPart & RQUseFormThirdPart;
 
@@ -33,11 +33,12 @@ export default function RequestQuote() {
   const context = useContext(rootContext);
   const [uploadedFiles, setUploadedFiles] = useState<string[]>([]);
   const [selectedRepresentative, setSelectedRepresentative] =
-    useState("No preference"); // Default selected representative
+    useState("No preference");
 
   if (!context) {
     throw new Error("rootContext must be used within a Root provider");
   }
+
   const { state, dispatching } = context;
   const { rqSubmit } = state;
   const navigate = useNavigate();
@@ -78,15 +79,15 @@ export default function RequestQuote() {
           ...data,
           uploadedFiles,
           representative: selectedRepresentative,
-        }; // Include representative
+        };
         sendEmail(dataWithFiles)
           .then(() => {
             dispatching("REQUEST_QUOTE_SUCCESS_SEND", true);
             dispatching("REQUEST_QUOTE_CHANGE", false);
             navigate("/");
           })
-          .catch((error) => {
-            console.error("Error sending email:", error);
+          .catch(() => {
+            // Handle email sending error
           });
       }
     },
@@ -106,7 +107,6 @@ export default function RequestQuote() {
     { id: "rep6", name: "No preference" },
   ];
 
-  // Automatically set "No preference" as the default checked radio button
   useEffect(() => {
     setSelectedRepresentative("No preference");
   }, []);
@@ -157,7 +157,6 @@ export default function RequestQuote() {
           </RQContainerColumn>
         </RowContainer>
 
-        {/* Representative Selection */}
         <GlobalBoxColumnStart>
           <RQh3Title>Select a Representative</RQh3Title>
           <GlobalRepresentativesContainer>

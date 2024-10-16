@@ -33,11 +33,12 @@ export default function SendFile() {
   const context = useContext(rootContext);
   const [uploadedFiles, setUploadedFiles] = useState<string[]>([]);
   const [selectedRepresentative, setSelectedRepresentative] =
-    useState("No preference"); // Default selected representative
+    useState("No preference");
 
   if (!context) {
     throw new Error("rootContext must be used within a Root provider");
   }
+
   const { state, dispatching } = context;
   const { rqSubmit } = state;
   const navigate = useNavigate();
@@ -78,15 +79,15 @@ export default function SendFile() {
           ...data,
           uploadedFiles,
           representative: selectedRepresentative,
-        }; // Include representative
+        };
         sendEmailSecond(dataWithFiles)
           .then(() => {
             dispatching("REQUEST_QUOTE_SUCCESS_SEND", true);
             dispatching("REQUEST_QUOTE_CHANGE", false);
             navigate("/");
           })
-          .catch((error) => {
-            console.error("Error sending email:", error);
+          .catch(() => {
+            // Handle email sending error
           });
       }
     },
@@ -106,7 +107,6 @@ export default function SendFile() {
     { id: "rep6", name: "No preference" },
   ];
 
-  // Automatically set "No preference" as the default checked radio button
   useEffect(() => {
     setSelectedRepresentative("No preference");
   }, []);
@@ -156,7 +156,7 @@ export default function SendFile() {
             />
           </RQContainerColumn>
         </RowContainer>
-        {/* Representative Selection */}
+
         <GlobalBoxColumnStart>
           <RQh3Title>Select a Representative</RQh3Title>
           <GlobalRepresentativesContainer>
@@ -176,6 +176,7 @@ export default function SendFile() {
             ))}
           </GlobalRepresentativesContainer>
         </GlobalBoxColumnStart>
+
         <RQButton type="submit">Submit</RQButton>
       </RQForm>
     </GlobalContainerColumn>
