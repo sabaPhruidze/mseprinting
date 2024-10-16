@@ -18,7 +18,8 @@ export const ProductsServicesContainerStyle = styled(RowFlex)`
   }
   @media (max-width: 550px) {
     font-size: 12px; // Smaller font size for smaller screens
-    width: 400px;
+    width: 370px;
+    left: 0px;
   }
 `;
 
@@ -56,6 +57,12 @@ export const LeftSideText = styled.button`
       font-size: 12px;
     }
   }
+  @media (max-width: 390px) {
+    font-size: 10px;
+    &:hover {
+      font-size: 10px;
+    }
+  }
 `;
 
 // Right side
@@ -78,6 +85,9 @@ export const RightSideContainer = styled.div`
   }
   @media (max-width: 550px) {
     width: 220px;
+  }
+  @media (max-width: 390px) {
+    font-size: 10px;
   }
 `;
 
