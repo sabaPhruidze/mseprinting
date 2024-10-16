@@ -26,6 +26,7 @@ import CARDS_INVITATIONS from "../../assets/img/pages/printing_copying/CARDS_INV
 import LABELS_STICKERS_DECALS from "../../assets/img/pages/printing_copying/LABELS_STICKERS_DECALS.webp";
 import LEGAL_COPYING from "../../assets/img/pages/printing_copying/LEGAL_COPYING.webp";
 import POSTER_PRINTING from "../../assets/img/pages/printing_copying/POSTER_PRINTING.png";
+
 // Direct mail and Mailing services
 import ADVANCED_MAILING_SERVICES from "../../assets/img/pages/direct_mail_mailing_services/ADVANCED_MAILING_SERVICES.png";
 import EVERY_DOOR_DIRECT_MAIL from "../../assets/img/pages/direct_mail_mailing_services/EVERY_DOOR_DIRECT_MAIL.png";
