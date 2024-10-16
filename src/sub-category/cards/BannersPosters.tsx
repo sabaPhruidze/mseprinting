@@ -13,8 +13,7 @@ import {
 import { fetchBannersPostersData } from "../../data/sub-category data/AllSubCategoryData";
 import { CommonDocumentWAS } from "../../types/DataTypes";
 import ImageWithSEO from "../../importantparts/ImageWithCEO"; // Import ImageWithSEO for handling the image
-import { BANNERS_POSTERS_IMAGE } from "../../data/sub-category data/ImageWithCEOData"; // Import the BANNERS_POSTERS_IMAGE
-
+import { BANNERS_POSTERS_SIGNS_IMAGE } from "../../data/sub-category data/ImageWithCEOData";
 export default function BannersPosters() {
   const [bannersPostersData, setBannersPostersData] =
     useState<CommonDocumentWAS | null>(null);
@@ -38,10 +37,10 @@ export default function BannersPosters() {
       <FullBackgroundContainerZERO>
         <div className="black-overlay"></div> {/* Add this overlay div */}
         <ImageWithSEO
-          src={BANNERS_POSTERS_IMAGE.src} // Use BANNERS_POSTERS_IMAGE for the image source
-          alt={BANNERS_POSTERS_IMAGE.alt}
-          title={BANNERS_POSTERS_IMAGE.title}
-          geoData={BANNERS_POSTERS_IMAGE.geoData}
+          src={BANNERS_POSTERS_SIGNS_IMAGE.src} // Use BANNERS_POSTERS_IMAGE for the image source
+          alt={BANNERS_POSTERS_SIGNS_IMAGE.alt}
+          title={BANNERS_POSTERS_SIGNS_IMAGE.title}
+          geoData={BANNERS_POSTERS_SIGNS_IMAGE.geoData}
           loading="eager"
         />
         <TitleAndButtonContainer>
