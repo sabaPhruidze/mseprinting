@@ -1,7 +1,7 @@
 // Common Types
 export interface TitleWithContent {
   title?: string;
-  content?: string;
+  content?: string | any;
 }
 
 export interface PartWithSpecialContent {
@@ -68,12 +68,6 @@ export interface HSFDataEach {
 }
 
 // WWDCCard
-// export interface WWDCCardType {
-//   image: string;
-//   link: string;
-//   text: string;
-//   title: string;
-// }
 
 export interface WWDCSpecialitiesContentType {
   paragraph: string | null;
@@ -87,11 +81,6 @@ export interface AccessibilityContent {
   middlePart: TitleWithContent[];
 }
 
-export interface StartContent {
-  content: string;
-  title: string;
-}
-
 export interface HelpContent {
   firstPart: string;
   mail: string;
@@ -99,15 +88,10 @@ export interface HelpContent {
   title: string;
 }
 
-export interface EndContent {
-  content: any;
-  title: string;
-}
-
 export interface AccessibilityDocument {
-  start: StartContent[];
+  start: TitleWithContent[];
   help: HelpContent;
-  end: EndContent[];
+  end: TitleWithContent[];
   accessibility: AccessibilityContent;
 }
 

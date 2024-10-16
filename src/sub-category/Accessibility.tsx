@@ -1,11 +1,6 @@
 import { useState, useEffect } from "react";
 import { fetchAccessibilityData } from "../data/sub-category data/AccessibilityData";
-import {
-  AccessibilityDocument,
-  StartContent,
-  EndContent,
-  TitleWithContent,
-} from "../types/DataTypes";
+import { AccessibilityDocument, TitleWithContent } from "../types/DataTypes";
 import {
   GlobalContainerColumn,
   GlobalBoxColumnStart,
@@ -36,7 +31,7 @@ export default function Accessibility() {
   return (
     <GlobalContainerColumn>
       <GlobalMainTitle>{accessibilityData?.start[0].title}</GlobalMainTitle>
-      {accessibilityData?.start.map((data: StartContent) => (
+      {accessibilityData?.start.map((data: TitleWithContent) => (
         <GlobalBoxColumnStart key={data.title}>
           {data.title === "MSE Printing Accessibility Statement" ? (
             <GlobalPart>{data.content}</GlobalPart>
@@ -81,7 +76,7 @@ export default function Accessibility() {
           )
         )}
       </GlobalBoxColumnStart>
-      {accessibilityData?.end.map((data: EndContent) => (
+      {accessibilityData?.end.map((data: TitleWithContent) => (
         <GlobalBoxColumnStart key={data.title}>
           {data.content.firstPart?.length > 0 ? (
             <>

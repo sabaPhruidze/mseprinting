@@ -8,17 +8,19 @@ import CATALOGYS_BOOKLETS from "../assets/img/cards/CATALOGYS_BOOKLETS.jpg";
 import DIRECT_MAIL from "../assets/img/cards/DIRECT_MAIL.jpg";
 import LABELS_PACKAGING from "../assets/img/cards/LABELS_PACKAGING.jpg";
 
-export const fetchWWDCCardData = async (): Promise<CarouselType[]> =>
-  GeneralizedFetch<{ data: CarouselType[] }>("home", "WWDCCard").then(
+export const fetchWWDCCardData = async (): Promise<CarouselType[]> => {
+  return GeneralizedFetch<{ data: CarouselType[] }>("home", "WWDCCard").then(
     (data) => data?.data || []
   );
+};
 
 export const fetchWWDCSpecialitiesContentData =
-  async (): Promise<WWDCSpecialitiesContentType> =>
-    GeneralizedFetch<WWDCSpecialitiesContentType>(
+  async (): Promise<WWDCSpecialitiesContentType> => {
+    return GeneralizedFetch<WWDCSpecialitiesContentType>(
       "home",
       "WWDCCSpecialitiesContent"
     ).then((data) => data || { paragraph: null, title: null });
+  };
 
 export const CARDS_DATA = [
   {
