@@ -56,7 +56,7 @@ export default function CarouselComponent() {
               <CarouselContainer>
                 <ImageWithSEO
                   src={CAROUSEL_DATA[idx].src} // Correctly accessing the image source
-                  alt={data.alt} // Fetched from the API
+                  alt={data.alt ?? ""} // Fetched from the API
                   title={data.title} // Fetched from the API
                   loading={idx < 2 ? "eager" : "lazy"} // Eager loading for the first two images, lazy for others
                 />

@@ -9,22 +9,19 @@ import {
 
 import { useNavigate } from "react-router-dom";
 import { fetchHomeServicesBannerData } from "../data/HomeServicesData";
-import { HomeServicesType } from "../types/DataTypes";
+import { CarouselType } from "../types/DataTypes";
 
 export default function HomeServices() {
-  const [homeServicesData, setHomeServicesData] = useState<HomeServicesType>({
-    image: "",
-    link: "",
-    text: "",
-    title: "",
-  });
+  const [homeServicesData, setHomeServicesData] = useState<CarouselType | null>(
+    null
+  );
   const navigate = useNavigate();
 
   useEffect(() => {
     const getHomeServicesData = async () => {
       const data = await fetchHomeServicesBannerData();
 
-      if (data.image && data.image.length > 0) {
+      if (data && data.image && data.image.length > 0) {
         setHomeServicesData(data);
       }
     };
@@ -33,27 +30,28 @@ export default function HomeServices() {
   }, []);
 
   const content = useMemo(
-    () => (
-      <>
-        <HomeServicesTitle>{homeServicesData.title}</HomeServicesTitle>
-        <HomeServicesContext>{homeServicesData.text}</HomeServicesContext>
-        {homeServicesData.link && (
-          <HomeServicesButton
-            onClick={() =>
-              navigate(homeServicesData.link || "/productsservices")
-            }
-          >
-            Learn More ...
-          </HomeServicesButton>
-        )}
-      </>
-    ),
+    () =>
+      homeServicesData ? (
+        <>
+          <HomeServicesTitle>{homeServicesData.title}</HomeServicesTitle>
+          <HomeServicesContext>{homeServicesData.text}</HomeServicesContext>
+          {homeServicesData.link && (
+            <HomeServicesButton
+              onClick={() =>
+                navigate(homeServicesData.link || "/productsservices")
+              }
+            >
+              Learn More ...
+            </HomeServicesButton>
+          )}
+        </>
+      ) : null,
     [homeServicesData, navigate]
   );
 
   return (
-    <HomeServicesContainer $backgroundimage={homeServicesData.image}>
-      {homeServicesData.link && (
+    <HomeServicesContainer $backgroundimage={homeServicesData?.image || ""}>
+      {homeServicesData && homeServicesData.link && (
         <HomeServicesDarkCover>{content}</HomeServicesDarkCover>
       )}
     </HomeServicesContainer>
