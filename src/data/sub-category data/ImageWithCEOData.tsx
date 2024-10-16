@@ -14,20 +14,21 @@ import BUSINESS_FORM from "../../assets/img/cards/BUSINESS_FORM.jpg";
 import CATALOGYS_BOOKLETS from "../../assets/img/cards/CATALOGYS_BOOKLETS.jpg";
 import LABELS_PACKAGING from "../../assets/img/cards/LABELS_PACKAGING.jpg";
 
-import BUSINESS_ANNUAL_REPORTS from "../../assets/img/printingCopyingPages/BUSINESS_CARDS_STATIONERY.webp";
-import BUSINESS_CARDS_STATIONERY from "../../assets/img/printingCopyingPages/BUSINESS_ANNUAL_REPORTS.webp";
-import NEWSLETTERS_FLYERS_RACK_CARDS from "../../assets/img/printingCopyingPages/NEWS_LETTERS_FLYERS_RACK_CARDS.webp";
-import POSTCARDS_DIRECT_MAILERS from "../../assets/img/printingCopyingPages/POST_CARDS_DIRECT_MAILERS.webp";
-import PRESENTATION_TRAINING_MATERIALS from "../../assets/img/printingCopyingPages/PRESENTATION_TRAINING_MATERIALS.webp";
-
-import APPAREL_UNIFORMS from "../../assets/img/printingCopyingPages/APPAREL_UNIFORMS.webp";
-import BOOK_PRINTING from "../../assets/img/printingCopyingPages/BOOK_PRINTING.webp";
-import CARDS_INVITATIONS from "../../assets/img/printingCopyingPages/CARDS_INVITATIONS.webp";
-import LABELS_STICKERS_DECALS from "../../assets/img/printingCopyingPages/LABELS_STICKERS_DECALS.webp";
-import LEGAL_COPYING from "../../assets/img/printingCopyingPages/LEGAL_COPYING.webp";
-import POSTER_PRINTING from "../../assets/img/printingCopyingPages/POSTER_PRINTING.webp";
+// printing copying
+import BUSINESS_ANNUAL_REPORTS from "../../assets/img/pages/printing_copying/BUSINESS_ANNUAL_REPORTS.png";
+import BUSINESS_CARDS_STATIONERY from "../../assets/img/pages/printing_copying/BUSINESS_CARDS_STATIONERY.png";
+import NEWSLETTERS_FLYERS_RACK_CARDS from "../../assets/img/pages/printing_copying/NEWSLETTERS_FLYERS_RACK_CARDS.png";
+import POSTCARDS_DIRECT_MAILERS from "../../assets/img/pages/printing_copying/POSTCARDS_DIRECT_MAILERS.png";
+import PRESENTATION_TRAINING_MATERIALS from "../../assets/img/pages/printing_copying/PRESENTATION_TRAINING_MATERIALS.png";
+import APPAREL_UNIFORMS from "../../assets/img/pages/printing_copying/APPAREL_UNIFORMS.webp";
+import BOOK_PRINTING from "../../assets/img/pages/printing_copying/BOOK_PRINTING.webp";
+import CARDS_INVITATIONS from "../../assets/img/pages/printing_copying/CARDS_INVITATIONS.png";
+import LABELS_STICKERS_DECALS from "../../assets/img/pages/printing_copying/LABELS_STICKERS_DECALS.webp";
+import LEGAL_COPYING from "../../assets/img/pages/printing_copying/LEGAL_COPYING.webp";
+import POSTER_PRINTING from "../../assets/img/pages/printing_copying/POSTER_PRINTING.png";
 
 import LABELS_PACKAGING_PAGE from "../../assets/img/cards/LABELS_PACKAGING_PAGE.jpg";
+
 // Image constants
 export const DIGITAL_PRINTING_IMAGE = {
   src: DIGITAL_PRINTING,
