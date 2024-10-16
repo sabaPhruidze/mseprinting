@@ -12,7 +12,7 @@ import {
 } from "../../style/GlobalStyle";
 import { fetchPullupBannersFlagsData } from "../../data/sub-category data/AllSubCategoryData";
 import ImageWithSEO from "../../importantparts/ImageWithCEO";
-import { DIGITAL_PRINTING_IMAGE } from "../../data/sub-category data/ImageWithCEOData";
+import { PULL_UP_BANNERS_FLAGS_IMAGE } from "../../data/sub-category data/ImageWithCEOData";
 import { SubCategoryCommonTypes } from "../../types/DataTypes";
 
 export default function PullupBannersFlags() {
@@ -41,10 +41,10 @@ export default function PullupBannersFlags() {
       <FullBackgroundContainerZERO>
         <div className="black-overlay"></div>
         <ImageWithSEO
-          src={DIGITAL_PRINTING_IMAGE.src}
-          alt={DIGITAL_PRINTING_IMAGE.alt}
-          title={DIGITAL_PRINTING_IMAGE.title}
-          geoData={DIGITAL_PRINTING_IMAGE.geoData}
+          src={PULL_UP_BANNERS_FLAGS_IMAGE.src}
+          alt={PULL_UP_BANNERS_FLAGS_IMAGE.alt}
+          title={PULL_UP_BANNERS_FLAGS_IMAGE.title}
+          geoData={PULL_UP_BANNERS_FLAGS_IMAGE.geoData}
           loading="eager"
         />
         <TitleAndButtonContainer>

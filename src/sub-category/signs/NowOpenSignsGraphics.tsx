@@ -12,7 +12,7 @@ import {
 } from "../../style/GlobalStyle";
 import { fetchNowOpenSignsGraphicsData } from "../../data/sub-category data/AllSubCategoryData";
 import ImageWithSEO from "../../importantparts/ImageWithCEO";
-import { DIGITAL_PRINTING_IMAGE } from "../../data/sub-category data/ImageWithCEOData";
+import { NOW_OPEN_SIGNS_GRAPHICS_IMAGE } from "../../data/sub-category data/ImageWithCEOData";
 import { SubCategoryCommonTypes } from "../../types/DataTypes";
 
 export default function NowOpenSignsGraphics() {
@@ -41,10 +41,10 @@ export default function NowOpenSignsGraphics() {
       <FullBackgroundContainerZERO>
         <div className="black-overlay"></div>
         <ImageWithSEO
-          src={DIGITAL_PRINTING_IMAGE.src}
-          alt={DIGITAL_PRINTING_IMAGE.alt}
-          title={DIGITAL_PRINTING_IMAGE.title}
-          geoData={DIGITAL_PRINTING_IMAGE.geoData}
+          src={NOW_OPEN_SIGNS_GRAPHICS_IMAGE.src}
+          alt={NOW_OPEN_SIGNS_GRAPHICS_IMAGE.alt}
+          title={NOW_OPEN_SIGNS_GRAPHICS_IMAGE.title}
+          geoData={NOW_OPEN_SIGNS_GRAPHICS_IMAGE.geoData}
           loading="eager"
         />
         <TitleAndButtonContainer>

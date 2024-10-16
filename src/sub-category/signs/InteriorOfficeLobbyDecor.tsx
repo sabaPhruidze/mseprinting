@@ -12,7 +12,7 @@ import {
 } from "../../style/GlobalStyle";
 import { fetchInteriorOfficeLobbyDecorData } from "../../data/sub-category data/AllSubCategoryData";
 import ImageWithSEO from "../../importantparts/ImageWithCEO";
-import { DIGITAL_PRINTING_IMAGE } from "../../data/sub-category data/ImageWithCEOData";
+import { INTERIOR_OFFICE_LOBBY_DECOR_IMAGE } from "../../data/sub-category data/ImageWithCEOData";
 import { SubCategoryCommonTypes } from "../../types/DataTypes";
 
 export default function InteriorOfficeLobbyDecor() {
@@ -41,10 +41,10 @@ export default function InteriorOfficeLobbyDecor() {
       <FullBackgroundContainerZERO>
         <div className="black-overlay"></div>
         <ImageWithSEO
-          src={DIGITAL_PRINTING_IMAGE.src}
-          alt={DIGITAL_PRINTING_IMAGE.alt}
-          title={DIGITAL_PRINTING_IMAGE.title}
-          geoData={DIGITAL_PRINTING_IMAGE.geoData}
+          src={INTERIOR_OFFICE_LOBBY_DECOR_IMAGE.src}
+          alt={INTERIOR_OFFICE_LOBBY_DECOR_IMAGE.alt}
+          title={INTERIOR_OFFICE_LOBBY_DECOR_IMAGE.title}
+          geoData={INTERIOR_OFFICE_LOBBY_DECOR_IMAGE.geoData}
           loading="eager"
         />
         <TitleAndButtonContainer>

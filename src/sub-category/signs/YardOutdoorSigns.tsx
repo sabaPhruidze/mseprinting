@@ -12,7 +12,7 @@ import {
 } from "../../style/GlobalStyle";
 import { fetchYardOutdoorSignsData } from "../../data/sub-category data/AllSubCategoryData";
 import ImageWithSEO from "../../importantparts/ImageWithCEO";
-import { DIGITAL_PRINTING_IMAGE } from "../../data/sub-category data/ImageWithCEOData";
+import { YARD_OUTDOOR_SIGNS_IMAGE } from "../../data/sub-category data/ImageWithCEOData";
 import { SubCategoryCommonTypes } from "../../types/DataTypes";
 
 export default function YardOutdoorSigns() {
@@ -41,10 +41,10 @@ export default function YardOutdoorSigns() {
       <FullBackgroundContainerZERO>
         <div className="black-overlay"></div>
         <ImageWithSEO
-          src={DIGITAL_PRINTING_IMAGE.src}
-          alt={DIGITAL_PRINTING_IMAGE.alt}
-          title={DIGITAL_PRINTING_IMAGE.title}
-          geoData={DIGITAL_PRINTING_IMAGE.geoData}
+          src={YARD_OUTDOOR_SIGNS_IMAGE.src}
+          alt={YARD_OUTDOOR_SIGNS_IMAGE.alt}
+          title={YARD_OUTDOOR_SIGNS_IMAGE.title}
+          geoData={YARD_OUTDOOR_SIGNS_IMAGE.geoData}
           loading="eager"
         />
         <TitleAndButtonContainer>

@@ -12,7 +12,7 @@ import {
 } from "../../style/GlobalStyle";
 import { fetchCarGraphicsWrapsData } from "../../data/sub-category data/AllSubCategoryData";
 import ImageWithSEO from "../../importantparts/ImageWithCEO";
-import { DIGITAL_PRINTING_IMAGE } from "../../data/sub-category data/ImageWithCEOData";
+import { CAR_GRAPHICS_WRAPS_IMAGE } from "../../data/sub-category data/ImageWithCEOData";
 import { SubCategoryCommonTypes } from "../../types/DataTypes";
 
 export default function CarGraphicsWraps() {
@@ -41,10 +41,10 @@ export default function CarGraphicsWraps() {
       <FullBackgroundContainerZERO>
         <div className="black-overlay"></div>
         <ImageWithSEO
-          src={DIGITAL_PRINTING_IMAGE.src}
-          alt={DIGITAL_PRINTING_IMAGE.alt}
-          title={DIGITAL_PRINTING_IMAGE.title}
-          geoData={DIGITAL_PRINTING_IMAGE.geoData}
+          src={CAR_GRAPHICS_WRAPS_IMAGE.src}
+          alt={CAR_GRAPHICS_WRAPS_IMAGE.alt}
+          title={CAR_GRAPHICS_WRAPS_IMAGE.title}
+          geoData={CAR_GRAPHICS_WRAPS_IMAGE.geoData}
           loading="eager"
         />
         <TitleAndButtonContainer>

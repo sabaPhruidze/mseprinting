@@ -34,7 +34,18 @@ import LIST_MANAGEMENT_SERVICES from "../../assets/img/pages/direct_mail_mailing
 import STANDARD_DIRECT_MAIL from "../../assets/img/pages/direct_mail_mailing_services/STANDARD_DIRECT_MAIL.png";
 import TARGETED_DIRECT_MAIL from "../../assets/img/pages/direct_mail_mailing_services/TARGETED_DIRECT_MAIL.png";
 
-import LABELS_PACKAGING_PAGE from "../../assets/img/cards/LABELS_PACKAGING_PAGE.jpg";
+// Signs
+import ADA_WAYFINDING_SIGNS from "../../assets/img/pages/signs/ADA_WAYFINDING_SIGNS.jpg";
+import BANNERS_POSTERS_SIGNS from "../../assets/img/pages/signs/BANNERS_POSTERS.png";
+import BOOTH_GRAPHICS_SIGNS_BANNERS from "../../assets/img/pages/signs/BOOTH_GRAPHICS_SIGNS_BANNERS.jpg";
+import CAR_GRAPHICS_WRAPS from "../../assets/img/pages/signs/CAR_GRAPHICS_WRAPS.webp";
+import DELIVERY_TAKOUT_SIGNS from "../../assets/img/pages/signs/DELIVERY_TAKOUT_SIGNS.png";
+import INTERIOR_OFFICE_LOBBY_DECOR from "../../assets/img/pages/signs/INTERIOR_OFFICE_LOBBY_DECOR.webp";
+import NOW_OPEN_SIGNS_GRAPHICS from "../../assets/img/pages/signs/ADA_WAYFINDING_SIGNS.jpg";
+import PULL_UP_BANNERS_FLAGS from "../../assets/img/pages/signs/PULL_UP_BANNERS_FLAGS.jpg";
+import TRADESHOW_EVENT_SIGNS from "../../assets/img/pages/signs/TRADESHOW_EVENT_SIGNS.jpg";
+import WINDOW_WALL_FLOOR_GRAPHICS from "../../assets/img/pages/signs/WINDOW_WALL_FLOOR_GRAPHICS.jpg";
+import YARD_OUTDOOR_SIGNS from "../../assets/img/cards/YARD_OUTDOOR_SIGNS.jpg";
 
 // Image constants
 export const DIGITAL_PRINTING_IMAGE = {
@@ -159,7 +170,7 @@ export const LABELS_PACKAGING_IMAGE = {
 };
 
 export const LABELS_PACKAGING_IMAGE_PAGE = {
-  src: LABELS_PACKAGING_PAGE,
+  src: LABELS_PACKAGING,
   alt: "Packaging and Labels",
   title: "Packaging Custom Labels and",
   geoData: {
@@ -358,5 +369,128 @@ export const TARGETED_DIRECT_MAIL_IMAGE = {
     latitude: "3553.7558",
     longitude: "3372.6173",
     location: "Mwoscow",
+  },
+};
+
+// SIGNS
+
+export const ADA_WAYFINDING_SIGNS_IMAGE = {
+  src: ADA_WAYFINDING_SIGNS,
+  alt: "ADA Wayfinding Signs",
+  title: "ADA Wayfinding Signs",
+  geoData: {
+    latitude: "-998.4168",
+    longitude: "-3222.7038",
+    location: "Mafweftrh",
+  },
+};
+
+export const BANNERS_POSTERS_SIGNS_IMAGE = {
+  src: BANNERS_POSTERS_SIGNS,
+  alt: "Banners and Posters",
+  title: "Banners and Posters for Signs",
+  geoData: {
+    latitude: "-4433.7749",
+    longitude: "-222.4194",
+    location: "Sandernergier",
+  },
+};
+
+export const BOOTH_GRAPHICS_SIGNS_BANNERS_IMAGE = {
+  src: BOOTH_GRAPHICS_SIGNS_BANNERS,
+  alt: "Booth Graphics and Signs Banners",
+  title: "Booth Graphics and Signs Banners",
+  geoData: {
+    latitude: "-341.9028",
+    longitude: "-132.4964",
+    location: "regres",
+  },
+};
+
+export const CAR_GRAPHICS_WRAPS_IMAGE = {
+  src: CAR_GRAPHICS_WRAPS,
+  alt: "Car Graphics and Wraps",
+  title: "Custom Car Graphics and Wraps",
+  geoData: {
+    latitude: "-242.9068",
+    longitude: "-443.1729",
+    location: "Rioumae",
+  },
+};
+
+export const DELIVERY_TAKOUT_SIGNS_IMAGE = {
+  src: DELIVERY_TAKOUT_SIGNS,
+  alt: "Delivery and Takeout Signs",
+  title: "Delivery and Takeout Signs",
+  geoData: {
+    latitude: "-4534.3293",
+    longitude: "-3342.0686",
+    location: "Stakehome",
+  },
+};
+
+export const INTERIOR_OFFICE_LOBBY_DECOR_IMAGE = {
+  src: INTERIOR_OFFICE_LOBBY_DECOR,
+  alt: "Interior Office and Lobby Decor",
+  title: "Interior Office and Lobby Decor Signs",
+  geoData: {
+    latitude: "-435.6895",
+    longitude: "-339.6917",
+    location: "fewfdas",
+  },
+};
+
+export const NOW_OPEN_SIGNS_GRAPHICS_IMAGE = {
+  src: NOW_OPEN_SIGNS_GRAPHICS,
+  alt: "Now Open Signs",
+  title: "Now Open Signs and Graphics",
+  geoData: {
+    latitude: "-752.5200",
+    longitude: "-213.4050",
+    location: "bonansn",
+  },
+};
+
+export const PULL_UP_BANNERS_FLAGS_IMAGE = {
+  src: PULL_UP_BANNERS_FLAGS,
+  alt: "Pull-Up Banners and Flags",
+  title: "Pull-Up Banners and Flags",
+  geoData: {
+    latitude: "-355.6761",
+    longitude: "-132.5683",
+    location: "Copenhagen",
+  },
+};
+
+export const TRADESHOW_EVENT_SIGNS_IMAGE = {
+  src: TRADESHOW_EVENT_SIGNS,
+  alt: "Tradeshow Event Signs",
+  title: "Tradeshow and Event Signs",
+  geoData: {
+    latitude: "-448.2082",
+    longitude: "-146.3738",
+    location: "vowsfe",
+  },
+};
+
+export const WINDOW_WALL_FLOOR_GRAPHICS_IMAGE = {
+  src: WINDOW_WALL_FLOOR_GRAPHICS,
+  alt: "Window, Wall, and Floor Graphics",
+  title: "Custom Window, Wall, and Floor Graphics",
+  geoData: {
+    latitude: "-133.8688",
+    longitude: "1251.2093",
+    location: "Sendy",
+  },
+};
+
+export const YARD_OUTDOOR_SIGNS_IMAGE = {
+  src: YARD_OUTDOOR_SIGNS,
+  alt: "Yard and Outdoor Signs",
+  title: "Yard and Outdoor Signs",
+  geoData: {
+    latitude: "4223.6532",
+    longitude: "-7393.3832",
+    location: "naroko",
   },
 };
