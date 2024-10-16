@@ -202,3 +202,83 @@ export const fetchTargetedDirectMailData =
       "TargetedDirectMail"
     );
   };
+// Signs
+export const fetchADAWayfindingSignsData =
+  async (): Promise<SubCategoryCommonTypes | null> => {
+    return GeneralizedFetch<SubCategoryCommonTypes>(
+      "Signs",
+      "ADAWayfindingSigns"
+    );
+  };
+
+export const fetchBoothGraphicsSignsBannersData =
+  async (): Promise<SubCategoryCommonTypes | null> => {
+    return GeneralizedFetch<SubCategoryCommonTypes>(
+      "Signs",
+      "BoothGraphicsSignsBanners"
+    );
+  };
+
+export const fetchCarGraphicsWrapsData =
+  async (): Promise<SubCategoryCommonTypes | null> => {
+    return GeneralizedFetch<SubCategoryCommonTypes>(
+      "Signs",
+      "CarGraphicsWraps"
+    );
+  };
+
+export const fetchDeliveryTakeoutSignsData =
+  async (): Promise<SubCategoryCommonTypes | null> => {
+    return GeneralizedFetch<SubCategoryCommonTypes>(
+      "Signs",
+      "DeliveryTakeoutSigns"
+    );
+  };
+
+export const fetchInteriorOfficeLobbyDecorData =
+  async (): Promise<SubCategoryCommonTypes | null> => {
+    return GeneralizedFetch<SubCategoryCommonTypes>(
+      "Signs",
+      "InteriorOfficeLobbyDecor"
+    );
+  };
+
+export const fetchNowOpenSignsGraphicsData =
+  async (): Promise<SubCategoryCommonTypes | null> => {
+    return GeneralizedFetch<SubCategoryCommonTypes>(
+      "Signs",
+      "NowOpenSignsGraphics"
+    );
+  };
+
+export const fetchPullupBannersFlagsData =
+  async (): Promise<SubCategoryCommonTypes | null> => {
+    return GeneralizedFetch<SubCategoryCommonTypes>(
+      "Signs",
+      "PullupBannersFlags"
+    );
+  };
+
+export const fetchTradeshowEventSignsData =
+  async (): Promise<SubCategoryCommonTypes | null> => {
+    return GeneralizedFetch<SubCategoryCommonTypes>(
+      "Signs",
+      "TradeshowEventSigns"
+    );
+  };
+
+export const fetchWindowWallFloorGraphicsData =
+  async (): Promise<SubCategoryCommonTypes | null> => {
+    return GeneralizedFetch<SubCategoryCommonTypes>(
+      "Signs",
+      "WindowWallFloorGraphics"
+    );
+  };
+
+export const fetchYardOutdoorSignsData =
+  async (): Promise<SubCategoryCommonTypes | null> => {
+    return GeneralizedFetch<SubCategoryCommonTypes>(
+      "Signs",
+      "YardOutdoorSigns"
+    );
+  };
