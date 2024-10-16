@@ -80,15 +80,11 @@ export default function SendFile() {
           uploadedFiles,
           representative: selectedRepresentative,
         };
-        sendEmailSecond(dataWithFiles)
-          .then(() => {
-            dispatching("REQUEST_QUOTE_SUCCESS_SEND", true);
-            dispatching("REQUEST_QUOTE_CHANGE", false);
-            navigate("/");
-          })
-          .catch(() => {
-            // Handle email sending error
-          });
+        sendEmailSecond(dataWithFiles).then(() => {
+          dispatching("REQUEST_QUOTE_SUCCESS_SEND", true);
+          dispatching("REQUEST_QUOTE_CHANGE", false);
+          navigate("/");
+        });
       }
     },
     [rqSubmit, uploadedFiles, selectedRepresentative, dispatching, navigate]

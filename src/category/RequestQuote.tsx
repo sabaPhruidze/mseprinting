@@ -80,15 +80,11 @@ export default function RequestQuote() {
           uploadedFiles,
           representative: selectedRepresentative,
         };
-        sendEmail(dataWithFiles)
-          .then(() => {
-            dispatching("REQUEST_QUOTE_SUCCESS_SEND", true);
-            dispatching("REQUEST_QUOTE_CHANGE", false);
-            navigate("/");
-          })
-          .catch(() => {
-            // Handle email sending error
-          });
+        sendEmail(dataWithFiles).then(() => {
+          dispatching("REQUEST_QUOTE_SUCCESS_SEND", true);
+          dispatching("REQUEST_QUOTE_CHANGE", false);
+          navigate("/");
+        });
       }
     },
     [rqSubmit, uploadedFiles, selectedRepresentative, dispatching, navigate]
