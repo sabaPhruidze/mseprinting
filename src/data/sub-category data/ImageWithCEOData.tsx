@@ -36,16 +36,16 @@ import TARGETED_DIRECT_MAIL from "../../assets/img/pages/direct_mail_mailing_ser
 
 // Signs
 import ADA_WAYFINDING_SIGNS from "../../assets/img/pages/signs/ADA_WAYFINDING_SIGNS.jpg";
-import BANNERS_POSTERS_SIGNS from "../../assets/img/pages/signs/BANNERS_POSTERS.png";
+import BANNERS_POSTERS_N from "../../assets/img/pages/signs/BANNERS_POSTERS_N.png";
 import BOOTH_GRAPHICS_SIGNS_BANNERS from "../../assets/img/pages/signs/BOOTH_GRAPHICS_SIGNS_BANNERS.jpg";
 import CAR_GRAPHICS_WRAPS from "../../assets/img/pages/signs/CAR_GRAPHICS_WRAPS.webp";
 import DELIVERY_TAKOUT_SIGNS from "../../assets/img/pages/signs/DELIVERY_TAKOUT_SIGNS.png";
 import INTERIOR_OFFICE_LOBBY_DECOR from "../../assets/img/pages/signs/INTERIOR_OFFICE_LOBBY_DECOR.webp";
-import NOW_OPEN_SIGNS_GRAPHICS from "../../assets/img/pages/signs/ADA_WAYFINDING_SIGNS.jpg";
-import PULL_UP_BANNERS_FLAGS from "../../assets/img/pages/signs/PULL_UP_BANNERS_FLAGS.jpg";
-import TRADESHOW_EVENT_SIGNS from "../../assets/img/pages/signs/TRADESHOW_EVENT_SIGNS.jpg";
+import NOW_OPEN_SIGNS_GRAPHICS from "../../assets/img/pages/signs/NOW_OPEN_SIGNS_GRAPHICS.jpg";
+import PULL_UP_BANNERS_FLAGS from "../../assets/img/pages/signs/PULL_UP_BANNERS_FLAGS.png";
+import TRADESHOW_EVENT_SIGNS from "../../assets/img/pages/signs/TRADESHOW_EVENT_SIGNS.png";
 import WINDOW_WALL_FLOOR_GRAPHICS from "../../assets/img/pages/signs/WINDOW_WALL_FLOOR_GRAPHICS.jpg";
-import YARD_OUTDOOR_SIGNS from "../../assets/img/cards/YARD_OUTDOOR_SIGNS.jpg";
+import YARD_OUTDOOR_SIGNS from "../../assets/img/pages/signs/YARD_OUTDOOR_SIGNS.jfif";
 
 // Image constants
 export const DIGITAL_PRINTING_IMAGE = {
@@ -311,9 +311,9 @@ export const ADVANCED_MAILING_SERVICES_IMAGE = {
   alt: "Advanced Mailing Services",
   title: "Advanced Mailing Services",
   geoData: {
-    latitude: "45g48.8566",
-    longitude: "254g.3522",
-    location: "Prge5aris",
+    latitude: "45.8566",
+    longitude: "25.3522",
+    location: "pentagon",
   },
 };
 
@@ -322,8 +322,8 @@ export const EVERY_DOOR_DIRECT_MAIL_IMAGE = {
   alt: "Every Door Direct Mail",
   title: "Every Door Direct Mail Services",
   geoData: {
-    latitude: "5r32r1.5074",
-    longitude: "-0r23r.1278",
+    latitude: "78.5074",
+    longitude: "-7.1278",
     location: "Lr23ondr23ron",
   },
 };
@@ -333,8 +333,8 @@ export const KITTING_FULLFILLMENT_IMAGE = {
   alt: "Kitting and Fulfillment",
   title: "Kitting and Fulfillment Services",
   geoData: {
-    latitude: "4r23r0.730610",
-    longitude: "-7r33.935242",
+    latitude: "62.730610",
+    longitude: "-63.935242",
     location: "aswBrooklyn",
   },
 };
@@ -344,8 +344,8 @@ export const LIST_MANAGEMENT_SERVICES_IMAGE = {
   alt: "List Management Services",
   title: "List Management Services",
   geoData: {
-    latitude: "5422.3643267",
-    longitude: "432423.8945",
+    latitude: "52.3643267",
+    longitude: "43.8945",
     location: "Amsfeterdam",
   },
 };
@@ -355,8 +355,8 @@ export const STANDARD_DIRECT_MAIL_IMAGE = {
   alt: "Standard Direct Mail",
   title: "Standard Direct Mail Services",
   geoData: {
-    latitude: "43235.6423762",
-    longitude: "42139.6503",
+    latitude: "43.6423762",
+    longitude: "42.6503",
     location: "rewTokyo",
   },
 };
@@ -366,8 +366,8 @@ export const TARGETED_DIRECT_MAIL_IMAGE = {
   alt: "Targeted Direct Mail",
   title: "Targeted Direct Mail Services",
   geoData: {
-    latitude: "3553.7558",
-    longitude: "3372.6173",
+    latitude: "53.7558",
+    longitude: "72.6173",
     location: "Mwoscow",
   },
 };
@@ -379,19 +379,19 @@ export const ADA_WAYFINDING_SIGNS_IMAGE = {
   alt: "ADA Wayfinding Signs",
   title: "ADA Wayfinding Signs",
   geoData: {
-    latitude: "-998.4168",
-    longitude: "-3222.7038",
+    latitude: "-98.4168",
+    longitude: "-39.7038",
     location: "Mafweftrh",
   },
 };
 
 export const BANNERS_POSTERS_SIGNS_IMAGE = {
-  src: BANNERS_POSTERS_SIGNS,
-  alt: "Banners and Posters",
-  title: "Banners and Posters for Signs",
+  src: BANNERS_POSTERS_N,
+  alt: "Banners and Posters N",
+  title: "Banners and Posters for Signs N",
   geoData: {
-    latitude: "-4433.7749",
-    longitude: "-222.4194",
+    latitude: "-33.7749",
+    longitude: "-22.4194",
     location: "Sandernergier",
   },
 };
@@ -401,8 +401,8 @@ export const BOOTH_GRAPHICS_SIGNS_BANNERS_IMAGE = {
   alt: "Booth Graphics and Signs Banners",
   title: "Booth Graphics and Signs Banners",
   geoData: {
-    latitude: "-341.9028",
-    longitude: "-132.4964",
+    latitude: "-41.9028",
+    longitude: "-32.4964",
     location: "regres",
   },
 };
@@ -412,8 +412,8 @@ export const CAR_GRAPHICS_WRAPS_IMAGE = {
   alt: "Car Graphics and Wraps",
   title: "Custom Car Graphics and Wraps",
   geoData: {
-    latitude: "-242.9068",
-    longitude: "-443.1729",
+    latitude: "-42.9068",
+    longitude: "-43.1729",
     location: "Rioumae",
   },
 };
@@ -423,8 +423,8 @@ export const DELIVERY_TAKOUT_SIGNS_IMAGE = {
   alt: "Delivery and Takeout Signs",
   title: "Delivery and Takeout Signs",
   geoData: {
-    latitude: "-4534.3293",
-    longitude: "-3342.0686",
+    latitude: "-34.3293",
+    longitude: "-42.0686",
     location: "Stakehome",
   },
 };
@@ -434,8 +434,8 @@ export const INTERIOR_OFFICE_LOBBY_DECOR_IMAGE = {
   alt: "Interior Office and Lobby Decor",
   title: "Interior Office and Lobby Decor Signs",
   geoData: {
-    latitude: "-435.6895",
-    longitude: "-339.6917",
+    latitude: "-35.6895",
+    longitude: "-39.6917",
     location: "fewfdas",
   },
 };
@@ -445,8 +445,8 @@ export const NOW_OPEN_SIGNS_GRAPHICS_IMAGE = {
   alt: "Now Open Signs",
   title: "Now Open Signs and Graphics",
   geoData: {
-    latitude: "-752.5200",
-    longitude: "-213.4050",
+    latitude: "-52.5200",
+    longitude: "-113.4050",
     location: "bonansn",
   },
 };
@@ -456,7 +456,7 @@ export const PULL_UP_BANNERS_FLAGS_IMAGE = {
   alt: "Pull-Up Banners and Flags",
   title: "Pull-Up Banners and Flags",
   geoData: {
-    latitude: "-355.6761",
+    latitude: "-55.6761",
     longitude: "-132.5683",
     location: "Copenhagen",
   },
@@ -467,7 +467,7 @@ export const TRADESHOW_EVENT_SIGNS_IMAGE = {
   alt: "Tradeshow Event Signs",
   title: "Tradeshow and Event Signs",
   geoData: {
-    latitude: "-448.2082",
+    latitude: "-48.2082",
     longitude: "-146.3738",
     location: "vowsfe",
   },
@@ -479,7 +479,7 @@ export const WINDOW_WALL_FLOOR_GRAPHICS_IMAGE = {
   title: "Custom Window, Wall, and Floor Graphics",
   geoData: {
     latitude: "-133.8688",
-    longitude: "1251.2093",
+    longitude: "51.2093",
     location: "Sendy",
   },
 };
@@ -489,8 +489,8 @@ export const YARD_OUTDOOR_SIGNS_IMAGE = {
   alt: "Yard and Outdoor Signs",
   title: "Yard and Outdoor Signs",
   geoData: {
-    latitude: "4223.6532",
-    longitude: "-7393.3832",
+    latitude: "23.6532",
+    longitude: "-93.3832",
     location: "naroko",
   },
 };
