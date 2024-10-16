@@ -12,7 +12,7 @@ import {
 } from "../../style/GlobalStyle"; // Make sure the styled components are correctly imported
 import { fetchAdvancedMailingServicesData } from "../../data/sub-category data/AllSubCategoryData"; // Import the fetch function
 import ImageWithSEO from "../../importantparts/ImageWithCEO"; // Import ImageWithSEO for handling the image
-import { DIGITAL_PRINTING_IMAGE } from "../../data/sub-category data/ImageWithCEOData"; // Import the correct image data for AdvancedMailingServices
+import { ADVANCED_MAILING_SERVICES_IMAGE } from "../../data/sub-category data/ImageWithCEOData"; // Import the correct image data for AdvancedMailingServices
 import { SubCategoryCommonTypes } from "../../types/DataTypes"; // Import the necessary type
 
 export default function AdvancedMailingServices() {
@@ -42,10 +42,10 @@ export default function AdvancedMailingServices() {
       <FullBackgroundContainerZERO>
         <div className="black-overlay"></div> {/* Add this overlay div */}
         <ImageWithSEO
-          src={DIGITAL_PRINTING_IMAGE.src} // Use ADVANCED_MAILING_SERVICES_IMAGE for the image source
-          alt={DIGITAL_PRINTING_IMAGE.alt}
-          title={DIGITAL_PRINTING_IMAGE.title}
-          geoData={DIGITAL_PRINTING_IMAGE.geoData}
+          src={ADVANCED_MAILING_SERVICES_IMAGE.src} // Use ADVANCED_MAILING_SERVICES_IMAGE for the image source
+          alt={ADVANCED_MAILING_SERVICES_IMAGE.alt}
+          title={ADVANCED_MAILING_SERVICES_IMAGE.title}
+          geoData={ADVANCED_MAILING_SERVICES_IMAGE.geoData}
           loading="eager"
         />
         <TitleAndButtonContainer>

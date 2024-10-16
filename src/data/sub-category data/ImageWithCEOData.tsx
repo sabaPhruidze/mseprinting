@@ -26,6 +26,13 @@ import CARDS_INVITATIONS from "../../assets/img/pages/printing_copying/CARDS_INV
 import LABELS_STICKERS_DECALS from "../../assets/img/pages/printing_copying/LABELS_STICKERS_DECALS.webp";
 import LEGAL_COPYING from "../../assets/img/pages/printing_copying/LEGAL_COPYING.webp";
 import POSTER_PRINTING from "../../assets/img/pages/printing_copying/POSTER_PRINTING.png";
+// Direct mail and Mailing services
+import ADVANCED_MAILING_SERVICES from "../../assets/img/pages/direct_mail_mailing_services/ADVANCED_MAILING_SERVICES.png";
+import EVERY_DOOR_DIRECT_MAIL from "../../assets/img/pages/direct_mail_mailing_services/EVERY_DOOR_DIRECT_MAIL.png";
+import KITTING_FULLFILLMENT from "../../assets/img/pages/direct_mail_mailing_services/KITTING_FULLFILLMENT.png";
+import LIST_MANAGEMENT_SERVICES from "../../assets/img/pages/direct_mail_mailing_services/LIST_MANAGEMENT_SERVICES.png";
+import STANDARD_DIRECT_MAIL from "../../assets/img/pages/direct_mail_mailing_services/STANDARD_DIRECT_MAIL.png";
+import TARGETED_DIRECT_MAIL from "../../assets/img/pages/direct_mail_mailing_services/TARGETED_DIRECT_MAIL.png";
 
 import LABELS_PACKAGING_PAGE from "../../assets/img/cards/LABELS_PACKAGING_PAGE.jpg";
 
@@ -284,5 +291,72 @@ export const POSTER_PRINTING_IMAGE = {
     latitude: "51.5074",
     longitude: "-0.1278",
     location: "London",
+  },
+};
+// Image objects for direct mail services with unique geoData
+
+export const ADVANCED_MAILING_SERVICES_IMAGE = {
+  src: ADVANCED_MAILING_SERVICES,
+  alt: "Advanced Mailing Services",
+  title: "Advanced Mailing Services",
+  geoData: {
+    latitude: "45g48.8566",
+    longitude: "254g.3522",
+    location: "Prge5aris",
+  },
+};
+
+export const EVERY_DOOR_DIRECT_MAIL_IMAGE = {
+  src: EVERY_DOOR_DIRECT_MAIL,
+  alt: "Every Door Direct Mail",
+  title: "Every Door Direct Mail Services",
+  geoData: {
+    latitude: "5r32r1.5074",
+    longitude: "-0r23r.1278",
+    location: "Lr23ondr23ron",
+  },
+};
+
+export const KITTING_FULLFILLMENT_IMAGE = {
+  src: KITTING_FULLFILLMENT,
+  alt: "Kitting and Fulfillment",
+  title: "Kitting and Fulfillment Services",
+  geoData: {
+    latitude: "4r23r0.730610",
+    longitude: "-7r33.935242",
+    location: "aswBrooklyn",
+  },
+};
+
+export const LIST_MANAGEMENT_SERVICES_IMAGE = {
+  src: LIST_MANAGEMENT_SERVICES,
+  alt: "List Management Services",
+  title: "List Management Services",
+  geoData: {
+    latitude: "5422.3643267",
+    longitude: "432423.8945",
+    location: "Amsfeterdam",
+  },
+};
+
+export const STANDARD_DIRECT_MAIL_IMAGE = {
+  src: STANDARD_DIRECT_MAIL,
+  alt: "Standard Direct Mail",
+  title: "Standard Direct Mail Services",
+  geoData: {
+    latitude: "43235.6423762",
+    longitude: "42139.6503",
+    location: "rewTokyo",
+  },
+};
+
+export const TARGETED_DIRECT_MAIL_IMAGE = {
+  src: TARGETED_DIRECT_MAIL,
+  alt: "Targeted Direct Mail",
+  title: "Targeted Direct Mail Services",
+  geoData: {
+    latitude: "3553.7558",
+    longitude: "3372.6173",
+    location: "Mwoscow",
   },
 };
