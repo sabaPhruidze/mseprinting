@@ -55,6 +55,16 @@ import KittingAndFulfillment from "./sub-category/directMailMailingServices/Kitt
 import StandartDirectMail from "./sub-category/directMailMailingServices/StandartDirectMail";
 import TargetedDirectMail from "./sub-category/directMailMailingServices/TargetedDirectMail";
 import ListManagementServices from "./sub-category/directMailMailingServices/ListManagementServices";
+import ADAWayfindingSigns from "./sub-category/signs/ADAWayfindingSigns";
+import BoothGraphicsSignsBanners from "./sub-category/signs/BoothGraphicsSignsBanners";
+import CarGraphicsWraps from "./sub-category/signs/CarGraphicsWraps";
+import DeliveryTakeoutSigns from "./sub-category/signs/DeliveryTakeoutSigns";
+import InteriorOfficeLobbyDecor from "./sub-category/signs/InteriorOfficeLobbyDecor";
+import NowOpenSignsGraphics from "./sub-category/signs/NowOpenSignsGraphics";
+import PullupBannersFlags from "./sub-category/signs/PullupBannersFlags";
+import TradeshowEventSigns from "./sub-category/signs/TradeshowEventSigns";
+import WindowWallFloorGraphics from "./sub-category/signs/WindowWallFloorGraphics";
+import YardOutdoorSigns from "./sub-category/signs/YardOutdoorSigns";
 
 function App() {
   const router = createBrowserRouter(
@@ -70,7 +80,6 @@ function App() {
         <Route path="/request-quote" element={<RequestQuote />} />
         <Route path="/send-file" element={<SendFile />} />
         {/* sub-category */}
-
         {/* Carousel */}
         <Route
           path="/commercial-digital-printing"
@@ -114,7 +123,6 @@ function App() {
           path="/presentation-training-materials"
           element={<PresentationTrainingMaterials />}
         />
-
         <Route path="/cards-invitations" element={<CardsInvitations />} />
         <Route
           path="/labels-stickers-decals"
@@ -143,6 +151,18 @@ function App() {
           path="/list-management-services"
           element={<ListManagementServices />}
         />
+        {/* Signs */}
+        <Route path="/book-printing" element={<ADAWayfindingSigns />} />
+        <Route path="/book-printing" element={<BoothGraphicsSignsBanners />} />
+        <Route path="/book-printing" element={<CarGraphicsWraps />} />
+        <Route path="/book-printing" element={<DeliveryTakeoutSigns />} />
+        <Route path="/book-printing" element={<InteriorOfficeLobbyDecor />} />
+        <Route path="/book-printing" element={<NowOpenSignsGraphics />} />
+        <Route path="/book-printing" element={<PullupBannersFlags />} />
+        <Route path="/book-printing" element={<TradeshowEventSigns />} />
+        <Route path="/book-printing" element={<WindowWallFloorGraphics />} />
+        <Route path="/book-printing" element={<YardOutdoorSigns />} />
+
         {/* Bottom */}
         <Route path="/accessibility" element={<Accessibility />} />
         <Route path="/blog" element={<Blog />} />
