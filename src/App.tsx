@@ -152,17 +152,34 @@ function App() {
           element={<ListManagementServices />}
         />
         {/* Signs */}
-        <Route path="/book-printing" element={<ADAWayfindingSigns />} />
-        <Route path="/book-printing" element={<BoothGraphicsSignsBanners />} />
-        <Route path="/book-printing" element={<CarGraphicsWraps />} />
-        <Route path="/book-printing" element={<DeliveryTakeoutSigns />} />
-        <Route path="/book-printing" element={<InteriorOfficeLobbyDecor />} />
-        <Route path="/book-printing" element={<NowOpenSignsGraphics />} />
-        <Route path="/book-printing" element={<PullupBannersFlags />} />
-        <Route path="/book-printing" element={<TradeshowEventSigns />} />
-        <Route path="/book-printing" element={<WindowWallFloorGraphics />} />
-        <Route path="/book-printing" element={<YardOutdoorSigns />} />
-
+        <Route path="/ada-wayfinding-signs" element={<ADAWayfindingSigns />} />
+        <Route
+          path="/booth-graphics-signs-banners"
+          element={<BoothGraphicsSignsBanners />}
+        />
+        <Route path="/car-graphics-wraps" element={<CarGraphicsWraps />} />
+        <Route
+          path="/delivery-takeout-signs"
+          element={<DeliveryTakeoutSigns />}
+        />
+        <Route
+          path="/interior-office-lobby-decor"
+          element={<InteriorOfficeLobbyDecor />}
+        />
+        <Route
+          path="/now-open-signs-graphics"
+          element={<NowOpenSignsGraphics />}
+        />
+        <Route path="/pullup-banners-flags" element={<PullupBannersFlags />} />
+        <Route
+          path="/tradeshow-event-signs"
+          element={<TradeshowEventSigns />}
+        />
+        <Route
+          path="/window-wall-floor-graphics"
+          element={<WindowWallFloorGraphics />}
+        />
+        <Route path="/yard-outdoor-signs" element={<YardOutdoorSigns />} />
         {/* Bottom */}
         <Route path="/accessibility" element={<Accessibility />} />
         <Route path="/blog" element={<Blog />} />
