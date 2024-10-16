@@ -4,7 +4,7 @@ import {
   AccessibilityDocument,
   StartContent,
   EndContent,
-  ContentPart,
+  TitleWithContent,
 } from "../types/DataTypes";
 import {
   GlobalContainerColumn,
@@ -65,7 +65,7 @@ export default function Accessibility() {
         </Globalh2Title>
         <GlobalPart>{accessibilityData?.accessibility.firstPart}</GlobalPart>
         {accessibilityData?.accessibility.middlePart.map(
-          (data: ContentPart) => (
+          (data: TitleWithContent) => (
             <GlobalBoxColumnStart
               key={data.title}
               style={{

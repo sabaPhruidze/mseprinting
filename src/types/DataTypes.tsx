@@ -1,13 +1,7 @@
 // Common Types
-
 export interface TitleWithContent {
   title?: string;
   content?: string;
-}
-
-export interface ContentPart {
-  content: string;
-  title?: string;
 }
 
 export interface PartWithSpecialContent {
@@ -27,6 +21,7 @@ export interface FrontType {
   content: string;
   button: string;
 }
+
 // search engine
 export interface SearchResultDocument {
   title: string;
@@ -47,18 +42,10 @@ export interface LogoType {
 
 export interface CarouselType {
   image: string;
-  alt: string;
+  alt?: string | "";
   title: string;
   text: string;
   link: string;
-}
-
-// Home Services
-export interface HomeServicesType {
-  image: string | null;
-  link: string | null;
-  text: string | null;
-  title: string | null;
 }
 
 export interface HomeServicesFullDatasType {
@@ -97,7 +84,7 @@ export interface WWDCSpecialitiesContentType {
 export interface AccessibilityContent {
   firstPart: string;
   mainTitle: string;
-  middlePart: ContentPart[];
+  middlePart: TitleWithContent[];
 }
 
 export interface StartContent {
