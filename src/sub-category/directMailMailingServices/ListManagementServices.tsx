@@ -12,7 +12,7 @@ import {
 } from "../../style/GlobalStyle"; // Ensure the styled components are correctly imported
 import { fetchListManagementServicesData } from "../../data/sub-category data/AllSubCategoryData"; // Import the fetch function
 import ImageWithSEO from "../../importantparts/ImageWithCEO"; // Import ImageWithSEO for handling the image
-import { DIGITAL_PRINTING_IMAGE } from "../../data/sub-category data/ImageWithCEOData"; // Use the correct image for ListManagementServices
+import { LIST_MANAGEMENT_SERVICES_IMAGE } from "../../data/sub-category data/ImageWithCEOData"; // Use the correct image for ListManagementServices
 import { SubCategoryCommonTypes } from "../../types/DataTypes"; // Import the necessary type
 
 export default function ListManagementServices() {
@@ -42,10 +42,10 @@ export default function ListManagementServices() {
       <FullBackgroundContainerZERO>
         <div className="black-overlay"></div> {/* Add this overlay div */}
         <ImageWithSEO
-          src={DIGITAL_PRINTING_IMAGE.src} // Keep using DIGITAL_PRINTING_IMAGE
-          alt={DIGITAL_PRINTING_IMAGE.alt}
-          title={DIGITAL_PRINTING_IMAGE.title}
-          geoData={DIGITAL_PRINTING_IMAGE.geoData}
+          src={LIST_MANAGEMENT_SERVICES_IMAGE.src} // Keep using DIGITAL_PRINTING_IMAGE
+          alt={LIST_MANAGEMENT_SERVICES_IMAGE.alt}
+          title={LIST_MANAGEMENT_SERVICES_IMAGE.title}
+          geoData={LIST_MANAGEMENT_SERVICES_IMAGE.geoData}
           loading="eager"
         />
         <TitleAndButtonContainer>

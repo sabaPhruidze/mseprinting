@@ -12,7 +12,7 @@ import {
 } from "../../style/GlobalStyle"; // Make sure the styled components are correctly imported
 import { fetchEveryDoorDirectMailData } from "../../data/sub-category data/AllSubCategoryData"; // Import the fetch function
 import ImageWithSEO from "../../importantparts/ImageWithCEO"; // Import ImageWithSEO for handling the image
-import { DIGITAL_PRINTING_IMAGE } from "../../data/sub-category data/ImageWithCEOData"; // Use the correct image for EveryDoorDirectMail
+import { EVERY_DOOR_DIRECT_MAIL_IMAGE } from "../../data/sub-category data/ImageWithCEOData"; // Use the correct image for EveryDoorDirectMail
 import { SubCategoryCommonTypes } from "../../types/DataTypes"; // Import the necessary type
 
 export default function EveryDoorDirectMail() {
@@ -42,10 +42,10 @@ export default function EveryDoorDirectMail() {
       <FullBackgroundContainerZERO>
         <div className="black-overlay"></div> {/* Add this overlay div */}
         <ImageWithSEO
-          src={DIGITAL_PRINTING_IMAGE.src} // Keep using DIGITAL_PRINTING_IMAGE
-          alt={DIGITAL_PRINTING_IMAGE.alt}
-          title={DIGITAL_PRINTING_IMAGE.title}
-          geoData={DIGITAL_PRINTING_IMAGE.geoData}
+          src={EVERY_DOOR_DIRECT_MAIL_IMAGE.src} // Keep using DIGITAL_PRINTING_IMAGE
+          alt={EVERY_DOOR_DIRECT_MAIL_IMAGE.alt}
+          title={EVERY_DOOR_DIRECT_MAIL_IMAGE.title}
+          geoData={EVERY_DOOR_DIRECT_MAIL_IMAGE.geoData}
           loading="eager"
         />
         <TitleAndButtonContainer>

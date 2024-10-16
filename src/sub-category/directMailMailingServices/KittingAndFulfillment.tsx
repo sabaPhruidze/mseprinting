@@ -12,7 +12,7 @@ import {
 } from "../../style/GlobalStyle"; // Ensure the styled components are correctly imported
 import { fetchKittingAndFulfillmentData } from "../../data/sub-category data/AllSubCategoryData"; // Import the fetch function
 import ImageWithSEO from "../../importantparts/ImageWithCEO"; // Import ImageWithSEO for handling the image
-import { DIGITAL_PRINTING_IMAGE } from "../../data/sub-category data/ImageWithCEOData"; // Use the correct image for KittingAndFulfillment
+import { KITTING_FULLFILLMENT_IMAGE } from "../../data/sub-category data/ImageWithCEOData"; // Use the correct image for KittingAndFulfillment
 import { SubCategoryCommonTypes } from "../../types/DataTypes"; // Import the necessary type
 
 export default function KittingAndFulfillment() {
@@ -42,10 +42,10 @@ export default function KittingAndFulfillment() {
       <FullBackgroundContainerZERO>
         <div className="black-overlay"></div> {/* Add this overlay div */}
         <ImageWithSEO
-          src={DIGITAL_PRINTING_IMAGE.src} // Keep using DIGITAL_PRINTING_IMAGE
-          alt={DIGITAL_PRINTING_IMAGE.alt}
-          title={DIGITAL_PRINTING_IMAGE.title}
-          geoData={DIGITAL_PRINTING_IMAGE.geoData}
+          src={KITTING_FULLFILLMENT_IMAGE.src} // Keep using DIGITAL_PRINTING_IMAGE
+          alt={KITTING_FULLFILLMENT_IMAGE.alt}
+          title={KITTING_FULLFILLMENT_IMAGE.title}
+          geoData={KITTING_FULLFILLMENT_IMAGE.geoData}
           loading="eager"
         />
         <TitleAndButtonContainer>

@@ -12,7 +12,7 @@ import {
 } from "../../style/GlobalStyle"; // Ensure the styled components are correctly imported
 import { fetchTargetedDirectMailData } from "../../data/sub-category data/AllSubCategoryData"; // Import the fetch function
 import ImageWithSEO from "../../importantparts/ImageWithCEO"; // Import ImageWithSEO for handling the image
-import { DIGITAL_PRINTING_IMAGE } from "../../data/sub-category data/ImageWithCEOData"; // Use the correct image for TargetedDirectMail
+import { TARGETED_DIRECT_MAIL_IMAGE } from "../../data/sub-category data/ImageWithCEOData"; // Use the correct image for TargetedDirectMail
 import { SubCategoryCommonTypes } from "../../types/DataTypes"; // Import the necessary type
 
 export default function TargetedDirectMail() {
@@ -42,10 +42,10 @@ export default function TargetedDirectMail() {
       <FullBackgroundContainerZERO>
         <div className="black-overlay"></div> {/* Add this overlay div */}
         <ImageWithSEO
-          src={DIGITAL_PRINTING_IMAGE.src} // Keep using DIGITAL_PRINTING_IMAGE
-          alt={DIGITAL_PRINTING_IMAGE.alt}
-          title={DIGITAL_PRINTING_IMAGE.title}
-          geoData={DIGITAL_PRINTING_IMAGE.geoData}
+          src={TARGETED_DIRECT_MAIL_IMAGE.src} // Keep using DIGITAL_PRINTING_IMAGE
+          alt={TARGETED_DIRECT_MAIL_IMAGE.alt}
+          title={TARGETED_DIRECT_MAIL_IMAGE.title}
+          geoData={TARGETED_DIRECT_MAIL_IMAGE.geoData}
           loading="eager"
         />
         <TitleAndButtonContainer>
