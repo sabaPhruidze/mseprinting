@@ -1,4 +1,4 @@
-import { useMemo, useState, useEffect } from "react";
+import { useMemo, useState, useEffect, useCallback } from "react";
 import WWDCCard from "./WWDCCard";
 import {
   WWDCContainer,
@@ -14,17 +14,16 @@ export default function WhatWeDoCards() {
   const [WWDCSpecialitiesData, setWWDCSpecialitiesData] =
     useState<WWDCSpecialitiesContentType>({ paragraph: "", title: "" });
 
-  useEffect(() => {
-    const getWWDCSpecialitiesData = async () => {
-      const data = await fetchWWDCSpecialitiesContentData();
-
-      if (data.paragraph && data.paragraph?.length > 0) {
-        setWWDCSpecialitiesData(data);
-      }
-    };
-
-    getWWDCSpecialitiesData();
+  const getWWDCSpecialitiesData = useCallback(async () => {
+    const data = await fetchWWDCSpecialitiesContentData();
+    if (data.paragraph && data.paragraph?.length > 0) {
+      setWWDCSpecialitiesData(data);
+    }
   }, []);
+
+  useEffect(() => {
+    getWWDCSpecialitiesData();
+  }, [getWWDCSpecialitiesData]);
 
   const specialitiesContent = useMemo(
     () => (
