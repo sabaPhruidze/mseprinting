@@ -67,7 +67,7 @@ function Login() {
       }
     },
     [dispatching, navigate]
-  ); // Include dependencies to prevent unnecessary re-renders
+  );
 
   return (
     <LoginContainer>
