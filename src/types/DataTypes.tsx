@@ -68,12 +68,12 @@ export interface HSFDataEach {
 }
 
 // WWDCCard
-export interface WWDCCardType {
-  image: string;
-  link: string;
-  text: string;
-  title: string;
-}
+// export interface WWDCCardType {
+//   image: string;
+//   link: string;
+//   text: string;
+//   title: string;
+// }
 
 export interface WWDCSpecialitiesContentType {
   paragraph: string | null;

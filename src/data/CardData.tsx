@@ -1,4 +1,4 @@
-import { WWDCCardType, WWDCSpecialitiesContentType } from "../types/DataTypes";
+import { CarouselType, WWDCSpecialitiesContentType } from "../types/DataTypes";
 import { GeneralizedFetch } from "../importantparts/GeneralizedFetch";
 
 import BANNERS_POSTERS from "../assets/img/cards/BANNERS_POSTERS.jpg";
@@ -8,23 +8,17 @@ import CATALOGYS_BOOKLETS from "../assets/img/cards/CATALOGYS_BOOKLETS.jpg";
 import DIRECT_MAIL from "../assets/img/cards/DIRECT_MAIL.jpg";
 import LABELS_PACKAGING from "../assets/img/cards/LABELS_PACKAGING.jpg";
 
-export const fetchWWDCCardData = async (): Promise<WWDCCardType[]> => {
-  const data = await GeneralizedFetch<{ data: WWDCCardType[] }>(
-    "home",
-    "WWDCCard"
+export const fetchWWDCCardData = async (): Promise<CarouselType[]> =>
+  GeneralizedFetch<{ data: CarouselType[] }>("home", "WWDCCard").then(
+    (data) => data?.data || []
   );
-  return data ? data.data : [];
-};
 
 export const fetchWWDCSpecialitiesContentData =
-  async (): Promise<WWDCSpecialitiesContentType> => {
-    const data = await GeneralizedFetch<WWDCSpecialitiesContentType>(
+  async (): Promise<WWDCSpecialitiesContentType> =>
+    GeneralizedFetch<WWDCSpecialitiesContentType>(
       "home",
       "WWDCCSpecialitiesContent"
-    );
-
-    return data || { paragraph: null, title: null };
-  };
+    ).then((data) => data || { paragraph: null, title: null });
 
 export const CARDS_DATA = [
   {
