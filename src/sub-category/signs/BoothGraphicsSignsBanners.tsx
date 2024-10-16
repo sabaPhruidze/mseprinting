@@ -12,7 +12,7 @@ import {
 } from "../../style/GlobalStyle";
 import { fetchBoothGraphicsSignsBannersData } from "../../data/sub-category data/AllSubCategoryData";
 import ImageWithSEO from "../../importantparts/ImageWithCEO";
-import { DIGITAL_PRINTING_IMAGE } from "../../data/sub-category data/ImageWithCEOData";
+import { BOOTH_GRAPHICS_SIGNS_BANNERS_IMAGE } from "../../data/sub-category data/ImageWithCEOData";
 import { SubCategoryCommonTypes } from "../../types/DataTypes";
 
 export default function BoothGraphicsSignsBanners() {
@@ -41,10 +41,10 @@ export default function BoothGraphicsSignsBanners() {
       <FullBackgroundContainerZERO>
         <div className="black-overlay"></div>
         <ImageWithSEO
-          src={DIGITAL_PRINTING_IMAGE.src}
-          alt={DIGITAL_PRINTING_IMAGE.alt}
-          title={DIGITAL_PRINTING_IMAGE.title}
-          geoData={DIGITAL_PRINTING_IMAGE.geoData}
+          src={BOOTH_GRAPHICS_SIGNS_BANNERS_IMAGE.src}
+          alt={BOOTH_GRAPHICS_SIGNS_BANNERS_IMAGE.alt}
+          title={BOOTH_GRAPHICS_SIGNS_BANNERS_IMAGE.title}
+          geoData={BOOTH_GRAPHICS_SIGNS_BANNERS_IMAGE.geoData}
           loading="eager"
         />
         <TitleAndButtonContainer>
