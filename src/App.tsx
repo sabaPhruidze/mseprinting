@@ -77,6 +77,15 @@ import CampaignsConsultation from "./sub-category/marketingServices/CampaignsCon
 import SocialMedia from "./sub-category/marketingServices/SocialMedia";
 import VideoProduction from "./sub-category/marketingServices/VideoProduction";
 import WebsiteDesign from "./sub-category/marketingServices/WebsiteDesign";
+import EventLiteratureSigns from "./sub-category/tradeshowsEvents/EventLiteratureSigns";
+import PrePostShowDirectMail from "./sub-category/tradeshowsEvents/PrePostShowDirectMail";
+import TableCounterKioskDisplays from "./sub-category/tradeshowsEvents/TableCounterKioskDisplays";
+import CounterPopUpDisplays from "./sub-category/tradeshowsEvents/CounterPopUpDisplays";
+import GiftsAwardsIncentives from "./sub-category/tradeshowsEvents/GiftsAwardsIncentives";
+import PickPack from "./sub-category/fulfillmentServices/PickPack";
+import ProductFulfillment from "./sub-category/fulfillmentServices/ProductFulfillment";
+import InventoryManagement from "./sub-category/fulfillmentServices/InventoryManagement";
+import MarketingSalesKits from "./sub-category/fulfillmentServices/MarketingSalesKits";
 
 function App() {
   const router = createBrowserRouter(
@@ -219,7 +228,40 @@ function App() {
         <Route path="/social-media" element={<SocialMedia />} />
         <Route path="/video-production" element={<VideoProduction />} />
         <Route path="/website-design" element={<WebsiteDesign />} />
-
+        {/* trandeshows and events */}
+        <Route
+          path="/event-literature-signs"
+          element={<EventLiteratureSigns />}
+        />
+        <Route
+          path="/pre-post-show-direct-mail"
+          element={<PrePostShowDirectMail />}
+        />
+        <Route
+          path="/table-counter-kiosk-displays"
+          element={<TableCounterKioskDisplays />}
+        />
+        <Route
+          path="/counter-pop-up-displays"
+          element={<CounterPopUpDisplays />}
+        />
+        <Route
+          path="/newsletters-flyers-rack-cards"
+          element={<NewslettersFlyersRackCards />}
+        />
+        <Route
+          path="/presentation-training-materials"
+          element={<PresentationTrainingMaterials />}
+        />
+        <Route
+          path="/gifts-awards-incentives"
+          element={<GiftsAwardsIncentives />}
+        />
+        {/* fulfillment services */}
+        <Route path="/pick-pack" element={<PickPack />} />
+        <Route path="/product-fulfillment" element={<ProductFulfillment />} />
+        <Route path="/inventory-management" element={<InventoryManagement />} />
+        <Route path="/marketing-sales-kit" element={<MarketingSalesKits />} />
         {/* Bottom */}
         <Route path="/accessibility" element={<Accessibility />} />
         <Route path="/blog" element={<Blog />} />
