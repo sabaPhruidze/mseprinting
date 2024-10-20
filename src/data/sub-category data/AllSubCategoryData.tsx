@@ -145,7 +145,7 @@ export const fetchYardOutdoorSignsData = () =>
   fetchData<SubCategoryCommonTypes>("Signs", "YardOutdoorSigns");
 
 export const fetchGraphicDesignData = () =>
-  fetchData<SubCategoryCommonTypes>("GraphicDesign", "GraphicDesignServices");
+  fetchData<SubCategoryCommonTypes>("GraphicDesign", "GraphicDesign");
 
 export const fetchCustomPackagingData = () =>
   fetchData<SubCategoryCommonTypes>("LabelsPackaging", "CustomPackaging");
@@ -160,7 +160,7 @@ export const fetchProductPromotionalLabelsData = () =>
   );
 
 export const fetchQRCodesNoTouchOptionsData = () =>
-  fetchData<SubCategoryCommonTypes>("LabelsPackaging", "QRCodesNoTouchOptions");
+  fetchData<SubCategoryCommonTypes>("LabelsPackaging", "QRcodesNoTouchOptions");
 
 export const fetchSafetyLabelsData = () =>
   fetchData<SubCategoryCommonTypes>("LabelsPackaging", "SafetyLabels");
