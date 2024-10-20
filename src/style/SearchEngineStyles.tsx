@@ -61,6 +61,7 @@ export const ResultsList = styled.div<ResultsListProps>`
   background-color: ${(props) => props.theme.White};
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
   height: ${(props) =>
     props.resultscount >= 3
       ? "120px"
