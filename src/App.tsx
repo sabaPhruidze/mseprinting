@@ -65,6 +65,7 @@ import PullupBannersFlags from "./sub-category/signs/PullupBannersFlags";
 import TradeshowEventSigns from "./sub-category/signs/TradeshowEventSigns";
 import WindowWallFloorGraphics from "./sub-category/signs/WindowWallFloorGraphics";
 import YardOutdoorSigns from "./sub-category/signs/YardOutdoorSigns";
+import GraphicDesign from "./sub-category/graphicDesign/GraphicDesign";
 
 function App() {
   const router = createBrowserRouter(
@@ -180,6 +181,8 @@ function App() {
           element={<WindowWallFloorGraphics />}
         />
         <Route path="/yard-outdoor-signs" element={<YardOutdoorSigns />} />
+        {/* graphic design */}
+        <Route path="/graphic-design" element={<GraphicDesign />} />
         {/* Bottom */}
         <Route path="/accessibility" element={<Accessibility />} />
         <Route path="/blog" element={<Blog />} />
