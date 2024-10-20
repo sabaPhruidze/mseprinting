@@ -66,6 +66,17 @@ import TradeshowEventSigns from "./sub-category/signs/TradeshowEventSigns";
 import WindowWallFloorGraphics from "./sub-category/signs/WindowWallFloorGraphics";
 import YardOutdoorSigns from "./sub-category/signs/YardOutdoorSigns";
 import GraphicDesign from "./sub-category/graphicDesign/GraphicDesign";
+import QRCodesNoTouchOptions from "./sub-category/labelsPackaging/QRCodesNoTouchOptions";
+import CustomPackaging from "./sub-category/labelsPackaging/CustomPackaging";
+import ShortRunPackaging from "./sub-category/labelsPackaging/ShortRunPackaging";
+import SafetyLabels from "./sub-category/labelsPackaging/SafetyLabels";
+import StickersDecals from "./sub-category/labelsPackaging/StickersDecals";
+import ProductPromotionalLabels from "./sub-category/labelsPackaging/ProductPromotionalLabels";
+import PremiumPrivateLabels from "./sub-category/labelsPackaging/PremiumPrivateLabels";
+import CampaignsConsultation from "./sub-category/marketingServices/CampaignsConsultation";
+import SocialMedia from "./sub-category/marketingServices/SocialMedia";
+import VideoProduction from "./sub-category/marketingServices/VideoProduction";
+import WebsiteDesign from "./sub-category/marketingServices/WebsiteDesign";
 
 function App() {
   const router = createBrowserRouter(
@@ -183,6 +194,32 @@ function App() {
         <Route path="/yard-outdoor-signs" element={<YardOutdoorSigns />} />
         {/* graphic design */}
         <Route path="/graphic-design" element={<GraphicDesign />} />
+        {/* labels and packaging */}
+        <Route
+          path="/qr-codes-no-touch-options"
+          element={<QRCodesNoTouchOptions />}
+        />
+        <Route path="/custom-packaging" element={<CustomPackaging />} />
+        <Route path="/short-run-packaging" element={<ShortRunPackaging />} />
+        <Route path="/safety-labels" element={<SafetyLabels />} />
+        <Route path="/stickers-decals" element={<StickersDecals />} />
+        <Route
+          path="/product-promotional-labels"
+          element={<ProductPromotionalLabels />}
+        />
+        <Route
+          path="/premium-private-labels"
+          element={<PremiumPrivateLabels />}
+        />
+        {/* marketing services */}
+        <Route
+          path="/campaigns-consultation"
+          element={<CampaignsConsultation />}
+        />
+        <Route path="/social-media" element={<SocialMedia />} />
+        <Route path="/video-production" element={<VideoProduction />} />
+        <Route path="/website-design" element={<WebsiteDesign />} />
+
         {/* Bottom */}
         <Route path="/accessibility" element={<Accessibility />} />
         <Route path="/blog" element={<Blog />} />
