@@ -170,7 +170,7 @@ const SendFileDetailsRight: React.FC<Props> = ({
               percent={progress}
               status={uploading ? "active" : "normal"}
             />
-            <p>{`Uploading: ${uploadCount.uploading} files, Uploaded: ${uploadCount.uploaded} files`}</p>
+            <p>{`Uploading: ${uploadCount.uploading} files`}</p>
           </div>
         )}
         {files.length > 0 && (
