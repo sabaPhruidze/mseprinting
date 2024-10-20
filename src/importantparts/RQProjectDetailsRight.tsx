@@ -18,7 +18,7 @@ interface Props {
   lastname: string | null;
 }
 
-const RQProjectDetailsRightCopy: React.FC<Props> = ({
+const RQProjectDetailsRight: React.FC<Props> = ({
   setUploadedFiles,
   firstname,
   lastname,
@@ -168,7 +168,7 @@ const RQProjectDetailsRightCopy: React.FC<Props> = ({
               percent={progress}
               status={uploading ? "active" : "normal"}
             />
-            <p>{`Uploading: ${uploadCount.uploading} files, Uploaded: ${uploadCount.uploaded} files`}</p>
+            <p>{`Uploading: ${uploadCount.uploading} files`}</p>
           </div>
         )}
         {files.length > 0 && (
@@ -215,4 +215,4 @@ const RQProjectDetailsRightCopy: React.FC<Props> = ({
   );
 };
 
-export default memo(RQProjectDetailsRightCopy);
+export default memo(RQProjectDetailsRight);
