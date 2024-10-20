@@ -143,3 +143,90 @@ export const fetchWindowWallFloorGraphicsData = () =>
   fetchData<SubCategoryCommonTypes>("Signs", "WindowWallFloorGraphics");
 export const fetchYardOutdoorSignsData = () =>
   fetchData<SubCategoryCommonTypes>("Signs", "YardOutdoorSigns");
+
+export const fetchGraphicDesignData = () =>
+  fetchData<SubCategoryCommonTypes>("GraphicDesign", "GraphicDesignServices");
+
+export const fetchCustomPackagingData = () =>
+  fetchData<SubCategoryCommonTypes>("LabelsPackaging", "CustomPackaging");
+
+export const fetchPremiumPrivateLabelsData = () =>
+  fetchData<SubCategoryCommonTypes>("LabelsPackaging", "PremiumPrivateLabels");
+
+export const fetchProductPromotionalLabelsData = () =>
+  fetchData<SubCategoryCommonTypes>(
+    "LabelsPackaging",
+    "ProductPromotionalLabels"
+  );
+
+export const fetchQRCodesNoTouchOptionsData = () =>
+  fetchData<SubCategoryCommonTypes>("LabelsPackaging", "QRCodesNoTouchOptions");
+
+export const fetchSafetyLabelsData = () =>
+  fetchData<SubCategoryCommonTypes>("LabelsPackaging", "SafetyLabels");
+
+export const fetchShortRunPackagingData = () =>
+  fetchData<SubCategoryCommonTypes>("LabelsPackaging", "ShortRunPackaging");
+
+export const fetchStickersDecalsData = () =>
+  fetchData<SubCategoryCommonTypes>("LabelsPackaging", "StickersDecals");
+
+export const fetchCampaignsConsultationData = () =>
+  fetchData<SubCategoryCommonTypes>(
+    "MarketingServices",
+    "CampaignsConsultation"
+  );
+
+export const fetchSocialMediaData = () =>
+  fetchData<SubCategoryCommonTypes>("MarketingServices", "SocialMedia");
+
+export const fetchVideoProductionData = () =>
+  fetchData<SubCategoryCommonTypes>("MarketingServices", "VideoProduction");
+
+export const fetchWebsiteDesignData = () =>
+  fetchData<SubCategoryCommonTypes>("MarketingServices", "WebsiteDesign");
+
+export const fetchCounterPopUpDisplaysData = () =>
+  fetchData<SubCategoryCommonTypes>("TradeshowsEvents", "CounterPopUpDisplays");
+
+export const fetchEventLiteratureSignsData = () =>
+  fetchData<SubCategoryCommonTypes>("TradeshowsEvents", "EventLiteratureSigns");
+
+export const fetchGiftsAwardsIncentivesData = () =>
+  fetchData<SubCategoryCommonTypes>(
+    "TradeshowsEvents",
+    "GiftsAwardsIncentives"
+  );
+
+export const fetchPrePostShowDirectMailData = () =>
+  fetchData<SubCategoryCommonTypes>(
+    "TradeshowsEvents",
+    "PrePostShowDirectMail"
+  );
+
+export const fetchTableCounterKioskDisplaysData = () =>
+  fetchData<SubCategoryCommonTypes>(
+    "TradeshowsEvents",
+    "TableCounterKioskDisplays"
+  );
+
+export const fetchInventoryManagementData = () =>
+  fetchData<SubCategoryCommonTypes>(
+    "FulfillmentServices",
+    "InventoryManagement"
+  );
+
+export const fetchMarketingSalesKitsData = () =>
+  fetchData<SubCategoryCommonTypes>(
+    "FulfillmentServices",
+    "MarketingSalesKits"
+  );
+
+export const fetchPickPackData = () =>
+  fetchData<SubCategoryCommonTypes>("FulfillmentServices", "PickPack");
+
+export const fetchProductFulfillmentData = () =>
+  fetchData<SubCategoryCommonTypes>(
+    "FulfillmentServices",
+    "ProductFulfillment"
+  );

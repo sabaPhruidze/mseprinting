@@ -246,10 +246,6 @@ function App() {
           element={<CounterPopUpDisplays />}
         />
         <Route
-          path="/newsletters-flyers-rack-cards"
-          element={<NewslettersFlyersRackCards />}
-        />
-        <Route
           path="/presentation-training-materials"
           element={<PresentationTrainingMaterials />}
         />
