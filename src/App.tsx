@@ -16,7 +16,7 @@ import Productsservices from "./category/Productsservices";
 import RequestQuote from "./category/RequestQuote";
 import SendFile from "./category/SendFile";
 
-//sub Categorry
+//sub Category
 import CommercialDigitalPrinting from "./sub-category/CommercialDigitalPrinting";
 import CommercialOffsetPrinting from "./sub-category/CommercialOffsetPrinting";
 import PrintingCopying from "./sub-category/PrintingCopying";
