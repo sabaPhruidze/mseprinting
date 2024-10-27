@@ -5,7 +5,6 @@ import {
   GlobalMainTitle,
   GlobalMainContent,
   Globalh2Title,
-  GlobalSpecialPart,
 } from "../style/GlobalStyle";
 import { ProductServicesDocument, SpecialStandard } from "../types/DataTypes";
 import { fetchProductServicesPageData } from "../data/sub-category data/AllSubCategoryData";
@@ -22,7 +21,6 @@ const ProductsServices: React.FC = () => {
     fetchProductServicesData();
   }, []);
 
-  // Function to render items with Special and Standard properties
   const renderSpecialStandardContent = useCallback(
     (item: SpecialStandard, index: number) => (
       <div key={index}>
@@ -39,7 +37,6 @@ const ProductsServices: React.FC = () => {
     []
   );
 
-  // Function to render content based on the type (string, array, or SpecialStandard object)
   const renderContent = useCallback(
     (content: any) => {
       if (Array.isArray(content)) {
@@ -64,14 +61,13 @@ const ProductsServices: React.FC = () => {
         "Special" in content &&
         "Standard" in content
       ) {
-        return renderSpecialStandardContent(content, 0); // For single SpecialStandard object
+        return renderSpecialStandardContent(content, 0);
       }
       return null;
     },
     [renderSpecialStandardContent]
   );
 
-  // Render section with a title and content
   const renderSection = useCallback(
     (title: string | undefined, content: any) => (
       <GlobalBoxColumnStart>
@@ -82,7 +78,6 @@ const ProductsServices: React.FC = () => {
     [renderContent]
   );
 
-  // Memoize sections for optimized rendering
   const memoizedSections = useMemo(() => {
     if (!productServicesData) return null;
 
