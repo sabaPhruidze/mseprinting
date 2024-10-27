@@ -230,3 +230,32 @@ export const fetchProductFulfillmentData = () =>
     "FulfillmentServices",
     "ProductFulfillment"
   );
+
+// Industry Specific
+
+export const fetchEducationData = () =>
+  fetchData<SubCategoryCommonTypes>("IndustrySpecific", "Education");
+
+export const fetchFinanceData = () =>
+  fetchData<SubCategoryCommonTypes>("IndustrySpecific", "Finance");
+
+export const fetchHealthCareData = () =>
+  fetchData<SubCategoryCommonTypes>("IndustrySpecific", "HealthCare");
+
+export const fetchLegalData = () =>
+  fetchData<SubCategoryCommonTypes>("IndustrySpecific", "Legal");
+
+export const fetchManufacturingData = () =>
+  fetchData<SubCategoryCommonTypes>("IndustrySpecific", "Manufacturing");
+
+export const fetchPoliticalData = () =>
+  fetchData<SubCategoryCommonTypes>("IndustrySpecific", "Political");
+
+export const fetchRealEstateData = () =>
+  fetchData<SubCategoryCommonTypes>("IndustrySpecific", "RealEstate");
+
+export const fetchRestaurantsData = () =>
+  fetchData<SubCategoryCommonTypes>("IndustrySpecific", "Restaurants");
+
+export const fetchRetailData = () =>
+  fetchData<SubCategoryCommonTypes>("IndustrySpecific", "Retail");
