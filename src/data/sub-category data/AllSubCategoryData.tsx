@@ -8,6 +8,9 @@ import {
   LabelsPackagingDocument,
   SearchResultDocument,
   SubCategoryCommonTypes,
+  AboutUsDocument,
+  ProductServicesDocument,
+  ResourcesDocument,
 } from "../../types/DataTypes";
 
 // Helper function for fetching data
@@ -259,3 +262,12 @@ export const fetchRestaurantsData = () =>
 
 export const fetchRetailData = () =>
   fetchData<SubCategoryCommonTypes>("IndustrySpecific", "Retail");
+
+// special pages
+
+export const fetchResourceData = () =>
+  fetchData<ResourcesDocument>("SpecialPages", "Resources");
+export const fetchProductServicesPageData = () =>
+  fetchData<SubCategoryCommonTypes>("SpecialPages", "ProductServices");
+export const fetchAboutUsData = () =>
+  fetchData<SubCategoryCommonTypes>("SpecialPages", "AboutUs");

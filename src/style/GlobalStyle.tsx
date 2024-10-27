@@ -350,6 +350,20 @@ export const FullScreenTitle = styled.h1`
     text-align: center;
   }
 `;
+export const GlobalMainContentResources = styled.p`
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: ${(props) => props.theme.Black};
+  text-align: left;
+  margin: 10px 0;
+  @media (max-width: 900px) {
+    text-align: center;
+  }
+  @media (max-width: 630px) {
+    text-align: center;
+  }
+`;
 
 // Button style within the full background
 export const FullScreenButton = styled(GlobalButton)`
