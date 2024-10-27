@@ -268,6 +268,6 @@ export const fetchRetailData = () =>
 export const fetchResourceData = () =>
   fetchData<ResourcesDocument>("SpecialPages", "Resources");
 export const fetchProductServicesPageData = () =>
-  fetchData<SubCategoryCommonTypes>("SpecialPages", "ProductServices");
+  fetchData<ProductServicesDocument>("SpecialPages", "ProductServices");
 export const fetchAboutUsData = () =>
-  fetchData<SubCategoryCommonTypes>("SpecialPages", "AboutUs");
+  fetchData<AboutUsDocument>("SpecialPages", "AboutUs");
