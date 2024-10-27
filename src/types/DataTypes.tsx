@@ -3,7 +3,7 @@
 // Title With Content
 export interface TitleWithContent {
   title?: string;
-  content?: string | TitleWithContent[] | SpecialStandard[] | any;
+  content?: string | TitleWithContent[] | SpecialStandard | any;
 }
 
 // Title With Content
@@ -341,7 +341,7 @@ export interface ProductServicesDocument {
 }
 
 export interface SpecialStandard {
-  S: string;
+  Special: string;
   Standard: string;
 }
 export interface ResourcesDocument {

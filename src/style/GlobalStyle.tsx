@@ -42,7 +42,6 @@ export const GlobalButton = styled.button`
 export const GlobalMainContent = styled.p`
   margin-top: 10px;
   font-size: 16px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
   text-align: left;
   margin: 0;
   margin-bottom: 10px;
