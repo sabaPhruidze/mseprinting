@@ -46,7 +46,7 @@ export const SearchEngineIcon = styled.img`
 `;
 
 interface ResultsListProps {
-  resultscount: number;
+  $resultscount: number;
 }
 
 export const ResultsList = styled.div<ResultsListProps>`
@@ -63,9 +63,9 @@ export const ResultsList = styled.div<ResultsListProps>`
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   height: ${(props) =>
-    props.resultscount >= 3
+    props.$resultscount >= 3
       ? "120px"
-      : props.resultscount === 2
+      : props.$resultscount === 2
       ? "80px"
       : "40px"};
   @media (max-width: 768px) {

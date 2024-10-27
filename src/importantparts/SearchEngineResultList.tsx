@@ -23,7 +23,9 @@ const SearchEngineResultList: React.FC<SearchResultsProps> = ({
   const navigate = useNavigate();
 
   return (
-    <ResultsList resultscount={results.length}>
+    <ResultsList $resultscount={results.length}>
+      {" "}
+      {/* Use $ here to avoid DOM warning */}
       {results.map((result) => (
         <ResultItem
           key={result.link}
