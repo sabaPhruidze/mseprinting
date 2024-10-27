@@ -86,6 +86,7 @@ import PickPack from "./sub-category/fulfillmentServices/PickPack";
 import ProductFulfillment from "./sub-category/fulfillmentServices/ProductFulfillment";
 import InventoryManagement from "./sub-category/fulfillmentServices/InventoryManagement";
 import MarketingSalesKits from "./sub-category/fulfillmentServices/MarketingSalesKits";
+import IndustrySpecific from "./sub-category/industrySpecific/IndustrySpecific";
 
 function App() {
   const router = createBrowserRouter(
@@ -258,6 +259,41 @@ function App() {
         <Route path="/product-fulfillment" element={<ProductFulfillment />} />
         <Route path="/inventory-management" element={<InventoryManagement />} />
         <Route path="/marketing-sales-kit" element={<MarketingSalesKits />} />
+        {/* Industry specific */}
+
+        <Route
+          path="/industry-specific/education"
+          element={<IndustrySpecific />}
+        />
+        <Route
+          path="/industry-specific/finance"
+          element={<IndustrySpecific />}
+        />
+        <Route
+          path="/industry-specific/healthcare"
+          element={<IndustrySpecific />}
+        />
+        <Route path="/industry-specific/legal" element={<IndustrySpecific />} />
+        <Route
+          path="/industry-specific/manufacturing"
+          element={<IndustrySpecific />}
+        />
+        <Route
+          path="/industry-specific/political"
+          element={<IndustrySpecific />}
+        />
+        <Route
+          path="/industry-specific/realestate"
+          element={<IndustrySpecific />}
+        />
+        <Route
+          path="/industry-specific/restaurants"
+          element={<IndustrySpecific />}
+        />
+        <Route
+          path="/industry-specific/retail"
+          element={<IndustrySpecific />}
+        />
         {/* Bottom */}
         <Route path="/accessibility" element={<Accessibility />} />
         <Route path="/blog" element={<Blog />} />
