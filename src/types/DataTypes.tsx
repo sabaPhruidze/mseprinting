@@ -1,9 +1,12 @@
 // Common Types
+
+// Title With Content
 export interface TitleWithContent {
   title?: string;
-  content?: string | any;
+  content?: string | TitleWithContent[] | SpecialStandard[] | any;
 }
 
+// Title With Content
 export interface PartWithSpecialContent {
   title: string;
   specialOne: string;
@@ -321,4 +324,27 @@ export interface LabelsPackagingDocument {
   three: TitleWithContent;
   four: string;
   front: FrontType;
+}
+export interface AboutUsDocument {
+  one: TitleWithContent;
+  two: TitleWithContent;
+  three: TitleWithContent;
+  four: TitleWithContent;
+  five: TitleWithContent;
+  six: TitleWithContent;
+  seven: TitleWithContent;
+}
+export interface ProductServicesDocument {
+  one: TitleWithContent;
+  two: TitleWithContent[];
+  three: TitleWithContent;
+}
+
+export interface SpecialStandard {
+  S: string;
+  Standard: string;
+}
+export interface ResourcesDocument {
+  one: TitleWithContent;
+  two: TitleWithContent[];
 }
