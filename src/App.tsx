@@ -40,12 +40,12 @@ import BannersPosters from "./sub-category/cards/BannersPosters";
 //printing and copying part
 import PrintingCopyingPages from "./sub-category/PrintingCopyingPages";
 
-import CardsInvitations from "./sub-category/printingCopying/CardsInvitations";
-import LabelsStickersDecals from "./sub-category/printingCopying/LabelsStickersDecals";
-import BookPrinting from "./sub-category/printingCopying/BookPrinting";
-import PosterPrinting from "./sub-category/printingCopying/PosterPrinting";
-import LegalPrinting from "./sub-category/printingCopying/LegalPrinting";
-import ApparelUniforms from "./sub-category/printingCopying/ApparelUniforms";
+// import CardsInvitations from "./sub-category/printingCopying/CardsInvitations";
+// import LabelsStickersDecals from "./sub-category/printingCopying/LabelsStickersDecals";
+// import BookPrinting from "./sub-category/printingCopying/BookPrinting";
+// import PosterPrinting from "./sub-category/printingCopying/PosterPrinting";
+// import LegalPrinting from "./sub-category/printingCopying/LegalPrinting";
+// import ApparelUniforms from "./sub-category/printingCopying/ApparelUniforms";
 
 import DirectMailMailingServices from "./sub-category/directMailMailingServices/DirectMailMailingServices";
 
@@ -98,35 +98,50 @@ function App() {
         <Route path="/manuals-catalogs-booklets" element={<MCBooklets />} />
         {/* Printing and Copying */}
         <Route
-          path="/Business-cards-stationery"
+          path="printing-copying/Business-cards-stationery"
           element={<PrintingCopyingPages />}
         />
         <Route
-          path="/business-annual-reports"
+          path="printing-copying/business-annual-reports"
           element={<PrintingCopyingPages />}
         />
         <Route
-          path="/newsletters-flyers-rack-cards"
+          path="printing-copying/newsletters-flyers-rack-cards"
           element={<PrintingCopyingPages />}
         />
         <Route
-          path="/post-cards-direct-mailers"
+          path="printing-copying/post-cards-direct-mailers"
           element={<PrintingCopyingPages />}
         />
         <Route
-          path="/presentation-training-materials"
+          path="printing-copying/presentation-training-materials"
           element={<PrintingCopyingPages />}
         />
 
-        <Route path="/cards-invitations" element={<CardsInvitations />} />
         <Route
-          path="/labels-stickers-decals"
-          element={<LabelsStickersDecals />}
+          path="printing-copying/cards-invitations"
+          element={<PrintingCopyingPages />}
         />
-        <Route path="/book-printing" element={<BookPrinting />} />
-        <Route path="/poster-printing" element={<PosterPrinting />} />
-        <Route path="/legal-printing" element={<LegalPrinting />} />
-        <Route path="/apparel-uniforms" element={<ApparelUniforms />} />
+        <Route
+          path="printing-copying/labels-stickers-decals"
+          element={<PrintingCopyingPages />}
+        />
+        <Route
+          path="printing-copying/book-printing"
+          element={<PrintingCopyingPages />}
+        />
+        <Route
+          path="printing-copying/poster-printing"
+          element={<PrintingCopyingPages />}
+        />
+        <Route
+          path="printing-copying/legal-printing"
+          element={<PrintingCopyingPages />}
+        />
+        <Route
+          path="printing-copying/apparel-uniforms"
+          element={<PrintingCopyingPages />}
+        />
         {/* DirectMailMailingServices */}
         <Route
           path="direct-mail-mailing-services/advanced-mailing-services"

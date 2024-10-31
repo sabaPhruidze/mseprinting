@@ -294,7 +294,7 @@ export interface CommonDocument {
 
 // Common Document With Array of Strings
 export interface CommonDocumentWAS {
-  one: TitleWithContent;
+  one: FrontType;
   two: string[];
   three?: string;
   front: FrontType;

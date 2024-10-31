@@ -18,6 +18,12 @@ import {
   fetchNewslettersFlyersRackCardsData,
   fetchPostCardsDirectMailersData,
   fetchPresentationTrainingMaterialsData,
+  fetchApparelUniformsData,
+  fetchBookPrintingData,
+  fetchCardsAndInvitationsData,
+  fetchLabelsStickersDecalsData,
+  fetchLegalCopyingData,
+  fetchPosterPrintingData,
 } from "../data/sub-category data/AllSubCategoryData";
 import {
   BUSINESS_ANNUAL_REPORTS_IMAGE,
@@ -25,10 +31,13 @@ import {
   NEWSLETTERS_FLYERS_RACK_CARDS_IMAGE,
   POSTCARDS_DIRECT_MAILERS_IMAGE,
   PRESENTATION_TRAINING_MATERIALS_IMAGE,
+  APPAREL_UNIFORMS_IMAGE,
+  BOOK_PRINTING_IMAGE,
+  CARDS_INVITATIONS_IMAGE,
+  LABELS_STICKERS_DECALS_IMAGE,
+  LEGAL_COPYING_IMAGE,
+  POSTER_PRINTING_IMAGE,
 } from "../data/sub-category data/ImageWithCEOData";
-
-// Define type for valid keys in serviceDataMap
-type ServiceKeyType = keyof typeof serviceDataMap;
 
 // Map for fetching functions and corresponding image data
 const serviceDataMap = {
@@ -52,7 +61,34 @@ const serviceDataMap = {
     fetchData: fetchPresentationTrainingMaterialsData,
     image: PRESENTATION_TRAINING_MATERIALS_IMAGE,
   },
+  "apparel-uniforms": {
+    fetchData: fetchApparelUniformsData,
+    image: APPAREL_UNIFORMS_IMAGE,
+  },
+  "book-printing": {
+    fetchData: fetchBookPrintingData,
+    image: BOOK_PRINTING_IMAGE,
+  },
+  "cards-invitations": {
+    fetchData: fetchCardsAndInvitationsData,
+    image: CARDS_INVITATIONS_IMAGE,
+  },
+  "labels-stickers-decals": {
+    fetchData: fetchLabelsStickersDecalsData,
+    image: LABELS_STICKERS_DECALS_IMAGE,
+  },
+  "legal-printing": {
+    fetchData: fetchLegalCopyingData,
+    image: LEGAL_COPYING_IMAGE,
+  },
+  "poster-printing": {
+    fetchData: fetchPosterPrintingData,
+    image: POSTER_PRINTING_IMAGE,
+  },
 };
+
+// Define type for valid keys in serviceDataMap
+type ServiceKeyType = keyof typeof serviceDataMap;
 
 export default function PrintingCopyingPages() {
   const location = useLocation();
