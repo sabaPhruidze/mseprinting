@@ -82,10 +82,11 @@ import PrePostShowDirectMail from "./sub-category/tradeshowsEvents/PrePostShowDi
 import TableCounterKioskDisplays from "./sub-category/tradeshowsEvents/TableCounterKioskDisplays";
 import CounterPopUpDisplays from "./sub-category/tradeshowsEvents/CounterPopUpDisplays";
 import GiftsAwardsIncentives from "./sub-category/tradeshowsEvents/GiftsAwardsIncentives";
-import PickPack from "./sub-category/fulfillmentServices/PickPack";
-import ProductFulfillment from "./sub-category/fulfillmentServices/ProductFulfillment";
-import InventoryManagement from "./sub-category/fulfillmentServices/InventoryManagement";
-import MarketingSalesKits from "./sub-category/fulfillmentServices/MarketingSalesKits";
+// import PickPack from "./sub-category/fulfillmentServices/PickPack";
+// import ProductFulfillment from "./sub-category/fulfillmentServices/ProductFulfillment";
+// import InventoryManagement from "./sub-category/fulfillmentServices/InventoryManagement";
+// import MarketingSalesKits from "./sub-category/fulfillmentServices/MarketingSalesKits";
+import FulfillmentServices from "./sub-category/fulfillmentServices/FullfillmentServices";
 import IndustrySpecific from "./sub-category/industrySpecific/IndustrySpecific";
 
 function App() {
@@ -255,10 +256,26 @@ function App() {
           element={<GiftsAwardsIncentives />}
         />
         {/* fulfillment services */}
-        <Route path="/pick-pack" element={<PickPack />} />
+        {/* <Route path="/pick-pack" element={<PickPack />} />
         <Route path="/product-fulfillment" element={<ProductFulfillment />} />
         <Route path="/inventory-management" element={<InventoryManagement />} />
-        <Route path="/marketing-sales-kit" element={<MarketingSalesKits />} />
+        <Route path="/marketing-sales-kit" element={<MarketingSalesKits />} /> */}
+        <Route
+          path="/fullfillment-services/pick-pack"
+          element={<FulfillmentServices />}
+        />
+        <Route
+          path="/fullfillment-services/product-fulfillment"
+          element={<FulfillmentServices />}
+        />
+        <Route
+          path="/fullfillment-services/inventory-management"
+          element={<FulfillmentServices />}
+        />
+        <Route
+          path="/fullfillment-services/marketing-sales-kit"
+          element={<FulfillmentServices />}
+        />
         {/* Industry specific */}
 
         <Route
