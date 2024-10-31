@@ -13,94 +13,81 @@ import {
 import ImageWithSEO from "../../importantparts/ImageWithCEO";
 import { SubCategoryCommonTypes } from "../../types/DataTypes";
 import {
-  fetchADAWayfindingSignsData,
-  fetchBoothGraphicsSignsBannersData,
-  fetchCarGraphicsWrapsData,
-  fetchDeliveryTakeoutSignsData,
-  fetchInteriorOfficeLobbyDecorData,
-  fetchNowOpenSignsGraphicsData,
-  fetchPullupBannersFlagsData,
-  fetchTradeshowEventSignsData,
-  fetchWindowWallFloorGraphicsData,
-  fetchYardOutdoorSignsData,
+  fetchAdvancedMailingServicesData,
+  fetchEveryDoorDirectMailData,
+  fetchKittingAndFulfillmentData,
+  fetchListManagementServicesData,
+  fetchStandartDirectMailData,
+  fetchTargetedDirectMailData,
 } from "../../data/sub-category data/AllSubCategoryData";
 import {
-  ADA_WAYFINDING_SIGNS_IMAGE,
-  BOOTH_GRAPHICS_SIGNS_BANNERS_IMAGE,
-  CAR_GRAPHICS_WRAPS_IMAGE,
-  DELIVERY_TAKOUT_SIGNS_IMAGE,
-  INTERIOR_OFFICE_LOBBY_DECOR_IMAGE,
-  NOW_OPEN_SIGNS_GRAPHICS_IMAGE,
-  PULL_UP_BANNERS_FLAGS_IMAGE,
-  TRADESHOW_EVENT_SIGNS_IMAGE,
-  WINDOW_WALL_FLOOR_GRAPHICS_IMAGE,
-  YARD_OUTDOOR_SIGNS_IMAGE,
+  ADVANCED_MAILING_SERVICES_IMAGE,
+  EVERY_DOOR_DIRECT_MAIL_IMAGE,
+  KITTING_FULLFILLMENT_IMAGE,
+  LIST_MANAGEMENT_SERVICES_IMAGE,
+  STANDARD_DIRECT_MAIL_IMAGE,
+  TARGETED_DIRECT_MAIL_IMAGE,
 } from "../../data/sub-category data/ImageWithCEOData";
 
-// Map for data-fetching functions and corresponding image data
+// Map of each data-fetching function and corresponding image
 const fetchDataMap: Record<
   string,
-  { fetchData: () => Promise<SubCategoryCommonTypes | null>; image: any }
+  {
+    fetchData: () => Promise<SubCategoryCommonTypes | null>;
+    image: {
+      src: string;
+      alt: string;
+      title: string;
+      geoData: { latitude: string; longitude: string; location: string };
+    };
+  }
 > = {
-  "ada-wayfinding-signs": {
-    fetchData: fetchADAWayfindingSignsData,
-    image: ADA_WAYFINDING_SIGNS_IMAGE,
+  "advanced-mailing-services": {
+    fetchData: fetchAdvancedMailingServicesData,
+    image: ADVANCED_MAILING_SERVICES_IMAGE,
   },
-  "booth-graphics-signs-banners": {
-    fetchData: fetchBoothGraphicsSignsBannersData,
-    image: BOOTH_GRAPHICS_SIGNS_BANNERS_IMAGE,
+  "every-door-direct-mail": {
+    fetchData: fetchEveryDoorDirectMailData,
+    image: EVERY_DOOR_DIRECT_MAIL_IMAGE,
   },
-  "car-graphics-wraps": {
-    fetchData: fetchCarGraphicsWrapsData,
-    image: CAR_GRAPHICS_WRAPS_IMAGE,
+  "kitting-and-fulfillment": {
+    fetchData: fetchKittingAndFulfillmentData,
+    image: KITTING_FULLFILLMENT_IMAGE,
   },
-  "interior-office-lobby-decor": {
-    fetchData: fetchInteriorOfficeLobbyDecorData,
-    image: INTERIOR_OFFICE_LOBBY_DECOR_IMAGE,
+  "list-management-services": {
+    fetchData: fetchListManagementServicesData,
+    image: LIST_MANAGEMENT_SERVICES_IMAGE,
   },
-  "delivery-takeout-signs": {
-    fetchData: fetchDeliveryTakeoutSignsData,
-    image: DELIVERY_TAKOUT_SIGNS_IMAGE,
+  "standard-direct-mail": {
+    fetchData: fetchStandartDirectMailData,
+    image: STANDARD_DIRECT_MAIL_IMAGE,
   },
-  "now-open-signs-graphics": {
-    fetchData: fetchNowOpenSignsGraphicsData,
-    image: NOW_OPEN_SIGNS_GRAPHICS_IMAGE,
-  },
-  "pullup-banners-flags": {
-    fetchData: fetchPullupBannersFlagsData,
-    image: PULL_UP_BANNERS_FLAGS_IMAGE,
-  },
-  "tradeshow-event-signs": {
-    fetchData: fetchTradeshowEventSignsData,
-    image: TRADESHOW_EVENT_SIGNS_IMAGE,
-  },
-  "window-wall-floor-graphics": {
-    fetchData: fetchWindowWallFloorGraphicsData,
-    image: WINDOW_WALL_FLOOR_GRAPHICS_IMAGE,
-  },
-  "yard-outdoor-signs": {
-    fetchData: fetchYardOutdoorSignsData,
-    image: YARD_OUTDOOR_SIGNS_IMAGE,
+  "targeted-direct-mail": {
+    fetchData: fetchTargetedDirectMailData,
+    image: TARGETED_DIRECT_MAIL_IMAGE,
   },
 };
 
-export default function SignsPages() {
+export default function DirectMailMailingServices() {
   const location = useLocation();
   const navigate = useNavigate();
   const [serviceData, setServiceData] = useState<SubCategoryCommonTypes | null>(
     null
   );
 
+  // Extract the service key from the URL
   const serviceKey = useMemo(
     () => location.pathname.split("/").pop()?.toLowerCase(),
     [location.pathname]
   );
 
+  // Get service configuration based on the current service key
   const serviceConfig = useMemo(
     () => (serviceKey ? fetchDataMap[serviceKey] : null),
     [serviceKey]
   );
 
+  // Fetch data for the current service
   const getServiceData = useCallback(async () => {
     if (serviceConfig) {
       try {
@@ -112,12 +99,14 @@ export default function SignsPages() {
     }
   }, [serviceConfig, serviceKey]);
 
+  // Trigger data fetch on component mount or when serviceConfig changes
   useEffect(() => {
     if (serviceConfig) {
       getServiceData();
     }
   }, [getServiceData, serviceConfig]);
 
+  // Memoize the service data to avoid unnecessary re-renders
   const memoizedData = useMemo(() => serviceData, [serviceData]);
 
   return (
