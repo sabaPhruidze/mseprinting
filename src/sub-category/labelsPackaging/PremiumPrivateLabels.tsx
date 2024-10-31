@@ -10,29 +10,29 @@ import {
   FullScreenButton,
   GlobalMainContent,
 } from "../../style/GlobalStyle";
-import { fetchPullupBannersFlagsData } from "../../data/sub-category data/AllSubCategoryData";
+import { fetchPremiumPrivateLabelsData } from "../../data/sub-category data/AllSubCategoryData";
 import ImageWithSEO from "../../importantparts/ImageWithCEO";
-import { PULL_UP_BANNERS_FLAGS_IMAGE } from "../../data/sub-category data/ImageWithCEOData";
+import { ADA_WAYFINDING_SIGNS_IMAGE } from "../../data/sub-category data/ImageWithCEOData"; // Assuming there's no separate image yet
 import { SubCategoryCommonTypes } from "../../types/DataTypes";
 
-export default function PullupBannersFlags() {
-  const [pullupBannersFlagsData, setPullupBannersFlagsData] =
+export default function PremiumPrivateLabels() {
+  const [premiumPrivateLabelsData, setPremiumPrivateLabelsData] =
     useState<SubCategoryCommonTypes | null>(null);
 
   useEffect(() => {
-    const getPullupBannersFlagsData = async () => {
-      const data = await fetchPullupBannersFlagsData();
+    const getPremiumPrivateLabelsData = async () => {
+      const data = await fetchPremiumPrivateLabelsData();
       if (data) {
-        setPullupBannersFlagsData(data);
+        setPremiumPrivateLabelsData(data);
       }
     };
 
-    getPullupBannersFlagsData();
+    getPremiumPrivateLabelsData();
   }, []);
 
   const memoizedData = useMemo(
-    () => pullupBannersFlagsData,
-    [pullupBannersFlagsData]
+    () => premiumPrivateLabelsData,
+    [premiumPrivateLabelsData]
   );
   const navigate = useNavigate();
 
@@ -41,10 +41,10 @@ export default function PullupBannersFlags() {
       <FullBackgroundContainerZERO>
         <div className="black-overlay"></div>
         <ImageWithSEO
-          src={PULL_UP_BANNERS_FLAGS_IMAGE.src}
-          alt={PULL_UP_BANNERS_FLAGS_IMAGE.alt}
-          title={PULL_UP_BANNERS_FLAGS_IMAGE.title}
-          geoData={PULL_UP_BANNERS_FLAGS_IMAGE.geoData}
+          src={ADA_WAYFINDING_SIGNS_IMAGE.src}
+          alt={ADA_WAYFINDING_SIGNS_IMAGE.alt}
+          title={ADA_WAYFINDING_SIGNS_IMAGE.title}
+          geoData={ADA_WAYFINDING_SIGNS_IMAGE.geoData}
           loading="eager"
         />
         <TitleAndButtonContainer>
@@ -58,7 +58,7 @@ export default function PullupBannersFlags() {
 
       <GlobalContainerColumn>
         <GlobalTextContainer>
-          {memoizedData?.two.map((item, index) => (
+          {memoizedData?.two?.map((item, index) => (
             <GlobalPart key={index}>{item}</GlobalPart>
           ))}
         </GlobalTextContainer>

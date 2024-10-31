@@ -10,29 +10,29 @@ import {
   FullScreenButton,
   GlobalMainContent,
 } from "../../style/GlobalStyle";
-import { fetchTradeshowEventSignsData } from "../../data/sub-category data/AllSubCategoryData";
+import { fetchShortRunPackagingData } from "../../data/sub-category data/AllSubCategoryData";
 import ImageWithSEO from "../../importantparts/ImageWithCEO";
-import { TRADESHOW_EVENT_SIGNS_IMAGE } from "../../data/sub-category data/ImageWithCEOData";
+import { ADA_WAYFINDING_SIGNS_IMAGE } from "../../data/sub-category data/ImageWithCEOData"; // Assuming there's no separate image yet
 import { SubCategoryCommonTypes } from "../../types/DataTypes";
 
-export default function TradeshowEventSigns() {
-  const [tradeshowEventSignsData, setTradeshowEventSignsData] =
+export default function ShortRunPackaging() {
+  const [shortRunPackagingData, setShortRunPackagingData] =
     useState<SubCategoryCommonTypes | null>(null);
 
   useEffect(() => {
-    const getTradeshowEventSignsData = async () => {
-      const data = await fetchTradeshowEventSignsData();
+    const getShortRunPackagingData = async () => {
+      const data = await fetchShortRunPackagingData();
       if (data) {
-        setTradeshowEventSignsData(data);
+        setShortRunPackagingData(data);
       }
     };
 
-    getTradeshowEventSignsData();
+    getShortRunPackagingData();
   }, []);
 
   const memoizedData = useMemo(
-    () => tradeshowEventSignsData,
-    [tradeshowEventSignsData]
+    () => shortRunPackagingData,
+    [shortRunPackagingData]
   );
   const navigate = useNavigate();
 
@@ -41,10 +41,10 @@ export default function TradeshowEventSigns() {
       <FullBackgroundContainerZERO>
         <div className="black-overlay"></div>
         <ImageWithSEO
-          src={TRADESHOW_EVENT_SIGNS_IMAGE.src}
-          alt={TRADESHOW_EVENT_SIGNS_IMAGE.alt}
-          title={TRADESHOW_EVENT_SIGNS_IMAGE.title}
-          geoData={TRADESHOW_EVENT_SIGNS_IMAGE.geoData}
+          src={ADA_WAYFINDING_SIGNS_IMAGE.src}
+          alt={ADA_WAYFINDING_SIGNS_IMAGE.alt}
+          title={ADA_WAYFINDING_SIGNS_IMAGE.title}
+          geoData={ADA_WAYFINDING_SIGNS_IMAGE.geoData}
           loading="eager"
         />
         <TitleAndButtonContainer>
@@ -58,7 +58,7 @@ export default function TradeshowEventSigns() {
 
       <GlobalContainerColumn>
         <GlobalTextContainer>
-          {memoizedData?.two.map((item, index) => (
+          {memoizedData?.two?.map((item, index) => (
             <GlobalPart key={index}>{item}</GlobalPart>
           ))}
         </GlobalTextContainer>

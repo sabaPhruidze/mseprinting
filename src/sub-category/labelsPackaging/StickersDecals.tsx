@@ -10,30 +10,27 @@ import {
   FullScreenButton,
   GlobalMainContent,
 } from "../../style/GlobalStyle";
-import { fetchBoothGraphicsSignsBannersData } from "../../data/sub-category data/AllSubCategoryData";
+import { fetchStickersDecalsData } from "../../data/sub-category data/AllSubCategoryData";
 import ImageWithSEO from "../../importantparts/ImageWithCEO";
-import { BOOTH_GRAPHICS_SIGNS_BANNERS_IMAGE } from "../../data/sub-category data/ImageWithCEOData";
+import { ADA_WAYFINDING_SIGNS_IMAGE } from "../../data/sub-category data/ImageWithCEOData"; // Assuming there's no separate image yet
 import { SubCategoryCommonTypes } from "../../types/DataTypes";
 
-export default function BoothGraphicsSignsBanners() {
-  const [boothGraphicsSignsBannersData, setBoothGraphicsSignsBannersData] =
+export default function StickersDecals() {
+  const [stickersDecalsData, setStickersDecalsData] =
     useState<SubCategoryCommonTypes | null>(null);
 
   useEffect(() => {
-    const getBoothGraphicsSignsBannersData = async () => {
-      const data = await fetchBoothGraphicsSignsBannersData();
+    const getStickersDecalsData = async () => {
+      const data = await fetchStickersDecalsData();
       if (data) {
-        setBoothGraphicsSignsBannersData(data);
+        setStickersDecalsData(data);
       }
     };
 
-    getBoothGraphicsSignsBannersData();
+    getStickersDecalsData();
   }, []);
 
-  const memoizedData = useMemo(
-    () => boothGraphicsSignsBannersData,
-    [boothGraphicsSignsBannersData]
-  );
+  const memoizedData = useMemo(() => stickersDecalsData, [stickersDecalsData]);
   const navigate = useNavigate();
 
   return (
@@ -41,10 +38,10 @@ export default function BoothGraphicsSignsBanners() {
       <FullBackgroundContainerZERO>
         <div className="black-overlay"></div>
         <ImageWithSEO
-          src={BOOTH_GRAPHICS_SIGNS_BANNERS_IMAGE.src}
-          alt={BOOTH_GRAPHICS_SIGNS_BANNERS_IMAGE.alt}
-          title={BOOTH_GRAPHICS_SIGNS_BANNERS_IMAGE.title}
-          geoData={BOOTH_GRAPHICS_SIGNS_BANNERS_IMAGE.geoData}
+          src={ADA_WAYFINDING_SIGNS_IMAGE.src}
+          alt={ADA_WAYFINDING_SIGNS_IMAGE.alt}
+          title={ADA_WAYFINDING_SIGNS_IMAGE.title}
+          geoData={ADA_WAYFINDING_SIGNS_IMAGE.geoData}
           loading="eager"
         />
         <TitleAndButtonContainer>
@@ -58,7 +55,7 @@ export default function BoothGraphicsSignsBanners() {
 
       <GlobalContainerColumn>
         <GlobalTextContainer>
-          {memoizedData?.two.map((item, index) => (
+          {memoizedData?.two?.map((item, index) => (
             <GlobalPart key={index}>{item}</GlobalPart>
           ))}
         </GlobalTextContainer>

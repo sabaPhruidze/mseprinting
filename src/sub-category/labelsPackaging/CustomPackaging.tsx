@@ -10,29 +10,29 @@ import {
   FullScreenButton,
   GlobalMainContent,
 } from "../../style/GlobalStyle";
-import { fetchYardOutdoorSignsData } from "../../data/sub-category data/AllSubCategoryData";
+import { fetchCustomPackagingData } from "../../data/sub-category data/AllSubCategoryData";
 import ImageWithSEO from "../../importantparts/ImageWithCEO";
-import { YARD_OUTDOOR_SIGNS_IMAGE } from "../../data/sub-category data/ImageWithCEOData";
+import { ADA_WAYFINDING_SIGNS_IMAGE } from "../../data/sub-category data/ImageWithCEOData"; // Assuming there's no separate image yet
 import { SubCategoryCommonTypes } from "../../types/DataTypes";
 
-export default function YardOutdoorSigns() {
-  const [yardOutdoorSignsData, setYardOutdoorSignsData] =
+export default function CustomPackaging() {
+  const [customPackagingData, setCustomPackagingData] =
     useState<SubCategoryCommonTypes | null>(null);
 
   useEffect(() => {
-    const getYardOutdoorSignsData = async () => {
-      const data = await fetchYardOutdoorSignsData();
+    const getCustomPackagingData = async () => {
+      const data = await fetchCustomPackagingData();
       if (data) {
-        setYardOutdoorSignsData(data);
+        setCustomPackagingData(data);
       }
     };
 
-    getYardOutdoorSignsData();
+    getCustomPackagingData();
   }, []);
 
   const memoizedData = useMemo(
-    () => yardOutdoorSignsData,
-    [yardOutdoorSignsData]
+    () => customPackagingData,
+    [customPackagingData]
   );
   const navigate = useNavigate();
 
@@ -41,10 +41,10 @@ export default function YardOutdoorSigns() {
       <FullBackgroundContainerZERO>
         <div className="black-overlay"></div>
         <ImageWithSEO
-          src={YARD_OUTDOOR_SIGNS_IMAGE.src}
-          alt={YARD_OUTDOOR_SIGNS_IMAGE.alt}
-          title={YARD_OUTDOOR_SIGNS_IMAGE.title}
-          geoData={YARD_OUTDOOR_SIGNS_IMAGE.geoData}
+          src={ADA_WAYFINDING_SIGNS_IMAGE.src}
+          alt={ADA_WAYFINDING_SIGNS_IMAGE.alt}
+          title={ADA_WAYFINDING_SIGNS_IMAGE.title}
+          geoData={ADA_WAYFINDING_SIGNS_IMAGE.geoData}
           loading="eager"
         />
         <TitleAndButtonContainer>
@@ -58,7 +58,7 @@ export default function YardOutdoorSigns() {
 
       <GlobalContainerColumn>
         <GlobalTextContainer>
-          {memoizedData?.two.map((item, index) => (
+          {memoizedData?.two?.map((item, index) => (
             <GlobalPart key={index}>{item}</GlobalPart>
           ))}
         </GlobalTextContainer>
