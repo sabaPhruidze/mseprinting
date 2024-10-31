@@ -40,13 +40,6 @@ import BannersPosters from "./sub-category/cards/BannersPosters";
 //printing and copying part
 import PrintingCopyingPages from "./sub-category/PrintingCopyingPages";
 
-// import CardsInvitations from "./sub-category/printingCopying/CardsInvitations";
-// import LabelsStickersDecals from "./sub-category/printingCopying/LabelsStickersDecals";
-// import BookPrinting from "./sub-category/printingCopying/BookPrinting";
-// import PosterPrinting from "./sub-category/printingCopying/PosterPrinting";
-// import LegalPrinting from "./sub-category/printingCopying/LegalPrinting";
-// import ApparelUniforms from "./sub-category/printingCopying/ApparelUniforms";
-
 import DirectMailMailingServices from "./sub-category/directMailMailingServices/DirectMailMailingServices";
 
 import SignsPages from "./sub-category/signs/SignsPages";
