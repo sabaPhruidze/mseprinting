@@ -66,13 +66,15 @@ import TradeshowEventSigns from "./sub-category/signs/TradeshowEventSigns";
 import WindowWallFloorGraphics from "./sub-category/signs/WindowWallFloorGraphics";
 import YardOutdoorSigns from "./sub-category/signs/YardOutdoorSigns";
 import GraphicDesign from "./sub-category/graphicDesign/GraphicDesign";
-import QRCodesNoTouchOptions from "./sub-category/labelsPackaging/QRCodesNoTouchOptions";
-import CustomPackaging from "./sub-category/labelsPackaging/CustomPackaging";
-import ShortRunPackaging from "./sub-category/labelsPackaging/ShortRunPackaging";
-import SafetyLabels from "./sub-category/labelsPackaging/SafetyLabels";
-import StickersDecals from "./sub-category/labelsPackaging/StickersDecals";
-import ProductPromotionalLabels from "./sub-category/labelsPackaging/ProductPromotionalLabels";
-import PremiumPrivateLabels from "./sub-category/labelsPackaging/PremiumPrivateLabels";
+
+import LabelsPackagingMain from "./sub-category/labelsPackaging/LabelsPackaging";
+// import QRCodesNoTouchOptions from "./sub-category/labelsPackaging/QRCodesNoTouchOptions";
+// import CustomPackaging from "./sub-category/labelsPackaging/CustomPackaging";
+// import ShortRunPackaging from "./sub-category/labelsPackaging/ShortRunPackaging";
+// import SafetyLabels from "./sub-category/labelsPackaging/SafetyLabels";
+// import StickersDecals from "./sub-category/labelsPackaging/StickersDecals";
+// import ProductPromotionalLabels from "./sub-category/labelsPackaging/ProductPromotionalLabels";
+// import PremiumPrivateLabels from "./sub-category/labelsPackaging/PremiumPrivateLabels";
 
 import MarketingServices from "./sub-category/marketingServices/MarketingServices";
 import TradeShowEvents from "./sub-category/tradeshowsEvents/TradeShowEvents";
@@ -197,20 +199,32 @@ function App() {
         <Route path="/graphic-design" element={<GraphicDesign />} />
         {/* labels and packaging */}
         <Route
-          path="/qr-codes-no-touch-options"
-          element={<QRCodesNoTouchOptions />}
-        />
-        <Route path="/custom-packaging" element={<CustomPackaging />} />
-        <Route path="/short-run-packaging" element={<ShortRunPackaging />} />
-        <Route path="/safety-labels" element={<SafetyLabels />} />
-        <Route path="/stickers-decals" element={<StickersDecals />} />
-        <Route
-          path="/product-promotional-labels"
-          element={<ProductPromotionalLabels />}
+          path="labels-packaging/qr-codes-no-touch-options"
+          element={<LabelsPackagingMain />}
         />
         <Route
-          path="/premium-private-labels"
-          element={<PremiumPrivateLabels />}
+          path="labels-packaging/custom-packaging"
+          element={<LabelsPackagingMain />}
+        />
+        <Route
+          path="labels-packaging/short-run-packaging"
+          element={<LabelsPackagingMain />}
+        />
+        <Route
+          path="labels-packaging/safety-labels"
+          element={<LabelsPackagingMain />}
+        />
+        <Route
+          path="labels-packaging/stickers-decals"
+          element={<LabelsPackagingMain />}
+        />
+        <Route
+          path="labels-packaging/product-promotional-labels"
+          element={<LabelsPackagingMain />}
+        />
+        <Route
+          path="labels-packaging/premium-private-labels"
+          element={<LabelsPackagingMain />}
         />
         {/* marketing services */}
         <Route
