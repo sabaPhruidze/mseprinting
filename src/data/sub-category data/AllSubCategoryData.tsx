@@ -68,15 +68,24 @@ export const fetchMKBookletsData = () =>
 export const fetchLabelsPackagingData = () =>
   fetchData<LabelsPackagingDocument>("CardsPages", "LabelsPackaging");
 export const fetchBusinessAnnualReportsData = () =>
-  fetchData<CommonDocumentWAS>("printingCopying", "BusinessAnnualReports");
+  fetchData<SubCategoryCommonTypes>("printingCopying", "BusinessAnnualReports");
 export const fetchBusinessCardsStationeryData = () =>
-  fetchData<CommonDocumentWAS>("printingCopying", "BusinessCardsStationery");
+  fetchData<SubCategoryCommonTypes>(
+    "printingCopying",
+    "BusinessCardsStationery"
+  );
 export const fetchNewslettersFlyersRackCardsData = () =>
-  fetchData<CommonDocumentWAS>("printingCopying", "NewslettersFlyersRackCards");
+  fetchData<SubCategoryCommonTypes>(
+    "printingCopying",
+    "NewslettersFlyersRackCards"
+  );
 export const fetchPostCardsDirectMailersData = () =>
-  fetchData<CommonDocumentWAS>("printingCopying", "PostCardsDirectMailers");
+  fetchData<SubCategoryCommonTypes>(
+    "printingCopying",
+    "PostCardsDirectMailers"
+  );
 export const fetchPresentationTrainingMaterialsData = () =>
-  fetchData<CommonDocumentWAS>(
+  fetchData<SubCategoryCommonTypes>(
     "printingCopying",
     "PresentationTrainingMaterials"
   );

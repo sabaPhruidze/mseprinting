@@ -38,11 +38,12 @@ import BrochuresCollateral from "./sub-category/cards/BrochuresCollateral";
 import BannersPosters from "./sub-category/cards/BannersPosters";
 
 //printing and copying part
-import BusinessCardsStationery from "./sub-category/printingCopying/BusinessCardsStationery";
-import BusinessAnnualReports from "./sub-category/printingCopying/BusinessAnnualReports";
-import NewslettersFlyersRackCards from "./sub-category/printingCopying/NewslettersFlyersRackCards";
-import PostCardsDirectMailers from "./sub-category/printingCopying/PostCardsDirectMailers";
-import PresentationTrainingMaterials from "./sub-category/printingCopying/PresentationTrainingMaterials";
+import PrintingCopyingPages from "./sub-category/PrintingCopyingPages";
+// import BusinessCardsStationery from "./sub-category/printingCopying/BusinessCardsStationery";
+// import BusinessAnnualReports from "./sub-category/printingCopying/BusinessAnnualReports";
+// import NewslettersFlyersRackCards from "./sub-category/printingCopying/NewslettersFlyersRackCards";
+// import PostCardsDirectMailers from "./sub-category/printingCopying/PostCardsDirectMailers";
+// import PresentationTrainingMaterials from "./sub-category/printingCopying/PresentationTrainingMaterials";
 import CardsInvitations from "./sub-category/printingCopying/CardsInvitations";
 import LabelsStickersDecals from "./sub-category/printingCopying/LabelsStickersDecals";
 import BookPrinting from "./sub-category/printingCopying/BookPrinting";
@@ -51,12 +52,7 @@ import LegalPrinting from "./sub-category/printingCopying/LegalPrinting";
 import ApparelUniforms from "./sub-category/printingCopying/ApparelUniforms";
 
 import DirectMailMailingServices from "./sub-category/directMailMailingServices/DirectMailMailingServices";
-// import AdvancedMailingServices from "./sub-category/directMailMailingServices/AdvancedMailingServices";
-// import EveryDoorDirectMail from "./sub-category/directMailMailingServices/EveryDoorDirectMail";
-// import KittingAndFulfillment from "./sub-category/directMailMailingServices/KittingAndFulfillment";
-// import StandartDirectMail from "./sub-category/directMailMailingServices/StandartDirectMail";
-// import TargetedDirectMail from "./sub-category/directMailMailingServices/TargetedDirectMail";
-// import ListManagementServices from "./sub-category/directMailMailingServices/ListManagementServices";
+
 import SignsPages from "./sub-category/signs/SignsPages";
 
 import GraphicDesign from "./sub-category/graphicDesign/GraphicDesign";
@@ -107,24 +103,25 @@ function App() {
         {/* Printing and Copying */}
         <Route
           path="/Business-cards-stationery"
-          element={<BusinessCardsStationery />}
+          element={<PrintingCopyingPages />}
         />
         <Route
           path="/business-annual-reports"
-          element={<BusinessAnnualReports />}
+          element={<PrintingCopyingPages />}
         />
         <Route
           path="/newsletters-flyers-rack-cards"
-          element={<NewslettersFlyersRackCards />}
+          element={<PrintingCopyingPages />}
         />
         <Route
           path="/post-cards-direct-mailers"
-          element={<PostCardsDirectMailers />}
+          element={<PrintingCopyingPages />}
         />
         <Route
           path="/presentation-training-materials"
-          element={<PresentationTrainingMaterials />}
+          element={<PrintingCopyingPages />}
         />
+
         <Route path="/cards-invitations" element={<CardsInvitations />} />
         <Route
           path="/labels-stickers-decals"
@@ -244,10 +241,7 @@ function App() {
           path="tradeshow-events/counter-pop-up-displays"
           element={<TradeShowEvents />}
         />
-        <Route
-          path="/presentation-training-materials"
-          element={<PresentationTrainingMaterials />}
-        />
+
         <Route
           path="tradeshow-events/gifts-awards-incentives"
           element={<TradeShowEvents />}
