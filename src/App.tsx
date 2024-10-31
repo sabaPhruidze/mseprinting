@@ -49,33 +49,19 @@ import BookPrinting from "./sub-category/printingCopying/BookPrinting";
 import PosterPrinting from "./sub-category/printingCopying/PosterPrinting";
 import LegalPrinting from "./sub-category/printingCopying/LegalPrinting";
 import ApparelUniforms from "./sub-category/printingCopying/ApparelUniforms";
-import AdvancedMailingServices from "./sub-category/directMailMailingServices/AdvancedMailingServices";
-import EveryDoorDirectMail from "./sub-category/directMailMailingServices/EveryDoorDirectMail";
-import KittingAndFulfillment from "./sub-category/directMailMailingServices/KittingAndFulfillment";
-import StandartDirectMail from "./sub-category/directMailMailingServices/StandartDirectMail";
-import TargetedDirectMail from "./sub-category/directMailMailingServices/TargetedDirectMail";
-import ListManagementServices from "./sub-category/directMailMailingServices/ListManagementServices";
+
+import DirectMailMailingServices from "./sub-category/directMailMailingServices/DirectMailMailingServices";
+// import AdvancedMailingServices from "./sub-category/directMailMailingServices/AdvancedMailingServices";
+// import EveryDoorDirectMail from "./sub-category/directMailMailingServices/EveryDoorDirectMail";
+// import KittingAndFulfillment from "./sub-category/directMailMailingServices/KittingAndFulfillment";
+// import StandartDirectMail from "./sub-category/directMailMailingServices/StandartDirectMail";
+// import TargetedDirectMail from "./sub-category/directMailMailingServices/TargetedDirectMail";
+// import ListManagementServices from "./sub-category/directMailMailingServices/ListManagementServices";
 import SignsPages from "./sub-category/signs/SignsPages";
-// import ADAWayfindingSigns from "./sub-category/signs/ADAWayfindingSigns";
-// import BoothGraphicsSignsBanners from "./sub-category/signs/BoothGraphicsSignsBanners";
-// import CarGraphicsWraps from "./sub-category/signs/CarGraphicsWraps";
-// import DeliveryTakeoutSigns from "./sub-category/signs/DeliveryTakeoutSigns";
-// import InteriorOfficeLobbyDecor from "./sub-category/signs/InteriorOfficeLobbyDecor";
-// import NowOpenSignsGraphics from "./sub-category/signs/NowOpenSignsGraphics";
-// import PullupBannersFlags from "./sub-category/signs/PullupBannersFlags";
-// import TradeshowEventSigns from "./sub-category/signs/TradeshowEventSigns";
-// import WindowWallFloorGraphics from "./sub-category/signs/WindowWallFloorGraphics";
-// import YardOutdoorSigns from "./sub-category/signs/YardOutdoorSigns";
+
 import GraphicDesign from "./sub-category/graphicDesign/GraphicDesign";
 
 import LabelsPackagingMain from "./sub-category/labelsPackaging/LabelsPackaging";
-// import QRCodesNoTouchOptions from "./sub-category/labelsPackaging/QRCodesNoTouchOptions";
-// import CustomPackaging from "./sub-category/labelsPackaging/CustomPackaging";
-// import ShortRunPackaging from "./sub-category/labelsPackaging/ShortRunPackaging";
-// import SafetyLabels from "./sub-category/labelsPackaging/SafetyLabels";
-// import StickersDecals from "./sub-category/labelsPackaging/StickersDecals";
-// import ProductPromotionalLabels from "./sub-category/labelsPackaging/ProductPromotionalLabels";
-// import PremiumPrivateLabels from "./sub-category/labelsPackaging/PremiumPrivateLabels";
 
 import MarketingServices from "./sub-category/marketingServices/MarketingServices";
 import TradeShowEvents from "./sub-category/tradeshowsEvents/TradeShowEvents";
@@ -150,22 +136,28 @@ function App() {
         <Route path="/apparel-uniforms" element={<ApparelUniforms />} />
         {/* DirectMailMailingServices */}
         <Route
-          path="/advanced-mailing-services"
-          element={<AdvancedMailingServices />}
+          path="direct-mail-mailing-services/advanced-mailing-services"
+          element={<DirectMailMailingServices />}
         />
         <Route
-          path="/every-door-direct-mail"
-          element={<EveryDoorDirectMail />}
+          path="direct-mail-mailing-services/every-door-direct-mail"
+          element={<DirectMailMailingServices />}
         />
         <Route
-          path="/kitting-and-fulfillment"
-          element={<KittingAndFulfillment />}
+          path="direct-mail-mailing-services/kitting-and-fulfillment"
+          element={<DirectMailMailingServices />}
         />
-        <Route path="/standard-direct-mail" element={<StandartDirectMail />} />
-        <Route path="/targeted-direct-mail" element={<TargetedDirectMail />} />
         <Route
-          path="/list-management-services"
-          element={<ListManagementServices />}
+          path="direct-mail-mailing-services/standard-direct-mail"
+          element={<DirectMailMailingServices />}
+        />
+        <Route
+          path="direct-mail-mailing-services/targeted-direct-mail"
+          element={<DirectMailMailingServices />}
+        />
+        <Route
+          path="direct-mail-mailing-services/list-management-services"
+          element={<DirectMailMailingServices />}
         />
         {/* Signs */}
         <Route path="signs/ada-wayfinding-signs" element={<SignsPages />} />
