@@ -39,11 +39,7 @@ import BannersPosters from "./sub-category/cards/BannersPosters";
 
 //printing and copying part
 import PrintingCopyingPages from "./sub-category/PrintingCopyingPages";
-// import BusinessCardsStationery from "./sub-category/printingCopying/BusinessCardsStationery";
-// import BusinessAnnualReports from "./sub-category/printingCopying/BusinessAnnualReports";
-// import NewslettersFlyersRackCards from "./sub-category/printingCopying/NewslettersFlyersRackCards";
-// import PostCardsDirectMailers from "./sub-category/printingCopying/PostCardsDirectMailers";
-// import PresentationTrainingMaterials from "./sub-category/printingCopying/PresentationTrainingMaterials";
+
 import CardsInvitations from "./sub-category/printingCopying/CardsInvitations";
 import LabelsStickersDecals from "./sub-category/printingCopying/LabelsStickersDecals";
 import BookPrinting from "./sub-category/printingCopying/BookPrinting";
