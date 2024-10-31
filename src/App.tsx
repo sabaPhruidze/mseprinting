@@ -77,11 +77,13 @@ import CampaignsConsultation from "./sub-category/marketingServices/CampaignsCon
 import SocialMedia from "./sub-category/marketingServices/SocialMedia";
 import VideoProduction from "./sub-category/marketingServices/VideoProduction";
 import WebsiteDesign from "./sub-category/marketingServices/WebsiteDesign";
-import EventLiteratureSigns from "./sub-category/tradeshowsEvents/EventLiteratureSigns";
-import PrePostShowDirectMail from "./sub-category/tradeshowsEvents/PrePostShowDirectMail";
-import TableCounterKioskDisplays from "./sub-category/tradeshowsEvents/TableCounterKioskDisplays";
-import CounterPopUpDisplays from "./sub-category/tradeshowsEvents/CounterPopUpDisplays";
-import GiftsAwardsIncentives from "./sub-category/tradeshowsEvents/GiftsAwardsIncentives";
+
+import TradeShowEvents from "./sub-category/tradeshowsEvents/TradeShowEvents";
+// import EventLiteratureSigns from "./sub-category/tradeshowsEvents/EventLiteratureSigns";
+// import PrePostShowDirectMail from "./sub-category/tradeshowsEvents/PrePostShowDirectMail";
+// import TableCounterKioskDisplays from "./sub-category/tradeshowsEvents/TableCounterKioskDisplays";
+// import CounterPopUpDisplays from "./sub-category/tradeshowsEvents/CounterPopUpDisplays";
+// import GiftsAwardsIncentives from "./sub-category/tradeshowsEvents/GiftsAwardsIncentives";
 // import PickPack from "./sub-category/fulfillmentServices/PickPack";
 // import ProductFulfillment from "./sub-category/fulfillmentServices/ProductFulfillment";
 // import InventoryManagement from "./sub-category/fulfillmentServices/InventoryManagement";
@@ -232,28 +234,28 @@ function App() {
         <Route path="/website-design" element={<WebsiteDesign />} />
         {/* trandeshows and events */}
         <Route
-          path="/event-literature-signs"
-          element={<EventLiteratureSigns />}
+          path="tradeshow-events/event-literature-signs"
+          element={<TradeShowEvents />}
         />
         <Route
-          path="/pre-post-show-direct-mail"
-          element={<PrePostShowDirectMail />}
+          path="tradeshow-events/pre-post-show-direct-mail"
+          element={<TradeShowEvents />}
         />
         <Route
-          path="/table-counter-kiosk-displays"
-          element={<TableCounterKioskDisplays />}
+          path="tradeshow-events/table-counter-kiosk-displays"
+          element={<TradeShowEvents />}
         />
         <Route
-          path="/counter-pop-up-displays"
-          element={<CounterPopUpDisplays />}
+          path="tradeshow-events/counter-pop-up-displays"
+          element={<TradeShowEvents />}
         />
         <Route
           path="/presentation-training-materials"
           element={<PresentationTrainingMaterials />}
         />
         <Route
-          path="/gifts-awards-incentives"
-          element={<GiftsAwardsIncentives />}
+          path="tradeshow-events/gifts-awards-incentives"
+          element={<TradeShowEvents />}
         />
         {/* fulfillment services */}
         {/* <Route path="/pick-pack" element={<PickPack />} />
