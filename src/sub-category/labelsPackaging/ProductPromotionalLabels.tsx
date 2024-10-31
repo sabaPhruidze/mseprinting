@@ -10,29 +10,29 @@ import {
   FullScreenButton,
   GlobalMainContent,
 } from "../../style/GlobalStyle";
-import { fetchNowOpenSignsGraphicsData } from "../../data/sub-category data/AllSubCategoryData";
+import { fetchProductPromotionalLabelsData } from "../../data/sub-category data/AllSubCategoryData";
 import ImageWithSEO from "../../importantparts/ImageWithCEO";
-import { NOW_OPEN_SIGNS_GRAPHICS_IMAGE } from "../../data/sub-category data/ImageWithCEOData";
+import { ADA_WAYFINDING_SIGNS_IMAGE } from "../../data/sub-category data/ImageWithCEOData"; // Assuming there's no separate image yet
 import { SubCategoryCommonTypes } from "../../types/DataTypes";
 
-export default function NowOpenSignsGraphics() {
-  const [nowOpenSignsGraphicsData, setNowOpenSignsGraphicsData] =
+export default function ProductPromotionalLabels() {
+  const [productPromotionalLabelsData, setProductPromotionalLabelsData] =
     useState<SubCategoryCommonTypes | null>(null);
 
   useEffect(() => {
-    const getNowOpenSignsGraphicsData = async () => {
-      const data = await fetchNowOpenSignsGraphicsData();
+    const getProductPromotionalLabelsData = async () => {
+      const data = await fetchProductPromotionalLabelsData();
       if (data) {
-        setNowOpenSignsGraphicsData(data);
+        setProductPromotionalLabelsData(data);
       }
     };
 
-    getNowOpenSignsGraphicsData();
+    getProductPromotionalLabelsData();
   }, []);
 
   const memoizedData = useMemo(
-    () => nowOpenSignsGraphicsData,
-    [nowOpenSignsGraphicsData]
+    () => productPromotionalLabelsData,
+    [productPromotionalLabelsData]
   );
   const navigate = useNavigate();
 
@@ -41,10 +41,10 @@ export default function NowOpenSignsGraphics() {
       <FullBackgroundContainerZERO>
         <div className="black-overlay"></div>
         <ImageWithSEO
-          src={NOW_OPEN_SIGNS_GRAPHICS_IMAGE.src}
-          alt={NOW_OPEN_SIGNS_GRAPHICS_IMAGE.alt}
-          title={NOW_OPEN_SIGNS_GRAPHICS_IMAGE.title}
-          geoData={NOW_OPEN_SIGNS_GRAPHICS_IMAGE.geoData}
+          src={ADA_WAYFINDING_SIGNS_IMAGE.src}
+          alt={ADA_WAYFINDING_SIGNS_IMAGE.alt}
+          title={ADA_WAYFINDING_SIGNS_IMAGE.title}
+          geoData={ADA_WAYFINDING_SIGNS_IMAGE.geoData}
           loading="eager"
         />
         <TitleAndButtonContainer>
@@ -58,7 +58,7 @@ export default function NowOpenSignsGraphics() {
 
       <GlobalContainerColumn>
         <GlobalTextContainer>
-          {memoizedData?.two.map((item, index) => (
+          {memoizedData?.two?.map((item, index) => (
             <GlobalPart key={index}>{item}</GlobalPart>
           ))}
         </GlobalTextContainer>

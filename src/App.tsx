@@ -55,16 +55,17 @@ import KittingAndFulfillment from "./sub-category/directMailMailingServices/Kitt
 import StandartDirectMail from "./sub-category/directMailMailingServices/StandartDirectMail";
 import TargetedDirectMail from "./sub-category/directMailMailingServices/TargetedDirectMail";
 import ListManagementServices from "./sub-category/directMailMailingServices/ListManagementServices";
-import ADAWayfindingSigns from "./sub-category/signs/ADAWayfindingSigns";
-import BoothGraphicsSignsBanners from "./sub-category/signs/BoothGraphicsSignsBanners";
-import CarGraphicsWraps from "./sub-category/signs/CarGraphicsWraps";
-import DeliveryTakeoutSigns from "./sub-category/signs/DeliveryTakeoutSigns";
-import InteriorOfficeLobbyDecor from "./sub-category/signs/InteriorOfficeLobbyDecor";
-import NowOpenSignsGraphics from "./sub-category/signs/NowOpenSignsGraphics";
-import PullupBannersFlags from "./sub-category/signs/PullupBannersFlags";
-import TradeshowEventSigns from "./sub-category/signs/TradeshowEventSigns";
-import WindowWallFloorGraphics from "./sub-category/signs/WindowWallFloorGraphics";
-import YardOutdoorSigns from "./sub-category/signs/YardOutdoorSigns";
+import SignsPages from "./sub-category/signs/SignsPages";
+// import ADAWayfindingSigns from "./sub-category/signs/ADAWayfindingSigns";
+// import BoothGraphicsSignsBanners from "./sub-category/signs/BoothGraphicsSignsBanners";
+// import CarGraphicsWraps from "./sub-category/signs/CarGraphicsWraps";
+// import DeliveryTakeoutSigns from "./sub-category/signs/DeliveryTakeoutSigns";
+// import InteriorOfficeLobbyDecor from "./sub-category/signs/InteriorOfficeLobbyDecor";
+// import NowOpenSignsGraphics from "./sub-category/signs/NowOpenSignsGraphics";
+// import PullupBannersFlags from "./sub-category/signs/PullupBannersFlags";
+// import TradeshowEventSigns from "./sub-category/signs/TradeshowEventSigns";
+// import WindowWallFloorGraphics from "./sub-category/signs/WindowWallFloorGraphics";
+// import YardOutdoorSigns from "./sub-category/signs/YardOutdoorSigns";
 import GraphicDesign from "./sub-category/graphicDesign/GraphicDesign";
 
 import LabelsPackagingMain from "./sub-category/labelsPackaging/LabelsPackaging";
@@ -167,34 +168,25 @@ function App() {
           element={<ListManagementServices />}
         />
         {/* Signs */}
-        <Route path="/ada-wayfinding-signs" element={<ADAWayfindingSigns />} />
+        <Route path="signs/ada-wayfinding-signs" element={<SignsPages />} />
         <Route
-          path="/booth-graphics-signs-banners"
-          element={<BoothGraphicsSignsBanners />}
+          path="signs/booth-graphics-signs-banners"
+          element={<SignsPages />}
         />
-        <Route path="/car-graphics-wraps" element={<CarGraphicsWraps />} />
+        <Route path="signs/car-graphics-wraps" element={<SignsPages />} />
+        <Route path="signs/delivery-takeout-signs" element={<SignsPages />} />
         <Route
-          path="/delivery-takeout-signs"
-          element={<DeliveryTakeoutSigns />}
+          path="signs/interior-office-lobby-decor"
+          element={<SignsPages />}
         />
+        <Route path="signs/now-open-signs-graphics" element={<SignsPages />} />
+        <Route path="signs/pullup-banners-flags" element={<SignsPages />} />
+        <Route path="signs/tradeshow-event-signs" element={<SignsPages />} />
         <Route
-          path="/interior-office-lobby-decor"
-          element={<InteriorOfficeLobbyDecor />}
+          path="signs/window-wall-floor-graphics"
+          element={<SignsPages />}
         />
-        <Route
-          path="/now-open-signs-graphics"
-          element={<NowOpenSignsGraphics />}
-        />
-        <Route path="/pullup-banners-flags" element={<PullupBannersFlags />} />
-        <Route
-          path="/tradeshow-event-signs"
-          element={<TradeshowEventSigns />}
-        />
-        <Route
-          path="/window-wall-floor-graphics"
-          element={<WindowWallFloorGraphics />}
-        />
-        <Route path="/yard-outdoor-signs" element={<YardOutdoorSigns />} />
+        <Route path="signs/yard-outdoor-signs" element={<SignsPages />} />
         {/* graphic design */}
         <Route path="/graphic-design" element={<GraphicDesign />} />
         {/* labels and packaging */}

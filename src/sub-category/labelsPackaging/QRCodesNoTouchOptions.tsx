@@ -10,29 +10,29 @@ import {
   FullScreenButton,
   GlobalMainContent,
 } from "../../style/GlobalStyle";
-import { fetchCarGraphicsWrapsData } from "../../data/sub-category data/AllSubCategoryData";
+import { fetchQRCodesNoTouchOptionsData } from "../../data/sub-category data/AllSubCategoryData";
 import ImageWithSEO from "../../importantparts/ImageWithCEO";
-import { CAR_GRAPHICS_WRAPS_IMAGE } from "../../data/sub-category data/ImageWithCEOData";
+import { ADA_WAYFINDING_SIGNS_IMAGE } from "../../data/sub-category data/ImageWithCEOData"; // Assuming there's no separate image yet
 import { SubCategoryCommonTypes } from "../../types/DataTypes";
 
-export default function CarGraphicsWraps() {
-  const [carGraphicsWrapsData, setCarGraphicsWrapsData] =
+export default function QRCodesNoTouchOptions() {
+  const [qrCodesNoTouchOptionsData, setQrCodesNoTouchOptionsData] =
     useState<SubCategoryCommonTypes | null>(null);
 
   useEffect(() => {
-    const getCarGraphicsWrapsData = async () => {
-      const data = await fetchCarGraphicsWrapsData();
+    const getQrCodesNoTouchOptionsData = async () => {
+      const data = await fetchQRCodesNoTouchOptionsData();
       if (data) {
-        setCarGraphicsWrapsData(data);
+        setQrCodesNoTouchOptionsData(data);
       }
     };
 
-    getCarGraphicsWrapsData();
+    getQrCodesNoTouchOptionsData();
   }, []);
 
   const memoizedData = useMemo(
-    () => carGraphicsWrapsData,
-    [carGraphicsWrapsData]
+    () => qrCodesNoTouchOptionsData,
+    [qrCodesNoTouchOptionsData]
   );
   const navigate = useNavigate();
 
@@ -41,10 +41,10 @@ export default function CarGraphicsWraps() {
       <FullBackgroundContainerZERO>
         <div className="black-overlay"></div>
         <ImageWithSEO
-          src={CAR_GRAPHICS_WRAPS_IMAGE.src}
-          alt={CAR_GRAPHICS_WRAPS_IMAGE.alt}
-          title={CAR_GRAPHICS_WRAPS_IMAGE.title}
-          geoData={CAR_GRAPHICS_WRAPS_IMAGE.geoData}
+          src={ADA_WAYFINDING_SIGNS_IMAGE.src}
+          alt={ADA_WAYFINDING_SIGNS_IMAGE.alt}
+          title={ADA_WAYFINDING_SIGNS_IMAGE.title}
+          geoData={ADA_WAYFINDING_SIGNS_IMAGE.geoData}
           loading="eager"
         />
         <TitleAndButtonContainer>
@@ -58,7 +58,7 @@ export default function CarGraphicsWraps() {
 
       <GlobalContainerColumn>
         <GlobalTextContainer>
-          {memoizedData?.two.map((item, index) => (
+          {memoizedData?.two?.map((item, index) => (
             <GlobalPart key={index}>{item}</GlobalPart>
           ))}
         </GlobalTextContainer>

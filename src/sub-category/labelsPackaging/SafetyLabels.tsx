@@ -10,30 +10,27 @@ import {
   FullScreenButton,
   GlobalMainContent,
 } from "../../style/GlobalStyle";
-import { fetchADAWayfindingSignsData } from "../../data/sub-category data/AllSubCategoryData";
+import { fetchSafetyLabelsData } from "../../data/sub-category data/AllSubCategoryData";
 import ImageWithSEO from "../../importantparts/ImageWithCEO";
-import { ADA_WAYFINDING_SIGNS_IMAGE } from "../../data/sub-category data/ImageWithCEOData";
+import { ADA_WAYFINDING_SIGNS_IMAGE } from "../../data/sub-category data/ImageWithCEOData"; // Assuming there's no separate image yet
 import { SubCategoryCommonTypes } from "../../types/DataTypes";
 
-export default function ADAWayfindingSigns() {
-  const [adawayfindingSignsData, setAdawayfindingSignsData] =
+export default function SafetyLabels() {
+  const [safetyLabelsData, setSafetyLabelsData] =
     useState<SubCategoryCommonTypes | null>(null);
 
   useEffect(() => {
-    const getAdawayfindingSignsData = async () => {
-      const data = await fetchADAWayfindingSignsData();
+    const getSafetyLabelsData = async () => {
+      const data = await fetchSafetyLabelsData();
       if (data) {
-        setAdawayfindingSignsData(data);
+        setSafetyLabelsData(data);
       }
     };
 
-    getAdawayfindingSignsData();
+    getSafetyLabelsData();
   }, []);
 
-  const memoizedData = useMemo(
-    () => adawayfindingSignsData,
-    [adawayfindingSignsData]
-  );
+  const memoizedData = useMemo(() => safetyLabelsData, [safetyLabelsData]);
   const navigate = useNavigate();
 
   return (
@@ -58,7 +55,7 @@ export default function ADAWayfindingSigns() {
 
       <GlobalContainerColumn>
         <GlobalTextContainer>
-          {memoizedData?.two.map((item, index) => (
+          {memoizedData?.two?.map((item, index) => (
             <GlobalPart key={index}>{item}</GlobalPart>
           ))}
         </GlobalTextContainer>
