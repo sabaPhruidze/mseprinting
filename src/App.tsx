@@ -91,32 +91,32 @@ function App() {
         <Route path="/manuals-catalogs-booklets" element={<MCBooklets />} />
         {/* Printing and Copying */}
         <Route
-          path="printing-copying/Business-cards-stationery"
+          path="/printing-copying/Business-cards-stationery"
           element={<PrintingCopyingPages />}
         />
         <Route
-          path="printing-copying/business-annual-reports"
+          path="/printing-copying/business-annual-reports"
           element={<PrintingCopyingPages />}
         />
         <Route
-          path="printing-copying/newsletters-flyers-rack-cards"
+          path="/printing-copying/newsletters-flyers-rack-cards"
           element={<PrintingCopyingPages />}
         />
         <Route
-          path="printing-copying/post-cards-direct-mailers"
+          path="/printing-copying/post-cards-direct-mailers"
           element={<PrintingCopyingPages />}
         />
         <Route
-          path="printing-copying/presentation-training-materials"
+          path="/printing-copying/presentation-training-materials"
           element={<PrintingCopyingPages />}
         />
 
         <Route
-          path="printing-copying/cards-invitations"
+          path="/printing-copying/cards-invitations"
           element={<PrintingCopyingPages />}
         />
         <Route
-          path="printing-copying/labels-stickers-decals"
+          path="/printing-copying/labels-stickers-decals"
           element={<PrintingCopyingPages />}
         />
         <Route
@@ -124,62 +124,62 @@ function App() {
           element={<PrintingCopyingPages />}
         />
         <Route
-          path="printing-copying/poster-printing"
+          path="/printing-copying/poster-printing"
           element={<PrintingCopyingPages />}
         />
         <Route
-          path="printing-copying/legal-printing"
+          path="/printing-copying/legal-printing"
           element={<PrintingCopyingPages />}
         />
         <Route
-          path="printing-copying/apparel-uniforms"
+          path="/printing-copying/apparel-uniforms"
           element={<PrintingCopyingPages />}
         />
         {/* DirectMailMailingServices */}
         <Route
-          path="direct-mail-mailing-services/advanced-mailing-services"
+          path="/direct-mail-mailing-services/advanced-mailing-services"
           element={<DirectMailMailingServices />}
         />
         <Route
-          path="direct-mail-mailing-services/every-door-direct-mail"
+          path="/direct-mail-mailing-services/every-door-direct-mail"
           element={<DirectMailMailingServices />}
         />
         <Route
-          path="direct-mail-mailing-services/kitting-and-fulfillment"
+          path="/direct-mail-mailing-services/kitting-and-fulfillment"
           element={<DirectMailMailingServices />}
         />
         <Route
-          path="direct-mail-mailing-services/standard-direct-mail"
+          path="/direct-mail-mailing-services/standard-direct-mail"
           element={<DirectMailMailingServices />}
         />
         <Route
-          path="direct-mail-mailing-services/targeted-direct-mail"
+          path="/direct-mail-mailing-services/targeted-direct-mail"
           element={<DirectMailMailingServices />}
         />
         <Route
-          path="direct-mail-mailing-services/list-management-services"
+          path="/direct-mail-mailing-services/list-management-services"
           element={<DirectMailMailingServices />}
         />
         {/* Signs */}
-        <Route path="signs/ada-wayfinding-signs" element={<SignsPages />} />
+        <Route path="/signs/ada-wayfinding-signs" element={<SignsPages />} />
         <Route
-          path="signs/booth-graphics-signs-banners"
+          path="/signs/booth-graphics-signs-banners"
           element={<SignsPages />}
         />
-        <Route path="signs/car-graphics-wraps" element={<SignsPages />} />
-        <Route path="signs/delivery-takeout-signs" element={<SignsPages />} />
+        <Route path="/signs/car-graphics-wraps" element={<SignsPages />} />
+        <Route path="/signs/delivery-takeout-signs" element={<SignsPages />} />
         <Route
-          path="signs/interior-office-lobby-decor"
+          path="/signs/interior-office-lobby-decor"
           element={<SignsPages />}
         />
-        <Route path="signs/now-open-signs-graphics" element={<SignsPages />} />
-        <Route path="signs/pullup-banners-flags" element={<SignsPages />} />
-        <Route path="signs/tradeshow-event-signs" element={<SignsPages />} />
+        <Route path="/signs/now-open-signs-graphics" element={<SignsPages />} />
+        <Route path="/signs/pullup-banners-flags" element={<SignsPages />} />
+        <Route path="/signs/tradeshow-event-signs" element={<SignsPages />} />
         <Route
-          path="signs/window-wall-floor-graphics"
+          path="/signs/window-wall-floor-graphics"
           element={<SignsPages />}
         />
-        <Route path="signs/yard-outdoor-signs" element={<SignsPages />} />
+        <Route path="/signs/yard-outdoor-signs" element={<SignsPages />} />
         {/* graphic design */}
         <Route path="/graphic-design" element={<GraphicDesign />} />
         {/* labels and packaging */}
