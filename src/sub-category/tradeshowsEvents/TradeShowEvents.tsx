@@ -11,7 +11,6 @@ import {
   GlobalMainContent,
 } from "../../style/GlobalStyle";
 import ImageWithSEO from "../../importantparts/ImageWithCEO";
-import { ADA_WAYFINDING_SIGNS_IMAGE } from "../../data/sub-category data/ImageWithCEOData";
 import { SubCategoryCommonTypes } from "../../types/DataTypes";
 import {
   fetchCounterPopUpDisplaysData,
@@ -20,16 +19,39 @@ import {
   fetchPrePostShowDirectMailData,
   fetchTableCounterKioskDisplaysData,
 } from "../../data/sub-category data/AllSubCategoryData";
+import {
+  COUNTER_POP_UP_DISPLAYS_IMAGE_DATA,
+  EVENT_LITERATURE_SIGNS_IMAGE_DATA,
+  GIFTS_AWARDS_INCENTIVES_IMAGE_DATA,
+  PRE_POST_SHOW_DIRECT_MAIL_IMAGE_DATA,
+  TABLE_COUNTER_KIOSK_DISPLAYS_IMAGE_DATA,
+} from "../../data/sub-category data/ImageWithCEOData";
 
+// Map for each data-fetching function and corresponding image data
 const fetchDataMap: Record<
   string,
-  () => Promise<SubCategoryCommonTypes | null>
+  { fetchData: () => Promise<SubCategoryCommonTypes | null>; image: any }
 > = {
-  "counter-pop-up-displays": fetchCounterPopUpDisplaysData,
-  "event-literature-signs": fetchEventLiteratureSignsData,
-  "gifts-awards-incentives": fetchGiftsAwardsIncentivesData,
-  "pre-post-show-direct-mail": fetchPrePostShowDirectMailData,
-  "table-counter-kiosk-displays": fetchTableCounterKioskDisplaysData,
+  "counter-pop-up-displays": {
+    fetchData: fetchCounterPopUpDisplaysData,
+    image: COUNTER_POP_UP_DISPLAYS_IMAGE_DATA,
+  },
+  "event-literature-signs": {
+    fetchData: fetchEventLiteratureSignsData,
+    image: EVENT_LITERATURE_SIGNS_IMAGE_DATA,
+  },
+  "gifts-awards-incentives": {
+    fetchData: fetchGiftsAwardsIncentivesData,
+    image: GIFTS_AWARDS_INCENTIVES_IMAGE_DATA,
+  },
+  "pre-post-show-direct-mail": {
+    fetchData: fetchPrePostShowDirectMailData,
+    image: PRE_POST_SHOW_DIRECT_MAIL_IMAGE_DATA,
+  },
+  "table-counter-kiosk-displays": {
+    fetchData: fetchTableCounterKioskDisplaysData,
+    image: TABLE_COUNTER_KIOSK_DISPLAYS_IMAGE_DATA,
+  },
 };
 
 export default function TradeShowEvents() {
@@ -44,17 +66,21 @@ export default function TradeShowEvents() {
     [location.pathname]
   );
 
+  const serviceConfig = useMemo(
+    () => (serviceKey ? fetchDataMap[serviceKey] : null),
+    [serviceKey]
+  );
+
   const getEventData = useCallback(async () => {
-    const fetchData = serviceKey ? fetchDataMap[serviceKey] : null;
-    if (fetchData) {
+    if (serviceConfig) {
       try {
-        const data = await fetchData();
+        const data = await serviceConfig.fetchData();
         setEventData(data);
       } catch (error) {
         console.error(`Error fetching data for event: ${serviceKey}`, error);
       }
     }
-  }, [serviceKey]);
+  }, [serviceConfig, serviceKey]);
 
   useEffect(() => {
     getEventData();
@@ -66,27 +92,37 @@ export default function TradeShowEvents() {
     <div>
       <FullBackgroundContainerZERO>
         <div className="black-overlay"></div>
-        <ImageWithSEO
-          src={ADA_WAYFINDING_SIGNS_IMAGE.src}
-          alt={ADA_WAYFINDING_SIGNS_IMAGE.alt}
-          title={ADA_WAYFINDING_SIGNS_IMAGE.title}
-          geoData={ADA_WAYFINDING_SIGNS_IMAGE.geoData}
-          loading="eager"
-        />
+        {serviceConfig && (
+          <ImageWithSEO
+            src={serviceConfig.image.src}
+            alt={serviceConfig.image.alt}
+            title={serviceConfig.image.title}
+            geoData={serviceConfig.image.geoData}
+            loading="eager"
+          />
+        )}
         <TitleAndButtonContainer>
-          <FullScreenTitle>{memoizedData?.one?.title}</FullScreenTitle>
-          <GlobalMainContent>{memoizedData?.one?.content}</GlobalMainContent>
+          <FullScreenTitle>
+            {memoizedData?.one?.title || "Default Title"}
+          </FullScreenTitle>
+          <GlobalMainContent>
+            {memoizedData?.one?.content || "Content unavailable."}
+          </GlobalMainContent>
           <FullScreenButton onClick={() => navigate("/request-quote")}>
-            {memoizedData?.one?.button}
+            {memoizedData?.one?.button || "Request a Quote"}
           </FullScreenButton>
         </TitleAndButtonContainer>
       </FullBackgroundContainerZERO>
 
       <GlobalContainerColumn>
         <GlobalTextContainer>
-          {memoizedData?.two?.map((item, index) => (
-            <GlobalPart key={index}>{item}</GlobalPart>
-          ))}
+          {memoizedData?.two ? (
+            memoizedData.two.map((item, index) => (
+              <GlobalPart key={index}>{item}</GlobalPart>
+            ))
+          ) : (
+            <p>Additional information is unavailable.</p>
+          )}
         </GlobalTextContainer>
       </GlobalContainerColumn>
     </div>

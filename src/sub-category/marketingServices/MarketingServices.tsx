@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, useCallback } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import {
   GlobalContainerColumn,
@@ -11,7 +11,6 @@ import {
   GlobalMainContent,
 } from "../../style/GlobalStyle";
 import ImageWithSEO from "../../importantparts/ImageWithCEO";
-import { ADA_WAYFINDING_SIGNS_IMAGE } from "../../data/sub-category data/ImageWithCEOData";
 import { SubCategoryCommonTypes } from "../../types/DataTypes";
 import {
   fetchCampaignsConsultationData,
@@ -19,44 +18,69 @@ import {
   fetchVideoProductionData,
   fetchWebsiteDesignData,
 } from "../../data/sub-category data/AllSubCategoryData";
+import {
+  CAMPAINGS_CONSULTATION_IMAGE_DATA,
+  SOCIAL_MEDIA_IMAGE_DATA,
+  VIDEO_PRODUCTION_IMAGE_DATA,
+  WEBSITE_DESIGN_IMAGE_DATA,
+} from "../../data/sub-category data/ImageWithCEOData";
 
-// Map for each data-fetching function based on service key
-const fetchDataMap: {
-  [key: string]: () => Promise<SubCategoryCommonTypes | null>;
-} = {
-  "campaigns-consultation": fetchCampaignsConsultationData,
-  "social-media": fetchSocialMediaData,
-  "video-production": fetchVideoProductionData,
-  "website-design": fetchWebsiteDesignData,
+// Map for each data-fetching function and corresponding image data
+const fetchDataMap: Record<
+  string,
+  { fetchData: () => Promise<SubCategoryCommonTypes | null>; image: any }
+> = {
+  "campaigns-consultation": {
+    fetchData: fetchCampaignsConsultationData,
+    image: CAMPAINGS_CONSULTATION_IMAGE_DATA,
+  },
+  "social-media": {
+    fetchData: fetchSocialMediaData,
+    image: SOCIAL_MEDIA_IMAGE_DATA,
+  },
+  "video-production": {
+    fetchData: fetchVideoProductionData,
+    image: VIDEO_PRODUCTION_IMAGE_DATA,
+  },
+  "website-design": {
+    fetchData: fetchWebsiteDesignData,
+    image: WEBSITE_DESIGN_IMAGE_DATA,
+  },
 };
 
 export default function MarketingServices() {
   const location = useLocation();
+  const navigate = useNavigate();
   const [serviceData, setServiceData] = useState<SubCategoryCommonTypes | null>(
     null
   );
-  const navigate = useNavigate();
+
+  const serviceKey = useMemo(
+    () => location.pathname.split("/").pop()?.toLowerCase(),
+    [location.pathname]
+  );
+
+  const serviceConfig = useMemo(
+    () => (serviceKey ? fetchDataMap[serviceKey] : null),
+    [serviceKey]
+  );
+
+  const getServiceData = useCallback(async () => {
+    if (serviceConfig) {
+      try {
+        const data = await serviceConfig.fetchData();
+        setServiceData(data);
+      } catch (error) {
+        console.error(`Error fetching data for service: ${serviceKey}`, error);
+      }
+    }
+  }, [serviceConfig, serviceKey]);
 
   useEffect(() => {
-    const serviceKey = location.pathname.split("/").pop()?.toLowerCase();
-    const fetchData = serviceKey ? fetchDataMap[serviceKey] : null;
-
-    const getServiceData = async () => {
-      if (fetchData) {
-        try {
-          const data = await fetchData();
-          if (data) setServiceData(data);
-        } catch (error) {
-          console.error(
-            `Error fetching data for service: ${serviceKey}`,
-            error
-          );
-        }
-      }
-    };
-
-    getServiceData();
-  }, [location.pathname]);
+    if (serviceConfig) {
+      getServiceData();
+    }
+  }, [getServiceData, serviceConfig]);
 
   const memoizedData = useMemo(() => serviceData, [serviceData]);
 
@@ -64,27 +88,37 @@ export default function MarketingServices() {
     <div>
       <FullBackgroundContainerZERO>
         <div className="black-overlay"></div>
-        <ImageWithSEO
-          src={ADA_WAYFINDING_SIGNS_IMAGE.src}
-          alt={ADA_WAYFINDING_SIGNS_IMAGE.alt}
-          title={ADA_WAYFINDING_SIGNS_IMAGE.title}
-          geoData={ADA_WAYFINDING_SIGNS_IMAGE.geoData}
-          loading="eager"
-        />
+        {serviceConfig && (
+          <ImageWithSEO
+            src={serviceConfig.image.src}
+            alt={serviceConfig.image.alt}
+            title={serviceConfig.image.title}
+            geoData={serviceConfig.image.geoData}
+            loading="eager"
+          />
+        )}
         <TitleAndButtonContainer>
-          <FullScreenTitle>{memoizedData?.one?.title}</FullScreenTitle>
-          <GlobalMainContent>{memoizedData?.one?.content}</GlobalMainContent>
+          <FullScreenTitle>
+            {memoizedData?.one?.title || "Default Title"}
+          </FullScreenTitle>
+          <GlobalMainContent>
+            {memoizedData?.one?.content || "Content unavailable."}
+          </GlobalMainContent>
           <FullScreenButton onClick={() => navigate("/request-quote")}>
-            {memoizedData?.one?.button}
+            {memoizedData?.one?.button || "Request a Quote"}
           </FullScreenButton>
         </TitleAndButtonContainer>
       </FullBackgroundContainerZERO>
 
       <GlobalContainerColumn>
         <GlobalTextContainer>
-          {memoizedData?.two?.map((item, index) => (
-            <GlobalPart key={index}>{item}</GlobalPart>
-          ))}
+          {memoizedData?.two ? (
+            memoizedData.two.map((item, index) => (
+              <GlobalPart key={index}>{item}</GlobalPart>
+            ))
+          ) : (
+            <p>Additional information is unavailable.</p>
+          )}
         </GlobalTextContainer>
       </GlobalContainerColumn>
     </div>

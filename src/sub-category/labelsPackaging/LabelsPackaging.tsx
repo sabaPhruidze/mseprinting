@@ -116,14 +116,12 @@ export default function LabelsPackagingMain() {
           />
         )}
         <TitleAndButtonContainer>
-          <FullScreenTitle>
-            {memoizedData?.one?.title || "Default Title"}
-          </FullScreenTitle>
+          <FullScreenTitle>{memoizedData?.one?.title || ""}</FullScreenTitle>
           <GlobalMainContent>
-            {memoizedData?.one?.content || "Content unavailable."}
+            {memoizedData?.one?.content || ""}
           </GlobalMainContent>
           <FullScreenButton onClick={() => navigate("/request-quote")}>
-            {memoizedData?.one?.button || "Request a Quote"}
+            {memoizedData?.one?.button || ""}
           </FullScreenButton>
         </TitleAndButtonContainer>
       </FullBackgroundContainerZERO>
@@ -135,7 +133,7 @@ export default function LabelsPackagingMain() {
               <GlobalPart key={index}>{item}</GlobalPart>
             ))
           ) : (
-            <p>Additional information is unavailable.</p>
+            <p></p>
           )}
         </GlobalTextContainer>
       </GlobalContainerColumn>
