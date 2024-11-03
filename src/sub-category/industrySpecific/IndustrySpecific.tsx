@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, useCallback } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import {
   GlobalContainerColumn,
@@ -11,7 +11,6 @@ import {
   GlobalMainContent,
 } from "../../style/GlobalStyle";
 import ImageWithSEO from "../../importantparts/ImageWithCEO";
-import { ADA_WAYFINDING_SIGNS_IMAGE } from "../../data/sub-category data/ImageWithCEOData";
 import { SubCategoryCommonTypes } from "../../types/DataTypes";
 import {
   fetchEducationData,
@@ -24,47 +23,73 @@ import {
   fetchRestaurantsData,
   fetchRetailData,
 } from "../../data/sub-category data/AllSubCategoryData";
+import {
+  EDUCATION_IMAGE_DATA,
+  FINANCE_IMAGE_DATA,
+  HEALF_CARE_IMAGE_DATA,
+  LEGAL_IMAGE_DATA,
+  MANUFACTURING_IMAGE_DATA,
+  POLITICAL_IMAGE_DATA,
+  REAL_ESTATE_IMAGE_DATA,
+  RESTAURANT_IMAGE_DATA,
+  RETAIL_IMAGE_DATA,
+} from "../../data/sub-category data/ImageWithCEOData";
 
-const fetchDataMap: {
-  [key: string]: () => Promise<SubCategoryCommonTypes | null>;
-} = {
-  education: fetchEducationData,
-  finance: fetchFinanceData,
-  healthcare: fetchHealthCareData,
-  legal: fetchLegalData,
-  manufacturing: fetchManufacturingData,
-  political: fetchPoliticalData,
-  realestate: fetchRealEstateData,
-  restaurants: fetchRestaurantsData,
-  retail: fetchRetailData,
+// Map for each data-fetching function and corresponding image data
+const fetchDataMap: Record<
+  string,
+  { fetchData: () => Promise<SubCategoryCommonTypes | null>; image: any }
+> = {
+  education: { fetchData: fetchEducationData, image: EDUCATION_IMAGE_DATA },
+  finance: { fetchData: fetchFinanceData, image: FINANCE_IMAGE_DATA },
+  healthcare: { fetchData: fetchHealthCareData, image: HEALF_CARE_IMAGE_DATA },
+  legal: { fetchData: fetchLegalData, image: LEGAL_IMAGE_DATA },
+  manufacturing: {
+    fetchData: fetchManufacturingData,
+    image: MANUFACTURING_IMAGE_DATA,
+  },
+  political: { fetchData: fetchPoliticalData, image: POLITICAL_IMAGE_DATA },
+  realestate: { fetchData: fetchRealEstateData, image: REAL_ESTATE_IMAGE_DATA },
+  restaurants: {
+    fetchData: fetchRestaurantsData,
+    image: RESTAURANT_IMAGE_DATA,
+  },
+  retail: { fetchData: fetchRetailData, image: RETAIL_IMAGE_DATA },
 };
 
 export default function IndustrySpecific() {
   const location = useLocation();
+  const navigate = useNavigate();
   const [industryData, setIndustryData] =
     useState<SubCategoryCommonTypes | null>(null);
-  const navigate = useNavigate();
+
+  const industryKey = useMemo(
+    () => location.pathname.split("/").pop()?.toLowerCase(),
+    [location.pathname]
+  );
+
+  const industryConfig = useMemo(
+    () => (industryKey ? fetchDataMap[industryKey] : null),
+    [industryKey]
+  );
+
+  const getIndustryData = useCallback(async () => {
+    if (industryConfig) {
+      try {
+        const data = await industryConfig.fetchData();
+        setIndustryData(data);
+      } catch (error) {
+        console.error(
+          `Error fetching data for industry: ${industryKey}`,
+          error
+        );
+      }
+    }
+  }, [industryConfig, industryKey]);
 
   useEffect(() => {
-    const industryKey = location.pathname.split("/").pop()?.toLowerCase();
-    const fetchData = industryKey ? fetchDataMap[industryKey] : null;
-
-    const getIndustryData = async () => {
-      if (fetchData) {
-        try {
-          const data = await fetchData();
-          if (data) setIndustryData(data);
-        } catch (error) {
-          console.error(
-            `Error fetching data for industry: ${industryKey}`,
-            error
-          );
-        }
-      }
-    };
-
     getIndustryData();
-  }, [location.pathname]);
+  }, [getIndustryData]);
 
   const memoizedData = useMemo(() => industryData, [industryData]);
 
@@ -72,27 +97,37 @@ export default function IndustrySpecific() {
     <div>
       <FullBackgroundContainerZERO>
         <div className="black-overlay"></div>
-        <ImageWithSEO
-          src={ADA_WAYFINDING_SIGNS_IMAGE.src}
-          alt={ADA_WAYFINDING_SIGNS_IMAGE.alt}
-          title={ADA_WAYFINDING_SIGNS_IMAGE.title}
-          geoData={ADA_WAYFINDING_SIGNS_IMAGE.geoData}
-          loading="eager"
-        />
+        {industryConfig && (
+          <ImageWithSEO
+            src={industryConfig.image.src}
+            alt={industryConfig.image.alt}
+            title={industryConfig.image.title}
+            geoData={industryConfig.image.geoData}
+            loading="eager"
+          />
+        )}
         <TitleAndButtonContainer>
-          <FullScreenTitle>{memoizedData?.one?.title}</FullScreenTitle>
-          <GlobalMainContent>{memoizedData?.one?.content}</GlobalMainContent>
+          <FullScreenTitle>
+            {memoizedData?.one?.title || "Default Title"}
+          </FullScreenTitle>
+          <GlobalMainContent>
+            {memoizedData?.one?.content || "Content unavailable."}
+          </GlobalMainContent>
           <FullScreenButton onClick={() => navigate("/request-quote")}>
-            {memoizedData?.one?.button}
+            {memoizedData?.one?.button || "Request a Quote"}
           </FullScreenButton>
         </TitleAndButtonContainer>
       </FullBackgroundContainerZERO>
 
       <GlobalContainerColumn>
         <GlobalTextContainer>
-          {memoizedData?.two?.map((item, index) => (
-            <GlobalPart key={index}>{item}</GlobalPart>
-          ))}
+          {memoizedData?.two ? (
+            memoizedData.two.map((item, index) => (
+              <GlobalPart key={index}>{item}</GlobalPart>
+            ))
+          ) : (
+            <p>Additional information is unavailable.</p>
+          )}
         </GlobalTextContainer>
       </GlobalContainerColumn>
     </div>

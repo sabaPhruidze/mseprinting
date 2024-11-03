@@ -11,22 +11,41 @@ import {
   GlobalMainContent,
 } from "../../style/GlobalStyle";
 import ImageWithSEO from "../../importantparts/ImageWithCEO";
-import { ADA_WAYFINDING_SIGNS_IMAGE } from "../../data/sub-category data/ImageWithCEOData";
+import { SubCategoryCommonTypes } from "../../types/DataTypes";
 import {
   fetchInventoryManagementData,
   fetchMarketingSalesKitsData,
   fetchPickPackData,
   fetchProductFulfillmentData,
 } from "../../data/sub-category data/AllSubCategoryData";
-import { SubCategoryCommonTypes } from "../../types/DataTypes";
+import {
+  INVENTORY_MANAGEMENT_IMAGE_DATA,
+  MARKETING_SALES_KITS_IMAGE_DATA,
+  PICK_PACK_IMAGE_DATA,
+  PRODUCT_FULFILLMENT_IMAGE_DATA,
+} from "../../data/sub-category data/ImageWithCEOData";
 
-const fetchDataMap: {
-  [key: string]: () => Promise<SubCategoryCommonTypes | null>;
-} = {
-  "inventory-management": fetchInventoryManagementData,
-  "marketing-sales-kit": fetchMarketingSalesKitsData,
-  "pick-pack": fetchPickPackData,
-  "product-fulfillment": fetchProductFulfillmentData,
+// Map for each data-fetching function and corresponding image data
+const fetchDataMap: Record<
+  string,
+  { fetchData: () => Promise<SubCategoryCommonTypes | null>; image: any }
+> = {
+  "inventory-management": {
+    fetchData: fetchInventoryManagementData,
+    image: INVENTORY_MANAGEMENT_IMAGE_DATA,
+  },
+  "marketing-sales-kit": {
+    fetchData: fetchMarketingSalesKitsData,
+    image: MARKETING_SALES_KITS_IMAGE_DATA,
+  },
+  "pick-pack": {
+    fetchData: fetchPickPackData,
+    image: PICK_PACK_IMAGE_DATA,
+  },
+  "product-fulfillment": {
+    fetchData: fetchProductFulfillmentData,
+    image: PRODUCT_FULFILLMENT_IMAGE_DATA,
+  },
 };
 
 export default function FulfillmentServices() {
@@ -41,17 +60,21 @@ export default function FulfillmentServices() {
     [location.pathname]
   );
 
+  const serviceConfig = useMemo(
+    () => (serviceKey ? fetchDataMap[serviceKey] : null),
+    [serviceKey]
+  );
+
   const getServiceData = useCallback(async () => {
-    const fetchData = serviceKey ? fetchDataMap[serviceKey] : null;
-    if (fetchData) {
+    if (serviceConfig) {
       try {
-        const data = await fetchData();
+        const data = await serviceConfig.fetchData();
         setServiceData(data);
       } catch (error) {
         console.error(`Error fetching data for service: ${serviceKey}`, error);
       }
     }
-  }, [serviceKey]);
+  }, [serviceConfig, serviceKey]);
 
   useEffect(() => {
     getServiceData();
@@ -63,27 +86,37 @@ export default function FulfillmentServices() {
     <div>
       <FullBackgroundContainerZERO>
         <div className="black-overlay"></div>
-        <ImageWithSEO
-          src={ADA_WAYFINDING_SIGNS_IMAGE.src}
-          alt={ADA_WAYFINDING_SIGNS_IMAGE.alt}
-          title={ADA_WAYFINDING_SIGNS_IMAGE.title}
-          geoData={ADA_WAYFINDING_SIGNS_IMAGE.geoData}
-          loading="eager"
-        />
+        {serviceConfig && (
+          <ImageWithSEO
+            src={serviceConfig.image.src}
+            alt={serviceConfig.image.alt}
+            title={serviceConfig.image.title}
+            geoData={serviceConfig.image.geoData}
+            loading="eager"
+          />
+        )}
         <TitleAndButtonContainer>
-          <FullScreenTitle>{memoizedData?.one?.title}</FullScreenTitle>
-          <GlobalMainContent>{memoizedData?.one?.content}</GlobalMainContent>
+          <FullScreenTitle>
+            {memoizedData?.one?.title || "Default Title"}
+          </FullScreenTitle>
+          <GlobalMainContent>
+            {memoizedData?.one?.content || "Content unavailable."}
+          </GlobalMainContent>
           <FullScreenButton onClick={() => navigate("/request-quote")}>
-            {memoizedData?.one?.button}
+            {memoizedData?.one?.button || "Request a Quote"}
           </FullScreenButton>
         </TitleAndButtonContainer>
       </FullBackgroundContainerZERO>
 
       <GlobalContainerColumn>
         <GlobalTextContainer>
-          {memoizedData?.two?.map((item, index) => (
-            <GlobalPart key={index}>{item}</GlobalPart>
-          ))}
+          {memoizedData?.two ? (
+            memoizedData.two.map((item, index) => (
+              <GlobalPart key={index}>{item}</GlobalPart>
+            ))
+          ) : (
+            <p>Additional information is unavailable.</p>
+          )}
         </GlobalTextContainer>
       </GlobalContainerColumn>
     </div>
