@@ -12,7 +12,7 @@ import {
 } from "../../style/GlobalStyle";
 import { fetchGraphicDesignData } from "../../data/sub-category data/AllSubCategoryData";
 import ImageWithSEO from "../../importantparts/ImageWithCEO";
-import { ADA_WAYFINDING_SIGNS_IMAGE } from "../../data/sub-category data/ImageWithCEOData"; // Assuming there's an image for Graphic Design
+import { GRAPHIC_DESIGN_IMAGE_DATA } from "../../data/sub-category data/ImageWithCEOData"; // Updated to use Graphic Design image
 import { SubCategoryCommonTypes } from "../../types/DataTypes";
 
 export default function GraphicDesign() {
@@ -38,10 +38,10 @@ export default function GraphicDesign() {
       <FullBackgroundContainerZERO>
         <div className="black-overlay"></div>
         <ImageWithSEO
-          src={ADA_WAYFINDING_SIGNS_IMAGE.src}
-          alt={ADA_WAYFINDING_SIGNS_IMAGE.alt}
-          title={ADA_WAYFINDING_SIGNS_IMAGE.title}
-          geoData={ADA_WAYFINDING_SIGNS_IMAGE.geoData}
+          src={GRAPHIC_DESIGN_IMAGE_DATA.src}
+          alt={GRAPHIC_DESIGN_IMAGE_DATA.alt}
+          title={GRAPHIC_DESIGN_IMAGE_DATA.title}
+          geoData={GRAPHIC_DESIGN_IMAGE_DATA.geoData}
           loading="eager"
         />
         <TitleAndButtonContainer>

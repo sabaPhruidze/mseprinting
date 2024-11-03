@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, useCallback } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import {
   GlobalContainerColumn,
@@ -11,7 +11,6 @@ import {
   GlobalMainContent,
 } from "../../style/GlobalStyle";
 import ImageWithSEO from "../../importantparts/ImageWithCEO";
-import { ADA_WAYFINDING_SIGNS_IMAGE } from "../../data/sub-category data/ImageWithCEOData";
 import { SubCategoryCommonTypes } from "../../types/DataTypes";
 import {
   fetchCustomPackagingData,
@@ -22,18 +21,49 @@ import {
   fetchShortRunPackagingData,
   fetchStickersDecalsData,
 } from "../../data/sub-category data/AllSubCategoryData";
+import {
+  CUSTOM_PACKAGING_IMAGE_DATA,
+  PREMIUM_PRIVATE_LABELS_IMAGE_DATA,
+  PRODUCT_PROMOTIONAL_IMAGE_DATA,
+  QR_CODE_NO_TOUCH_OPTIONS_IMAGE_DATA,
+  SAFETY_LABELS_IMAGE_DATA,
+  SHORT_RUN_PACKAGING_IMAGE_DATA,
+  STICKERS_DECALS_IMAGE_DATA,
+} from "../../data/sub-category data/ImageWithCEOData";
 
-// Map of each data-fetching function based on the service key
-const fetchDataMap: {
-  [key: string]: () => Promise<SubCategoryCommonTypes | null>;
-} = {
-  "custom-packaging": fetchCustomPackagingData,
-  "premium-private-labels": fetchPremiumPrivateLabelsData,
-  "product-promotional-labels": fetchProductPromotionalLabelsData,
-  "qr-codes-no-touch-options": fetchQRCodesNoTouchOptionsData,
-  "safety-labels": fetchSafetyLabelsData,
-  "short-run-packaging": fetchShortRunPackagingData,
-  "stickers-decals": fetchStickersDecalsData,
+// Map of each data-fetching function and corresponding image data
+const fetchDataMap: Record<
+  string,
+  { fetchData: () => Promise<SubCategoryCommonTypes | null>; image: any }
+> = {
+  "custom-packaging": {
+    fetchData: fetchCustomPackagingData,
+    image: CUSTOM_PACKAGING_IMAGE_DATA,
+  },
+  "premium-private-labels": {
+    fetchData: fetchPremiumPrivateLabelsData,
+    image: PREMIUM_PRIVATE_LABELS_IMAGE_DATA,
+  },
+  "product-promotional-labels": {
+    fetchData: fetchProductPromotionalLabelsData,
+    image: PRODUCT_PROMOTIONAL_IMAGE_DATA,
+  },
+  "qr-codes-no-touch-options": {
+    fetchData: fetchQRCodesNoTouchOptionsData,
+    image: QR_CODE_NO_TOUCH_OPTIONS_IMAGE_DATA,
+  },
+  "safety-labels": {
+    fetchData: fetchSafetyLabelsData,
+    image: SAFETY_LABELS_IMAGE_DATA,
+  },
+  "short-run-packaging": {
+    fetchData: fetchShortRunPackagingData,
+    image: SHORT_RUN_PACKAGING_IMAGE_DATA,
+  },
+  "stickers-decals": {
+    fetchData: fetchStickersDecalsData,
+    image: STICKERS_DECALS_IMAGE_DATA,
+  },
 };
 
 export default function LabelsPackagingMain() {
@@ -43,26 +73,32 @@ export default function LabelsPackagingMain() {
     null
   );
 
-  useEffect(() => {
-    const serviceKey = location.pathname.split("/").pop()?.toLowerCase();
-    const fetchData = serviceKey ? fetchDataMap[serviceKey] : null;
+  const serviceKey = useMemo(
+    () => location.pathname.split("/").pop()?.toLowerCase(),
+    [location.pathname]
+  );
 
-    const getServiceData = async () => {
-      if (fetchData) {
-        try {
-          const data = await fetchData();
-          if (data) setServiceData(data);
-        } catch (error) {
-          console.error(
-            `Error fetching data for service: ${serviceKey}`,
-            error
-          );
-        }
+  const serviceConfig = useMemo(
+    () => (serviceKey ? fetchDataMap[serviceKey] : null),
+    [serviceKey]
+  );
+
+  const getServiceData = useCallback(async () => {
+    if (serviceConfig) {
+      try {
+        const data = await serviceConfig.fetchData();
+        setServiceData(data);
+      } catch (error) {
+        console.error(`Error fetching data for service: ${serviceKey}`, error);
       }
-    };
+    }
+  }, [serviceConfig, serviceKey]);
 
-    getServiceData();
-  }, [location.pathname]);
+  useEffect(() => {
+    if (serviceConfig) {
+      getServiceData();
+    }
+  }, [getServiceData, serviceConfig]);
 
   const memoizedData = useMemo(() => serviceData, [serviceData]);
 
@@ -70,27 +106,37 @@ export default function LabelsPackagingMain() {
     <div>
       <FullBackgroundContainerZERO>
         <div className="black-overlay"></div>
-        <ImageWithSEO
-          src={ADA_WAYFINDING_SIGNS_IMAGE.src}
-          alt={ADA_WAYFINDING_SIGNS_IMAGE.alt}
-          title={ADA_WAYFINDING_SIGNS_IMAGE.title}
-          geoData={ADA_WAYFINDING_SIGNS_IMAGE.geoData}
-          loading="eager"
-        />
+        {serviceConfig && (
+          <ImageWithSEO
+            src={serviceConfig.image.src}
+            alt={serviceConfig.image.alt}
+            title={serviceConfig.image.title}
+            geoData={serviceConfig.image.geoData}
+            loading="eager"
+          />
+        )}
         <TitleAndButtonContainer>
-          <FullScreenTitle>{memoizedData?.one?.title}</FullScreenTitle>
-          <GlobalMainContent>{memoizedData?.one?.content}</GlobalMainContent>
+          <FullScreenTitle>
+            {memoizedData?.one?.title || "Default Title"}
+          </FullScreenTitle>
+          <GlobalMainContent>
+            {memoizedData?.one?.content || "Content unavailable."}
+          </GlobalMainContent>
           <FullScreenButton onClick={() => navigate("/request-quote")}>
-            {memoizedData?.one?.button}
+            {memoizedData?.one?.button || "Request a Quote"}
           </FullScreenButton>
         </TitleAndButtonContainer>
       </FullBackgroundContainerZERO>
 
       <GlobalContainerColumn>
         <GlobalTextContainer>
-          {memoizedData?.two?.map((item, index) => (
-            <GlobalPart key={index}>{item}</GlobalPart>
-          ))}
+          {memoizedData?.two ? (
+            memoizedData.two.map((item, index) => (
+              <GlobalPart key={index}>{item}</GlobalPart>
+            ))
+          ) : (
+            <p>Additional information is unavailable.</p>
+          )}
         </GlobalTextContainer>
       </GlobalContainerColumn>
     </div>

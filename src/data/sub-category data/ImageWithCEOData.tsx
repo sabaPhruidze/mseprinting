@@ -55,7 +55,7 @@ import GRAPHIC_DESIGN_IMAGE from "../../assets/img/pages/graphic_design/GRAPHIC_
 import CUSTOM_PACKAGING_IMAGE from "../../assets/img/pages/labels_packaging/CUSTOM_PACKAGING_IMAGE.webp";
 import PREMIUM_PRIVATE_LABELS_IMAGE from "../../assets/img/pages/labels_packaging/PREMIUM_PRIVATE_LABELS_IMAGE.webp";
 import PRODUCT_PROMOTIONAL_IMAGE from "../../assets/img/pages/labels_packaging/PRODUCT_PROMOTIONAL_IMAGE.webp";
-import QR_CODE_NO_TOUCH_OPTIONS_IMAGE from "../../assets/img/pages/labels_packaging/QR_CODE_NO_TOUCH_OPTIONS_IMAGE.webp";
+import QR_CODE_NO_TOUCH_OPTIONS_IMAGE from "../../assets/img/pages/labels_packaging/QR_CODE_NO_TOUCH_OPTIONS_IMAGE.jpg";
 import SAFETY_LABELS_IMAGE from "../../assets/img/pages/labels_packaging/SAFETY_LABELS_IMAGE.webp";
 import SHORT_RUN_PACKAGING_IMAGE from "../../assets/img/pages/labels_packaging/SHORT_RUN_PACKAGING_IMAGE.webp";
 import STICKERS_DECALS_IMAGE from "../../assets/img/pages/labels_packaging/STICKERS_DECALS_IMAGE.webp";
