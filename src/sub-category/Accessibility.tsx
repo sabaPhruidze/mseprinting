@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import HelmetComponent from "../importantparts/Helmet"; // Import HelmetComponent for SEO
 import { fetchAccessibilityData } from "../data/sub-category data/AccessibilityData";
 import { AccessibilityDocument, TitleWithContent } from "../types/DataTypes";
 import {
@@ -30,6 +31,12 @@ export default function Accessibility() {
 
   return (
     <GlobalContainerColumn>
+      {/* HelmetComponent for SEO */}
+      <HelmetComponent
+        title="Accessibility Statement | MSE Printing"
+        description="MSE Printing's commitment to accessibility ensures a seamless experience for all users. Learn about our accessibility standards and support options."
+      />
+
       <GlobalMainTitle>{accessibilityData?.start[0].title}</GlobalMainTitle>
       {accessibilityData?.start.map((data: TitleWithContent) => (
         <GlobalBoxColumnStart key={data.title}>

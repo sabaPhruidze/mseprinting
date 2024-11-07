@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo, useCallback } from "react";
+import HelmetComponent from "../importantparts/Helmet"; // Import HelmetComponent for SEO
 import FeaturedPosts from "../importantparts/FeaturedPosts";
 import {
   GlobalContainerColumn,
@@ -36,6 +37,12 @@ export default function Blog() {
 
   return (
     <GlobalContainerColumn style={{ padding: 0 }}>
+      {/* HelmetComponent for SEO */}
+      <HelmetComponent
+        title="MSE Printing Blog | Insights and Updates on Printing, Design, and Marketing"
+        description="Explore the latest insights, updates, and tips on printing, design, marketing, and more from MSE Printing. Stay informed with our featured blog posts."
+      />
+
       <GlobalMainTitle style={{ marginTop: 80 }}>{mainTitle}</GlobalMainTitle>
       <GlobalBoxColumnStart>
         <GlobalPart style={{ padding: "0 80px" }}>{content}</GlobalPart>

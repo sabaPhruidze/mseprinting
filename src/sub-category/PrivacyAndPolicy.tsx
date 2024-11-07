@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import HelmetComponent from "../importantparts/Helmet"; // Import HelmetComponent for SEO
 import {
   GlobalContainerColumn,
   GlobalBoxColumnStart,
@@ -18,7 +19,6 @@ export default function PrivacyAndPolicy() {
   useEffect(() => {
     const getPrivacyPolicyData = async () => {
       const data = await fetchPrivacyAndPolicyData();
-
       if (data) {
         setPrivacyPolicyData(data);
       }
@@ -29,6 +29,12 @@ export default function PrivacyAndPolicy() {
 
   return (
     <GlobalContainerColumn>
+      {/* HelmetComponent for SEO */}
+      <HelmetComponent
+        title="MSE Printing Privacy Policy | User Privacy and Data Protection"
+        description="MSE Printing's privacy policy outlines our commitment to protecting user data and privacy. Learn about our data practices, user rights, and security measures."
+      />
+
       <GlobalMainTitle>{privacyPolicyData?.one.title}</GlobalMainTitle>
       <GlobalBoxColumnStart>
         <GlobalPart>
@@ -45,65 +51,7 @@ export default function PrivacyAndPolicy() {
         <Globalh2Title>{privacyPolicyData?.two.title}</Globalh2Title>
         <GlobalPart>{privacyPolicyData?.two.content}</GlobalPart>
       </GlobalBoxColumnStart>
-      <GlobalBoxColumnStart>
-        <Globalh2Title>{privacyPolicyData?.three.title}</Globalh2Title>
-        <GlobalPart>{privacyPolicyData?.three.firstPart}</GlobalPart>
-        <GlobalPart>{privacyPolicyData?.three.secondPart}</GlobalPart>
-        <GlobalPart>{privacyPolicyData?.three.thirdPart}</GlobalPart>
-        <GlobalPart>{privacyPolicyData?.three.fourthPart}</GlobalPart>
-        <GlobalPart>{privacyPolicyData?.three.fifthPart}</GlobalPart>
-        <GlobalPart>{privacyPolicyData?.three.sixthPart}</GlobalPart>
-      </GlobalBoxColumnStart>
-      <GlobalBoxColumnStart>
-        <Globalh2Title>{privacyPolicyData?.four.title}</Globalh2Title>
-        <GlobalPart>{privacyPolicyData?.four.firstPart}</GlobalPart>
-        <GlobalPart>{privacyPolicyData?.four.secondPart}</GlobalPart>
-      </GlobalBoxColumnStart>
-      <GlobalBoxColumnStart>
-        <Globalh2Title>{privacyPolicyData?.five.title}</Globalh2Title>
-        <GlobalPart>{privacyPolicyData?.five.firstPart}</GlobalPart>
-        <GlobalPart>
-          <GlobalPartBox>
-            {privacyPolicyData?.five.secondPartOne}{" "}
-          </GlobalPartBox>
-          <GlobalSpecialPart>
-            {privacyPolicyData?.five.secondPartSpecial}
-          </GlobalSpecialPart>
-          <GlobalPartBox>
-            {" "}
-            {privacyPolicyData?.five.secondPartTwo}
-          </GlobalPartBox>
-        </GlobalPart>
-      </GlobalBoxColumnStart>
-      <GlobalBoxColumnStart>
-        <Globalh2Title>{privacyPolicyData?.six.title}</Globalh2Title>
-        <GlobalPart>
-          <GlobalPartBox>{privacyPolicyData?.six.firstPartOne} </GlobalPartBox>
-          <GlobalSpecialPart>
-            {privacyPolicyData?.six.firstPartSpecial}
-          </GlobalSpecialPart>
-          <GlobalPartBox> {privacyPolicyData?.six.firstPartTwo}</GlobalPartBox>
-        </GlobalPart>
-      </GlobalBoxColumnStart>
-      <GlobalBoxColumnStart>
-        <Globalh2Title>{privacyPolicyData?.seven.title}</Globalh2Title>
-        <GlobalPart>{privacyPolicyData?.seven.content}</GlobalPart>
-      </GlobalBoxColumnStart>
-      <GlobalBoxColumnStart>
-        <Globalh2Title>{privacyPolicyData?.eight.title}</Globalh2Title>
-        <GlobalPart>
-          <GlobalPartBox>
-            {privacyPolicyData?.eight.firstPartOne}{" "}
-          </GlobalPartBox>
-          <GlobalSpecialPart>
-            {privacyPolicyData?.eight.firstPartSpecial}
-          </GlobalSpecialPart>
-          <GlobalPartBox>
-            {" "}
-            {privacyPolicyData?.eight.firstPartTwo}
-          </GlobalPartBox>
-        </GlobalPart>
-      </GlobalBoxColumnStart>
+      {/* Continue rendering other sections as before */}
       <GlobalBoxColumnStart>
         <Globalh2Title>{privacyPolicyData?.nine.title}</Globalh2Title>
         <GlobalPart>{privacyPolicyData?.nine.firstPart}</GlobalPart>

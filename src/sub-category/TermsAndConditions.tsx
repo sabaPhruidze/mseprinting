@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import HelmetComponent from "../importantparts/Helmet"; // Import HelmetComponent for SEO
 import { fetchPrivacyAndPolicyData } from "../data/sub-category data/TermsAndConditionsData";
 import {
   TermsAndConditionsDocument,
@@ -22,7 +23,6 @@ export default function TermsAndConditions() {
   useEffect(() => {
     const getTermsData = async () => {
       const data = await fetchPrivacyAndPolicyData();
-
       if (data) {
         setTermsData(data);
       }
@@ -33,6 +33,12 @@ export default function TermsAndConditions() {
 
   return (
     <GlobalContainerColumn>
+      {/* HelmetComponent for SEO */}
+      <HelmetComponent
+        title="MSE Printing Terms and Conditions | Usage Guidelines and Policies"
+        description="Review the terms and conditions for MSE Printing's services. Understand your rights and responsibilities when using our site and services."
+      />
+
       {termsData && (
         <>
           <GlobalMainTitle>{termsData.one.title}</GlobalMainTitle>
@@ -49,12 +55,14 @@ export default function TermsAndConditions() {
               {termsData.one.secondPartTwo}
             </GlobalPartBox>
           </GlobalBoxColumnStart>
+
           {termsData.two.map((data) => (
             <GlobalBoxColumnStart key={data.title}>
               <Globalh3Title>{data.title}</Globalh3Title>
               <GlobalPart>{data.content}</GlobalPart>
             </GlobalBoxColumnStart>
           ))}
+
           {termsData.three.map((data: TermsAndConditionsThree) => (
             <GlobalBoxColumnStart key={data.title}>
               <Globalh3Title>{data.title}</Globalh3Title>
@@ -70,16 +78,17 @@ export default function TermsAndConditions() {
               </GlobalPartBox>
             </GlobalBoxColumnStart>
           ))}
+
           {termsData.four.map((data) => (
             <GlobalBoxColumnStart key={data.title}>
               <Globalh3Title>{data.title}</Globalh3Title>
               <GlobalPart>{data.content}</GlobalPart>
             </GlobalBoxColumnStart>
           ))}
+
           <GlobalBoxColumnStart>
             <Globalh2Title>{termsData.five.title}</Globalh2Title>
             <GlobalPart>
-              {" "}
               <GlobalPartBox>
                 {termsData.five.firstPartOne}
                 <GlobalSpecialPart>
