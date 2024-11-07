@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import HelmetComponent from "../importantparts/Helmet"; // Import HelmetComponent for SEO
 import {
   GlobalContainerColumn,
   GlobalBoxColumnStart,
@@ -19,17 +19,21 @@ export default function EnvironmentalMessage() {
   useEffect(() => {
     const getEnvironmentalData = async () => {
       const data = await fetchEnvironmentalMessageData();
-
       if (data) {
         setEnvironmentalData(data);
       }
     };
-
     getEnvironmentalData();
   }, []);
 
   return (
     <GlobalContainerColumn>
+      {/* HelmetComponent for SEO */}
+      <HelmetComponent
+        title="Environmental Commitment | MSE Printing"
+        description="Discover MSE Printing's commitment to sustainability and environmental responsibility, promoting eco-friendly practices in all our services."
+      />
+
       <GlobalMainTitle>{environmentalData?.title}</GlobalMainTitle>
       <GlobalBoxColumnStart>
         <GlobalPart>{environmentalData?.firstPart}</GlobalPart>

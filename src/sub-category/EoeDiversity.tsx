@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
+import HelmetComponent from "../importantparts/Helmet"; // Import HelmetComponent for SEO
 import {
   GlobalContainerColumn,
   GlobalBoxColumnStart,
@@ -16,7 +17,6 @@ export default function EoeDiversity() {
   useEffect(() => {
     const getEoeDiversityData = async () => {
       const data = await fetchAccessibilityData();
-
       if (data) {
         setEoeDiversityData(data);
       }
@@ -27,16 +27,25 @@ export default function EoeDiversity() {
 
   return (
     <GlobalContainerColumn>
+      {/* HelmetComponent for SEO */}
+      <HelmetComponent
+        title="Equal Opportunity and Diversity | MSE Printing"
+        description="Learn about MSE Printing’s commitment to equal opportunity and diversity, promoting an inclusive and diverse workplace environment."
+      />
+
       <MainTitle>{eoeDiversityData?.mainTitle}</MainTitle>
+
       <GlobalBoxColumnStart>
         <Globalh2Title>{eoeDiversityData?.one.title}</Globalh2Title>
         <GlobalPart>{eoeDiversityData?.one.firstPart}</GlobalPart>
         <GlobalPart>{eoeDiversityData?.one.secondPart}</GlobalPart>
       </GlobalBoxColumnStart>
+
       <GlobalBoxColumnStart>
         <Globalh2Title>{eoeDiversityData?.two.title}</Globalh2Title>
         <GlobalPart>{eoeDiversityData?.two.content}</GlobalPart>
       </GlobalBoxColumnStart>
+
       <GlobalBoxColumnStart>
         <Globalh2Title>{eoeDiversityData?.three.title}</Globalh2Title>
         <GlobalPart>{eoeDiversityData?.three.firstPart}</GlobalPart>
