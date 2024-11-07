@@ -5,6 +5,7 @@ import WhatWeDoCards from "../importantparts/WhatWeDoCards";
 import HomeServices from "../importantparts/HomeServices";
 import TwoButtons from "../importantparts/TwoButtons";
 import SuccesfullySend from "../importantparts/SuccesfullySend";
+import HelmetComponent from "../importantparts/Helmet"; // Import HelmetComponent for SEO
 
 export default function Home() {
   const context = useContext(rootContext);
@@ -18,6 +19,12 @@ export default function Home() {
 
   return (
     <div style={{ position: "relative" }}>
+      {/* HelmetComponent for SEO */}
+      <HelmetComponent
+        title="Home | MSE Printing - Premium Printing & Marketing Solutions"
+        description="Welcome to MSE Printing! Discover our wide range of high-quality printing, signage, and marketing solutions to elevate your brand."
+      />
+
       <CarouselComponent />
       <WhatWeDoCards />
       <HomeServices />

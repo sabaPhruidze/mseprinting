@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import {
   GlobalContainerColumn,
@@ -9,85 +9,80 @@ import {
   FullScreenTitle,
   FullScreenButton,
   GlobalMainContent,
-} from "../../style/GlobalStyle";
-import ImageWithSEO from "../../importantparts/ImageWithCEO";
-import { SubCategoryCommonTypes } from "../../types/DataTypes";
+} from "../style/GlobalStyle";
+import ImageWithSEO from "../importantparts/ImageWithCEO";
+import HelmetComponent from "../importantparts/Helmet"; // Import HelmetComponent for SEO
+import { SubCategoryCommonTypes } from "../types/DataTypes";
 import {
-  fetchAdvancedMailingServicesData,
-  fetchEveryDoorDirectMailData,
-  fetchKittingAndFulfillmentData,
-  fetchListManagementServicesData,
-  fetchStandartDirectMailData,
-  fetchTargetedDirectMailData,
-} from "../../data/sub-category data/AllSubCategoryData";
+  fetchInventoryManagementData,
+  fetchMarketingSalesKitsData,
+  fetchPickPackData,
+  fetchProductFulfillmentData,
+} from "../data/sub-category data/AllSubCategoryData";
 import {
-  ADVANCED_MAILING_SERVICES_IMAGE,
-  EVERY_DOOR_DIRECT_MAIL_IMAGE,
-  KITTING_FULLFILLMENT_IMAGE,
-  LIST_MANAGEMENT_SERVICES_IMAGE,
-  STANDARD_DIRECT_MAIL_IMAGE,
-  TARGETED_DIRECT_MAIL_IMAGE,
-} from "../../data/sub-category data/ImageWithCEOData";
+  INVENTORY_MANAGEMENT_IMAGE_DATA,
+  MARKETING_SALES_KITS_IMAGE_DATA,
+  PICK_PACK_IMAGE_DATA,
+  PRODUCT_FULFILLMENT_IMAGE_DATA,
+} from "../data/sub-category data/ImageWithCEOData";
 
-// Map of each data-fetching function and corresponding image
+// Map for each data-fetching function and corresponding image and SEO data
 const fetchDataMap: Record<
   string,
   {
     fetchData: () => Promise<SubCategoryCommonTypes | null>;
-    image: {
-      src: string;
-      alt: string;
-      title: string;
-      geoData: { latitude: string; longitude: string; location: string };
-    };
+    image: any;
+    title: string; // SEO title for each service
+    description: string; // SEO description for each service
   }
 > = {
-  "advanced-mailing-services": {
-    fetchData: fetchAdvancedMailingServicesData,
-    image: ADVANCED_MAILING_SERVICES_IMAGE,
+  "inventory-management": {
+    fetchData: fetchInventoryManagementData,
+    image: INVENTORY_MANAGEMENT_IMAGE_DATA,
+    title: "Inventory Management | MSE Printing",
+    description:
+      "Optimize your inventory with MSE Printing's Inventory Management services. Reliable, organized solutions for business efficiency.",
   },
-  "every-door-direct-mail": {
-    fetchData: fetchEveryDoorDirectMailData,
-    image: EVERY_DOOR_DIRECT_MAIL_IMAGE,
+  "marketing-sales-kit": {
+    fetchData: fetchMarketingSalesKitsData,
+    image: MARKETING_SALES_KITS_IMAGE_DATA,
+    title: "Marketing & Sales Kits | MSE Printing",
+    description:
+      "Empower your sales team with MSE Printing's customized Marketing and Sales Kits. Professional materials that drive results.",
   },
-  "kitting-and-fulfillment": {
-    fetchData: fetchKittingAndFulfillmentData,
-    image: KITTING_FULLFILLMENT_IMAGE,
+  "pick-pack": {
+    fetchData: fetchPickPackData,
+    image: PICK_PACK_IMAGE_DATA,
+    title: "Pick & Pack Services | MSE Printing",
+    description:
+      "Streamline your logistics with MSE Printing's Pick & Pack services. Efficient, accurate, and scalable solutions.",
   },
-  "list-management-services": {
-    fetchData: fetchListManagementServicesData,
-    image: LIST_MANAGEMENT_SERVICES_IMAGE,
-  },
-  "standard-direct-mail": {
-    fetchData: fetchStandartDirectMailData,
-    image: STANDARD_DIRECT_MAIL_IMAGE,
-  },
-  "targeted-direct-mail": {
-    fetchData: fetchTargetedDirectMailData,
-    image: TARGETED_DIRECT_MAIL_IMAGE,
+  "product-fulfillment": {
+    fetchData: fetchProductFulfillmentData,
+    image: PRODUCT_FULFILLMENT_IMAGE_DATA,
+    title: "Product Fulfillment | MSE Printing",
+    description:
+      "Complete your orders seamlessly with MSE Printing's Product Fulfillment services. Accurate, timely, and reliable.",
   },
 };
 
-export default function DirectMailMailingServices() {
+export default function FulfillmentServices() {
   const location = useLocation();
   const navigate = useNavigate();
   const [serviceData, setServiceData] = useState<SubCategoryCommonTypes | null>(
     null
   );
 
-  // Extract the service key from the URL
   const serviceKey = useMemo(
     () => location.pathname.split("/").pop()?.toLowerCase(),
     [location.pathname]
   );
 
-  // Get service configuration based on the current service key
   const serviceConfig = useMemo(
     () => (serviceKey ? fetchDataMap[serviceKey] : null),
     [serviceKey]
   );
 
-  // Fetch data for the current service
   const getServiceData = useCallback(async () => {
     if (serviceConfig) {
       try {
@@ -99,18 +94,22 @@ export default function DirectMailMailingServices() {
     }
   }, [serviceConfig, serviceKey]);
 
-  // Trigger data fetch on component mount or when serviceConfig changes
   useEffect(() => {
-    if (serviceConfig) {
-      getServiceData();
-    }
-  }, [getServiceData, serviceConfig]);
+    getServiceData();
+  }, [getServiceData]);
 
-  // Memoize the service data to avoid unnecessary re-renders
   const memoizedData = useMemo(() => serviceData, [serviceData]);
 
   return (
     <div>
+      {/* HelmetComponent for SEO */}
+      {serviceConfig && (
+        <HelmetComponent
+          title={serviceConfig.title}
+          description={serviceConfig.description}
+        />
+      )}
+
       <FullBackgroundContainerZERO>
         <div className="black-overlay"></div>
         {serviceConfig && (

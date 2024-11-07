@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useMemo } from "react";
+import { useEffect, useState, useMemo, useCallback } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import {
   GlobalContainerColumn,
@@ -9,46 +9,64 @@ import {
   FullScreenTitle,
   FullScreenButton,
   GlobalMainContent,
-} from "../../style/GlobalStyle";
-import ImageWithSEO from "../../importantparts/ImageWithCEO";
-import { SubCategoryCommonTypes } from "../../types/DataTypes";
+} from "../style/GlobalStyle";
+import ImageWithSEO from "../importantparts/ImageWithCEO";
+import { SubCategoryCommonTypes } from "../types/DataTypes";
 import {
-  fetchInventoryManagementData,
-  fetchMarketingSalesKitsData,
-  fetchPickPackData,
-  fetchProductFulfillmentData,
-} from "../../data/sub-category data/AllSubCategoryData";
+  fetchCustomPackagingData,
+  fetchPremiumPrivateLabelsData,
+  fetchProductPromotionalLabelsData,
+  fetchQRCodesNoTouchOptionsData,
+  fetchSafetyLabelsData,
+  fetchShortRunPackagingData,
+  fetchStickersDecalsData,
+} from "../data/sub-category data/AllSubCategoryData";
 import {
-  INVENTORY_MANAGEMENT_IMAGE_DATA,
-  MARKETING_SALES_KITS_IMAGE_DATA,
-  PICK_PACK_IMAGE_DATA,
-  PRODUCT_FULFILLMENT_IMAGE_DATA,
-} from "../../data/sub-category data/ImageWithCEOData";
+  CUSTOM_PACKAGING_IMAGE_DATA,
+  PREMIUM_PRIVATE_LABELS_IMAGE_DATA,
+  PRODUCT_PROMOTIONAL_IMAGE_DATA,
+  QR_CODE_NO_TOUCH_OPTIONS_IMAGE_DATA,
+  SAFETY_LABELS_IMAGE_DATA,
+  SHORT_RUN_PACKAGING_IMAGE_DATA,
+  STICKERS_DECALS_IMAGE_DATA,
+} from "../data/sub-category data/ImageWithCEOData";
 
-// Map for each data-fetching function and corresponding image data
+// Map of each data-fetching function and corresponding image data
 const fetchDataMap: Record<
   string,
   { fetchData: () => Promise<SubCategoryCommonTypes | null>; image: any }
 > = {
-  "inventory-management": {
-    fetchData: fetchInventoryManagementData,
-    image: INVENTORY_MANAGEMENT_IMAGE_DATA,
+  "custom-packaging": {
+    fetchData: fetchCustomPackagingData,
+    image: CUSTOM_PACKAGING_IMAGE_DATA,
   },
-  "marketing-sales-kit": {
-    fetchData: fetchMarketingSalesKitsData,
-    image: MARKETING_SALES_KITS_IMAGE_DATA,
+  "premium-private-labels": {
+    fetchData: fetchPremiumPrivateLabelsData,
+    image: PREMIUM_PRIVATE_LABELS_IMAGE_DATA,
   },
-  "pick-pack": {
-    fetchData: fetchPickPackData,
-    image: PICK_PACK_IMAGE_DATA,
+  "product-promotional-labels": {
+    fetchData: fetchProductPromotionalLabelsData,
+    image: PRODUCT_PROMOTIONAL_IMAGE_DATA,
   },
-  "product-fulfillment": {
-    fetchData: fetchProductFulfillmentData,
-    image: PRODUCT_FULFILLMENT_IMAGE_DATA,
+  "qr-codes-no-touch-options": {
+    fetchData: fetchQRCodesNoTouchOptionsData,
+    image: QR_CODE_NO_TOUCH_OPTIONS_IMAGE_DATA,
+  },
+  "safety-labels": {
+    fetchData: fetchSafetyLabelsData,
+    image: SAFETY_LABELS_IMAGE_DATA,
+  },
+  "short-run-packaging": {
+    fetchData: fetchShortRunPackagingData,
+    image: SHORT_RUN_PACKAGING_IMAGE_DATA,
+  },
+  "stickers-decals": {
+    fetchData: fetchStickersDecalsData,
+    image: STICKERS_DECALS_IMAGE_DATA,
   },
 };
 
-export default function FulfillmentServices() {
+export default function LabelsPackagingMain() {
   const location = useLocation();
   const navigate = useNavigate();
   const [serviceData, setServiceData] = useState<SubCategoryCommonTypes | null>(
@@ -77,8 +95,10 @@ export default function FulfillmentServices() {
   }, [serviceConfig, serviceKey]);
 
   useEffect(() => {
-    getServiceData();
-  }, [getServiceData]);
+    if (serviceConfig) {
+      getServiceData();
+    }
+  }, [getServiceData, serviceConfig]);
 
   const memoizedData = useMemo(() => serviceData, [serviceData]);
 
@@ -96,14 +116,12 @@ export default function FulfillmentServices() {
           />
         )}
         <TitleAndButtonContainer>
-          <FullScreenTitle>
-            {memoizedData?.one?.title || "Default Title"}
-          </FullScreenTitle>
+          <FullScreenTitle>{memoizedData?.one?.title || ""}</FullScreenTitle>
           <GlobalMainContent>
-            {memoizedData?.one?.content || "Content unavailable."}
+            {memoizedData?.one?.content || ""}
           </GlobalMainContent>
           <FullScreenButton onClick={() => navigate("/request-quote")}>
-            {memoizedData?.one?.button || "Request a Quote"}
+            {memoizedData?.one?.button || ""}
           </FullScreenButton>
         </TitleAndButtonContainer>
       </FullBackgroundContainerZERO>
@@ -115,7 +133,7 @@ export default function FulfillmentServices() {
               <GlobalPart key={index}>{item}</GlobalPart>
             ))
           ) : (
-            <p>Additional information is unavailable.</p>
+            <p></p>
           )}
         </GlobalTextContainer>
       </GlobalContainerColumn>

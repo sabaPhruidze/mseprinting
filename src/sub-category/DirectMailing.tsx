@@ -5,16 +5,17 @@ import {
   GlobalTextContainer,
   GlobalPart,
   Globalh2TitleWithMB20,
-  FullBackgroundContainerZERO, // Updated styled component for the background
-  TitleAndButtonContainer, // Styled component for title and button wrapping
-  FullScreenTitle, // Styled component for the main title in the background
-  FullScreenButton, // Styled component for the Request a Quote button
+  FullBackgroundContainerZERO,
+  TitleAndButtonContainer,
+  FullScreenTitle,
+  FullScreenButton,
   GlobalMainContent,
 } from "../style/GlobalStyle";
 import { fetchDirectMailingData } from "../data/sub-category data/AllSubCategoryData";
 import { CommonDocument } from "../types/DataTypes";
-import ImageWithSEO from "../importantparts/ImageWithCEO"; // Import ImageWithSEO for handling the image
-import { DIRECT_MAIL_IMAGE_PAGE } from "../data/sub-category data/ImageWithCEOData"; // Import the DIRECT_MAIL_IMAGE
+import ImageWithSEO from "../importantparts/ImageWithCEO";
+import { DIRECT_MAIL_IMAGE_PAGE } from "../data/sub-category data/ImageWithCEOData";
+import HelmetComponent from "../importantparts/Helmet"; // Import HelmetComponent for SEO
 
 export default function DirectMailing() {
   const [directMailingData, setDirectMailingData] =
@@ -33,13 +34,20 @@ export default function DirectMailing() {
 
   const memoizedData = useMemo(() => directMailingData, [directMailingData]);
   const navigate = useNavigate();
+
   return (
     <div>
+      {/* HelmetComponent for SEO */}
+      <HelmetComponent
+        title="Direct Mailing Services | MSE Printing"
+        description="Enhance your business reach with our Direct Mailing services. From concept to delivery, we provide professional solutions tailored to your needs."
+      />
+
       {/* Full-screen section with background image using ImageWithSEO */}
       <FullBackgroundContainerZERO>
-        <div className="black-overlay"></div> {/* Add this overlay div */}
+        <div className="black-overlay"></div>
         <ImageWithSEO
-          src={DIRECT_MAIL_IMAGE_PAGE.src} // Use DIRECT_MAIL_IMAGE for the image source
+          src={DIRECT_MAIL_IMAGE_PAGE.src}
           alt={DIRECT_MAIL_IMAGE_PAGE.alt}
           title={DIRECT_MAIL_IMAGE_PAGE.title}
           geoData={DIRECT_MAIL_IMAGE_PAGE.geoData}
@@ -61,7 +69,6 @@ export default function DirectMailing() {
       {/* Text content below the background image */}
       <GlobalContainerColumn>
         <GlobalTextContainer>
-          {/* Loop through the second part of the data to render titles and content */}
           {memoizedData?.two.map((item, index) => (
             <div key={index}>
               <Globalh2TitleWithMB20>{item.title}</Globalh2TitleWithMB20>

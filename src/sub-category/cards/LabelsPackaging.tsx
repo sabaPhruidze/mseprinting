@@ -1,26 +1,27 @@
 import { useState, useEffect, useMemo } from "react";
-import { useNavigate } from "react-router-dom"; // Import for navigation
+import { useNavigate } from "react-router-dom";
 import {
   GlobalContainerColumn,
   GlobalPart,
   Globalh2TitleWithMB20,
-  GlobalTextContainer, // Import the styled component for text wrapping
-  FullBackgroundContainerZERO, // Updated styled component for the full background
-  TitleAndButtonContainer, // Styled component for title and button wrapping
-  FullScreenTitle, // Styled component for the main title in the background
-  FullScreenButton, // Styled component for the "Request a Quote" button
+  GlobalTextContainer,
+  FullBackgroundContainerZERO,
+  TitleAndButtonContainer,
+  FullScreenTitle,
+  FullScreenButton,
   GlobalMainContent,
 } from "../../style/GlobalStyle";
 import { fetchLabelsPackagingData } from "../../data/sub-category data/AllSubCategoryData";
 import { LabelsPackagingDocument } from "../../types/DataTypes";
-import ImageWithSEO from "../../importantparts/ImageWithCEO"; // Import ImageWithSEO for handling the image
-import { LABELS_PACKAGING_IMAGE_PAGE } from "../../data/sub-category data/ImageWithCEOData"; // Import the LABELS_PACKAGING_IMAGE
+import ImageWithSEO from "../../importantparts/ImageWithCEO";
+import { LABELS_PACKAGING_IMAGE_PAGE } from "../../data/sub-category data/ImageWithCEOData";
+import HelmetComponent from "../../importantparts/Helmet"; // Import HelmetComponent for SEO
 
 export default function LabelsPackaging() {
   const [labelsPackagingData, setLabelsPackagingData] =
     useState<LabelsPackagingDocument | null>(null);
 
-  const navigate = useNavigate(); // Hook for navigation
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getLabelsPackagingData = async () => {
@@ -41,11 +42,17 @@ export default function LabelsPackaging() {
 
   return (
     <div>
+      {/* HelmetComponent for SEO */}
+      <HelmetComponent
+        title="Labels & Packaging | MSE Printing"
+        description="Explore our high-quality labels and packaging options tailored to your brand. Order custom labels and packaging at MSE Printing."
+      />
+
       {/* Full-screen section with background image using ImageWithSEO */}
       <FullBackgroundContainerZERO>
-        <div className="black-overlay"></div> {/* Add this overlay div */}
+        <div className="black-overlay"></div>
         <ImageWithSEO
-          src={LABELS_PACKAGING_IMAGE_PAGE.src} // Use LABELS_PACKAGING_IMAGE for the image source
+          src={LABELS_PACKAGING_IMAGE_PAGE.src}
           alt={LABELS_PACKAGING_IMAGE_PAGE.alt}
           title={LABELS_PACKAGING_IMAGE_PAGE.title}
           geoData={LABELS_PACKAGING_IMAGE_PAGE.geoData}
@@ -67,7 +74,6 @@ export default function LabelsPackaging() {
       {/* Text content below the background image */}
       <GlobalContainerColumn>
         <GlobalTextContainer>
-          {/* Loop through and display content */}
           {memoizedData?.two.map((item, index) => (
             <div key={index}>
               <Globalh2TitleWithMB20>{item.title}</Globalh2TitleWithMB20>
