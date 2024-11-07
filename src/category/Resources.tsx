@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import HelmetComponent from "../importantparts/Helmet"; // Import HelmetComponent for SEO
 import {
   GlobalContainerColumn,
   GlobalBoxColumnStart,
@@ -26,6 +27,12 @@ const Resources: React.FC = () => {
   return (
     resourcesData && (
       <GlobalContainerColumn>
+        {/* HelmetComponent for SEO */}
+        <HelmetComponent
+          title="Resources | MSE Printing"
+          description="Explore resources provided by MSE Printing, including industry guides, tips, and helpful information to support your printing and marketing needs."
+        />
+
         <GlobalBoxColumnStart>
           <GlobalMainTitle>{resourcesData.one.title}</GlobalMainTitle>
           {Array.isArray(resourcesData.one.content) &&

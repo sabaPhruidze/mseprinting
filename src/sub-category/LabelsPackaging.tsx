@@ -11,6 +11,7 @@ import {
   GlobalMainContent,
 } from "../style/GlobalStyle";
 import ImageWithSEO from "../importantparts/ImageWithCEO";
+import HelmetComponent from "../importantparts/Helmet"; // Import HelmetComponent for SEO
 import { SubCategoryCommonTypes } from "../types/DataTypes";
 import {
   fetchCustomPackagingData,
@@ -31,38 +32,64 @@ import {
   STICKERS_DECALS_IMAGE_DATA,
 } from "../data/sub-category data/ImageWithCEOData";
 
-// Map of each data-fetching function and corresponding image data
+// Map for each data-fetching function, image data, and SEO metadata
 const fetchDataMap: Record<
   string,
-  { fetchData: () => Promise<SubCategoryCommonTypes | null>; image: any }
+  {
+    fetchData: () => Promise<SubCategoryCommonTypes | null>;
+    image: any;
+    title: string; // SEO title
+    description: string; // SEO description
+  }
 > = {
   "custom-packaging": {
     fetchData: fetchCustomPackagingData,
     image: CUSTOM_PACKAGING_IMAGE_DATA,
+    title: "Custom Packaging | MSE Printing",
+    description:
+      "Create unique, branded packaging solutions with MSE Printing's custom packaging services.",
   },
   "premium-private-labels": {
     fetchData: fetchPremiumPrivateLabelsData,
     image: PREMIUM_PRIVATE_LABELS_IMAGE_DATA,
+    title: "Premium Private Labels | MSE Printing",
+    description:
+      "Elevate your brand with premium private labels by MSE Printing, crafted to impress.",
   },
   "product-promotional-labels": {
     fetchData: fetchProductPromotionalLabelsData,
     image: PRODUCT_PROMOTIONAL_IMAGE_DATA,
+    title: "Product & Promotional Labels | MSE Printing",
+    description:
+      "Promote your brand with custom product and promotional labels from MSE Printing.",
   },
   "qr-codes-no-touch-options": {
     fetchData: fetchQRCodesNoTouchOptionsData,
     image: QR_CODE_NO_TOUCH_OPTIONS_IMAGE_DATA,
+    title: "QR Codes & No-Touch Options | MSE Printing",
+    description:
+      "Enhance accessibility with QR codes and no-touch options provided by MSE Printing.",
   },
   "safety-labels": {
     fetchData: fetchSafetyLabelsData,
     image: SAFETY_LABELS_IMAGE_DATA,
+    title: "Safety Labels | MSE Printing",
+    description:
+      "Ensure safety and compliance with custom safety labels from MSE Printing.",
   },
   "short-run-packaging": {
     fetchData: fetchShortRunPackagingData,
     image: SHORT_RUN_PACKAGING_IMAGE_DATA,
+    title: "Short-Run Packaging | MSE Printing",
+    description:
+      "Get flexible, small-batch packaging solutions with MSE Printing's short-run packaging services.",
   },
   "stickers-decals": {
     fetchData: fetchStickersDecalsData,
     image: STICKERS_DECALS_IMAGE_DATA,
+    title: "Stickers & Decals | MSE Printing",
+    description:
+      "Brand your products and spaces with custom stickers and decals by MSE Printing.",
   },
 };
 
@@ -104,6 +131,14 @@ export default function LabelsPackagingMain() {
 
   return (
     <div>
+      {/* HelmetComponent for SEO */}
+      {serviceConfig && (
+        <HelmetComponent
+          title={serviceConfig.title}
+          description={serviceConfig.description}
+        />
+      )}
+
       <FullBackgroundContainerZERO>
         <div className="black-overlay"></div>
         {serviceConfig && (
@@ -133,7 +168,7 @@ export default function LabelsPackagingMain() {
               <GlobalPart key={index}>{item}</GlobalPart>
             ))
           ) : (
-            <p></p>
+            <p>Additional information is unavailable.</p>
           )}
         </GlobalTextContainer>
       </GlobalContainerColumn>

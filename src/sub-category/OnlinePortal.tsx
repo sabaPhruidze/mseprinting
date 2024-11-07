@@ -5,17 +5,18 @@ import {
   GlobalTextContainer,
   GlobalPart,
   GlobalMainTitle,
-  FullBackgroundContainerZERO, // Updated styled component for the background
-  TitleAndButtonContainer, // Styled component for title and button wrapping
-  FullScreenTitle, // Styled component for the main title in the background
-  FullScreenButton, // Styled component for the Request a Quote button
+  FullBackgroundContainerZERO,
+  TitleAndButtonContainer,
+  FullScreenTitle,
+  FullScreenButton,
   GlobalMainContent,
 } from "../style/GlobalStyle";
 import { useNavigate } from "react-router-dom";
 import { fetchOnlinePortalData } from "../data/sub-category data/AllSubCategoryData";
 import { CommonDocument } from "../types/DataTypes";
-import ImageWithSEO from "../importantparts/ImageWithCEO"; // Import ImageWithSEO for handling the image
-import { ONLINE_ORDERING_IMAGE } from "../data/sub-category data/ImageWithCEOData"; // Import the ONLINE_ORDERING_IMAGE
+import ImageWithSEO from "../importantparts/ImageWithCEO";
+import HelmetComponent from "../importantparts/Helmet"; // Import HelmetComponent for SEO
+import { ONLINE_ORDERING_IMAGE } from "../data/sub-category data/ImageWithCEOData";
 
 export default function OnlinePortal() {
   const [onlinePortalData, setOnlinePortalData] =
@@ -34,13 +35,20 @@ export default function OnlinePortal() {
 
   const memoizedData = useMemo(() => onlinePortalData, [onlinePortalData]);
   const navigate = useNavigate();
+
   return (
     <div>
+      {/* HelmetComponent for SEO */}
+      <HelmetComponent
+        title="Online Ordering Portal | MSE Printing"
+        description="Access MSE Printing's online ordering portal to easily manage and order high-quality printing solutions tailored to your needs."
+      />
+
       {/* Full-screen section with background image using ImageWithSEO */}
       <FullBackgroundContainerZERO>
-        <div className="black-overlay"></div> {/* Add this overlay div */}
+        <div className="black-overlay"></div>
         <ImageWithSEO
-          src={ONLINE_ORDERING_IMAGE.src} // Use ONLINE_ORDERING_IMAGE for the image source
+          src={ONLINE_ORDERING_IMAGE.src}
           alt={ONLINE_ORDERING_IMAGE.alt}
           title={ONLINE_ORDERING_IMAGE.title}
           geoData={ONLINE_ORDERING_IMAGE.geoData}
@@ -49,11 +57,7 @@ export default function OnlinePortal() {
         <TitleAndButtonContainer>
           <FullScreenTitle>{memoizedData?.front?.title}</FullScreenTitle>
           <GlobalMainContent>{memoizedData?.front?.content}</GlobalMainContent>
-          <FullScreenButton
-            onClick={() => {
-              navigate("/request-quote");
-            }}
-          >
+          <FullScreenButton onClick={() => navigate("/request-quote")}>
             {memoizedData?.front?.button}
           </FullScreenButton>
         </TitleAndButtonContainer>

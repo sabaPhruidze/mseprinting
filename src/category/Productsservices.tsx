@@ -6,6 +6,7 @@ import {
   GlobalMainContent,
   Globalh2Title,
 } from "../style/GlobalStyle";
+import HelmetComponent from "../importantparts/Helmet"; // Import HelmetComponent for SEO
 import { ProductServicesDocument, SpecialStandard } from "../types/DataTypes";
 import { fetchProductServicesPageData } from "../data/sub-category data/AllSubCategoryData";
 
@@ -105,7 +106,17 @@ const ProductsServices: React.FC = () => {
 
   if (!productServicesData) return null;
 
-  return <GlobalContainerColumn>{memoizedSections}</GlobalContainerColumn>;
+  return (
+    <GlobalContainerColumn>
+      {/* HelmetComponent for SEO */}
+      <HelmetComponent
+        title="Products & Services | MSE Printing"
+        description="Explore a wide range of printing and marketing services provided by MSE Printing, tailored to meet all your business needs."
+      />
+
+      {memoizedSections}
+    </GlobalContainerColumn>
+  );
 };
 
 export default ProductsServices;

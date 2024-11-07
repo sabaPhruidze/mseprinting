@@ -7,6 +7,7 @@ import {
   Globalh2Title,
   GlobalSpecialPart,
 } from "../style/GlobalStyle";
+import HelmetComponent from "../importantparts/Helmet"; // Import HelmetComponent for SEO
 import { AboutUsDocument } from "../types/DataTypes";
 import { fetchAboutUsData } from "../data/sub-category data/AllSubCategoryData";
 
@@ -66,6 +67,12 @@ const AboutUs: React.FC = () => {
 
   return (
     <GlobalContainerColumn>
+      {/* HelmetComponent for SEO */}
+      <HelmetComponent
+        title="About Us | MSE Printing"
+        description="Learn more about MSE Printing's dedication to quality, service, and innovation in printing and marketing solutions."
+      />
+
       {renderSection(aboutUsData.one.title, aboutUsData.one.content)}
       {renderSection(aboutUsData.two.title, aboutUsData.two.content)}
       {renderSection(aboutUsData.three.title, aboutUsData.three.content)}
