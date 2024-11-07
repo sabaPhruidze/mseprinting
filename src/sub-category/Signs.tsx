@@ -1,20 +1,21 @@
 import { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
+import HelmetComponent from "../importantparts/Helmet";
 import {
   GlobalContainerColumn,
   Globalh2TitleWithMB20,
   GlobalPart,
-  GlobalTextContainer, // Styled component for text wrapping
-  FullBackgroundContainerZERO, // Updated styled component for the full background
-  TitleAndButtonContainer, // Styled component for title and button wrapping
-  FullScreenTitle, // Styled component for the main title in the background
-  FullScreenButton, // Styled component for the "Request a Quote" button
+  GlobalTextContainer,
+  FullBackgroundContainerZERO,
+  TitleAndButtonContainer,
+  FullScreenTitle,
+  FullScreenButton,
   GlobalMainContent,
 } from "../style/GlobalStyle";
 import { fetchSignsData } from "../data/sub-category data/AllSubCategoryData";
 import { CommonDocument } from "../types/DataTypes";
-import ImageWithSEO from "../importantparts/ImageWithCEO"; // Import ImageWithSEO for handling the image
-import { SIGNS_IMAGE } from "../data/sub-category data/ImageWithCEOData"; // Import the SIGNS_IMAGE
+import ImageWithSEO from "../importantparts/ImageWithCEO";
+import { SIGNS_IMAGE } from "../data/sub-category data/ImageWithCEOData";
 
 export default function Signs() {
   const [signsData, setSignsData] = useState<CommonDocument | null>(null);
@@ -29,16 +30,21 @@ export default function Signs() {
 
     getSignsData();
   }, []);
+
   const navigate = useNavigate();
   const memoizedData = useMemo(() => signsData, [signsData]);
 
   return (
     <div>
-      {/* Full-screen section with background image using ImageWithSEO */}
+      <HelmetComponent
+        title="Signs and Banners | MSE Printing"
+        description="Discover MSE Printing's high-quality signs and banners for all business needs. Custom signage solutions with fast online ordering."
+      />
+
       <FullBackgroundContainerZERO>
-        <div className="black-overlay"></div> {/* Add this overlay div */}
+        <div className="black-overlay"></div>
         <ImageWithSEO
-          src={SIGNS_IMAGE.src} // Use SIGNS_IMAGE for the image source
+          src={SIGNS_IMAGE.src}
           alt={SIGNS_IMAGE.alt}
           title={SIGNS_IMAGE.title}
           geoData={SIGNS_IMAGE.geoData}
@@ -56,11 +62,8 @@ export default function Signs() {
           </FullScreenButton>
         </TitleAndButtonContainer>
       </FullBackgroundContainerZERO>
-
-      {/* Text content below the background image */}
       <GlobalContainerColumn>
         <GlobalTextContainer>
-          {/* Loop through the second part of the data to render titles and content */}
           {memoizedData?.two.map((item, index) => (
             <div key={index}>
               <Globalh2TitleWithMB20>{item.title}</Globalh2TitleWithMB20>
