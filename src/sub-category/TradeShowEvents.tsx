@@ -9,48 +9,69 @@ import {
   FullScreenTitle,
   FullScreenButton,
   GlobalMainContent,
-} from "../../style/GlobalStyle";
-import ImageWithSEO from "../../importantparts/ImageWithCEO";
-import { SubCategoryCommonTypes } from "../../types/DataTypes";
+} from "../style/GlobalStyle";
+import ImageWithSEO from "../importantparts/ImageWithCEO";
+import HelmetComponent from "../importantparts/Helmet"; // Import HelmetComponent for SEO
+import { SubCategoryCommonTypes } from "../types/DataTypes";
 import {
   fetchCounterPopUpDisplaysData,
   fetchEventLiteratureSignsData,
   fetchGiftsAwardsIncentivesData,
   fetchPrePostShowDirectMailData,
   fetchTableCounterKioskDisplaysData,
-} from "../../data/sub-category data/AllSubCategoryData";
+} from "../data/sub-category data/AllSubCategoryData";
 import {
   COUNTER_POP_UP_DISPLAYS_IMAGE_DATA,
   EVENT_LITERATURE_SIGNS_IMAGE_DATA,
   GIFTS_AWARDS_INCENTIVES_IMAGE_DATA,
   PRE_POST_SHOW_DIRECT_MAIL_IMAGE_DATA,
   TABLE_COUNTER_KIOSK_DISPLAYS_IMAGE_DATA,
-} from "../../data/sub-category data/ImageWithCEOData";
+} from "../data/sub-category data/ImageWithCEOData";
 
-// Map for each data-fetching function and corresponding image data
+// Map for each data-fetching function, image data, and SEO metadata
 const fetchDataMap: Record<
   string,
-  { fetchData: () => Promise<SubCategoryCommonTypes | null>; image: any }
+  {
+    fetchData: () => Promise<SubCategoryCommonTypes | null>;
+    image: any;
+    title: string; // SEO title for each service
+    description: string; // SEO description for each service
+  }
 > = {
   "counter-pop-up-displays": {
     fetchData: fetchCounterPopUpDisplaysData,
     image: COUNTER_POP_UP_DISPLAYS_IMAGE_DATA,
+    title: "Counter Pop-Up Displays | MSE Printing",
+    description:
+      "Stand out with Counter Pop-Up Displays from MSE Printing, perfect for showcasing products at events.",
   },
   "event-literature-signs": {
     fetchData: fetchEventLiteratureSignsData,
     image: EVENT_LITERATURE_SIGNS_IMAGE_DATA,
+    title: "Event Literature & Signs | MSE Printing",
+    description:
+      "Engage your audience with Event Literature and Signs crafted by MSE Printing for impactful presentations.",
   },
   "gifts-awards-incentives": {
     fetchData: fetchGiftsAwardsIncentivesData,
     image: GIFTS_AWARDS_INCENTIVES_IMAGE_DATA,
+    title: "Gifts, Awards & Incentives | MSE Printing",
+    description:
+      "Show appreciation with custom Gifts, Awards, and Incentives from MSE Printing. Celebrate achievements in style.",
   },
   "pre-post-show-direct-mail": {
     fetchData: fetchPrePostShowDirectMailData,
     image: PRE_POST_SHOW_DIRECT_MAIL_IMAGE_DATA,
+    title: "Pre & Post Show Direct Mail | MSE Printing",
+    description:
+      "Maximize your event impact with Pre & Post Show Direct Mail solutions from MSE Printing.",
   },
   "table-counter-kiosk-displays": {
     fetchData: fetchTableCounterKioskDisplaysData,
     image: TABLE_COUNTER_KIOSK_DISPLAYS_IMAGE_DATA,
+    title: "Table & Counter Kiosk Displays | MSE Printing",
+    description:
+      "Attract attention at events with Table & Counter Kiosk Displays by MSE Printing. Functional and visually engaging.",
   },
 };
 
@@ -90,6 +111,14 @@ export default function TradeShowEvents() {
 
   return (
     <div>
+      {/* HelmetComponent for SEO */}
+      {serviceConfig && (
+        <HelmetComponent
+          title={serviceConfig.title}
+          description={serviceConfig.description}
+        />
+      )}
+
       <FullBackgroundContainerZERO>
         <div className="black-overlay"></div>
         {serviceConfig && (

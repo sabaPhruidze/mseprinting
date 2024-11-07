@@ -42,14 +42,14 @@ import PrintingCopyingPages from "./sub-category/PrintingCopyingPages";
 
 import DirectMailMailingServices from "./sub-category/DirectMailMailingServices";
 
-import SignsPages from "./sub-category/signs/SignsPages";
+import SignsPages from "./sub-category/SignsPages";
 
 import GraphicDesign from "./sub-category/GraphicDesign";
 
 import LabelsPackagingMain from "./sub-category/LabelsPackaging";
 
-import MarketingServices from "./sub-category/marketingServices/MarketingServices";
-import TradeShowEvents from "./sub-category/tradeshowsEvents/TradeShowEvents";
+import MarketingServices from "./sub-category/MarketingServices";
+import TradeShowEvents from "./sub-category/TradeShowEvents";
 import FulfillmentServices from "./sub-category/FullfillmentServices";
 import IndustrySpecific from "./sub-category/IndustrySpecific";
 
