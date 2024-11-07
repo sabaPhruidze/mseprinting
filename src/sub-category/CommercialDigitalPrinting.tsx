@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
+import HelmetComponent from "../importantparts/Helmet"; // Import HelmetComponent for SEO
 import {
   GlobalContainerColumn,
   Globalh2TitleWithMB20,
@@ -45,6 +46,7 @@ export default function CommercialDigitalPrinting() {
     [digitalPrintingData]
   );
   const navigate = useNavigate();
+
   const renderSpecialPart = useCallback((item: any) => {
     return (
       <>
@@ -66,6 +68,12 @@ export default function CommercialDigitalPrinting() {
 
   return (
     <div>
+      {/* HelmetComponent for SEO */}
+      <HelmetComponent
+        title="Commercial Digital Printing | MSE Printing"
+        description="Discover MSE Printing's professional digital printing services, tailored to meet your commercial needs with high-quality and precision."
+      />
+
       {/* Full Background Image Container */}
       <FullBackgroundContainerZERO>
         <div className="black-overlay"></div> {/* Add this overlay div */}

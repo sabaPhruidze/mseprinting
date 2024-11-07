@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo, useCallback } from "react";
 import { OFFSET_PRINTING_IMAGE } from "../data/sub-category data/ImageWithCEOData";
 import { useNavigate } from "react-router-dom";
+import HelmetComponent from "../importantparts/Helmet"; // Import HelmetComponent for SEO
 import {
   GlobalContainerColumn,
   Globalh2TitleWithMB20,
@@ -24,6 +25,7 @@ import {
 import { fetchOffsetPrintingData } from "../data/sub-category data/CommercialOffsetPrintingData";
 import { OffsetPrintingDocument } from "../types/DataTypes";
 import ImageWithCEO from "../importantparts/ImageWithCEO";
+
 export default function CommercialOffsetPrinting() {
   const [offsetPrintingData, setOffsetPrintingData] =
     useState<OffsetPrintingDocument | null>(null);
@@ -41,6 +43,7 @@ export default function CommercialOffsetPrinting() {
 
   const memoizedData = useMemo(() => offsetPrintingData, [offsetPrintingData]);
   const navigate = useNavigate();
+
   const renderSpecialPart = useCallback((item: any) => {
     return (
       <>
@@ -62,6 +65,12 @@ export default function CommercialOffsetPrinting() {
 
   return (
     <div>
+      {/* HelmetComponent for SEO */}
+      <HelmetComponent
+        title="Commercial Offset Printing | MSE Printing"
+        description="Explore high-quality commercial offset printing solutions by MSE Printing. We specialize in custom print projects that meet the highest industry standards."
+      />
+
       <FullBackgroundContainerZERO>
         <div className="black-overlay"></div> {/* Add this overlay div */}
         <ImageWithCEO
@@ -84,8 +93,6 @@ export default function CommercialOffsetPrinting() {
         </TitleAndButtonContainer>
       </FullBackgroundContainerZERO>
       <GlobalContainerColumn>
-        {/* <GlobalMainTitle>{memoizedData?.one.mainTitle}</GlobalMainTitle> */}
-
         <GlobalTextContainer>
           <GlobalMainTitle style={{ fontWeight: 800 }}>
             {memoizedData?.one.title}

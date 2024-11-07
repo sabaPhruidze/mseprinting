@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
+import HelmetComponent from "../importantparts/Helmet"; // Import HelmetComponent for SEO
 import {
   GlobalContainerColumn,
   Globalh2TitleWithMB20,
@@ -30,6 +31,7 @@ export default function PrintingCopying() {
 
     getPrintingCopyingData();
   }, []);
+
   const navigate = useNavigate();
   const memoizedData = useMemo(
     () => printingCopyingData,
@@ -38,6 +40,12 @@ export default function PrintingCopying() {
 
   return (
     <div>
+      {/* HelmetComponent for SEO */}
+      <HelmetComponent
+        title="Printing & Copying Services | MSE Printing"
+        description="Explore MSE Printing’s professional printing and copying services. High-quality solutions for business cards, brochures, and more."
+      />
+
       {/* Full-screen section with background image using ImageWithSEO */}
       <FullBackgroundContainerZERO>
         <div className="black-overlay"></div> {/* Add this overlay div */}
