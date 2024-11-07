@@ -11,6 +11,7 @@ import {
   GlobalMainContent,
 } from "../style/GlobalStyle";
 import ImageWithSEO from "../importantparts/ImageWithCEO";
+import HelmetComponent from "../importantparts/Helmet"; // Import HelmetComponent for SEO
 import { SubCategoryCommonTypes } from "../types/DataTypes";
 import {
   fetchBusinessAnnualReportsData,
@@ -39,51 +40,92 @@ import {
   POSTER_PRINTING_IMAGE,
 } from "../data/sub-category data/ImageWithCEOData";
 
-// Map for fetching functions and corresponding image data
-const serviceDataMap = {
+// Map for fetching functions, image data, and SEO metadata
+const serviceDataMap: Record<
+  string,
+  {
+    fetchData: () => Promise<SubCategoryCommonTypes | null>;
+    image: any;
+    title: string; // SEO title
+    description: string; // SEO description
+  }
+> = {
   "business-annual-reports": {
     fetchData: fetchBusinessAnnualReportsData,
     image: BUSINESS_ANNUAL_REPORTS_IMAGE,
+    title: "Business Annual Reports | MSE Printing",
+    description:
+      "Professional business annual report printing services by MSE Printing for comprehensive, detailed reports.",
   },
   "business-cards-stationery": {
     fetchData: fetchBusinessCardsStationeryData,
     image: BUSINESS_CARDS_STATIONERY_IMAGE,
+    title: "Business Cards & Stationery | MSE Printing",
+    description:
+      "Create a lasting impression with custom business cards and stationery by MSE Printing.",
   },
   "newsletters-flyers-rack-cards": {
     fetchData: fetchNewslettersFlyersRackCardsData,
     image: NEWSLETTERS_FLYERS_RACK_CARDS_IMAGE,
+    title: "Newsletters, Flyers & Rack Cards | MSE Printing",
+    description:
+      "Engage your audience with high-quality newsletters, flyers, and rack cards from MSE Printing.",
   },
   "post-cards-direct-mailers": {
     fetchData: fetchPostCardsDirectMailersData,
     image: POSTCARDS_DIRECT_MAILERS_IMAGE,
+    title: "Post Cards & Direct Mailers | MSE Printing",
+    description:
+      "Reach out with impactful post cards and direct mailers designed and printed by MSE Printing.",
   },
   "presentation-training-materials": {
     fetchData: fetchPresentationTrainingMaterialsData,
     image: PRESENTATION_TRAINING_MATERIALS_IMAGE,
+    title: "Presentation & Training Materials | MSE Printing",
+    description:
+      "Ensure professional presentations with training materials crafted by MSE Printing.",
   },
   "apparel-uniforms": {
     fetchData: fetchApparelUniformsData,
     image: APPAREL_UNIFORMS_IMAGE,
+    title: "Apparel & Uniforms | MSE Printing",
+    description:
+      "Customize apparel and uniforms for your team with MSE Printing's printing solutions.",
   },
   "book-printing": {
     fetchData: fetchBookPrintingData,
     image: BOOK_PRINTING_IMAGE,
+    title: "Book Printing | MSE Printing",
+    description:
+      "Publish your book with MSE Printing’s high-quality book printing services.",
   },
   "cards-invitations": {
     fetchData: fetchCardsAndInvitationsData,
     image: CARDS_INVITATIONS_IMAGE,
+    title: "Cards & Invitations | MSE Printing",
+    description:
+      "Create memorable cards and invitations for any occasion with MSE Printing.",
   },
   "labels-stickers-decals": {
     fetchData: fetchLabelsStickersDecalsData,
     image: LABELS_STICKERS_DECALS_IMAGE,
+    title: "Labels, Stickers & Decals | MSE Printing",
+    description:
+      "Brand your products with custom labels, stickers, and decals by MSE Printing.",
   },
   "legal-printing": {
     fetchData: fetchLegalCopyingData,
     image: LEGAL_COPYING_IMAGE,
+    title: "Legal Printing | MSE Printing",
+    description:
+      "Reliable legal printing and copying services by MSE Printing for all your documentation needs.",
   },
   "poster-printing": {
     fetchData: fetchPosterPrintingData,
     image: POSTER_PRINTING_IMAGE,
+    title: "Poster Printing | MSE Printing",
+    description:
+      "Print vibrant posters for events, promotions, and more with MSE Printing.",
   },
 };
 
@@ -97,7 +139,6 @@ export default function PrintingCopyingPages() {
     null
   );
 
-  // Extract the service key from the URL and cast to ServiceKeyType
   const serviceKey = useMemo(
     () => location.pathname.split("/").pop()?.toLowerCase() as ServiceKeyType,
     [location.pathname]
@@ -129,6 +170,14 @@ export default function PrintingCopyingPages() {
 
   return (
     <div>
+      {/* HelmetComponent for SEO */}
+      {serviceConfig && (
+        <HelmetComponent
+          title={serviceConfig.title}
+          description={serviceConfig.description}
+        />
+      )}
+
       <FullBackgroundContainerZERO>
         <div className="black-overlay"></div>
         {serviceConfig && (

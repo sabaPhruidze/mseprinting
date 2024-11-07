@@ -9,42 +9,60 @@ import {
   FullScreenTitle,
   FullScreenButton,
   GlobalMainContent,
-} from "../../style/GlobalStyle";
-import ImageWithSEO from "../../importantparts/ImageWithCEO";
-import { SubCategoryCommonTypes } from "../../types/DataTypes";
+} from "../style/GlobalStyle";
+import ImageWithSEO from "../importantparts/ImageWithCEO";
+import HelmetComponent from "../importantparts/Helmet"; // Import HelmetComponent for SEO
+import { SubCategoryCommonTypes } from "../types/DataTypes";
 import {
   fetchCampaignsConsultationData,
   fetchSocialMediaData,
   fetchVideoProductionData,
   fetchWebsiteDesignData,
-} from "../../data/sub-category data/AllSubCategoryData";
+} from "../data/sub-category data/AllSubCategoryData";
 import {
   CAMPAINGS_CONSULTATION_IMAGE_DATA,
   SOCIAL_MEDIA_IMAGE_DATA,
   VIDEO_PRODUCTION_IMAGE_DATA,
   WEBSITE_DESIGN_IMAGE_DATA,
-} from "../../data/sub-category data/ImageWithCEOData";
+} from "../data/sub-category data/ImageWithCEOData";
 
-// Map for each data-fetching function and corresponding image data
+// Map for each data-fetching function and corresponding image and SEO data
 const fetchDataMap: Record<
   string,
-  { fetchData: () => Promise<SubCategoryCommonTypes | null>; image: any }
+  {
+    fetchData: () => Promise<SubCategoryCommonTypes | null>;
+    image: any;
+    title: string; // SEO title for each service
+    description: string; // SEO description for each service
+  }
 > = {
   "campaigns-consultation": {
     fetchData: fetchCampaignsConsultationData,
     image: CAMPAINGS_CONSULTATION_IMAGE_DATA,
+    title: "Campaigns & Consultation | MSE Printing",
+    description:
+      "Get expert consultation for your marketing campaigns with MSE Printing's Campaigns & Consultation services.",
   },
   "social-media": {
     fetchData: fetchSocialMediaData,
     image: SOCIAL_MEDIA_IMAGE_DATA,
+    title: "Social Media Marketing | MSE Printing",
+    description:
+      "Elevate your brand's presence with MSE Printing's Social Media Marketing services, tailored for impactful engagement.",
   },
   "video-production": {
     fetchData: fetchVideoProductionData,
     image: VIDEO_PRODUCTION_IMAGE_DATA,
+    title: "Video Production | MSE Printing",
+    description:
+      "Bring your brand story to life with MSE Printing's professional Video Production services for high-quality visual content.",
   },
   "website-design": {
     fetchData: fetchWebsiteDesignData,
     image: WEBSITE_DESIGN_IMAGE_DATA,
+    title: "Website Design | MSE Printing",
+    description:
+      "Transform your online presence with MSE Printing's Website Design services for a seamless and engaging user experience.",
   },
 };
 
@@ -86,6 +104,14 @@ export default function MarketingServices() {
 
   return (
     <div>
+      {/* HelmetComponent for SEO */}
+      {serviceConfig && (
+        <HelmetComponent
+          title={serviceConfig.title}
+          description={serviceConfig.description}
+        />
+      )}
+
       <FullBackgroundContainerZERO>
         <div className="black-overlay"></div>
         {serviceConfig && (
