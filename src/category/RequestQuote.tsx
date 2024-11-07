@@ -1,5 +1,6 @@
 import { useContext, useMemo, useState, useCallback, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import HelmetComponent from "../importantparts/Helmet"; // Import HelmetComponent for SEO
 import {
   RowContainer,
   RQPartBox,
@@ -109,6 +110,12 @@ export default function RequestQuote() {
 
   return (
     <GlobalContainerColumn>
+      {/* HelmetComponent for SEO */}
+      <HelmetComponent
+        title="Request a Quote | MSE Printing"
+        description="Submit a quote request for custom printing and marketing services with MSE Printing. Our team will provide a tailored solution for your business needs."
+      />
+
       <RQForm onSubmit={handleSubmit(onSubmitRQ)}>
         <GlobalBoxColumnStart>
           <RQPartBox>

@@ -11,6 +11,7 @@ import {
   GlobalMainContent,
 } from "../style/GlobalStyle";
 import ImageWithSEO from "../importantparts/ImageWithCEO";
+import HelmetComponent from "../importantparts/Helmet"; // Import HelmetComponent for SEO
 import { SubCategoryCommonTypes } from "../types/DataTypes";
 import {
   fetchEducationData,
@@ -35,26 +36,79 @@ import {
   RETAIL_IMAGE_DATA,
 } from "../data/sub-category data/ImageWithCEOData";
 
-// Map for each data-fetching function and corresponding image data
+// Map for each data-fetching function, image data, and SEO metadata
 const fetchDataMap: Record<
   string,
-  { fetchData: () => Promise<SubCategoryCommonTypes | null>; image: any }
+  {
+    fetchData: () => Promise<SubCategoryCommonTypes | null>;
+    image: any;
+    title: string; // SEO title
+    description: string; // SEO description
+  }
 > = {
-  education: { fetchData: fetchEducationData, image: EDUCATION_IMAGE_DATA },
-  finance: { fetchData: fetchFinanceData, image: FINANCE_IMAGE_DATA },
-  healthcare: { fetchData: fetchHealthCareData, image: HEALF_CARE_IMAGE_DATA },
-  legal: { fetchData: fetchLegalData, image: LEGAL_IMAGE_DATA },
+  education: {
+    fetchData: fetchEducationData,
+    image: EDUCATION_IMAGE_DATA,
+    title: "Education Solutions | MSE Printing",
+    description:
+      "Tailored printing and marketing solutions for educational institutions by MSE Printing.",
+  },
+  finance: {
+    fetchData: fetchFinanceData,
+    image: FINANCE_IMAGE_DATA,
+    title: "Finance Industry Printing | MSE Printing",
+    description:
+      "Professional printing services designed for the finance sector, enhancing trust and communication.",
+  },
+  healthcare: {
+    fetchData: fetchHealthCareData,
+    image: HEALF_CARE_IMAGE_DATA,
+    title: "Healthcare Printing Solutions | MSE Printing",
+    description:
+      "Reliable printing solutions for healthcare providers, supporting communication and patient care.",
+  },
+  legal: {
+    fetchData: fetchLegalData,
+    image: LEGAL_IMAGE_DATA,
+    title: "Legal Industry Printing | MSE Printing",
+    description:
+      "Secure and professional printing services tailored for the legal industry by MSE Printing.",
+  },
   manufacturing: {
     fetchData: fetchManufacturingData,
     image: MANUFACTURING_IMAGE_DATA,
+    title: "Manufacturing Solutions | MSE Printing",
+    description:
+      "Customized printing and labeling solutions for the manufacturing industry by MSE Printing.",
   },
-  political: { fetchData: fetchPoliticalData, image: POLITICAL_IMAGE_DATA },
-  realestate: { fetchData: fetchRealEstateData, image: REAL_ESTATE_IMAGE_DATA },
+  political: {
+    fetchData: fetchPoliticalData,
+    image: POLITICAL_IMAGE_DATA,
+    title: "Political Campaign Printing | MSE Printing",
+    description:
+      "Effective printing solutions for political campaigns and advocacy by MSE Printing.",
+  },
+  realestate: {
+    fetchData: fetchRealEstateData,
+    image: REAL_ESTATE_IMAGE_DATA,
+    title: "Real Estate Printing Solutions | MSE Printing",
+    description:
+      "Promotional printing services for the real estate industry to showcase properties and listings.",
+  },
   restaurants: {
     fetchData: fetchRestaurantsData,
     image: RESTAURANT_IMAGE_DATA,
+    title: "Restaurant Printing Services | MSE Printing",
+    description:
+      "Custom menus, signage, and more for restaurants by MSE Printing.",
   },
-  retail: { fetchData: fetchRetailData, image: RETAIL_IMAGE_DATA },
+  retail: {
+    fetchData: fetchRetailData,
+    image: RETAIL_IMAGE_DATA,
+    title: "Retail Industry Printing | MSE Printing",
+    description:
+      "Branding and promotional printing solutions for the retail industry by MSE Printing.",
+  },
 };
 
 export default function IndustrySpecific() {
@@ -95,6 +149,14 @@ export default function IndustrySpecific() {
 
   return (
     <div>
+      {/* HelmetComponent for SEO */}
+      {industryConfig && (
+        <HelmetComponent
+          title={industryConfig.title}
+          description={industryConfig.description}
+        />
+      )}
+
       <FullBackgroundContainerZERO>
         <div className="black-overlay"></div>
         {industryConfig && (

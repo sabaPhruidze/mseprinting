@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { rootContext } from "../Root";
+import HelmetComponent from "../importantparts/Helmet"; // Import HelmetComponent for SEO
 import { auth, db } from "../config/Firebase";
 import {
   ErrorMessage,
@@ -55,6 +56,12 @@ function Login() {
 
   return (
     <LoginContainer>
+      {/* HelmetComponent for SEO */}
+      <HelmetComponent
+        title="Login | MSE Printing"
+        description="Securely log in to your MSE Printing account to access personalized printing and marketing services."
+      />
+
       <LoginForm onSubmit={handleSubmit(onSubmitLogin)}>
         <LoginInputs register={register} errors={errors} />
         {loginError && (

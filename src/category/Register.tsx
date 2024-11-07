@@ -6,6 +6,7 @@ import React, {
   useCallback,
 } from "react";
 import { rootContext } from "../Root";
+import HelmetComponent from "../importantparts/Helmet"; // Import HelmetComponent for SEO
 import { auth, db } from "../config/Firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
@@ -135,6 +136,12 @@ function Register() {
 
   return (
     <RegisterContainer>
+      {/* HelmetComponent for SEO */}
+      <HelmetComponent
+        title="Register | MSE Printing"
+        description="Create an account with MSE Printing to access a full range of personalized printing and marketing services tailored to your business needs."
+      />
+
       <RegisterForm onSubmit={handleSubmit(onSubmitRegister)}>
         <RegisterInputs
           register={register}

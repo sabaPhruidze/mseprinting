@@ -1,4 +1,5 @@
 import { useContext, useMemo, useState, useCallback, useEffect } from "react";
+import HelmetComponent from "../importantparts/Helmet"; // Import HelmetComponent for SEO
 import { useNavigate } from "react-router-dom";
 import {
   RowContainer,
@@ -109,6 +110,12 @@ export default function SendFile() {
 
   return (
     <GlobalContainerColumn>
+      {/* HelmetComponent for SEO */}
+      <HelmetComponent
+        title="Send File | MSE Printing"
+        description="Easily send files to MSE Printing for your project. Provide project details, upload files, and select a representative for assistance."
+      />
+
       <RQForm onSubmit={handleSubmit(onSubmitSF)}>
         <GlobalBoxColumnStart>
           <RQPartBox>
