@@ -9,11 +9,12 @@ import {
   FullScreenTitle,
   FullScreenButton,
   GlobalMainContent,
-} from "../../style/GlobalStyle";
-import { fetchGraphicDesignData } from "../../data/sub-category data/AllSubCategoryData";
-import ImageWithSEO from "../../importantparts/ImageWithCEO";
-import { GRAPHIC_DESIGN_IMAGE_DATA } from "../../data/sub-category data/ImageWithCEOData"; // Updated to use Graphic Design image
-import { SubCategoryCommonTypes } from "../../types/DataTypes";
+} from "../style/GlobalStyle";
+import { fetchGraphicDesignData } from "../data/sub-category data/AllSubCategoryData";
+import ImageWithSEO from "../importantparts/ImageWithCEO";
+import HelmetComponent from "../importantparts/Helmet"; // Import HelmetComponent for SEO
+import { GRAPHIC_DESIGN_IMAGE_DATA } from "../data/sub-category data/ImageWithCEOData";
+import { SubCategoryCommonTypes } from "../types/DataTypes";
 
 export default function GraphicDesign() {
   const [graphicDesignData, setGraphicDesignData] =
@@ -35,6 +36,12 @@ export default function GraphicDesign() {
 
   return (
     <div>
+      {/* HelmetComponent for SEO */}
+      <HelmetComponent
+        title="Graphic Design Services | MSE Printing"
+        description="Explore professional graphic design services at MSE Printing. From concept to creation, we bring your brand's vision to life."
+      />
+
       <FullBackgroundContainerZERO>
         <div className="black-overlay"></div>
         <ImageWithSEO

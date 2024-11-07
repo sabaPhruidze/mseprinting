@@ -1,26 +1,27 @@
 import { useState, useEffect, useMemo } from "react";
-import { useNavigate } from "react-router-dom"; // Import for navigation
+import { useNavigate } from "react-router-dom";
 import {
   GlobalContainerColumn,
   GlobalPart,
   GlobalRow,
-  AlignedTextContainer, // Import the styled component for text alignment
-  FullBackgroundContainerZERO, // Updated styled component for the full background
-  TitleAndButtonContainer, // Styled component for title and button wrapping
-  FullScreenTitle, // Styled component for the main title in the background
-  FullScreenButton, // Styled component for the "Request a Quote" button
+  AlignedTextContainer,
+  FullBackgroundContainerZERO,
+  TitleAndButtonContainer,
+  FullScreenTitle,
+  FullScreenButton,
   GlobalMainContent,
 } from "../../style/GlobalStyle";
 import { fetchBusinessFormsData } from "../../data/sub-category data/AllSubCategoryData";
 import { BusinessFormsType } from "../../types/DataTypes";
-import ImageWithSEO from "../../importantparts/ImageWithCEO"; // Import ImageWithSEO for handling the image
-import { BUSINESS_FORM_IMAGE } from "../../data/sub-category data/ImageWithCEOData"; // Import the BUSINESS_FORM_IMAGE
+import ImageWithSEO from "../../importantparts/ImageWithCEO";
+import { BUSINESS_FORM_IMAGE } from "../../data/sub-category data/ImageWithCEOData";
+import HelmetComponent from "../../importantparts/Helmet"; // Import HelmetComponent for SEO
 
 export default function BusinessForms() {
   const [businessFormsData, setBusinessFormsData] =
     useState<BusinessFormsType | null>(null);
 
-  const navigate = useNavigate(); // Hook for navigation
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getBusinessFormsData = async () => {
@@ -37,11 +38,17 @@ export default function BusinessForms() {
 
   return (
     <div>
+      {/* HelmetComponent for SEO */}
+      <HelmetComponent
+        title="Business Forms | MSE Printing"
+        description="Discover our customized business forms to streamline your operations. Order professional forms for your business at MSE Printing."
+      />
+
       {/* Full-screen section with background image using ImageWithSEO */}
       <FullBackgroundContainerZERO>
-        <div className="black-overlay"></div> {/* Add this overlay div */}
+        <div className="black-overlay"></div>
         <ImageWithSEO
-          src={BUSINESS_FORM_IMAGE.src} // Use BUSINESS_FORM_IMAGE for the image source
+          src={BUSINESS_FORM_IMAGE.src}
           alt={BUSINESS_FORM_IMAGE.alt}
           title={BUSINESS_FORM_IMAGE.title}
           geoData={BUSINESS_FORM_IMAGE.geoData}
@@ -63,14 +70,12 @@ export default function BusinessForms() {
       {/* Text content below the background image */}
       <GlobalContainerColumn>
         <AlignedTextContainer>
-          {/* Directly map and render the text */}
           {memoizedData?.two.map((item, index) => (
             <GlobalPart key={index}>{item}</GlobalPart>
           ))}
 
           <GlobalPart>{memoizedData?.three.firstPart}</GlobalPart>
 
-          {/* Display circle content as a list */}
           {memoizedData?.three.circle.map((item, index) => (
             <GlobalRow key={index}>{item}</GlobalRow>
           ))}

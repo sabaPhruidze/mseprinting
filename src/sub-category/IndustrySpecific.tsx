@@ -9,9 +9,9 @@ import {
   FullScreenTitle,
   FullScreenButton,
   GlobalMainContent,
-} from "../../style/GlobalStyle";
-import ImageWithSEO from "../../importantparts/ImageWithCEO";
-import { SubCategoryCommonTypes } from "../../types/DataTypes";
+} from "../style/GlobalStyle";
+import ImageWithSEO from "../importantparts/ImageWithCEO";
+import { SubCategoryCommonTypes } from "../types/DataTypes";
 import {
   fetchEducationData,
   fetchFinanceData,
@@ -22,7 +22,7 @@ import {
   fetchRealEstateData,
   fetchRestaurantsData,
   fetchRetailData,
-} from "../../data/sub-category data/AllSubCategoryData";
+} from "../data/sub-category data/AllSubCategoryData";
 import {
   EDUCATION_IMAGE_DATA,
   FINANCE_IMAGE_DATA,
@@ -33,7 +33,7 @@ import {
   REAL_ESTATE_IMAGE_DATA,
   RESTAURANT_IMAGE_DATA,
   RETAIL_IMAGE_DATA,
-} from "../../data/sub-category data/ImageWithCEOData";
+} from "../data/sub-category data/ImageWithCEOData";
 
 // Map for each data-fetching function and corresponding image data
 const fetchDataMap: Record<

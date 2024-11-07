@@ -40,18 +40,18 @@ import BannersPosters from "./sub-category/cards/BannersPosters";
 //printing and copying part
 import PrintingCopyingPages from "./sub-category/PrintingCopyingPages";
 
-import DirectMailMailingServices from "./sub-category/directMailMailingServices/DirectMailMailingServices";
+import DirectMailMailingServices from "./sub-category/DirectMailMailingServices";
 
 import SignsPages from "./sub-category/signs/SignsPages";
 
-import GraphicDesign from "./sub-category/graphicDesign/GraphicDesign";
+import GraphicDesign from "./sub-category/GraphicDesign";
 
-import LabelsPackagingMain from "./sub-category/labelsPackaging/LabelsPackaging";
+import LabelsPackagingMain from "./sub-category/LabelsPackaging";
 
 import MarketingServices from "./sub-category/marketingServices/MarketingServices";
 import TradeShowEvents from "./sub-category/tradeshowsEvents/TradeShowEvents";
-import FulfillmentServices from "./sub-category/fulfillmentServices/FullfillmentServices";
-import IndustrySpecific from "./sub-category/industrySpecific/IndustrySpecific";
+import FulfillmentServices from "./sub-category/FullfillmentServices";
+import IndustrySpecific from "./sub-category/IndustrySpecific";
 
 function App() {
   const router = createBrowserRouter(

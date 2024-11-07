@@ -3,17 +3,18 @@ import { useNavigate } from "react-router-dom";
 import {
   GlobalContainerColumn,
   GlobalPart,
-  GlobalTextContainer, // Import the styled component for text wrapping
-  FullBackgroundContainerZERO, // Updated styled component for the full background
-  TitleAndButtonContainer, // Styled component for title and button wrapping
-  FullScreenTitle, // Styled component for the main title in the background
-  FullScreenButton, // Styled component for the "Request a Quote" button
+  GlobalTextContainer,
+  FullBackgroundContainerZERO,
+  TitleAndButtonContainer,
+  FullScreenTitle,
+  FullScreenButton,
   GlobalMainContent,
 } from "../../style/GlobalStyle";
 import { fetchBrochuresCollateralData } from "../../data/sub-category data/AllSubCategoryData";
 import { CommonDocumentWAS } from "../../types/DataTypes";
-import ImageWithSEO from "../../importantparts/ImageWithCEO"; // Import ImageWithSEO for handling the image
-import { BROCHURES_COLLATERALS_IMAGE } from "../../data/sub-category data/ImageWithCEOData"; // Import the BROCHURES_COLLATERALS_IMAGE
+import ImageWithSEO from "../../importantparts/ImageWithCEO";
+import { BROCHURES_COLLATERALS_IMAGE } from "../../data/sub-category data/ImageWithCEOData";
+import HelmetComponent from "../../importantparts/Helmet"; // Import HelmetComponent for SEO
 
 export default function BrochuresCollateral() {
   const [brochuresCollateralData, setBrochuresCollateralData] =
@@ -38,11 +39,17 @@ export default function BrochuresCollateral() {
 
   return (
     <div>
+      {/* HelmetComponent for SEO */}
+      <HelmetComponent
+        title="Brochures & Collateral | MSE Printing"
+        description="Explore our professional brochures and collateral services to elevate your brand's marketing materials. Order custom brochures at MSE Printing."
+      />
+
       {/* Full-screen section with background image using ImageWithSEO */}
       <FullBackgroundContainerZERO>
         <div className="black-overlay"></div> {/* Add this overlay div */}
         <ImageWithSEO
-          src={BROCHURES_COLLATERALS_IMAGE.src} // Use BROCHURES_COLLATERALS_IMAGE for the image source
+          src={BROCHURES_COLLATERALS_IMAGE.src}
           alt={BROCHURES_COLLATERALS_IMAGE.alt}
           title={BROCHURES_COLLATERALS_IMAGE.title}
           geoData={BROCHURES_COLLATERALS_IMAGE.geoData}
