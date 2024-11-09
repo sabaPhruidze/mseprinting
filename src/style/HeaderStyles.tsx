@@ -7,6 +7,10 @@ export const HeaderContainer = styled(ColumnFlex)`
   margin: 0 auto;
   height: 230px;
   box-sizing: border-box;
+  position: sticky; /* Make it sticky */
+  top: 0; /* Stick to the top */
+  z-index: 1000; /* Ensure it stays above other elements */
+  background-color: white; /* Add background color to avoid transparency */
 `;
 
 export const HeaderTopBox = styled(RowFlex)`

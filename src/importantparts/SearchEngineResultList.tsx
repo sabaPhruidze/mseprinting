@@ -24,11 +24,9 @@ const SearchEngineResultList: React.FC<SearchResultsProps> = ({
 
   return (
     <ResultsList $resultscount={results.length}>
-      {" "}
-      {/* Use $ here to avoid DOM warning */}
-      {results.map((result) => (
+      {results.map((result, index) => (
         <ResultItem
-          key={result.link}
+          key={`${result.link}-${index}`} // Combine link and index for a unique key
           onClick={() => {
             navigate(result.link);
             dispatching("SEARCH_DONE", false);
