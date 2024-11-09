@@ -1,16 +1,15 @@
-import { useNavigate } from "react-router-dom";
 import { ButtonContainer, StyledButton } from "../style/TwoButtonsStyles";
+import NavigateAndScroll from "./NavigateAndScroll";
 
 export default function TwoButtons() {
-  const navigate = useNavigate();
   return (
     <ButtonContainer>
-      <StyledButton onClick={() => navigate("/request-quote")}>
-        Request a Quote
-      </StyledButton>
-      <StyledButton onClick={() => navigate("/send-file")}>
-        Send a File
-      </StyledButton>
+      <NavigateAndScroll path="/request-quote">
+        <StyledButton>Request a Quote</StyledButton>
+      </NavigateAndScroll>
+      <NavigateAndScroll path="/send-file">
+        <StyledButton>Send a File</StyledButton>
+      </NavigateAndScroll>
     </ButtonContainer>
   );
 }
