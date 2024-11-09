@@ -8,6 +8,7 @@ export const RootContainer = styled.div`
   position: relative;
   z-index: 1;
 `;
+
 export const RootLoading = styled(ColumnFlex)`
   width: 100%;
   height: 100vh;
