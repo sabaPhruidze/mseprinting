@@ -24,6 +24,7 @@ import {
   HeaderMenuCountDivText,
   HeaderRSButton,
 } from "../style/HeaderStyles";
+import NavigateAndScroll from "../importantparts/NavigateAndScroll";
 import SearchEngine from "../importantparts/SearchEngine";
 import MAIN_LOGO from "../assets/icon/header/MSEPRINTING.png";
 import { fetchHeaderMenuData } from "../data/HeaderData";
@@ -72,12 +73,6 @@ export default function Header() {
   };
   const handleNavigationHome = () => {
     navigate("/");
-  };
-  const handleNavigationRequest = () => {
-    navigate("/request-quote");
-  };
-  const handleNavigationSend = () => {
-    navigate("/send-file");
   };
   const handleMouseEnter = useCallback(() => {
     if (timeoutRef.current) {
@@ -147,12 +142,12 @@ export default function Header() {
         <HeaderMenuCountDiv>{menuItems}</HeaderMenuCountDiv>
       </HeaderMenuBox>
       <HeaderRSBox>
-        <HeaderRSButton onClick={handleNavigationRequest}>
-          Request a Quote
-        </HeaderRSButton>
-        <HeaderRSButton onClick={handleNavigationSend}>
-          Place an Order
-        </HeaderRSButton>
+        <NavigateAndScroll path="/request-quote">
+          <HeaderRSButton>Request a Quote</HeaderRSButton>
+        </NavigateAndScroll>
+        <NavigateAndScroll path="/send-file">
+          <HeaderRSButton>Place an Order</HeaderRSButton>
+        </NavigateAndScroll>
       </HeaderRSBox>
     </HeaderContainer>
   );
