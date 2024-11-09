@@ -39,6 +39,16 @@ export default function Footer() {
     []
   );
 
+  const LINK_DATA = useMemo(
+    () => [
+      "https://www.facebook.com/MSEGRAPHICS",
+      "https://www.instagram.com/",
+      "https://twitter.com/",
+      "https://www.linkedin.com/",
+    ],
+    []
+  );
+
   useEffect(() => {
     const getFooterFullData = async () => {
       const data = await fetchHomeServicesDatas();
@@ -169,8 +179,15 @@ export default function Footer() {
       <DividingLineBox>
         <Quote>Trusted Excellence in Every Print</Quote>
         <Icons>
-          {ICON_DATA.map((icon) => (
-            <Icon src={icon} alt={icon} key={icon} />
+          {ICON_DATA.map((icon, index) => (
+            <a
+              href={LINK_DATA[index]}
+              target="_blank"
+              rel="noopener noreferrer"
+              key={icon}
+            >
+              <Icon src={icon} alt={`social-icon-${index}`} />
+            </a>
           ))}
         </Icons>
       </DividingLineBox>
