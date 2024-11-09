@@ -103,6 +103,7 @@ function Register() {
           );
           const user = userCredential.user;
 
+          // Save user data to Firestore
           await setDoc(doc(db, "users", user.uid), {
             firstname,
             lastname,
@@ -113,7 +114,8 @@ function Register() {
             createdAt: new Date(),
           });
 
-          dispatching("SET_USER", {
+          // Prepare user data and save to localStorage
+          const userInfo = {
             firstname,
             lastname,
             email,
@@ -121,8 +123,11 @@ function Register() {
             phone,
             company,
             uid: user.uid,
-          });
+          };
+          localStorage.setItem("user", JSON.stringify(userInfo)); // Save to localStorage
 
+          // Update state with user info and navigate
+          dispatching("SET_USER", userInfo);
           navigate("/");
         } catch (error) {
           setVerificationError("Error registering user");

@@ -30,7 +30,9 @@ export interface InitialState {
 
 const initialState: InitialState = {
   radioForRegLog: false,
-  user: null,
+  user: localStorage.getItem("user")
+    ? JSON.parse(localStorage.getItem("user") as string)
+    : null,
   showProductsServicesWindow: {
     showProductFromMenu: false,
     showProductFromBox: false,
@@ -62,7 +64,6 @@ const reducer = (state: typeof initialState, action: ActionType) => {
     case "LOGOUT":
       newState.user = null;
       break;
-
     case "SHOW_PRODUCT_SERVICES_WINDOW_FROM_MENU":
       newState.showProductsServicesWindow.showProductFromMenu = action.payload;
       break;

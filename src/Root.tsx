@@ -26,6 +26,7 @@ export default function Root() {
   const { state, dispatching } = UseReducerComponent();
   const { showProductsServicesWindow, SearchDone, SearchResults } = state;
 
+  // Fetch header logo and other initial data
   const fetchData = useCallback(async () => {
     try {
       await fetchHeaderMainLogo();
@@ -37,6 +38,14 @@ export default function Root() {
   useEffect(() => {
     fetchData();
   }, [fetchData]);
+
+  // Check for stored user data and update state
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      dispatching("USER_INFO", JSON.parse(storedUser)); // Dispatch to set user state if user data is found
+    }
+  }, []); // Dependency array is now empty
 
   return (
     <rootContext.Provider value={{ state, dispatching }}>
