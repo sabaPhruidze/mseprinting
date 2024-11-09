@@ -48,7 +48,10 @@ export default function Header() {
   );
 
   const [menuData, setMenuData] = useState<HMenuType[]>([]);
-
+  const handleLogout = useCallback(() => {
+    dispatching("LOGOUT", null); // Dispatch logout action
+    navigate("/"); // Redirect to homepage after logout
+  }, [dispatching, navigate]);
   useEffect(() => {
     const getMenuData = async () => {
       const data = await fetchHeaderMenuData();
@@ -114,15 +117,18 @@ export default function Header() {
       <HeaderTopBox>
         <HeaderAccSignSearchDiv>
           <HeaderAccSignDiv>
-            <HeaderAccSignButton onClick={handleNavigationLogin}>
+            <HeaderAccSignButton
+              onClick={state.user ? handleLogout : handleNavigationLogin}
+            >
               {state.user
                 ? `${state.user.firstname} ${state.user.lastname}`
                 : "Sign in"}
             </HeaderAccSignButton>
             <HeaderOneSimbyol>{state.user ? "" : "or"}</HeaderOneSimbyol>
-            <HeaderAccSignButton onClick={handleNavigationRegister}>
-              {" "}
-              {state.user ? "" : "Sign up"}
+            <HeaderAccSignButton
+              onClick={state.user ? handleLogout : handleNavigationRegister}
+            >
+              {state.user ? "Log out" : "Sign up"}
             </HeaderAccSignButton>
           </HeaderAccSignDiv>
           <SearchEngine />

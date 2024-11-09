@@ -21,8 +21,8 @@ export default function Home() {
     <div style={{ position: "relative" }}>
       {/* HelmetComponent for SEO */}
       <HelmetComponent
-        title="Home | MSE Printing - Premium Printing & Marketing Solutions"
-        description="Welcome to MSE Printing! Discover our wide range of high-quality printing, signage, and marketing solutions to elevate your brand."
+        title=" MSE Printing - Premium Printing & Marketing Solutions"
+        description="Discover our wide range of high-quality printing, signage, and marketing solutions to elevate your brand."
       />
 
       <CarouselComponent />

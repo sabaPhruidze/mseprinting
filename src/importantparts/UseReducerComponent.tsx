@@ -59,6 +59,10 @@ const reducer = (state: typeof initialState, action: ActionType) => {
     case "USER_INFO":
       newState.user = action.payload;
       break;
+    case "LOGOUT":
+      newState.user = null;
+      break;
+
     case "SHOW_PRODUCT_SERVICES_WINDOW_FROM_MENU":
       newState.showProductsServicesWindow.showProductFromMenu = action.payload;
       break;
