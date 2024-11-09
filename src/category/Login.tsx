@@ -42,6 +42,8 @@ function Login() {
         const userData = userDoc.data();
 
         if (userData) {
+          const userInfo = { ...userData, uid: user.uid };
+          localStorage.setItem("user", JSON.stringify(userInfo));
           dispatching("USER_INFO", { ...userData, uid: user.uid });
           navigate("/");
         } else {

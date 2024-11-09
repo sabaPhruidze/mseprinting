@@ -118,7 +118,7 @@ export default function Header() {
         <HeaderAccSignSearchDiv>
           <HeaderAccSignDiv>
             <HeaderAccSignButton
-              onClick={state.user ? handleLogout : handleNavigationLogin}
+              onClick={state.user ? undefined : handleNavigationLogin}
             >
               {state.user
                 ? `${state.user.firstname} ${state.user.lastname}`
