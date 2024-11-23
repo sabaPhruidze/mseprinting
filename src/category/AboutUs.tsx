@@ -67,7 +67,6 @@ const AboutUs: React.FC = () => {
 
   return (
     <GlobalContainerColumn>
-      {/* HelmetComponent for SEO */}
       <HelmetComponent
         title="About Us | MSE Printing"
         description="Learn more about MSE Printing's dedication to quality, service, and innovation in printing and marketing solutions."
