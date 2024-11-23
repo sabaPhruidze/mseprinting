@@ -7,7 +7,7 @@ import {
   GlobalBoxColumnStart,
   GlobalPart,
 } from "../style/GlobalStyle";
-import { fetchBlogData } from "../data/sub-category data/BlogData";
+import { fetchBlogData } from "../data/sub-category data/AllSubCategoryData";
 import { BlogDocument } from "../types/DataTypes";
 
 export default function Blog() {

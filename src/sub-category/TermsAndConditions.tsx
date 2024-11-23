@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import HelmetComponent from "../importantparts/Helmet"; // Import HelmetComponent for SEO
-import { fetchPrivacyAndPolicyData } from "../data/sub-category data/TermsAndConditionsData";
+import { fetchTermsAndConditionsData } from "../data/sub-category data/AllSubCategoryData";
 import {
   TermsAndConditionsDocument,
   TermsAndConditionsThree,
@@ -22,7 +22,7 @@ export default function TermsAndConditions() {
 
   useEffect(() => {
     const getTermsData = async () => {
-      const data = await fetchPrivacyAndPolicyData();
+      const data = await fetchTermsAndConditionsData();
       if (data) {
         setTermsData(data);
       }
