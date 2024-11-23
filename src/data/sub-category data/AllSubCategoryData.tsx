@@ -11,6 +11,7 @@ import {
   AboutUsDocument,
   ProductServicesDocument,
   ResourcesDocument,
+  AccessibilityDocument,
 } from "../../types/DataTypes";
 
 // Helper function for fetching data
@@ -280,3 +281,13 @@ export const fetchProductServicesPageData = () =>
   fetchData<ProductServicesDocument>("SpecialPages", "ProductServices");
 export const fetchAboutUsData = () =>
   fetchData<AboutUsDocument>("SpecialPages", "AboutUs");
+
+// additional
+
+export const fetchAccessibilityData =
+  async (): Promise<AccessibilityDocument | null> => {
+    return GeneralizedFetch<AccessibilityDocument>(
+      "sub-category",
+      "Accessibility"
+    );
+  };
