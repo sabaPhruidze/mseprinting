@@ -31,7 +31,7 @@ export default function Root() {
     try {
       await fetchHeaderMainLogo();
     } catch (error) {
-      console.error("Error fetching header menu data: ", error);
+      console.error("Error fetching header menu data:", error);
     }
   }, []);
 
@@ -43,9 +43,14 @@ export default function Root() {
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
-      dispatching("USER_INFO", JSON.parse(storedUser)); // Dispatch to set user state if user data is found
+      try {
+        const user = JSON.parse(storedUser);
+        dispatching("USER_INFO", user); // Dispatch to set user state if user data is found
+      } catch (error) {
+        console.error("Error parsing stored user data:", error);
+      }
     }
-  }, []); // Dependency array is now empty
+  }, [dispatching]);
 
   return (
     <rootContext.Provider value={{ state, dispatching }}>
@@ -54,16 +59,19 @@ export default function Root() {
           <RootContainer>
             <GlobalStyle />
             <Header />
-            {showProductsServicesWindow.showProductFromBox ||
-            showProductsServicesWindow.showProductFromMenu ? (
+            {/* Conditional rendering for ProductsServicesContainer */}
+            {(showProductsServicesWindow.showProductFromBox ||
+              showProductsServicesWindow.showProductFromMenu) && (
               <ProductsServicesContainer />
-            ) : null}
-            {SearchDone ? (
+            )}
+            {/* Conditional rendering for SearchEngineResultList */}
+            {SearchDone && (
               <SearchEngineResultList
                 results={SearchResults}
                 dispatching={dispatching}
               />
-            ) : null}
+            )}
+            {/* Outlet for nested routes */}
             <Outlet />
             <Footer />
           </RootContainer>

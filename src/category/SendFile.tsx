@@ -1,6 +1,6 @@
 import { useContext, useMemo, useState, useCallback, useEffect } from "react";
 import HelmetComponent from "../importantparts/Helmet"; // Import HelmetComponent for SEO
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import {
   RowContainer,
   RQPartBox,
@@ -32,25 +32,27 @@ type FormData = RQUseFormFirstPart & RQUseFormSecondPart & RQUseFormThirdPart;
 
 export default function SendFile() {
   const context = useContext(rootContext);
+
+  if (!context) {
+    console.error("rootContext is missing. Redirecting to home.");
+    return <Navigate to="/" replace />;
+  }
+
+  const { state, dispatching } = context;
   const [uploadedFiles, setUploadedFiles] = useState<string[]>([]);
   const [selectedRepresentative, setSelectedRepresentative] =
     useState("No preference");
 
-  if (!context) {
-    throw new Error("rootContext must be used within a Root provider");
-  }
-
-  const { state, dispatching } = context;
   const { rqSubmit } = state;
   const navigate = useNavigate();
 
   const defaultValues = useMemo(() => {
     return state.user
       ? {
-          firstname: state.user.firstname,
-          lastname: state.user.lastname,
-          email: state.user.email,
-          emailVerification: state.user.email,
+          firstname: state.user.firstname || "",
+          lastname: state.user.lastname || "",
+          email: state.user.email || "",
+          emailVerification: state.user.email || "",
           phone: state.user.phone || "",
           jobTitle: state.user.jobTitle || "",
           company: state.user.company || "",
@@ -110,7 +112,6 @@ export default function SendFile() {
 
   return (
     <GlobalContainerColumn>
-      {/* HelmetComponent for SEO */}
       <HelmetComponent
         title="Send File | MSE Printing"
         description="Easily send files to MSE Printing for your project. Provide project details, upload files, and select a representative for assistance."
