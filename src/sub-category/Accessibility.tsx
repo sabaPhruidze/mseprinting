@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import HelmetComponent from "../importantparts/Helmet"; // Import HelmetComponent for SEO
-import { fetchAccessibilityData } from "../data/sub-category data/AccessibilityData";
+import { fetchAccessibilityData } from "../data/sub-category data/AllSubCategoryData";
 import { AccessibilityDocument, TitleWithContent } from "../types/DataTypes";
 import {
   GlobalContainerColumn,
