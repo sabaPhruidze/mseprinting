@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useReducer, useCallback } from "react";
 
 interface SearchResult {
   id: number;
@@ -50,57 +50,61 @@ type ActionType = {
 };
 
 const reducer = (state: typeof initialState, action: ActionType) => {
-  const newState = { ...state };
   switch (action.type) {
     case "SWITCH_LOG_REG":
-      newState.radioForRegLog = action.payload;
-      break;
+      return { ...state, radioForRegLog: action.payload };
+
     case "SET_USER":
-      newState.user = action.payload;
-      break;
-    case "USER_INFO":
-      newState.user = action.payload;
-      break;
+    case "USER_INFO": // Handles both "SET_USER" and "USER_INFO" cases
+      return { ...state, user: action.payload };
+
     case "LOGOUT":
-      newState.user = null;
-      break;
+      return { ...state, user: null };
+
     case "SHOW_PRODUCT_SERVICES_WINDOW_FROM_MENU":
-      newState.showProductsServicesWindow.showProductFromMenu = action.payload;
-      break;
+      return {
+        ...state,
+        showProductsServicesWindow: {
+          ...state.showProductsServicesWindow,
+          showProductFromMenu: action.payload,
+        },
+      };
+
     case "SHOW_PRODUCT_SERVICES_WINDOW_FROM_BOX":
-      newState.showProductsServicesWindow.showProductFromBox = action.payload;
-      break;
+      return {
+        ...state,
+        showProductsServicesWindow: {
+          ...state.showProductsServicesWindow,
+          showProductFromBox: action.payload,
+        },
+      };
+
     case "SEARCH_QUERY_CHANGE":
-      newState.SearchQuery = action.payload;
-      break;
+      return { ...state, SearchQuery: action.payload };
+
     case "SEARCH_RESULTS":
-      newState.SearchResults = action.payload;
-      break;
+      return { ...state, SearchResults: action.payload };
+
     case "SEARCH_DONE":
-      newState.SearchDone = action.payload;
-      break;
+      return { ...state, SearchDone: action.payload };
+
     case "REQUEST_QUOTE_CHANGE":
-      newState.rqSubmit = action.payload;
-      break;
+      return { ...state, rqSubmit: action.payload };
+
     case "REQUEST_QUOTE_SUCCESS_SEND":
-      newState.rqSSend = action.payload;
-      break;
+      return { ...state, rqSSend: action.payload };
+
     default:
       throw new Error("Unknown action type");
   }
-
-  return newState;
 };
 
 export default function UseReducerComponent() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  function dispatching(type: string, payload: any) {
-    dispatch({
-      type: type,
-      payload: payload,
-    });
-  }
+  const dispatching = useCallback((type: string, payload: any) => {
+    dispatch({ type, payload });
+  }, []);
 
   return { state, dispatching };
 }
