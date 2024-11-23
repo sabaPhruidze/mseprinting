@@ -22,7 +22,7 @@ import {
   FullScreenButton,
   GlobalMainContent,
 } from "../style/GlobalStyle";
-import { fetchOffsetPrintingData } from "../data/sub-category data/CommercialOffsetPrintingData";
+import { fetchOffsetPrintingData } from "../data/sub-category data/AllSubCategoryData";
 import { OffsetPrintingDocument } from "../types/DataTypes";
 import ImageWithCEO from "../importantparts/ImageWithCEO";
 

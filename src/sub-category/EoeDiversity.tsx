@@ -7,7 +7,7 @@ import {
   Globalh2Title,
   GlobalPart,
 } from "../style/GlobalStyle";
-import { fetchAccessibilityData } from "../data/sub-category data/EoeDiversityData";
+import { fetchEOEDiversityData } from "../data/sub-category data/AllSubCategoryData";
 import { EOEDiversityDocument } from "../types/DataTypes";
 
 export default function EoeDiversity() {
@@ -16,7 +16,7 @@ export default function EoeDiversity() {
 
   useEffect(() => {
     const getEoeDiversityData = async () => {
-      const data = await fetchAccessibilityData();
+      const data = await fetchEOEDiversityData();
       if (data) {
         setEoeDiversityData(data);
       }

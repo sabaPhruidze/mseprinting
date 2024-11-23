@@ -12,6 +12,12 @@ import {
   ProductServicesDocument,
   ResourcesDocument,
   AccessibilityDocument,
+  OffsetPrintingDocument,
+  BlogDocument,
+  EnvironmentalMessageDocument,
+  EOEDiversityDocument,
+  PrivacyAndPolicyDocument,
+  TermsAndConditionsDocument,
 } from "../../types/DataTypes";
 
 // Helper function for fetching data
@@ -284,10 +290,26 @@ export const fetchAboutUsData = () =>
 
 // additional
 
-export const fetchAccessibilityData =
-  async (): Promise<AccessibilityDocument | null> => {
-    return GeneralizedFetch<AccessibilityDocument>(
-      "sub-category",
-      "Accessibility"
-    );
-  };
+export const fetchAccessibilityData = () =>
+  fetchData<AccessibilityDocument>("sub-category", "Accessibility");
+
+export const fetchBlogData = () =>
+  fetchData<BlogDocument>("sub-category", "Blog");
+
+export const fetchOffsetPrintingData = () =>
+  fetchData<OffsetPrintingDocument>("sub-category", "OffsetPrinting");
+
+export const fetchEnvironmentalMessageData = () =>
+  fetchData<EnvironmentalMessageDocument>(
+    "sub-category",
+    "EnvironmentalMessage"
+  );
+
+export const fetchEOEDiversityData = () =>
+  fetchData<EOEDiversityDocument>("sub-category", "EoeDiversity");
+
+export const fetchPrivacyAndPolicyData = () =>
+  fetchData<PrivacyAndPolicyDocument>("sub-category", "PrivacyAndPolicy");
+
+export const fetchTermsAndConditionsData = () =>
+  fetchData<TermsAndConditionsDocument>("sub-category", "termsAndConditions");

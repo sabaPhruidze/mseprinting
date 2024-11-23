@@ -9,7 +9,7 @@ import {
   GlobalPartBox,
   GlobalMainTitle,
 } from "../style/GlobalStyle";
-import { fetchPrivacyAndPolicyData } from "../data/sub-category data/PrivacyAndPolicyData";
+import { fetchPrivacyAndPolicyData } from "../data/sub-category data/AllSubCategoryData";
 import { PrivacyAndPolicyDocument } from "../types/DataTypes";
 
 export default function PrivacyAndPolicy() {

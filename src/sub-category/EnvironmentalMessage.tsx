@@ -9,7 +9,7 @@ import {
   GlobalPartBox,
   GlobalMainTitle,
 } from "../style/GlobalStyle";
-import { fetchEnvironmentalMessageData } from "../data/sub-category data/EnvironmentalMessageData";
+import { fetchEnvironmentalMessageData } from "../data/sub-category data/AllSubCategoryData";
 import { EnvironmentalMessageDocument } from "../types/DataTypes";
 
 export default function EnvironmentalMessage() {
