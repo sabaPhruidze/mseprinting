@@ -45,12 +45,12 @@ export default function Root() {
     if (storedUser) {
       try {
         const user = JSON.parse(storedUser);
-        dispatching("USER_INFO", user); // Dispatch to set user state if user data is found
+        dispatching("USER_INFO", user);
       } catch (error) {
         console.error("Error parsing stored user data:", error);
       }
     }
-  }, [dispatching]);
+  }, []);
 
   return (
     <rootContext.Provider value={{ state, dispatching }}>
