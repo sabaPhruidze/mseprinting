@@ -69,6 +69,7 @@ export default function Root() {
               <SearchEngineResultList
                 results={SearchResults}
                 dispatching={dispatching}
+                state={state}
               />
             )}
             {/* Outlet for nested routes */}

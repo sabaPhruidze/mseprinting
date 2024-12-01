@@ -2,35 +2,49 @@ import styled from "styled-components";
 import { RowFlex, ColumnFlex } from "./GlobalStyle";
 
 export const ProductsServicesContainerStyle = styled(RowFlex)`
-  width: 700px;
-  height: 400px;
+  width: 800px;
+  height: 420px;
   background-color: ${(props) => props.theme.White};
   position: absolute;
-  top: 185px;
-  right: 15px;
+  top: 200px;
+  left: calc(50% - 350px);
   z-index: 1000; // Ensure this is higher than other components
   border-radius: 0 0 20px 20px;
   padding: 10px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  @media (max-width: 800px) {
-    width: 500px;
-    left: 10px;
+  font-size: 20px;
+  @media (max-width: 1615px) {
+    left: calc(30% - 350px);
   }
-  @media (max-width: 550px) {
-    font-size: 12px; // Smaller font size for smaller screens
-    width: 370px;
+  @media (max-width: 1300px) {
+    left: 20px;
+  }
+  @media (max-width: 850px) {
+    width: 550px;
+    left: 10px;
+    font-size: 18px;
+  }
+  @media (max-width: 700px) {
+    top: 170px;
+  }
+  @media (max-width: 570px) {
+    width: 390px;
     left: 0px;
+    font-size: 14px;
   }
 `;
 
 // Left side
 export const LeftSideContainer = styled(ColumnFlex)`
-  width: 250px;
+  width: 290px;
   height: 100%;
   border-right: 1px solid ${(props) => props.theme.Black};
   justify-content: flex-start;
-  @media (max-width: 550px) {
-    width: 180px;
+  @media (max-width: 850px) {
+    width: 300px;
+  }
+  @media (max-width: 570px) {
+    width: 195px;
   }
 `;
 
@@ -38,7 +52,6 @@ export const LeftSideText = styled.button`
   text-align: left;
   margin-bottom: 10px;
   width: 100%;
-  font-size: 16px;
   border: 0;
   background-color: ${(props) => props.theme.Transparent};
   color: ${(props) => props.theme.Black};
@@ -49,19 +62,9 @@ export const LeftSideText = styled.button`
   &:hover {
     text-decoration: underline;
     padding-left: 2px;
-    font-size: 18px;
   }
-  @media (max-width: 550px) {
-    font-size: 12px;
-    &:hover {
-      font-size: 12px;
-    }
-  }
-  @media (max-width: 390px) {
-    font-size: 10px;
-    &:hover {
-      font-size: 10px;
-    }
+  @media (max-width: 570px) {
+    font-weight: 200;
   }
 `;
 
@@ -74,20 +77,13 @@ export const RightSideContainer = styled.div`
   ); // Use auto-fill for responsive grid
   grid-auto-rows: min-content; // Adjust row height to content
   gap: 10px; // Reduced gap for closer spacing
-  width: calc(100% - 260px); // Adjust width to leave some space
+  width: calc(100% - 300px); // Adjust width to leave some space
   height: 100%;
   overflow-y: auto;
   padding: 15px;
-  font-size: 14px; // Default font size
-  @media (max-width: 750px) {
-    font-size: 12px; // Smaller font size for smaller screens
-    width: 250px;
-  }
-  @media (max-width: 550px) {
-    width: 220px;
-  }
-  @media (max-width: 390px) {
-    font-size: 10px;
+  @media (max-width: 570px) {
+    padding-left: 0px;
+    width: calc(100% - 210px);
   }
 `;
 
@@ -95,7 +91,7 @@ export const RightSideText = styled.div`
   background-color: ${(props) => props.theme.White};
   border: 1px solid ${(props) => props.theme.Black};
   border-radius: 5px;
-  padding: 5px 10px; // Padding: top/bottom 5px, left/right 10px
+  padding: 5px 10px;
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
@@ -106,5 +102,8 @@ export const RightSideText = styled.div`
   &:hover {
     background-color: ${(props) => props.theme.Black};
     color: ${(props) => props.theme.White};
+  }
+  @media (max-width: 570px) {
+    font-weight: 200;
   }
 `;

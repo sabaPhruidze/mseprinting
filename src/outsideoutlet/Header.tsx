@@ -12,7 +12,6 @@ import {
   HeaderContainer,
   HeaderMenuBox,
   HeaderRSBox,
-  HeaderTopBox,
   HeaderAccSignButton,
   HeaderAccSignDiv,
   HeaderOneSimbyol,
@@ -50,8 +49,9 @@ export default function Header() {
 
   const [menuData, setMenuData] = useState<HMenuType[]>([]);
   const handleLogout = useCallback(() => {
-    dispatching("LOGOUT", null); // Dispatch logout action
-    navigate("/"); // Redirect to homepage after logout
+    localStorage.removeItem("user");
+    dispatching("LOGOUT", null);
+    navigate("/");
   }, [dispatching, navigate]);
   useEffect(() => {
     const getMenuData = async () => {
@@ -104,42 +104,62 @@ export default function Header() {
       )),
     [menuData, handleMenuNavigation]
   );
-
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const menuItems = useMemo(() => renderMenuItems(), [renderMenuItems]);
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
 
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   return (
     <HeaderContainer>
-      <HeaderTopBox>
-        <HeaderAccSignSearchDiv>
-          <HeaderAccSignDiv>
-            <HeaderAccSignButton
-              onClick={state.user ? undefined : handleNavigationLogin}
-            >
-              {state.user
-                ? `${state.user.firstname} ${state.user.lastname}`
-                : "Sign in"}
-            </HeaderAccSignButton>
-            <HeaderOneSimbyol>{state.user ? "" : "or"}</HeaderOneSimbyol>
-            <HeaderAccSignButton
-              onClick={state.user ? handleLogout : handleNavigationRegister}
-            >
-              {state.user ? "Log out" : "Sign up"}
-            </HeaderAccSignButton>
-          </HeaderAccSignDiv>
-          <SearchEngine />
-        </HeaderAccSignSearchDiv>
-      </HeaderTopBox>
       <HeaderMenuBox>
+        {/* <HeaderContentFirstPartWrapper> */}
         <HeaderMainLogo
           src={MAIN_LOGO}
           alt="Main logo"
           onClick={handleNavigationHome}
         />
-        <HeaderTagline>
-          PRINT <span> ● </span> SIGNS <span> ● </span> MARKETING
-        </HeaderTagline>
+        {screenWidth > 1900 ? (
+          <HeaderTagline>
+            PRINT <span> ● </span> SIGNS <span> ● </span> MARKETING
+          </HeaderTagline>
+        ) : (
+          ""
+        )}
 
+        {/* </HeaderContentFirstPartWrapper>
+        <HeaderContentSecondPartWrapper> */}
         <HeaderMenuCountDiv>{menuItems}</HeaderMenuCountDiv>
+        <HeaderAccSignSearchDiv>
+          {screenWidth < 1300 || screenWidth > 1450 ? (
+            <HeaderAccSignDiv>
+              <HeaderAccSignButton
+                onClick={state.user ? undefined : handleNavigationLogin}
+              >
+                {state.user
+                  ? `${state.user.firstname} ${state.user.lastname}`
+                  : "Sign in"}
+              </HeaderAccSignButton>
+              <HeaderOneSimbyol>{state.user ? "" : "or"}</HeaderOneSimbyol>
+              <HeaderAccSignButton
+                onClick={state.user ? handleLogout : handleNavigationRegister}
+              >
+                {state.user ? "Log out" : "Sign up"}
+              </HeaderAccSignButton>
+            </HeaderAccSignDiv>
+          ) : (
+            ""
+          )}
+          <SearchEngine />
+        </HeaderAccSignSearchDiv>
+        {/* </HeaderContentSecondPartWrapper> */}
       </HeaderMenuBox>
       <HeaderRSBox>
         <NavigateAndScroll path="/request-quote">
