@@ -205,13 +205,15 @@ const SendFileDetailsRight: React.FC<Props> = ({
         )}
       </RQFileUploadContainer>
       <RQWarningText>
-        File uploads may take a couple of minutes depending on the size of your
-        files and your internet connection. We recommend using the latest
-        version of Chrome for the best experience. Ensure all required
-        information is filled out and all files are fully uploaded before
-        clicking the Submit button. Do not close or refresh the page during the
-        upload process. PLEASE NOTE: Avoid using special characters in your
-        project name or file names.
+        File uploads may take a few minutes, depending on the size of your files
+        and the speed of your internet connection. For the best experience, we
+        recommend using the latest version of Google Chrome. Please ensure that
+        all required information is completed, and all files are fully uploaded
+        before clicking the Submit button. It is advisable to upload all files
+        together and avoid closing or refreshing the page during the upload
+        process. Note: Kindly refrain from using special characters in your
+        project name or file names. After clicking the Submit button, please
+        allow a few seconds for the confirmation of a successful submission.
       </RQWarningText>
     </>
   );
