@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   ResultsList,
@@ -14,19 +14,37 @@ interface SearchResult {
 interface SearchResultsProps {
   results: SearchResult[];
   dispatching: (action: string, payload: any) => void;
+  state: any;
 }
 
 const SearchEngineResultList: React.FC<SearchResultsProps> = ({
   results,
   dispatching,
+  state,
 }) => {
   const navigate = useNavigate();
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   return (
-    <ResultsList $resultscount={results.length}>
+    <ResultsList
+      $resultscount={results.length}
+      $screenWidth={screenWidth}
+      $isUser={!!state.user}
+    >
       {results.map((result, index) => (
         <ResultItem
-          key={`${result.link}-${index}`} // Combine link and index for a unique key
+          key={`${result.link}-${index}`}
           onClick={() => {
             navigate(result.link);
             dispatching("SEARCH_DONE", false);

@@ -1,3 +1,4 @@
+// Updated HeaderStyles with improved responsiveness and text adjustments
 import styled from "styled-components";
 import { RowFlex, ColumnFlex } from "./GlobalStyle";
 import { GlobalButton } from "./GlobalStyle";
@@ -5,38 +6,50 @@ import { GlobalButton } from "./GlobalStyle";
 export const HeaderContainer = styled(ColumnFlex)`
   width: 100%;
   margin: 0 auto;
-  height: 230px;
+  height: auto;
   box-sizing: border-box;
-`;
-
-export const HeaderTopBox = styled(RowFlex)`
-  width: 100%;
-  height: 45px;
-  justify-content: flex-end;
-  padding-right: 20px;
-  background-color: ${(props) => props.theme.MediumGray};
 `;
 
 export const HeaderAccSignDiv = styled(RowFlex)`
   box-sizing: border-box;
-  padding: 20px;
+  padding: 10px;
+  justify-content: flex-end;
+  @media (max-width: 700px) {
+    padding-top: 0px;
+  }
 `;
 
 export const HeaderAccSignSearchDiv = styled(HeaderAccSignDiv)`
-  width: 600px;
-  @media (max-width: 768px) {
-    width: 470px;
+  width: 100%;
+  max-width: 800px;
+  margin-top: 0; /* Default */
+  text-align: right;
+  @media (max-width: 2800px) {
+    max-width: 700px;
   }
-  @media (max-width: 510px) {
-    width: 400px;
+  @media (max-width: 2600px) {
+    max-width: 650px;
+  }
+  @media (max-width: 1550px) {
+    max-width: 600px;
+  }
+  @media (max-width: 1450px) {
+    max-width: 400px;
+  }
+  @media (max-width: 1300px) {
+    max-width: 700px;
+  }
+  @media (max-width: 700px) {
+    flex-direction: column;
+    width: 380px;
   }
 `;
 
 export const HeaderAccSignButton = styled.button`
-  font-size: 14px;
+  font-size: 2rem;
   border: 0;
   background-color: ${(props) => props.theme.Transparent};
-  color: ${(props) => props.theme.Dark};
+  color: ${(props) => props.theme.White};
   transition: 0.3s;
   white-space: nowrap;
   &:hover {
@@ -44,83 +57,116 @@ export const HeaderAccSignButton = styled.button`
     font-weight: 500;
     padding: 0 5px;
   }
+  @media (max-width: 2600px) {
+    font-size: 1.8rem;
+  }
+  @media (max-width: 2200px) {
+    font-size: 1.3rem;
+  }
 `;
 
 export const HeaderOneSimbyol = styled.div`
-  padding: 0 5px;
+  padding: 0 15px;
+  color: ${(props) => props.theme.White};
+  font-size: 2rem;
+  @media (max-width: 2600px) {
+    font-size: 1.8rem;
+  }
+
+  @media (max-width: 2200px) {
+    font-size: 1.3rem;
+  } /*
+  @media (max-width: 1800px) {
+    font-size: 2rem;
+  } */
 `;
 
 export const HeaderMenuBox = styled(RowFlex)`
   width: 100%;
-  height: 140px;
-  padding: 0 50px;
+  height: 200px;
+  padding: 0px 20px;
   background-color: ${(props) => props.theme.Black};
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
   @media (max-width: 1300px) {
-    padding: 0 10px;
+    flex-direction: column;
+    height: 280px;
   }
-  @media (max-width: 1150px) {
-    padding: 0 50px;
-  }
-  @media (max-width: 800px) {
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-  }
-  @media (max-width: 768px) {
+  @media (max-width: 700px) {
     padding: 0px;
   }
 `;
 
 export const HeaderMainLogo = styled.img`
-  width: 25%;
-  object-fit: cover;
+  max-width: 25%;
+  object-fit: contain;
   cursor: pointer;
-  @media (max-width: 1150px) {
-    width: 35%;
+  @media (max-width: 2600px) {
+    max-width: 20%;
   }
-
-  @media (max-width: 800px) {
-    width: 380px;
-    margin-bottom: 20px;
+  @media (max-width: 1900px) {
+    max-width: 30%;
   }
-  @media (max-width: 650px) {
-    width: 360px;
+  @media (max-width: 1650px) {
+    max-width: 25%;
+  }
+  @media (max-width: 1400px) {
+    max-width: 30%;
+  }
+  @media (max-width: 1300px) {
+    max-width: 625px;
+    height: 135px;
+    margin-bottom: 10px;
+  }
+  @media (max-width: 850px) {
+    margin-bottom: 10px;
+  }
+  @media (max-width: 700px) {
+    max-width: 500px;
+    height: 100px;
+  }
+  @media (max-width: 600px) {
+    max-width: 90%;
+    margin-bottom: 10px;
   }
 `;
 
 export const HeaderTagline = styled.div`
-  font-size: 30px;
+  font-size: 2rem;
   font-weight: bold;
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: calc(40% - 20px);
   background-color: ${(props) => props.theme.Black};
   transform: skew(-15deg);
+  text-align: center;
 
-  /* Style for the circles */
   span {
-    padding: 0 10px; /* Adds space before and after the circles */
-    transform: skew(15deg); /* Reverses the skew effect on the text */
+    padding: 0 10px;
+    transform: skew(15deg);
   }
 
-  @media (max-width: 1300px) {
-    font-size: 26px;
+  @media (max-width: 2600px) {
+    font-size: 1.8rem;
   }
-  @media (max-width: 1150px) {
-    display: none;
+
+  @media (max-width: 2200px) {
+    font-size: 1.3rem;
   }
+  /*
+  @media (max-width: 1800px) {
+    font-size: 2rem;
+  } */
 `;
 
 export const HeaderMenuCountDiv = styled(RowFlex)`
-  width: 400px;
-  justify-content: space-around;
+  justify-content: space-between;
   height: 100%;
-  align-items: flex-end; /* Add this line to align items at the bottom */
-  @media (max-width: 800px) {
-    height: 40px;
+  align-items: center;
+  @media (max-width: 1300px) {
+    height: 50px;
   }
 `;
 
@@ -130,9 +176,9 @@ export const HeaderMenuCountDivButton = styled.button`
   color: ${(props) => props.theme.White};
   border: 0;
   height: 100%;
-  padding: 0 5px;
+  padding: 0 10px;
   transition: 0.3s;
-  margin-bottom: 0; /* Ensure there's no margin at the bottom */
+  margin-bottom: 0;
 
   &:hover {
     background-color: ${(props) => props.theme.White};
@@ -141,40 +187,45 @@ export const HeaderMenuCountDivButton = styled.button`
 `;
 
 export const HeaderMenuCountDivText = styled.p`
-  font-size: 20px;
-  font-weight: 400;
-  height: 30px;
+  font-size: 2rem;
+  font-weight: bold;
   transition: 0.3s;
-  margin: 0; /* Ensure there's no margin at the bottom */
+  margin: 0;
   &:hover {
     transform: scale(1.05);
   }
-  @media (max-width: 1300px) {
-    font-size: 18px;
+  @media (max-width: 2600px) {
+    font-size: 1.8rem;
+  }
+
+  @media (max-width: 2200px) {
+    font-size: 1.3rem;
+  }
+
+  @media (max-width: 500px) {
+    font-size: 0.95rem;
   }
 `;
 
 export const HeaderRSBox = styled(RowFlex)`
   width: 100%;
-  height: 45px;
+  height: 50px;
   flex-wrap: nowrap;
   justify-content: flex-end;
   background-color: ${(props) => props.theme.Purple};
-  padding-right: 50px;
 
-  @media (max-width: 768px) {
+  /* @media (max-width: 768px) {
     justify-content: center;
-    padding-right: 20px;
-  }
+    padding: 10px 0;
+  } */
 `;
 
 export const HeaderRSButton = styled(GlobalButton)`
   white-space: nowrap;
-  font-size: 16px;
+  font-size: 1rem;
   border-radius: 10px;
   background-color: ${(props) => props.theme.Transparent};
-  margin: 0;
-  margin-right: 20px;
+  margin: 0 10px;
 
   &:hover {
     background-color: ${(props) => props.theme.White};
@@ -182,10 +233,36 @@ export const HeaderRSButton = styled(GlobalButton)`
     border: 0;
   }
   &:focus {
-    transform: scale(0.9);
+    transform: scale(0.95);
   }
-
+  /* 
   @media (max-width: 768px) {
-    margin-right: 10px;
-  }
+    font-size: 0.9rem;
+    margin: 0 5px;
+  } */
 `;
+// export const HeaderContentFirstPartWrapper = styled.div`
+//   display: flex;
+//   flex-direction: row; /* Stack elements vertically */
+//   align-items: center; /* Center align all elements */
+//   justify-content: space-around; /* Center align horizontally */
+//   width: 40%;
+//   height: 100%;
+
+//   @media (max-width: 1800px) {
+//     height: 80%;
+//     width: 100%;
+//   }
+// `;
+// export const HeaderContentSecondPartWrapper = styled.div`
+//   display: flex;
+//   flex-direction: row; /* Stack elements vertically */
+//   align-items: center; /* Center align all elements */
+//   justify-content: space-around; /* Center align horizontally */
+//   width: 60%;
+//   height: 100%;
+//   @media (max-width: 1800px) {
+//     height: 20%;
+//     width: 100%;
+//   }
+// `;

@@ -8,19 +8,16 @@ export const SearchEngineContainer = styled(ColumnFlex)`
   height: 100%;
   width: 430px;
   margin: 0px;
-  @media (max-width: 768px) {
-    width: 300px;
-  }
-  @media (max-width: 510px) {
-    width: 230px;
+  @media (max-width: 700px) {
+    width: 360px;
   }
 `;
 
 export const SearchEngineInput = styled.input`
   width: 100%;
-  padding: 4px 15px;
+  padding: 10px;
   border-radius: 10px;
-  font-size: 14px;
+  font-size: 18px;
   position: relative;
   border: 0;
   z-index: 2;
@@ -37,25 +34,26 @@ export const SearchEngineButton = styled.button`
   position: absolute;
   z-index: 3;
   right: 10px;
-  top: 0px;
+  top: 10px;
 `;
 
 export const SearchEngineIcon = styled.img`
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
 `;
 interface ResultsListProps {
   $resultscount: number;
+  $screenWidth: number;
+  $isUser: boolean;
 }
 
 export const ResultsList = styled.div<ResultsListProps>`
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 38px;
-  right: 40px; /* Align to the right edge of the search bar */
+  top: 125px;
+  right: 30px; /* Align to the right edge of the search bar */
   z-index: 1000;
-  width: 375px; /* Match the search bar width */
   background-color: ${(props) => props.theme.White};
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -63,12 +61,26 @@ export const ResultsList = styled.div<ResultsListProps>`
   max-height: 120px; /* Maximum height for the result list */
   overflow-y: auto; /* Add scroll if results exceed max height */
 
-  @media (max-width: 768px) {
-    width: 245px;
-  }
+  width: ${(props) => {
+    const { $screenWidth: screenWidth, $isUser } = props;
+    if (screenWidth > 2800) return $isUser ? 420 : 430;
+    if (screenWidth > 2600) return $isUser ? 320 : 396;
+    if (screenWidth > 2200) return $isUser ? 301 : 369;
+    if (screenWidth > 1550) return $isUser ? 379 : 428;
+    if (screenWidth > 1450) return $isUser ? 329 : 378;
+    if (screenWidth > 1300) return 380;
+    if (screenWidth > 700) return $isUser ? 429 : 430;
+    if (screenWidth > 360) return 360;
+    return 400;
+  }}px;
 
-  @media (max-width: 510px) {
-    width: 175px;
+  @media (max-width: 1300px) {
+    top: 267px;
+    left: calc(50% - 90px);
+  }
+  @media (max-width: 700px) {
+    top: 272px;
+    left: calc(50% - 180px);
   }
 `;
 
@@ -94,7 +106,7 @@ export const ResultItem = styled.div`
 
 export const ResultTitle = styled.h3`
   margin: 0;
-  font-size: 14px; /* Slightly smaller font to prevent overflow */
+  font-size: 18px; /* Slightly smaller font to prevent overflow */
   cursor: pointer;
   overflow-wrap: break-word; /* Ensure long words wrap */
 `;
