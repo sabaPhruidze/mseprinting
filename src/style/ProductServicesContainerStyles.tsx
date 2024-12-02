@@ -85,6 +85,7 @@ export const RightSideContainer = styled.div`
   @media (max-width: 570px) {
     padding-left: 0px;
     width: calc(100% - 210px);
+    overflow-x: hidden;
   }
 `;
 
