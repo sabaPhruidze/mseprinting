@@ -23,6 +23,7 @@ export const ProductsServicesContainerStyle = styled(RowFlex)`
     width: 550px;
     left: 10px;
     font-size: 18px;
+    padding: 0;
   }
   @media (max-width: 700px) {
     top: 170px;
@@ -44,7 +45,7 @@ export const LeftSideContainer = styled(ColumnFlex)`
     width: 300px;
   }
   @media (max-width: 570px) {
-    width: 195px;
+    width: 180px;
   }
 `;
 
