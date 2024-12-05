@@ -120,7 +120,6 @@ export default function Header() {
   return (
     <HeaderContainer>
       <HeaderMenuBox>
-        {/* <HeaderContentFirstPartWrapper> */}
         <HeaderMainLogo
           src={MAIN_LOGO}
           alt="Main logo"
@@ -133,9 +132,6 @@ export default function Header() {
         ) : (
           ""
         )}
-
-        {/* </HeaderContentFirstPartWrapper>
-        <HeaderContentSecondPartWrapper> */}
         <HeaderMenuCountDiv>{menuItems}</HeaderMenuCountDiv>
         <HeaderAccSignSearchDiv>
           {screenWidth < 1300 || screenWidth > 1450 ? (

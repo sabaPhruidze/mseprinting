@@ -136,8 +136,17 @@ export const WWDCCSpecialitiesContainers = styled(ColumnFlex)`
     max-width: 40%;
   }
 `;
+export const WhyUsSpecialContainer = styled(ColumnFlex)`
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  padding: 0 50px;
+  @media (max-width: 600px) {
+    padding: 0 10px;
+  }
+`;
 
-export const WWDCTitle = styled.h2`
+export const WWDCTitle = styled.h1`
   font-weight: 700;
   margin-bottom: 20px;
   font-size: 24px;

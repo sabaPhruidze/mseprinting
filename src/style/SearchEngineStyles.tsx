@@ -11,6 +11,9 @@ export const SearchEngineContainer = styled(ColumnFlex)`
   @media (max-width: 700px) {
     width: 360px;
   }
+  @media (max-width: 420px) {
+    width: 300px;
+  }
 `;
 
 export const SearchEngineInput = styled.input`
@@ -70,7 +73,8 @@ export const ResultsList = styled.div<ResultsListProps>`
     if (screenWidth > 1450) return $isUser ? 329 : 378;
     if (screenWidth > 1300) return 380;
     if (screenWidth > 700) return $isUser ? 429 : 430;
-    if (screenWidth > 360) return 360;
+    if (screenWidth > 420) return 360;
+    if (screenWidth > 360) return 300;
     return 400;
   }}px;
 
@@ -81,6 +85,12 @@ export const ResultsList = styled.div<ResultsListProps>`
   @media (max-width: 700px) {
     top: 272px;
     left: calc(50% - 180px);
+  }
+  @media (max-width: 700px) {
+    top: 272px;
+  }
+  @media (max-width: 420px) {
+    left: calc(50% - 150px);
   }
 `;
 

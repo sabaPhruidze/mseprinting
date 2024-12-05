@@ -8,13 +8,14 @@ export const ProductsServicesContainerStyle = styled(RowFlex)`
   position: absolute;
   top: 200px;
   left: calc(50% - 350px);
-  z-index: 1000; // Ensure this is higher than other components
+  z-index: 1001; // Ensure this is higher than other components
   border-radius: 0 0 20px 20px;
   padding: 10px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   font-size: 20px;
   @media (max-width: 1615px) {
     left: calc(30% - 350px);
+    font-size: 18px;
   }
   @media (max-width: 1300px) {
     left: 20px;
@@ -29,8 +30,8 @@ export const ProductsServicesContainerStyle = styled(RowFlex)`
     top: 170px;
   }
   @media (max-width: 570px) {
-    width: 390px;
-    left: 0px;
+    width: 350px;
+    left: 5px;
     font-size: 14px;
   }
 `;
@@ -43,6 +44,8 @@ export const LeftSideContainer = styled(ColumnFlex)`
   justify-content: flex-start;
   @media (max-width: 850px) {
     width: 300px;
+    padding-left: 5px;
+    padding-top: 15px;
   }
   @media (max-width: 570px) {
     width: 180px;
@@ -84,8 +87,9 @@ export const RightSideContainer = styled.div`
   padding: 15px;
   @media (max-width: 570px) {
     padding-left: 0px;
-    width: calc(100% - 210px);
+    width: calc(100% - 180px);
     overflow-x: hidden;
+    margin-left: 10px;
   }
 `;
 
