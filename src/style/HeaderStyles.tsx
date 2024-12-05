@@ -15,7 +15,8 @@ export const HeaderAccSignDiv = styled(RowFlex)`
   padding: 10px;
   justify-content: flex-end;
   @media (max-width: 700px) {
-    padding-top: 0px;
+    padding: 0;
+    padding-bottom: 10px;
   }
 `;
 
@@ -41,7 +42,8 @@ export const HeaderAccSignSearchDiv = styled(HeaderAccSignDiv)`
   }
   @media (max-width: 700px) {
     flex-direction: column;
-    width: 380px;
+    width: 100%;
+    text-align: center;
   }
 `;
 
@@ -75,10 +77,7 @@ export const HeaderOneSimbyol = styled.div`
 
   @media (max-width: 2200px) {
     font-size: 1.3rem;
-  } /*
-  @media (max-width: 1800px) {
-    font-size: 2rem;
-  } */
+  }
 `;
 
 export const HeaderMenuBox = styled(RowFlex)`
@@ -214,10 +213,9 @@ export const HeaderRSBox = styled(RowFlex)`
   justify-content: flex-end;
   background-color: ${(props) => props.theme.Purple};
 
-  /* @media (max-width: 768px) {
+  @media (max-width: 768px) {
     justify-content: center;
-    padding: 10px 0;
-  } */
+  }
 `;
 
 export const HeaderRSButton = styled(GlobalButton)`
