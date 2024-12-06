@@ -36,7 +36,6 @@ const fetchDataMap: Record<
     image: any;
     title: string; // SEO title for each service
     description: string; // SEO description for each service
-    canonical: string; // Canonical URL
   }
 > = {
   "counter-pop-up-displays": {
@@ -45,8 +44,6 @@ const fetchDataMap: Record<
     title: "Counter Pop-Up Displays | MSE Printing",
     description:
       "Stand out with Counter Pop-Up Displays from MSE Printing, perfect for showcasing products at events.",
-    canonical:
-      "https://www.mseprinting.com/tradeshow-events/counter-pop-up-displays",
   },
   "event-literature-signs": {
     fetchData: fetchEventLiteratureSignsData,
@@ -54,8 +51,6 @@ const fetchDataMap: Record<
     title: "Event Literature & Signs | MSE Printing",
     description:
       "Engage your audience with Event Literature and Signs crafted by MSE Printing for impactful presentations.",
-    canonical:
-      "https://www.mseprinting.com/tradeshow-events/event-literature-signs",
   },
   "gifts-awards-incentives": {
     fetchData: fetchGiftsAwardsIncentivesData,
@@ -63,8 +58,6 @@ const fetchDataMap: Record<
     title: "Gifts, Awards & Incentives | MSE Printing",
     description:
       "Show appreciation with custom Gifts, Awards, and Incentives from MSE Printing. Celebrate achievements in style.",
-    canonical:
-      "https://www.mseprinting.com/tradeshow-events/gifts-awards-incentives",
   },
   "pre-post-show-direct-mail": {
     fetchData: fetchPrePostShowDirectMailData,
@@ -72,8 +65,6 @@ const fetchDataMap: Record<
     title: "Pre & Post Show Direct Mail | MSE Printing",
     description:
       "Maximize your event impact with Pre & Post Show Direct Mail solutions from MSE Printing.",
-    canonical:
-      "https://www.mseprinting.com/tradeshow-events/pre-post-show-direct-mail",
   },
   "table-counter-kiosk-displays": {
     fetchData: fetchTableCounterKioskDisplaysData,
@@ -81,8 +72,6 @@ const fetchDataMap: Record<
     title: "Table & Counter Kiosk Displays | MSE Printing",
     description:
       "Attract attention at events with Table & Counter Kiosk Displays by MSE Printing. Functional and visually engaging.",
-    canonical:
-      "https://www.mseprinting.com/tradeshow-events/table-counter-kiosk-displays",
   },
 };
 

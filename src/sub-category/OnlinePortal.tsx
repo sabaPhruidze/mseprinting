@@ -42,7 +42,6 @@ export default function OnlinePortal() {
       <HelmetComponent
         title="Online Ordering Portal | MSE Printing"
         description="Access MSE Printing's online ordering portal to easily manage and order high-quality printing solutions tailored to your needs."
-        canonical="https://www.mseprinting.com/online-ordering-portals"
       />
 
       {/* Full-screen section with background image using ImageWithSEO */}

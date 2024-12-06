@@ -23,7 +23,6 @@ export default function Home() {
       <HelmetComponent
         title=" MSE Printing - Premium Printing & Marketing Solutions"
         description="Discover our wide range of high-quality printing, signage, and marketing solutions to elevate your brand."
-        canonical="https://www.mseprinting.com/"
       />
       <CarouselComponent />
       <WhatWeDoCards />

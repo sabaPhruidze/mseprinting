@@ -43,7 +43,6 @@ export default function BrochuresCollateral() {
       <HelmetComponent
         title="Brochures & Collateral | MSE Printing"
         description="Explore our professional brochures and collateral services to elevate your brand's marketing materials. Order custom brochures at MSE Printing."
-        canonical="https://www.mseprinting.com/brochures-collateral"
       />
 
       {/* Full-screen section with background image using ImageWithSEO */}

@@ -115,7 +115,6 @@ export default function SendFile() {
       <HelmetComponent
         title="Send File | MSE Printing"
         description="Easily send files to MSE Printing for your project. Provide project details, upload files, and select a representative for assistance."
-        canonical="https://www.mseprinting.com/send-file"
       />
 
       <RQForm onSubmit={handleSubmit(onSubmitSF)}>

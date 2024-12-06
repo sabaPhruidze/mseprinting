@@ -72,7 +72,6 @@ export default function CommercialDigitalPrinting() {
       <HelmetComponent
         title="Commercial Digital Printing | MSE Printing"
         description="Discover MSE Printing's professional digital printing services, tailored to meet your commercial needs with high-quality and precision."
-        canonical="https://www.mseprinting.com/commercial-digital-printing"
       />
 
       {/* Full Background Image Container */}

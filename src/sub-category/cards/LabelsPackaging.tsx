@@ -46,7 +46,6 @@ export default function LabelsPackaging() {
       <HelmetComponent
         title="Labels & Packaging | MSE Printing"
         description="Explore our high-quality labels and packaging options tailored to your brand. Order custom labels and packaging at MSE Printing."
-        canonical="https://www.mseprinting.com/labels-packaging"
       />
 
       {/* Full-screen section with background image using ImageWithSEO */}

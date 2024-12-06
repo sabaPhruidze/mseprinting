@@ -112,7 +112,6 @@ const ProductsServices: React.FC = () => {
       <HelmetComponent
         title="Products & Services | MSE Printing"
         description="Explore a wide range of printing and marketing services provided by MSE Printing, tailored to meet all your business needs."
-        canonical="https://www.mseprinting.com/productsservices"
       />
 
       {memoizedSections}

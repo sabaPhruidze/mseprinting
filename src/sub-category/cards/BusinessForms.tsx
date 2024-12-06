@@ -42,7 +42,6 @@ export default function BusinessForms() {
       <HelmetComponent
         title="Business Forms | MSE Printing"
         description="Discover our customized business forms to streamline your operations. Order professional forms for your business at MSE Printing."
-        canonical="https://www.mseprinting.com/business-forms"
       />
 
       {/* Full-screen section with background image using ImageWithSEO */}
