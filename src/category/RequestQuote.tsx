@@ -114,6 +114,7 @@ export default function RequestQuote() {
       <HelmetComponent
         title="Request a Quote | MSE Printing"
         description="Submit a quote request for custom printing and marketing services with MSE Printing. Our team will provide a tailored solution for your business needs."
+        canonical="https://www.mseprinting.com/request-quote"
       />
 
       <RQForm onSubmit={handleSubmit(onSubmitRQ)}>
