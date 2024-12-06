@@ -44,6 +44,7 @@ const fetchDataMap: Record<
     image: any;
     title: string; // SEO title
     description: string; // SEO description
+    canonical: string; // Canonical URL
   }
 > = {
   education: {
@@ -52,6 +53,7 @@ const fetchDataMap: Record<
     title: "Education Solutions | MSE Printing",
     description:
       "Tailored printing and marketing solutions for educational institutions by MSE Printing.",
+    canonical: "https://www.mseprinting.com/industry-specific/education",
   },
   finance: {
     fetchData: fetchFinanceData,
@@ -59,6 +61,7 @@ const fetchDataMap: Record<
     title: "Finance Industry Printing | MSE Printing",
     description:
       "Professional printing services designed for the finance sector, enhancing trust and communication.",
+    canonical: "https://www.mseprinting.com/industry-specific/finance",
   },
   healthcare: {
     fetchData: fetchHealthCareData,
@@ -66,6 +69,7 @@ const fetchDataMap: Record<
     title: "Healthcare Printing Solutions | MSE Printing",
     description:
       "Reliable printing solutions for healthcare providers, supporting communication and patient care.",
+    canonical: "https://www.mseprinting.com/industry-specific/healthcare",
   },
   legal: {
     fetchData: fetchLegalData,
@@ -73,6 +77,7 @@ const fetchDataMap: Record<
     title: "Legal Industry Printing | MSE Printing",
     description:
       "Secure and professional printing services tailored for the legal industry by MSE Printing.",
+    canonical: "https://www.mseprinting.com/industry-specific/legal",
   },
   manufacturing: {
     fetchData: fetchManufacturingData,
@@ -80,6 +85,7 @@ const fetchDataMap: Record<
     title: "Manufacturing Solutions | MSE Printing",
     description:
       "Customized printing and labeling solutions for the manufacturing industry by MSE Printing.",
+    canonical: "https://www.mseprinting.com/industry-specific/manufacturing",
   },
   political: {
     fetchData: fetchPoliticalData,
@@ -87,6 +93,7 @@ const fetchDataMap: Record<
     title: "Political Campaign Printing | MSE Printing",
     description:
       "Effective printing solutions for political campaigns and advocacy by MSE Printing.",
+    canonical: "https://www.mseprinting.com/industry-specific/political",
   },
   realestate: {
     fetchData: fetchRealEstateData,
@@ -94,6 +101,7 @@ const fetchDataMap: Record<
     title: "Real Estate Printing Solutions | MSE Printing",
     description:
       "Promotional printing services for the real estate industry to showcase properties and listings.",
+    canonical: "https://www.mseprinting.com/industry-specific/realestate",
   },
   restaurants: {
     fetchData: fetchRestaurantsData,
@@ -101,6 +109,7 @@ const fetchDataMap: Record<
     title: "Restaurant Printing Services | MSE Printing",
     description:
       "Custom menus, signage, and more for restaurants by MSE Printing.",
+    canonical: "https://www.mseprinting.com/industry-specific/restaurants",
   },
   retail: {
     fetchData: fetchRetailData,
@@ -108,6 +117,7 @@ const fetchDataMap: Record<
     title: "Retail Industry Printing | MSE Printing",
     description:
       "Branding and promotional printing solutions for the retail industry by MSE Printing.",
+    canonical: "https://www.mseprinting.com/industry-specific/retail",
   },
 };
 
