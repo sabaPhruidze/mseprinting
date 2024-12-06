@@ -21,7 +21,8 @@ const sendEmailTemplate = (
   form.appendChild(createInput("terms", data.terms.toString()));
   form.appendChild(createInput("representative", data.representative));
 
-  data.uploadedFiles?.forEach((fileUrl: string, index: number) => {
+  // Append all file URLs, up to 8
+  data.uploadedFiles?.slice(0, 8).forEach((fileUrl: string, index: number) => {
     form.appendChild(createInput(`file${index + 1}`, fileUrl));
   });
 

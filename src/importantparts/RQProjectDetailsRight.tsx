@@ -13,7 +13,7 @@ import {
 import { Progress } from "antd"; // Import Ant Design Progress component
 
 interface Props {
-  setUploadedFiles: (files: string[]) => void;
+  setUploadedFiles: React.Dispatch<React.SetStateAction<string[]>>; // Proper setter typing
   firstname: string | null;
   lastname: string | null;
 }
@@ -106,7 +106,7 @@ const RQProjectDetailsRight: React.FC<Props> = ({
 
       try {
         const downloadURL = await uploadToFirebase(zipFile);
-        setUploadedFiles([downloadURL]);
+        setUploadedFiles((prevFiles) => [...prevFiles, downloadURL]); // Append new URL
         dispatching("REQUEST_QUOTE_CHANGE", true);
         setUploadingText("Uploaded");
       } catch (error) {
