@@ -70,6 +70,7 @@ const AboutUs: React.FC = () => {
       <HelmetComponent
         title="About Us | MSE Printing"
         description="Learn more about MSE Printing's dedication to quality, service, and innovation in printing and marketing solutions."
+        canonical="https://www.mseprinting.com/about-us" // Add the canonical URL
       />
 
       {renderSection(aboutUsData.one.title, aboutUsData.one.content)}

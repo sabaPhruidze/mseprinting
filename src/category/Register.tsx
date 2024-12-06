@@ -145,6 +145,7 @@ function Register() {
       <HelmetComponent
         title="Register | MSE Printing"
         description="Create an account with MSE Printing to access a full range of personalized printing and marketing services tailored to your business needs."
+        canonical="https://www.mseprinting.com/register"
       />
 
       <RegisterForm onSubmit={handleSubmit(onSubmitRegister)}>
