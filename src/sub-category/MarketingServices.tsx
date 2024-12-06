@@ -34,6 +34,7 @@ const fetchDataMap: Record<
     image: any;
     title: string; // SEO title for each service
     description: string; // SEO description for each service
+    canonical: string; // Canonical URL
   }
 > = {
   "campaigns-consultation": {
@@ -42,6 +43,8 @@ const fetchDataMap: Record<
     title: "Campaigns & Consultation | MSE Printing",
     description:
       "Get expert consultation for your marketing campaigns with MSE Printing's Campaigns & Consultation services.",
+    canonical:
+      "https://www.mseprinting.com/marketing-services/campaigns-consultation",
   },
   "social-media": {
     fetchData: fetchSocialMediaData,
@@ -49,6 +52,7 @@ const fetchDataMap: Record<
     title: "Social Media Marketing | MSE Printing",
     description:
       "Elevate your brand's presence with MSE Printing's Social Media Marketing services, tailored for impactful engagement.",
+    canonical: "https://www.mseprinting.com/marketing-services/social-media",
   },
   "video-production": {
     fetchData: fetchVideoProductionData,
@@ -56,6 +60,8 @@ const fetchDataMap: Record<
     title: "Video Production | MSE Printing",
     description:
       "Bring your brand story to life with MSE Printing's professional Video Production services for high-quality visual content.",
+    canonical:
+      "https://www.mseprinting.com/marketing-services/video-production",
   },
   "website-design": {
     fetchData: fetchWebsiteDesignData,
@@ -63,6 +69,7 @@ const fetchDataMap: Record<
     title: "Website Design | MSE Printing",
     description:
       "Transform your online presence with MSE Printing's Website Design services for a seamless and engaging user experience.",
+    canonical: "https://www.mseprinting.com/marketing-services/website-design",
   },
 };
 

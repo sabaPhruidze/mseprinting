@@ -46,6 +46,7 @@ const fetchDataMap: Record<
     image: any;
     title: string; // SEO title for each service
     description: string; // SEO description for each service
+    canonical: string;
   }
 > = {
   "ada-wayfinding-signs": {
@@ -54,6 +55,7 @@ const fetchDataMap: Record<
     title: "ADA Wayfinding Signs | MSE Printing",
     description:
       "Navigate with ease using MSE Printing's ADA-compliant Wayfinding Signs. Clear and accessible signage solutions.",
+    canonical: "https://www.mseprinting.com/signs/ada-wayfinding-signs",
   },
   "booth-graphics-signs-banners": {
     fetchData: fetchBoothGraphicsSignsBannersData,
@@ -61,6 +63,7 @@ const fetchDataMap: Record<
     title: "Booth Graphics & Banners | MSE Printing",
     description:
       "Stand out at your next event with custom Booth Graphics, Signs, and Banners by MSE Printing.",
+    canonical: "https://www.mseprinting.com/signs/booth-graphics-signs-banners",
   },
   "car-graphics-wraps": {
     fetchData: fetchCarGraphicsWrapsData,
@@ -68,6 +71,7 @@ const fetchDataMap: Record<
     title: "Car Graphics & Wraps | MSE Printing",
     description:
       "Promote your brand on the go with eye-catching Car Graphics and Wraps by MSE Printing.",
+    canonical: "https://www.mseprinting.com/signs/car-graphics-wraps",
   },
   "interior-office-lobby-decor": {
     fetchData: fetchInteriorOfficeLobbyDecorData,
@@ -75,6 +79,7 @@ const fetchDataMap: Record<
     title: "Interior Office & Lobby Decor | MSE Printing",
     description:
       "Enhance your workspace with custom Interior Office and Lobby Decor solutions from MSE Printing.",
+    canonical: "https://www.mseprinting.com/signs/interior-office-lobby-decor",
   },
   "delivery-takeout-signs": {
     fetchData: fetchDeliveryTakeoutSignsData,
@@ -82,6 +87,7 @@ const fetchDataMap: Record<
     title: "Delivery & Takeout Signs | MSE Printing",
     description:
       "Efficiently guide customers with high-quality Delivery and Takeout Signs by MSE Printing.",
+    canonical: "https://www.mseprinting.com/signs/delivery-takeout-signs",
   },
   "now-open-signs-graphics": {
     fetchData: fetchNowOpenSignsGraphicsData,
@@ -89,6 +95,7 @@ const fetchDataMap: Record<
     title: "Now Open Signs & Graphics | MSE Printing",
     description:
       "Announce your opening with bold and attractive Now Open Signs and Graphics by MSE Printing.",
+    canonical: "https://www.mseprinting.com/signs/now-open-signs-graphics",
   },
   "pullup-banners-flags": {
     fetchData: fetchPullupBannersFlagsData,
@@ -96,6 +103,7 @@ const fetchDataMap: Record<
     title: "Pull-up Banners & Flags | MSE Printing",
     description:
       "Portable, impactful Pull-up Banners and Flags by MSE Printing. Perfect for events and promotions.",
+    canonical: "https://www.mseprinting.com/signs/pullup-banners-flags",
   },
   "tradeshow-event-signs": {
     fetchData: fetchTradeshowEventSignsData,
@@ -103,6 +111,7 @@ const fetchDataMap: Record<
     title: "Tradeshow & Event Signs | MSE Printing",
     description:
       "Make your brand memorable at events with custom Tradeshow and Event Signs from MSE Printing.",
+    canonical: "https://www.mseprinting.com/signs/tradeshow-event-signs",
   },
   "window-wall-floor-graphics": {
     fetchData: fetchWindowWallFloorGraphicsData,
@@ -110,6 +119,7 @@ const fetchDataMap: Record<
     title: "Window, Wall & Floor Graphics | MSE Printing",
     description:
       "Transform any space with Window, Wall, and Floor Graphics by MSE Printing. Bold and customizable.",
+    canonical: "https://www.mseprinting.com/signs/window-wall-floor-graphics",
   },
   "yard-outdoor-signs": {
     fetchData: fetchYardOutdoorSignsData,
@@ -117,6 +127,7 @@ const fetchDataMap: Record<
     title: "Yard & Outdoor Signs | MSE Printing",
     description:
       "Durable and weather-resistant Yard and Outdoor Signs from MSE Printing for effective outdoor advertising.",
+    canonical: "https://www.mseprinting.com/signs/yard-outdoor-signs",
   },
 };
 

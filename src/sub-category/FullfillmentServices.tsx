@@ -34,6 +34,7 @@ const fetchDataMap: Record<
     image: any;
     title: string; // SEO title for each service
     description: string; // SEO description for each service
+    canonical: string; // Canonical URL
   }
 > = {
   "inventory-management": {
@@ -42,6 +43,8 @@ const fetchDataMap: Record<
     title: "Inventory Management | MSE Printing",
     description:
       "Optimize your inventory with MSE Printing's Inventory Management services. Reliable, organized solutions for business efficiency.",
+    canonical:
+      "https://www.mseprinting.com/fullfillment-services/inventory-management",
   },
   "marketing-sales-kit": {
     fetchData: fetchMarketingSalesKitsData,
@@ -49,6 +52,8 @@ const fetchDataMap: Record<
     title: "Marketing & Sales Kits | MSE Printing",
     description:
       "Empower your sales team with MSE Printing's customized Marketing and Sales Kits. Professional materials that drive results.",
+    canonical:
+      "https://www.mseprinting.com/fullfillment-services/marketing-sales-kit",
   },
   "pick-pack": {
     fetchData: fetchPickPackData,
@@ -56,6 +61,7 @@ const fetchDataMap: Record<
     title: "Pick & Pack Services | MSE Printing",
     description:
       "Streamline your logistics with MSE Printing's Pick & Pack services. Efficient, accurate, and scalable solutions.",
+    canonical: "https://www.mseprinting.com/fullfillment-services/pick-pack",
   },
   "product-fulfillment": {
     fetchData: fetchProductFulfillmentData,
@@ -63,6 +69,8 @@ const fetchDataMap: Record<
     title: "Product Fulfillment | MSE Printing",
     description:
       "Complete your orders seamlessly with MSE Printing's Product Fulfillment services. Accurate, timely, and reliable.",
+    canonical:
+      "https://www.mseprinting.com/fullfillment-services/product-fulfillment",
   },
 };
 
