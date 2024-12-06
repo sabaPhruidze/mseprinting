@@ -41,7 +41,6 @@ export default function DirectMailing() {
       <HelmetComponent
         title="Direct Mailing Services | MSE Printing"
         description="Enhance your business reach with our Direct Mailing services. From concept to delivery, we provide professional solutions tailored to your needs."
-        canonical="https://www.mseprinting.com/direct-mail-mailing-services"
       />
 
       {/* Full-screen section with background image using ImageWithSEO */}

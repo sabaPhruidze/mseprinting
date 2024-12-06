@@ -233,34 +233,4 @@ export const HeaderRSButton = styled(GlobalButton)`
   &:focus {
     transform: scale(0.95);
   }
-  /* 
-  @media (max-width: 768px) {
-    font-size: 0.9rem;
-    margin: 0 5px;
-  } */
 `;
-// export const HeaderContentFirstPartWrapper = styled.div`
-//   display: flex;
-//   flex-direction: row; /* Stack elements vertically */
-//   align-items: center; /* Center align all elements */
-//   justify-content: space-around; /* Center align horizontally */
-//   width: 40%;
-//   height: 100%;
-
-//   @media (max-width: 1800px) {
-//     height: 80%;
-//     width: 100%;
-//   }
-// `;
-// export const HeaderContentSecondPartWrapper = styled.div`
-//   display: flex;
-//   flex-direction: row; /* Stack elements vertically */
-//   align-items: center; /* Center align all elements */
-//   justify-content: space-around; /* Center align horizontally */
-//   width: 60%;
-//   height: 100%;
-//   @media (max-width: 1800px) {
-//     height: 20%;
-//     width: 100%;
-//   }
-// `;

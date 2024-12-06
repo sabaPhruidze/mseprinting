@@ -62,7 +62,6 @@ function Login() {
       <HelmetComponent
         title="Login | MSE Printing"
         description="Securely log in to your MSE Printing account to access personalized printing and marketing services."
-        canonical="https://www.mseprinting.com/login"
       />
 
       <LoginForm onSubmit={handleSubmit(onSubmitLogin)}>

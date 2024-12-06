@@ -31,7 +31,6 @@ const Resources: React.FC = () => {
         <HelmetComponent
           title="Resources | MSE Printing"
           description="Explore resources provided by MSE Printing, including industry guides, tips, and helpful information to support your printing and marketing needs."
-          canonical="https://www.mseprinting.com/resources"
         />
 
         <GlobalBoxColumnStart>

@@ -40,7 +40,6 @@ export default function GraphicDesign() {
       <HelmetComponent
         title="Graphic Design Services | MSE Printing"
         description="Explore professional graphic design services at MSE Printing. From concept to creation, we bring your brand's vision to life."
-        canonical="https://www.mseprinting.com/graphic-design"
       />
 
       <FullBackgroundContainerZERO>

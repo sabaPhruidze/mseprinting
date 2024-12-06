@@ -39,7 +39,6 @@ export default function Signs() {
       <HelmetComponent
         title="Signs and Banners | MSE Printing"
         description="Discover MSE Printing's high-quality signs and banners for all business needs. Custom signage solutions with fast online ordering."
-        canonical="https://www.mseprinting.com/signs"
       />
 
       <FullBackgroundContainerZERO>

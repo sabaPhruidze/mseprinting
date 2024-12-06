@@ -40,7 +40,6 @@ const fetchDataMap: Record<
     image: any;
     title: string; // SEO title
     description: string; // SEO description
-    canonical: string; // Canonical URL
   }
 > = {
   "custom-packaging": {
@@ -49,7 +48,6 @@ const fetchDataMap: Record<
     title: "Custom Packaging | MSE Printing",
     description:
       "Create unique, branded packaging solutions with MSE Printing's custom packaging services.",
-    canonical: "https://www.mseprinting.com/labels-packaging/custom-packaging",
   },
   "premium-private-labels": {
     fetchData: fetchPremiumPrivateLabelsData,
@@ -57,8 +55,6 @@ const fetchDataMap: Record<
     title: "Premium Private Labels | MSE Printing",
     description:
       "Elevate your brand with premium private labels by MSE Printing, crafted to impress.",
-    canonical:
-      "https://www.mseprinting.com/labels-packaging/premium-private-labels",
   },
   "product-promotional-labels": {
     fetchData: fetchProductPromotionalLabelsData,
@@ -66,8 +62,6 @@ const fetchDataMap: Record<
     title: "Product & Promotional Labels | MSE Printing",
     description:
       "Promote your brand with custom product and promotional labels from MSE Printing.",
-    canonical:
-      "https://www.mseprinting.com/labels-packaging/product-promotional-labels",
   },
   "qr-codes-no-touch-options": {
     fetchData: fetchQRCodesNoTouchOptionsData,
@@ -75,8 +69,6 @@ const fetchDataMap: Record<
     title: "QR Codes & No-Touch Options | MSE Printing",
     description:
       "Enhance accessibility with QR codes and no-touch options provided by MSE Printing.",
-    canonical:
-      "https://www.mseprinting.com/labels-packaging/qr-codes-no-touch-options",
   },
   "safety-labels": {
     fetchData: fetchSafetyLabelsData,
@@ -84,7 +76,6 @@ const fetchDataMap: Record<
     title: "Safety Labels | MSE Printing",
     description:
       "Ensure safety and compliance with custom safety labels from MSE Printing.",
-    canonical: "https://www.mseprinting.com/labels-packaging/safety-labels",
   },
   "short-run-packaging": {
     fetchData: fetchShortRunPackagingData,
@@ -92,8 +83,6 @@ const fetchDataMap: Record<
     title: "Short-Run Packaging | MSE Printing",
     description:
       "Get flexible, small-batch packaging solutions with MSE Printing's short-run packaging services.",
-    canonical:
-      "https://www.mseprinting.com/labels-packaging/short-run-packaging",
   },
   "stickers-decals": {
     fetchData: fetchStickersDecalsData,
@@ -101,7 +90,6 @@ const fetchDataMap: Record<
     title: "Stickers & Decals | MSE Printing",
     description:
       "Brand your products and spaces with custom stickers and decals by MSE Printing.",
-    canonical: "https://www.mseprinting.com/labels-packaging/stickers-decals",
   },
 };
 

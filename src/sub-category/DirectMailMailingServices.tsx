@@ -43,7 +43,6 @@ const fetchDataMap: Record<
     };
     title: string; // SEO title for each service
     description: string; // SEO description for each service
-    canonical: string;
   }
 > = {
   "advanced-mailing-services": {
@@ -52,8 +51,6 @@ const fetchDataMap: Record<
     title: "Advanced Mailing Services | MSE Printing",
     description:
       "Discover MSE Printing's Advanced Mailing Services for tailored marketing solutions. Professional, reliable, and effective mailing strategies.",
-    canonical:
-      "https://www.mseprinting.com/direct-mail-mailing-services/advanced-mailing-services",
   },
   "every-door-direct-mail": {
     fetchData: fetchEveryDoorDirectMailData,
@@ -61,8 +58,6 @@ const fetchDataMap: Record<
     title: "Every Door Direct Mail | MSE Printing",
     description:
       "Reach every door with MSE Printing's Direct Mail services. A cost-effective way to connect with your local audience.",
-    canonical:
-      "https://www.mseprinting.com/direct-mail-mailing-services/every-door-direct-mail",
   },
   "kitting-and-fulfillment": {
     fetchData: fetchKittingAndFulfillmentData,
@@ -70,8 +65,6 @@ const fetchDataMap: Record<
     title: "Kitting and Fulfillment | MSE Printing",
     description:
       "Optimize your business logistics with MSE Printing's Kitting and Fulfillment services. Efficient, customized solutions.",
-    canonical:
-      "https://www.mseprinting.com/direct-mail-mailing-services/kitting-and-fulfillment",
   },
   "list-management-services": {
     fetchData: fetchListManagementServicesData,
@@ -79,8 +72,6 @@ const fetchDataMap: Record<
     title: "List Management Services | MSE Printing",
     description:
       "Manage your mailing lists efficiently with MSE Printing's List Management Services. Accurate, targeted, and organized.",
-    canonical:
-      "https://www.mseprinting.com/direct-mail-mailing-services/list-management-services",
   },
   "standard-direct-mail": {
     fetchData: fetchStandartDirectMailData,
@@ -88,8 +79,6 @@ const fetchDataMap: Record<
     title: "Standard Direct Mail | MSE Printing",
     description:
       "Send impactful messages with MSE Printing's Standard Direct Mail services. Trusted solutions for effective communication.",
-    canonical:
-      "https://www.mseprinting.com/direct-mail-mailing-services/standard-direct-mail",
   },
   "targeted-direct-mail": {
     fetchData: fetchTargetedDirectMailData,
@@ -97,8 +86,6 @@ const fetchDataMap: Record<
     title: "Targeted Direct Mail | MSE Printing",
     description:
       "Deliver personalized messages with MSE Printing's Targeted Direct Mail services. Precise, engaging, and effective marketing.",
-    canonical:
-      "https://www.mseprinting.com/direct-mail-mailing-services/targeted-direct-mail",
   },
 };
 

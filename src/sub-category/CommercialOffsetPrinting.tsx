@@ -69,7 +69,6 @@ export default function CommercialOffsetPrinting() {
       <HelmetComponent
         title="Commercial Offset Printing | MSE Printing"
         description="Explore high-quality commercial offset printing solutions by MSE Printing. We specialize in custom print projects that meet the highest industry standards."
-        canonical="https://www.mseprinting.com/commercial-offset-printing"
       />
 
       <FullBackgroundContainerZERO>
