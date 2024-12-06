@@ -91,9 +91,12 @@ export default function RequestQuote() {
     [rqSubmit, uploadedFiles, selectedRepresentative, dispatching, navigate]
   );
 
-  const handleFilesUpload = useCallback((files: string[]) => {
-    setUploadedFiles(files);
-  }, []);
+  const handleFilesUpload = useCallback(
+    (value: React.SetStateAction<string[]>) => {
+      setUploadedFiles(value); // Pass the value directly to the state setter
+    },
+    []
+  );
 
   const representatives = [
     { id: "rep1", name: "Doug Snider" },

@@ -13,7 +13,7 @@ import { Progress } from "antd"; // Import Ant Design Progress component
 import JSZip from "jszip";
 
 interface Props {
-  setUploadedFiles: (files: string[]) => void;
+  setUploadedFiles: React.Dispatch<React.SetStateAction<string[]>>;
   firstname: string | null;
   lastname: string | null;
 }
@@ -108,7 +108,7 @@ const SendFileDetailsRight: React.FC<Props> = ({
 
       try {
         const downloadURL = await uploadToFirebase(zipFile);
-        setUploadedFiles([downloadURL]);
+        setUploadedFiles((prev) => [...prev, downloadURL]); // Append new URL safely
         dispatching("REQUEST_QUOTE_CHANGE", true);
         setUploadingText("Uploaded");
       } catch (error) {
