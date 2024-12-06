@@ -44,6 +44,7 @@ export default function PrintingCopying() {
       <HelmetComponent
         title="Printing & Copying Services | MSE Printing"
         description="Explore MSE Printing’s professional printing and copying services. High-quality solutions for business cards, brochures, and more."
+        canonical="https://www.mseprinting.com/printing-copying"
       />
 
       {/* Full-screen section with background image using ImageWithSEO */}

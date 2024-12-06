@@ -41,6 +41,7 @@ export default function MCBooklets() {
       <HelmetComponent
         title="Manuals, Catalogs & Booklets | MSE Printing"
         description="Order professional manuals, catalogs, and booklets customized to your brand at MSE Printing. Enhance your presentation with high-quality materials."
+        canonical="https://www.mseprinting.com/manuals-catalogs-booklets"
       />
 
       {/* Full-screen section with background image using ImageWithSEO */}

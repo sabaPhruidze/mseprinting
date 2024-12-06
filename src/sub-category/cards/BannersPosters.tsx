@@ -39,6 +39,7 @@ export default function BannersPosters() {
       <HelmetComponent
         title="Banners & Posters | MSE Printing"
         description="Explore our high-quality banners and posters that make a lasting impact. Order your custom banners and posters today at MSE Printing."
+        canonical="https://www.mseprinting.com/banners-posters"
       />
 
       {/* Full-screen section with background image using ImageWithSEO */}

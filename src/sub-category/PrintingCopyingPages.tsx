@@ -48,6 +48,7 @@ const serviceDataMap: Record<
     image: any;
     title: string; // SEO title
     description: string; // SEO description
+    canonical: string;
   }
 > = {
   "business-annual-reports": {
@@ -56,6 +57,8 @@ const serviceDataMap: Record<
     title: "Business Annual Reports | MSE Printing",
     description:
       "Professional business annual report printing services by MSE Printing for comprehensive, detailed reports.",
+    canonical:
+      "https://www.mseprinting.com/printing-copying/business-annual-reports",
   },
   "business-cards-stationery": {
     fetchData: fetchBusinessCardsStationeryData,
@@ -63,6 +66,8 @@ const serviceDataMap: Record<
     title: "Business Cards & Stationery | MSE Printing",
     description:
       "Create a lasting impression with custom business cards and stationery by MSE Printing.",
+    canonical:
+      "https://www.mseprinting.com/printing-copying/Business-cards-stationery",
   },
   "newsletters-flyers-rack-cards": {
     fetchData: fetchNewslettersFlyersRackCardsData,
@@ -70,6 +75,8 @@ const serviceDataMap: Record<
     title: "Newsletters, Flyers & Rack Cards | MSE Printing",
     description:
       "Engage your audience with high-quality newsletters, flyers, and rack cards from MSE Printing.",
+    canonical:
+      "https://www.mseprinting.com/printing-copying/newsletters-flyers-rack-cards",
   },
   "post-cards-direct-mailers": {
     fetchData: fetchPostCardsDirectMailersData,
@@ -77,6 +84,8 @@ const serviceDataMap: Record<
     title: "Post Cards & Direct Mailers | MSE Printing",
     description:
       "Reach out with impactful post cards and direct mailers designed and printed by MSE Printing.",
+    canonical:
+      "https://www.mseprinting.com/printing-copying/post-cards-direct-mailers",
   },
   "presentation-training-materials": {
     fetchData: fetchPresentationTrainingMaterialsData,
@@ -84,6 +93,8 @@ const serviceDataMap: Record<
     title: "Presentation & Training Materials | MSE Printing",
     description:
       "Ensure professional presentations with training materials crafted by MSE Printing.",
+    canonical:
+      "https://www.mseprinting.com/printing-copying/presentation-training-materials",
   },
   "apparel-uniforms": {
     fetchData: fetchApparelUniformsData,
@@ -91,6 +102,7 @@ const serviceDataMap: Record<
     title: "Apparel & Uniforms | MSE Printing",
     description:
       "Customize apparel and uniforms for your team with MSE Printing's printing solutions.",
+    canonical: "https://www.mseprinting.com/printing-copying/apparel-uniforms",
   },
   "book-printing": {
     fetchData: fetchBookPrintingData,
@@ -98,6 +110,7 @@ const serviceDataMap: Record<
     title: "Book Printing | MSE Printing",
     description:
       "Publish your book with MSE Printing’s high-quality book printing services.",
+    canonical: "https://www.mseprinting.com/printing-copying/book-printing",
   },
   "cards-invitations": {
     fetchData: fetchCardsAndInvitationsData,
@@ -105,6 +118,7 @@ const serviceDataMap: Record<
     title: "Cards & Invitations | MSE Printing",
     description:
       "Create memorable cards and invitations for any occasion with MSE Printing.",
+    canonical: "https://www.mseprinting.com/printing-copying/cards-invitations",
   },
   "labels-stickers-decals": {
     fetchData: fetchLabelsStickersDecalsData,
@@ -112,6 +126,8 @@ const serviceDataMap: Record<
     title: "Labels, Stickers & Decals | MSE Printing",
     description:
       "Brand your products with custom labels, stickers, and decals by MSE Printing.",
+    canonical:
+      "https://www.mseprinting.com/printing-copying/labels-stickers-decals",
   },
   "legal-printing": {
     fetchData: fetchLegalCopyingData,
@@ -119,6 +135,7 @@ const serviceDataMap: Record<
     title: "Legal Printing | MSE Printing",
     description:
       "Reliable legal printing and copying services by MSE Printing for all your documentation needs.",
+    canonical: "https://www.mseprinting.com/printing-copying/legal-printing",
   },
   "poster-printing": {
     fetchData: fetchPosterPrintingData,
@@ -126,6 +143,7 @@ const serviceDataMap: Record<
     title: "Poster Printing | MSE Printing",
     description:
       "Print vibrant posters for events, promotions, and more with MSE Printing.",
+    canonical: "https://www.mseprinting.com/printing-copying/poster-printing",
   },
 };
 
@@ -175,6 +193,7 @@ export default function PrintingCopyingPages() {
         <HelmetComponent
           title={serviceConfig.title}
           description={serviceConfig.description}
+          canonical={serviceConfig.canonical}
         />
       )}
 
