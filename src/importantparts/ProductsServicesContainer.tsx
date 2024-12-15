@@ -48,7 +48,20 @@ export default function ProductsServicesContainer() {
     dispatching("SHOW_PRODUCT_SERVICES_WINDOW_FROM_BOX", false);
     setHoveredItem(null);
   }, [dispatching]);
+
   const navigate = useNavigate();
+
+  const handleClick = useCallback(
+    (item: string) => {
+      if (item === "Online Ordering Portals") {
+        navigate("/online-ordering-portals");
+      } else if (item === "Graphic Design") {
+        navigate("/graphic-design");
+      }
+    },
+    [navigate]
+  );
+
   const getRightSideData = useCallback(() => {
     if (!productsAndServicesData) return [];
 
@@ -60,13 +73,9 @@ export default function ProductsServicesContainer() {
       case "Signs":
         return productsAndServicesData.Signs || [];
       case "Online Ordering Portals":
-        return productsAndServicesData.OnlineOrderingPortals
-          ? [productsAndServicesData.OnlineOrderingPortals]
-          : [];
+        return [];
       case "Graphic Design":
-        return productsAndServicesData.GraphicDesign
-          ? [productsAndServicesData.GraphicDesign]
-          : [];
+        return [];
       case "Labels & Packaging":
         return productsAndServicesData.LabelsAndPackaging || [];
       case "Marketing Services":
@@ -93,7 +102,11 @@ export default function ProductsServicesContainer() {
     >
       <LeftSideContainer>
         {leftSideItems.map((data, index) => (
-          <LeftSideText key={index} onMouseEnter={() => handleMouseEnter(data)}>
+          <LeftSideText
+            key={index}
+            onMouseEnter={() => handleMouseEnter(data)}
+            onClick={() => handleClick(data)}
+          >
             {data}
           </LeftSideText>
         ))}
@@ -108,3 +121,12 @@ export default function ProductsServicesContainer() {
     </ProductsServicesContainerStyle>
   );
 }
+
+// case "Online Ordering Portals":
+//   return productsAndServicesData.OnlineOrderingPortals
+//     ? [productsAndServicesData.OnlineOrderingPortals]
+//     : [];
+// case "Graphic Design":
+//   return productsAndServicesData.GraphicDesign
+//     ? [productsAndServicesData.GraphicDesign]
+//     : [];

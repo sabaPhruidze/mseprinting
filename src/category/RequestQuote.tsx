@@ -83,7 +83,6 @@ export default function RequestQuote() {
       try {
         await sendEmail(dataWithFiles);
         dispatching("REQUEST_QUOTE_SUCCESS_SEND", true);
-
         navigate("/");
       } catch (error) {
         console.error("Error sending email:", error);

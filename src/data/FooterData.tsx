@@ -8,4 +8,5 @@ export const BlogAndPoliciesData: {
   { name: "Terms & Conditions", link: "/terms-conditions" },
   { name: "EOE & Diversity", link: "/eoe-diversity" },
   { name: "Environmental Message", link: "/environmental-message" },
+  { name: "Sitemap", link: "/sitemap" },
 ];

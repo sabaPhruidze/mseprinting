@@ -222,7 +222,7 @@ export default function Footer() {
           {BlogAndPoliciesData.map((data) => (
             <TermsConditionsLink key={data.name}>
               <NavigateAndScroll path={data.link}>
-                {data.name} {data.name !== "Environmental Message" ? "|" : ""}
+                {data.name} {data.name !== "Sitemap" ? "|" : ""}
               </NavigateAndScroll>
             </TermsConditionsLink>
           ))}
