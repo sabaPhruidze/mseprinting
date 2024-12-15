@@ -24,7 +24,7 @@ export interface InitialState {
   SearchQuery: string;
   SearchResults: SearchResult[];
   SearchDone: boolean;
-  rqSubmit: boolean;
+
   rqSSend: boolean;
 }
 
@@ -40,7 +40,7 @@ const initialState: InitialState = {
   SearchQuery: "",
   SearchResults: [],
   SearchDone: false,
-  rqSubmit: false,
+
   rqSSend: false,
 };
 
@@ -87,9 +87,6 @@ const reducer = (state: typeof initialState, action: ActionType) => {
 
     case "SEARCH_DONE":
       return { ...state, SearchDone: action.payload };
-
-    case "REQUEST_QUOTE_CHANGE":
-      return { ...state, rqSubmit: action.payload };
 
     case "REQUEST_QUOTE_SUCCESS_SEND":
       return { ...state, rqSSend: action.payload };

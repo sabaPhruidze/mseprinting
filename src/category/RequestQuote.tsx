@@ -41,7 +41,7 @@ export default function RequestQuote() {
   }
 
   const { state, dispatching } = context;
-  const { rqSubmit } = state;
+
   const navigate = useNavigate();
 
   const defaultValues = useMemo(() => {
@@ -83,13 +83,13 @@ export default function RequestQuote() {
       try {
         await sendEmail(dataWithFiles);
         dispatching("REQUEST_QUOTE_SUCCESS_SEND", true);
-        dispatching("REQUEST_QUOTE_CHANGE", false);
+
         navigate("/");
       } catch (error) {
         console.error("Error sending email:", error);
       }
     },
-    [rqSubmit, uploadedFiles, selectedRepresentative, dispatching, navigate]
+    [uploadedFiles, selectedRepresentative, dispatching, navigate]
   );
 
   const handleFilesUpload = useCallback((newFiles: string[]) => {
