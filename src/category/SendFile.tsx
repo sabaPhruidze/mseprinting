@@ -42,7 +42,7 @@ export default function SendFile() {
   const [uploadedFiles, setUploadedFiles] = useState<string[]>([]);
   const [selectedRepresentative, setSelectedRepresentative] =
     useState("No preference");
-  const { rqSubmit } = state;
+
   const navigate = useNavigate();
 
   const defaultValues = useMemo(() => {
@@ -84,7 +84,7 @@ export default function SendFile() {
       try {
         await sendEmailSecond(dataWithFiles);
         dispatching("REQUEST_QUOTE_SUCCESS_SEND", true);
-        dispatching("REQUEST_QUOTE_CHANGE", false);
+
         navigate("/");
       } catch (error) {
         console.error("Error sending email:", error);
