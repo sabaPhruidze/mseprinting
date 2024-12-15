@@ -5,55 +5,38 @@ const sendEmailTemplate = (
   data: RQFormData,
   templateId: string
 ): Promise<EmailJSResponseStatus> => {
-  const form = document.createElement("form");
-  form.style.display = "none";
+  // Create templateParams with only the required fields
+  const templateParams = {
+    firstname: data.firstname || "",
+    lastname: data.lastname || "",
+    email: data.email || "",
+    phone: data.phone || "",
+    jobTitle: data.jobTitle || "",
+    company: data.company || "",
+    projectName: data.projectName || "",
+    quantity: data.quantity?.toString() || "",
+    description: data.description || "",
+    dueDate: data.dueDate || "",
+    terms: data.terms?.toString() || "",
+    representative: data.representative || "",
+    file1: data.uploadedFiles?.[0] || "", // Only the first file
+  };
 
-  form.appendChild(createInput("firstname", data.firstname));
-  form.appendChild(createInput("lastname", data.lastname));
-  form.appendChild(createInput("email", data.email));
-  form.appendChild(createInput("phone", data.phone));
-  form.appendChild(createInput("jobTitle", data.jobTitle));
-  form.appendChild(createInput("company", data.company));
-  form.appendChild(createInput("projectName", data.projectName));
-  form.appendChild(createInput("quantity", data.quantity.toString()));
-  form.appendChild(createInput("description", data.description));
-  form.appendChild(createInput("dueDate", data.dueDate));
-  form.appendChild(createInput("terms", data.terms.toString()));
-  form.appendChild(createInput("representative", data.representative));
-
-  // Append all file URLs, up to 8
-  data.uploadedFiles?.slice(0, 8).forEach((fileUrl: string, index: number) => {
-    form.appendChild(createInput(`file${index + 1}`, fileUrl));
-  });
-
-  document.body.appendChild(form);
-
-  return emailjs
-    .sendForm("service_murz7qv", templateId, form, "n0fNJ32On4BeZAq6d")
-    .then((result: EmailJSResponseStatus) => result)
-    .catch((error) => {
-      console.error("Error sending email:", error.text);
-      throw error;
-    })
-    .finally(() => {
-      document.body.removeChild(form);
-    });
+  // Send email using EmailJS
+  return emailjs.send(
+    "service_murz7qv", // Replace with your Service ID
+    templateId, // Replace with your Template ID
+    templateParams,
+    "n0fNJ32On4BeZAq6d" // Replace with your Public Key
+  );
 };
 
 export const sendEmail = (data: RQFormData): Promise<EmailJSResponseStatus> => {
-  return sendEmailTemplate(data, "template_rbodn39");
+  return sendEmailTemplate(data, "template_rbodn39"); // Template for Request a Quote
 };
 
 export const sendEmailSecond = (
   data: RQFormData
 ): Promise<EmailJSResponseStatus> => {
-  return sendEmailTemplate(data, "template_z7suxf7");
-};
-
-const createInput = (name: string, value: string): HTMLInputElement => {
-  const input = document.createElement("input");
-  input.setAttribute("type", "hidden");
-  input.setAttribute("name", name);
-  input.setAttribute("value", value);
-  return input;
+  return sendEmailTemplate(data, "template_z7suxf7"); // Template for Send File
 };

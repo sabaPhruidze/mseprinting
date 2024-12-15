@@ -1,6 +1,6 @@
 import { useContext, useMemo, useState, useCallback, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import HelmetComponent from "../importantparts/Helmet"; // Import HelmetComponent for SEO
+import HelmetComponent from "../importantparts/Helmet";
 import {
   RowContainer,
   RQPartBox,
@@ -74,29 +74,27 @@ export default function RequestQuote() {
   });
 
   const onSubmitRQ = useCallback(
-    (data: FormData) => {
-      if (rqSubmit && uploadedFiles.length > 0 && selectedRepresentative) {
-        const dataWithFiles = {
-          ...data,
-          uploadedFiles,
-          representative: selectedRepresentative,
-        };
-        sendEmail(dataWithFiles).then(() => {
-          dispatching("REQUEST_QUOTE_SUCCESS_SEND", true);
-          dispatching("REQUEST_QUOTE_CHANGE", false);
-          navigate("/");
-        });
+    async (data: FormData) => {
+      const dataWithFiles = {
+        ...data,
+        uploadedFiles,
+        representative: selectedRepresentative,
+      };
+      try {
+        await sendEmail(dataWithFiles);
+        dispatching("REQUEST_QUOTE_SUCCESS_SEND", true);
+        dispatching("REQUEST_QUOTE_CHANGE", false);
+        navigate("/");
+      } catch (error) {
+        console.error("Error sending email:", error);
       }
     },
     [rqSubmit, uploadedFiles, selectedRepresentative, dispatching, navigate]
   );
 
-  const handleFilesUpload = useCallback(
-    (value: React.SetStateAction<string[]>) => {
-      setUploadedFiles(value); // Pass the value directly to the state setter
-    },
-    []
-  );
+  const handleFilesUpload = useCallback((newFiles: string[]) => {
+    setUploadedFiles((prevFiles) => [...prevFiles, ...newFiles]);
+  }, []);
 
   const representatives = [
     { id: "rep1", name: "Doug Snider" },
@@ -113,13 +111,12 @@ export default function RequestQuote() {
 
   return (
     <GlobalContainerColumn>
-      {/* HelmetComponent for SEO */}
       <HelmetComponent
         title="Request a Quote | MSE Printing"
         description="Submit a quote request for custom printing and marketing services with MSE Printing. Our team will provide a tailored solution for your business needs."
       />
 
-      <RQForm onSubmit={handleSubmit(onSubmitRQ)}>
+      <RQForm onSubmit={handleSubmit(onSubmitRQ)} autoComplete="off">
         <GlobalBoxColumnStart>
           <RQPartBox>
             STEP 1 OF 2 <RQSpecialPart>PERSONAL INFORMATION</RQSpecialPart>

@@ -29,9 +29,12 @@ const SFDetailsLeft: React.FC<RQProjectDetailsLeftProps> = ({
   return (
     <>
       <RQFormGroup>
+        {/* Even if no label references it, adding an id is good practice */}
         <RQInput
+          id="projectName"
           placeholder="Project Name *"
           type="text"
+          autoComplete="off"
           {...collectInfoLeft("projectName", { required: true })}
         />
         {errors.projectName && (
@@ -41,8 +44,10 @@ const SFDetailsLeft: React.FC<RQProjectDetailsLeftProps> = ({
 
       <RQFormGroup>
         <RQInput
+          id="quantity"
           placeholder="Quantity *"
           type="text"
+          autoComplete="off"
           {...collectInfoLeft("quantity", { required: true })}
         />
         {errors.quantity && <ErrorMessage>This field is required</ErrorMessage>}
@@ -52,6 +57,7 @@ const SFDetailsLeft: React.FC<RQProjectDetailsLeftProps> = ({
         <RQFormLabel htmlFor="description">Project Description *</RQFormLabel>
         <RQFormTextarea
           id="description"
+          autoComplete="off"
           {...collectInfoLeft("description", {
             required: true,
             maxLength: 700,
@@ -67,6 +73,7 @@ const SFDetailsLeft: React.FC<RQProjectDetailsLeftProps> = ({
         <RQInput
           id="dueDate"
           type="date"
+          autoComplete="off"
           {...collectInfoLeft("dueDate", { required: true })}
           style={{ cursor: "pointer" }}
         />
@@ -76,6 +83,7 @@ const SFDetailsLeft: React.FC<RQProjectDetailsLeftProps> = ({
       <div style={{ display: "flex", flexDirection: "column" }}>
         <RQFormGroup style={{ display: "flex", alignItems: "center" }}>
           <input
+            id="terms" // Add id to match the label's htmlFor
             type="checkbox"
             {...collectInfoLeft("terms", { required: true })}
             style={{ margin: "0 5px 2px 0" }}

@@ -9,7 +9,7 @@ export type RQUseFormFirstPart = {
 export type RQUseFormSecondPart = {
   jobTitle: string;
   company: string;
-  extention: string;
+  extension: string;
 };
 
 export type RQUseFormThirdPart = {
@@ -91,7 +91,7 @@ export const RQDATASECONDPART: FormField<RQUseFormSecondPart>[] = [
   },
   {
     placeholder: "Extension",
-    registerName: "extention",
+    registerName: "extension",
     required: false,
     message: "",
     value: /^.*$/,

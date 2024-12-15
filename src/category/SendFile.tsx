@@ -1,5 +1,5 @@
 import { useContext, useMemo, useState, useCallback, useEffect } from "react";
-import HelmetComponent from "../importantparts/Helmet"; // Import HelmetComponent for SEO
+import HelmetComponent from "../importantparts/Helmet";
 import { useNavigate, Navigate } from "react-router-dom";
 import {
   RowContainer,
@@ -42,7 +42,6 @@ export default function SendFile() {
   const [uploadedFiles, setUploadedFiles] = useState<string[]>([]);
   const [selectedRepresentative, setSelectedRepresentative] =
     useState("No preference");
-
   const { rqSubmit } = state;
   const navigate = useNavigate();
 
@@ -76,29 +75,27 @@ export default function SendFile() {
   });
 
   const onSubmitSF = useCallback(
-    (data: FormData) => {
-      if (rqSubmit && uploadedFiles.length > 0 && selectedRepresentative) {
-        const dataWithFiles = {
-          ...data,
-          uploadedFiles,
-          representative: selectedRepresentative,
-        };
-        sendEmailSecond(dataWithFiles).then(() => {
-          dispatching("REQUEST_QUOTE_SUCCESS_SEND", true);
-          dispatching("REQUEST_QUOTE_CHANGE", false);
-          navigate("/");
-        });
+    async (data: FormData) => {
+      const dataWithFiles = {
+        ...data,
+        uploadedFiles,
+        representative: selectedRepresentative,
+      };
+      try {
+        await sendEmailSecond(dataWithFiles);
+        dispatching("REQUEST_QUOTE_SUCCESS_SEND", true);
+        dispatching("REQUEST_QUOTE_CHANGE", false);
+        navigate("/");
+      } catch (error) {
+        console.error("Error sending email:", error);
       }
     },
-    [rqSubmit, uploadedFiles, selectedRepresentative, dispatching, navigate]
+    [uploadedFiles, selectedRepresentative, dispatching, navigate]
   );
 
-  const handleFilesUpload = useCallback(
-    (value: React.SetStateAction<string[]>) => {
-      setUploadedFiles(value); // Pass the value directly to the state setter
-    },
-    []
-  );
+  const handleFilesUpload = useCallback((newFiles: string[]) => {
+    setUploadedFiles((prev) => [...prev, ...newFiles]);
+  }, []);
 
   const representatives = [
     { id: "rep1", name: "Doug Snider" },
@@ -120,7 +117,7 @@ export default function SendFile() {
         description="Easily send files to MSE Printing for your project. Provide project details, upload files, and select a representative for assistance."
       />
 
-      <RQForm onSubmit={handleSubmit(onSubmitSF)}>
+      <RQForm onSubmit={handleSubmit(onSubmitSF)} autoComplete="off">
         <GlobalBoxColumnStart>
           <RQPartBox>
             STEP 1 OF 2 <RQSpecialPart>ABOUT PROJECT</RQSpecialPart>
