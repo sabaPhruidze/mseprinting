@@ -52,6 +52,7 @@ import MarketingServices from "./sub-category/MarketingServices";
 import TradeShowEvents from "./sub-category/TradeShowEvents";
 import FulfillmentServices from "./sub-category/FullfillmentServices";
 import IndustrySpecific from "./sub-category/IndustrySpecific";
+import Sitemap from "./sub-category/Sitemap";
 
 function App() {
   const router = createBrowserRouter(
@@ -312,6 +313,7 @@ function App() {
           path="/environmental-message"
           element={<EnvironmentalMessage />}
         />
+        <Route path="/sitemap" element={<Sitemap />} />
       </Route>
     )
   );
