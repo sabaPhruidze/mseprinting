@@ -378,3 +378,17 @@ export const FullScreenButton = styled(GlobalButton)`
     color: #fff;
   }
 `;
+export const FloatedImageContainer = styled.div`
+  float: right;
+  margin-left: 20px;
+  max-width: 400px;
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  @media (max-width: 700px) {
+    margin-left: 0px;
+  }
+`;

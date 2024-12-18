@@ -1,5 +1,6 @@
 import { useEffect, useState, useMemo, useCallback } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+
 import {
   GlobalContainerColumn,
   GlobalPart,
@@ -9,10 +10,13 @@ import {
   FullScreenTitle,
   FullScreenButton,
   GlobalMainContent,
+  FloatedImageContainer,
 } from "../style/GlobalStyle";
 import ImageWithSEO from "../importantparts/ImageWithCEO";
-import HelmetComponent from "../importantparts/Helmet"; // Import HelmetComponent for SEO
+import HelmetComponent from "../importantparts/Helmet";
 import { SubCategoryCommonTypes } from "../types/DataTypes";
+
+// Fetch data imports
 import {
   fetchBusinessAnnualReportsData,
   fetchBusinessCardsStationeryData,
@@ -26,6 +30,8 @@ import {
   fetchLegalCopyingData,
   fetchPosterPrintingData,
 } from "../data/sub-category data/AllSubCategoryData";
+
+// Main image imports
 import {
   BUSINESS_ANNUAL_REPORTS_IMAGE,
   BUSINESS_CARDS_STATIONERY_IMAGE,
@@ -38,21 +44,34 @@ import {
   LABELS_STICKERS_DECALS_IMAGE,
   LEGAL_COPYING_IMAGE,
   POSTER_PRINTING_IMAGE,
+  APPAREL_UNIFORMS_RIGHT_IMAGE,
+  BOOK_PRINTING_RIGHT_IMAGE,
+  BUSINESS_ANNUAL_REPORTS_RIGHT_IMAGE,
+  BUSINESS_CARDS_STATIONERY_RIGHT_IMAGE,
+  CARDS_INVITATIONS_RIGHT_IMAGE,
+  LABELS_STICKERS_DECALS_RIGHT_IMAGE,
+  LEGAL_COPYING_RIGHT_IMAGE,
+  NEWSLETTERS_FLYERS_RACK_CARDS_RIGHT_IMAGE,
+  POSTCARDS_DIRECT_MAILERS_RIGHT_IMAGE,
+  POSTER_PRINTING_RIGHT_IMAGE,
+  PRESENTATION_TRAINING_MATERIALS_RIGHT_IMAGE,
 } from "../data/sub-category data/ImageWithCEOData";
 
-// Map for fetching functions, image data, and SEO metadata
+// Define serviceDataMap
 const serviceDataMap: Record<
   string,
   {
     fetchData: () => Promise<SubCategoryCommonTypes | null>;
     image: any;
-    title: string; // SEO title
-    description: string; // SEO description
+    imageRight?: any;
+    title: string;
+    description: string;
   }
 > = {
   "business-annual-reports": {
     fetchData: fetchBusinessAnnualReportsData,
     image: BUSINESS_ANNUAL_REPORTS_IMAGE,
+    imageRight: BUSINESS_ANNUAL_REPORTS_RIGHT_IMAGE,
     title: "Business Annual Reports | MSE Printing",
     description:
       "Professional business annual report printing services by MSE Printing for comprehensive, detailed reports.",
@@ -60,6 +79,7 @@ const serviceDataMap: Record<
   "business-cards-stationery": {
     fetchData: fetchBusinessCardsStationeryData,
     image: BUSINESS_CARDS_STATIONERY_IMAGE,
+    imageRight: BUSINESS_CARDS_STATIONERY_RIGHT_IMAGE,
     title: "Business Cards & Stationery | MSE Printing",
     description:
       "Create a lasting impression with custom business cards and stationery by MSE Printing.",
@@ -67,6 +87,7 @@ const serviceDataMap: Record<
   "newsletters-flyers-rack-cards": {
     fetchData: fetchNewslettersFlyersRackCardsData,
     image: NEWSLETTERS_FLYERS_RACK_CARDS_IMAGE,
+    imageRight: NEWSLETTERS_FLYERS_RACK_CARDS_RIGHT_IMAGE,
     title: "Newsletters, Flyers & Rack Cards | MSE Printing",
     description:
       "Engage your audience with high-quality newsletters, flyers, and rack cards from MSE Printing.",
@@ -74,6 +95,7 @@ const serviceDataMap: Record<
   "post-cards-direct-mailers": {
     fetchData: fetchPostCardsDirectMailersData,
     image: POSTCARDS_DIRECT_MAILERS_IMAGE,
+    imageRight: POSTCARDS_DIRECT_MAILERS_RIGHT_IMAGE,
     title: "Post Cards & Direct Mailers | MSE Printing",
     description:
       "Reach out with impactful post cards and direct mailers designed and printed by MSE Printing.",
@@ -81,6 +103,7 @@ const serviceDataMap: Record<
   "presentation-training-materials": {
     fetchData: fetchPresentationTrainingMaterialsData,
     image: PRESENTATION_TRAINING_MATERIALS_IMAGE,
+    imageRight: PRESENTATION_TRAINING_MATERIALS_RIGHT_IMAGE,
     title: "Presentation & Training Materials | MSE Printing",
     description:
       "Ensure professional presentations with training materials crafted by MSE Printing.",
@@ -88,6 +111,7 @@ const serviceDataMap: Record<
   "apparel-uniforms": {
     fetchData: fetchApparelUniformsData,
     image: APPAREL_UNIFORMS_IMAGE,
+    imageRight: APPAREL_UNIFORMS_RIGHT_IMAGE,
     title: "Apparel & Uniforms | MSE Printing",
     description:
       "Customize apparel and uniforms for your team with MSE Printing's printing solutions.",
@@ -95,6 +119,7 @@ const serviceDataMap: Record<
   "book-printing": {
     fetchData: fetchBookPrintingData,
     image: BOOK_PRINTING_IMAGE,
+    imageRight: BOOK_PRINTING_RIGHT_IMAGE,
     title: "Book Printing | MSE Printing",
     description:
       "Publish your book with MSE Printing’s high-quality book printing services.",
@@ -102,6 +127,7 @@ const serviceDataMap: Record<
   "cards-invitations": {
     fetchData: fetchCardsAndInvitationsData,
     image: CARDS_INVITATIONS_IMAGE,
+    imageRight: CARDS_INVITATIONS_RIGHT_IMAGE,
     title: "Cards & Invitations | MSE Printing",
     description:
       "Create memorable cards and invitations for any occasion with MSE Printing.",
@@ -109,6 +135,7 @@ const serviceDataMap: Record<
   "labels-stickers-decals": {
     fetchData: fetchLabelsStickersDecalsData,
     image: LABELS_STICKERS_DECALS_IMAGE,
+    imageRight: LABELS_STICKERS_DECALS_RIGHT_IMAGE,
     title: "Labels, Stickers & Decals | MSE Printing",
     description:
       "Brand your products with custom labels, stickers, and decals by MSE Printing.",
@@ -116,6 +143,7 @@ const serviceDataMap: Record<
   "legal-printing": {
     fetchData: fetchLegalCopyingData,
     image: LEGAL_COPYING_IMAGE,
+    imageRight: LEGAL_COPYING_RIGHT_IMAGE,
     title: "Legal Printing | MSE Printing",
     description:
       "Reliable legal printing and copying services by MSE Printing for all your documentation needs.",
@@ -123,13 +151,14 @@ const serviceDataMap: Record<
   "poster-printing": {
     fetchData: fetchPosterPrintingData,
     image: POSTER_PRINTING_IMAGE,
+    imageRight: POSTER_PRINTING_RIGHT_IMAGE,
     title: "Poster Printing | MSE Printing",
     description:
       "Print vibrant posters for events, promotions, and more with MSE Printing.",
   },
 };
 
-// Define type for valid keys in serviceDataMap
+// A styled component for the right-floating image
 type ServiceKeyType = keyof typeof serviceDataMap;
 
 export default function PrintingCopyingPages() {
@@ -170,7 +199,6 @@ export default function PrintingCopyingPages() {
 
   return (
     <div>
-      {/* HelmetComponent for SEO */}
       {serviceConfig && (
         <HelmetComponent
           title={serviceConfig.title}
@@ -204,6 +232,17 @@ export default function PrintingCopyingPages() {
 
       <GlobalContainerColumn>
         <GlobalTextContainer>
+          {serviceConfig?.imageRight && (
+            <FloatedImageContainer>
+              <ImageWithSEO
+                src={serviceConfig.imageRight.src}
+                alt={serviceConfig.imageRight.alt}
+                title={serviceConfig.imageRight.title}
+                geoData={serviceConfig.imageRight.geoData}
+                loading="lazy"
+              />
+            </FloatedImageContainer>
+          )}
           {memoizedData?.two ? (
             memoizedData.two.map((item, index) => (
               <GlobalPart key={index}>{item}</GlobalPart>

@@ -9,23 +9,39 @@ import PRINTING_COPYING from "../../assets/img/carousel/PRINTING_COPYING.png";
 import SIGNS from "../../assets/img/carousel/SIGNS.png";
 
 import BANNERS_POSTERS from "../../assets/img/cards/BANNERS_POSTERS.jpg";
-import BROCHURES_COLLATERALS from "../../assets/img/cards/BROCHURES_COLLATERALS.jpg";
-import BUSINESS_FORM from "../../assets/img/cards/BUSINESS_FORM.jpg";
+import BROCHURES_COLLATERALS from "../../assets/img/pages/printing_copying/brochures_collateral/BROCHURES_COLLATERAL.jpg";
+import BUSINESS_FORM from "../../assets/img/pages/printing_copying/BUSINESS_FORM.jpg";
 import CATALOGYS_BOOKLETS from "../../assets/img/cards/CATALOGYS_BOOKLETS.jpg";
 import LABELS_PACKAGING from "../../assets/img/cards/LABELS_PACKAGING.jpg";
 
 // printing copying
-import BUSINESS_ANNUAL_REPORTS from "../../assets/img/pages/printing_copying/BUSINESS_ANNUAL_REPORTS.png";
+import BUSINESS_ANNUAL_REPORTS from "../../assets/img/pages/printing_copying/BUSINESS_ANNUAL_REPORTS.jpg";
 import BUSINESS_CARDS_STATIONERY from "../../assets/img/pages/printing_copying/BUSINESS_CARDS_STATIONERY.png";
 import NEWSLETTERS_FLYERS_RACK_CARDS from "../../assets/img/pages/printing_copying/NEWSLETTERS_FLYERS_RACK_CARDS.png";
 import POSTCARDS_DIRECT_MAILERS from "../../assets/img/pages/printing_copying/POSTCARDS_DIRECT_MAILERS.png";
 import PRESENTATION_TRAINING_MATERIALS from "../../assets/img/pages/printing_copying/PRESENTATION_TRAINING_MATERIALS.png";
-import APPAREL_UNIFORMS from "../../assets/img/pages/printing_copying/APPAREL_UNIFORMS.webp";
+import APPAREL_UNIFORMS from "../../assets/img/pages/printing_copying/APPAREL_UNIFORMS.png";
 import BOOK_PRINTING from "../../assets/img/pages/printing_copying/BOOK_PRINTING.webp";
-import CARDS_INVITATIONS from "../../assets/img/pages/printing_copying/CARDS_INVITATIONS.png";
+import CARDS_INVITATIONS from "../../assets/img/pages/printing_copying/CARDS_INVITATIONS.jpg";
 import LABELS_STICKERS_DECALS from "../../assets/img/pages/printing_copying/LABELS_STICKERS_DECALS.webp";
 import LEGAL_COPYING from "../../assets/img/pages/printing_copying/LEGAL_COPYING.webp";
 import POSTER_PRINTING from "../../assets/img/pages/printing_copying/POSTER_PRINTING.png";
+
+// printing copying right
+import APPAREL_UNIFORMS_RIGHT from "../../assets/img/pages/printing_copying/right/APPAREL_UNIFORMS.jpeg";
+import BOOK_PRINTING_RIGHT from "../../assets/img/pages/printing_copying/right/BOOK_PRINTING.jpg";
+import BROCHURES_COLLATERAL_RIGHT from "../../assets/img/pages/printing_copying/right/BROCHURES_COLLATERAL.png";
+import BUSINESS_ANNUAL_REPORTS_RIGHT from "../../assets/img/pages/printing_copying/right/BUSINESS_ANNUAL_REPORTS.png";
+import BUSINESS_CARDS_STATIONERY_RIGHT from "../../assets/img/pages/printing_copying/right/BUSINESS_CARDS_STATIONERY.png";
+import BUSINESS_FORMS_RIGHT from "../../assets/img/pages/printing_copying/right/BUSINESS_FORM.png";
+import CARDS_INVITATIONS_RIGHT from "../../assets/img/pages/printing_copying/right/CARDS_INVITATIONS.png";
+import LABELS_STICKERS_DECALS_RIGHT from "../../assets/img/pages/printing_copying/right/LABELS_STICKERS_DECALS.jpg";
+import LEGAL_COPYING_RIGHT from "../../assets/img/pages/printing_copying/right/LEGAL_COPYING.png";
+import MANUALS_CATALOGS_BOOKLETS_RIGHT from "../../assets/img/pages/printing_copying/right/MANUALS_CATALOGS_BOOKLETS.png";
+import NEWSLETTERS_FLYERS_RACK_CARDS_RIGHT from "../../assets/img/pages/printing_copying/right/NEWSLETTERS_FLYERS_RACK_CARDS.png";
+import POSTCARDS_DIRECT_MAILERS_RIGHT from "../../assets/img/pages/printing_copying/right/POSTCARDS_DIRECT_MAILERS.jpg";
+import POSTER_PRINTING_RIGHT from "../../assets/img/pages/printing_copying/right/POSTER_PRINTING.jpg";
+import PRESENTATION_TRAINING_MATERIALS_RIGHT from "../../assets/img/pages/printing_copying/right/PRESENTATION_TRAINING_MATERIALS.jpg";
 
 // Direct mail and Mailing services
 import ADVANCED_MAILING_SERVICES from "../../assets/img/pages/direct_mail_mailing_services/ADVANCED_MAILING_SERVICES.png";
@@ -879,5 +895,161 @@ export const RETAIL_IMAGE_DATA = {
     latitude: "14.5995",
     longitude: "120.9842",
     location: "Manila, Philippines",
+  },
+};
+
+// right
+
+export const APPAREL_UNIFORMS_RIGHT_IMAGE = {
+  src: APPAREL_UNIFORMS_RIGHT,
+  alt: "Apparel and Uniforms",
+  title: "Custom Apparel and Uniform Printing",
+  geoData: {
+    latitude: "58.2522",
+    longitude: "22.4859",
+    location: "Kuressaare, Saaremaa, Estonia",
+  },
+};
+
+export const BOOK_PRINTING_RIGHT_IMAGE = {
+  src: BOOK_PRINTING_RIGHT,
+  alt: "Book Printing",
+  title: "High-Quality Book Printing",
+  geoData: {
+    latitude: "33.3681",
+    longitude: "129.5535",
+    location: "Hirado, Nagasaki, Japan",
+  },
+};
+
+export const BROCHURES_COLLATERAL_RIGHT_IMAGE = {
+  src: BROCHURES_COLLATERAL_RIGHT,
+  alt: "Brochures and Collateral",
+  title: "Professional Brochure and Collateral Printing",
+  geoData: {
+    latitude: "52.1395",
+    longitude: "-10.2683",
+    location: "Dingle, County Kerry, Ireland",
+  },
+};
+
+export const BUSINESS_ANNUAL_REPORTS_RIGHT_IMAGE = {
+  src: BUSINESS_ANNUAL_REPORTS_RIGHT,
+  alt: "Business Annual Reports",
+  title: "Annual Report Printing",
+  geoData: {
+    latitude: "57.7770",
+    longitude: "26.0493",
+    location: "Valga, Valgamaa, Estonia",
+  },
+};
+
+export const BUSINESS_CARDS_STATIONERY_RIGHT_IMAGE = {
+  src: BUSINESS_CARDS_STATIONERY_RIGHT,
+  alt: "Business Cards and Stationery",
+  title: "Custom Business Cards and Stationery",
+  geoData: {
+    latitude: "46.0547",
+    longitude: "25.0954",
+    location: "Viscri, Brașov County, Romania",
+  },
+};
+
+export const BUSINESS_FORMS_RIGHT_IMAGE = {
+  src: BUSINESS_FORMS_RIGHT,
+  alt: "Business Forms",
+  title: "Printed Business Forms",
+  geoData: {
+    latitude: "34.1642",
+    longitude: "77.5843",
+    location: "Leh, Ladakh, India",
+  },
+};
+
+export const CARDS_INVITATIONS_RIGHT_IMAGE = {
+  src: CARDS_INVITATIONS_RIGHT,
+  alt: "Cards and Invitations",
+  title: "Custom Cards and Invitation Printing",
+  geoData: {
+    latitude: "35.1715",
+    longitude: "-5.2639",
+    location: "Chefchaouen, Morocco",
+  },
+};
+
+export const LABELS_STICKERS_DECALS_RIGHT_IMAGE = {
+  src: LABELS_STICKERS_DECALS_RIGHT,
+  alt: "Labels, Stickers, and Decals",
+  title: "High-Quality Labels, Stickers, and Decals",
+  geoData: {
+    latitude: "-35.0293",
+    longitude: "138.8099",
+    location: "Hahndorf, South Australia",
+  },
+};
+
+export const LEGAL_COPYING_RIGHT_IMAGE = {
+  src: LEGAL_COPYING_RIGHT,
+  alt: "Legal Copying",
+  title: "Professional Legal Copying Services",
+  geoData: {
+    latitude: "38.6833",
+    longitude: "-28.2167",
+    location: "Velas, Azores, Portugal",
+  },
+};
+
+export const MANUALS_CATALOGS_BOOKLETS_RIGHT_IMAGE = {
+  src: MANUALS_CATALOGS_BOOKLETS_RIGHT,
+  alt: "Manuals, Catalogs, and Booklets",
+  title: "Manual, Catalog, and Booklet Printing",
+  geoData: {
+    latitude: "45.0293",
+    longitude: "14.5752",
+    location: "Krk, Primorje-Gorski Kotar, Croatia",
+  },
+};
+
+export const NEWSLETTERS_FLYERS_RACK_CARDS_RIGHT_IMAGE = {
+  src: NEWSLETTERS_FLYERS_RACK_CARDS_RIGHT,
+  alt: "Newsletters, Flyers, and Rack Cards",
+  title: "Newsletter, Flyer, and Rack Card Printing",
+  geoData: {
+    latitude: "18.9400",
+    longitude: "102.4470",
+    location: "Vang Vieng, Vientiane Province, Laos",
+  },
+};
+
+export const POSTCARDS_DIRECT_MAILERS_RIGHT_IMAGE = {
+  src: POSTCARDS_DIRECT_MAILERS_RIGHT,
+  alt: "Postcards and Direct Mailers",
+  title: "Custom Postcard and Direct Mailer Printing",
+  geoData: {
+    latitude: "-8.5069",
+    longitude: "115.2625",
+    location: "Ubud, Bali, Indonesia",
+  },
+};
+
+export const POSTER_PRINTING_RIGHT_IMAGE = {
+  src: POSTER_PRINTING_RIGHT,
+  alt: "Poster Printing",
+  title: "High-Quality Poster Printing",
+  geoData: {
+    latitude: "20.8820",
+    longitude: "-103.8350",
+    location: "Tequila, Jalisco, Mexico",
+  },
+};
+
+export const PRESENTATION_TRAINING_MATERIALS_RIGHT_IMAGE = {
+  src: PRESENTATION_TRAINING_MATERIALS_RIGHT,
+  alt: "Presentation training materials",
+  title: "High-Quality Presentation",
+  geoData: {
+    latitude: "16.8320",
+    longitude: "-43.2350",
+    location: "soxumi,abkhazia",
   },
 };

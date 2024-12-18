@@ -3,17 +3,21 @@ import { useNavigate } from "react-router-dom";
 import {
   GlobalContainerColumn,
   GlobalPart,
-  GlobalTextContainer,
   FullBackgroundContainerZERO,
   TitleAndButtonContainer,
   FullScreenTitle,
   FullScreenButton,
   GlobalMainContent,
+  FloatedImageContainer,
+  AlignedTextContainer,
 } from "../../style/GlobalStyle";
 import { fetchBrochuresCollateralData } from "../../data/sub-category data/AllSubCategoryData";
 import { CommonDocumentWAS } from "../../types/DataTypes";
 import ImageWithSEO from "../../importantparts/ImageWithCEO";
-import { BROCHURES_COLLATERALS_IMAGE } from "../../data/sub-category data/ImageWithCEOData";
+import {
+  BROCHURES_COLLATERALS_IMAGE,
+  BROCHURES_COLLATERAL_RIGHT_IMAGE,
+} from "../../data/sub-category data/ImageWithCEOData";
 import HelmetComponent from "../../importantparts/Helmet"; // Import HelmetComponent for SEO
 
 export default function BrochuresCollateral() {
@@ -70,11 +74,23 @@ export default function BrochuresCollateral() {
 
       {/* Text content below the background image */}
       <GlobalContainerColumn>
-        <GlobalTextContainer>
+        <AlignedTextContainer>
+          {/* Floated image on the right */}
+          <FloatedImageContainer>
+            <ImageWithSEO
+              src={BROCHURES_COLLATERAL_RIGHT_IMAGE.src}
+              alt={BROCHURES_COLLATERAL_RIGHT_IMAGE.alt}
+              title={BROCHURES_COLLATERAL_RIGHT_IMAGE.title}
+              geoData={BROCHURES_COLLATERAL_RIGHT_IMAGE.geoData}
+              loading="lazy"
+            />
+          </FloatedImageContainer>
+
+          {/* The text will wrap around the above floated image */}
           {memoizedData?.two.map((item, index) => (
             <GlobalPart key={index}>{item}</GlobalPart>
           ))}
-        </GlobalTextContainer>
+        </AlignedTextContainer>
       </GlobalContainerColumn>
     </div>
   );
