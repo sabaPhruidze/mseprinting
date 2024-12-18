@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
+
 import {
   GlobalContainerColumn,
   GlobalPart,
@@ -10,6 +11,7 @@ import {
   FullScreenTitle,
   FullScreenButton,
   GlobalMainContent,
+  FloatedImageContainer,
 } from "../../style/GlobalStyle";
 import { fetchBusinessFormsData } from "../../data/sub-category data/AllSubCategoryData";
 import { BusinessFormsType } from "../../types/DataTypes";
@@ -17,10 +19,11 @@ import ImageWithSEO from "../../importantparts/ImageWithCEO";
 import { BUSINESS_FORM_IMAGE } from "../../data/sub-category data/ImageWithCEOData";
 import HelmetComponent from "../../importantparts/Helmet"; // Import HelmetComponent for SEO
 
+// Styled component to float the image within the text container
+
 export default function BusinessForms() {
   const [businessFormsData, setBusinessFormsData] =
     useState<BusinessFormsType | null>(null);
-
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -44,7 +47,7 @@ export default function BusinessForms() {
         description="Discover our customized business forms to streamline your operations. Order professional forms for your business at MSE Printing."
       />
 
-      {/* Full-screen section with background image using ImageWithSEO */}
+      {/* Full-screen background section */}
       <FullBackgroundContainerZERO>
         <div className="black-overlay"></div>
         <ImageWithSEO
@@ -57,11 +60,7 @@ export default function BusinessForms() {
         <TitleAndButtonContainer>
           <FullScreenTitle>{memoizedData?.front?.title}</FullScreenTitle>
           <GlobalMainContent>{memoizedData?.front?.content}</GlobalMainContent>
-          <FullScreenButton
-            onClick={() => {
-              navigate("/request-quote");
-            }}
-          >
+          <FullScreenButton onClick={() => navigate("/request-quote")}>
             {memoizedData?.front?.button}
           </FullScreenButton>
         </TitleAndButtonContainer>
@@ -70,6 +69,18 @@ export default function BusinessForms() {
       {/* Text content below the background image */}
       <GlobalContainerColumn>
         <AlignedTextContainer>
+          {/* Floated image on the right */}
+          <FloatedImageContainer>
+            <ImageWithSEO
+              src={BUSINESS_FORM_IMAGE.src}
+              alt={BUSINESS_FORM_IMAGE.alt}
+              title={BUSINESS_FORM_IMAGE.title}
+              geoData={BUSINESS_FORM_IMAGE.geoData}
+              loading="lazy"
+            />
+          </FloatedImageContainer>
+
+          {/* The text will wrap around the above floated image */}
           {memoizedData?.two.map((item, index) => (
             <GlobalPart key={index}>{item}</GlobalPart>
           ))}
