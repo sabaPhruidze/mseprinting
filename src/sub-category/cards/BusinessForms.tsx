@@ -16,7 +16,10 @@ import {
 import { fetchBusinessFormsData } from "../../data/sub-category data/AllSubCategoryData";
 import { BusinessFormsType } from "../../types/DataTypes";
 import ImageWithSEO from "../../importantparts/ImageWithCEO";
-import { BUSINESS_FORM_IMAGE } from "../../data/sub-category data/ImageWithCEOData";
+import {
+  BUSINESS_FORM_IMAGE,
+  BUSINESS_FORMS_RIGHT_IMAGE,
+} from "../../data/sub-category data/ImageWithCEOData";
 import HelmetComponent from "../../importantparts/Helmet"; // Import HelmetComponent for SEO
 
 // Styled component to float the image within the text container
@@ -72,10 +75,10 @@ export default function BusinessForms() {
           {/* Floated image on the right */}
           <FloatedImageContainer>
             <ImageWithSEO
-              src={BUSINESS_FORM_IMAGE.src}
-              alt={BUSINESS_FORM_IMAGE.alt}
-              title={BUSINESS_FORM_IMAGE.title}
-              geoData={BUSINESS_FORM_IMAGE.geoData}
+              src={BUSINESS_FORMS_RIGHT_IMAGE.src}
+              alt={BUSINESS_FORMS_RIGHT_IMAGE.alt}
+              title={BUSINESS_FORMS_RIGHT_IMAGE.title}
+              geoData={BUSINESS_FORMS_RIGHT_IMAGE.geoData}
               loading="lazy"
             />
           </FloatedImageContainer>
