@@ -21,10 +21,10 @@ import NEWSLETTERS_FLYERS_RACK_CARDS from "../../assets/img/pages/printing_copyi
 import POSTCARDS_DIRECT_MAILERS from "../../assets/img/pages/printing_copying/POSTCARDS_DIRECT_MAILERS.png";
 import PRESENTATION_TRAINING_MATERIALS from "../../assets/img/pages/printing_copying/PRESENTATION_TRAINING_MATERIALS.png";
 import APPAREL_UNIFORMS from "../../assets/img/pages/printing_copying/APPAREL_UNIFORMS.png";
-import BOOK_PRINTING from "../../assets/img/pages/printing_copying/BOOK_PRINTING.webp";
+import BOOK_PRINTING from "../../assets/img/pages/printing_copying/BOOK_PRINTING.png";
 import CARDS_INVITATIONS from "../../assets/img/pages/printing_copying/CARDS_INVITATIONS.jpg";
-import LABELS_STICKERS_DECALS from "../../assets/img/pages/printing_copying/LABELS_STICKERS_DECALS.webp";
-import LEGAL_COPYING from "../../assets/img/pages/printing_copying/LEGAL_COPYING.webp";
+import LABELS_STICKERS_DECALS from "../../assets/img/pages/printing_copying/LABELS_STICKERS_DECALS.png";
+import LEGAL_COPYING from "../../assets/img/pages/printing_copying/LEGAL_COPYING.png";
 import POSTER_PRINTING from "../../assets/img/pages/printing_copying/POSTER_PRINTING.png";
 
 // printing copying right
@@ -55,59 +55,59 @@ import TARGETED_DIRECT_MAIL from "../../assets/img/pages/direct_mail_mailing_ser
 import ADA_WAYFINDING_SIGNS from "../../assets/img/pages/signs/ADA_WAYFINDING_SIGNS.jpg";
 import BANNERS_POSTERS_N from "../../assets/img/pages/signs/BANNERS_POSTERS_N.png";
 import BOOTH_GRAPHICS_SIGNS_BANNERS from "../../assets/img/pages/signs/BOOTH_GRAPHICS_SIGNS_BANNERS.jpg";
-import CAR_GRAPHICS_WRAPS from "../../assets/img/pages/signs/CAR_GRAPHICS_WRAPS.webp";
+import CAR_GRAPHICS_WRAPS from "../../assets/img/pages/signs/CAR_GRAPHICS_WRAPS.png";
 import DELIVERY_TAKOUT_SIGNS from "../../assets/img/pages/signs/DELIVERY_TAKOUT_SIGNS.png";
-import INTERIOR_OFFICE_LOBBY_DECOR from "../../assets/img/pages/signs/INTERIOR_OFFICE_LOBBY_DECOR.webp";
+import INTERIOR_OFFICE_LOBBY_DECOR from "../../assets/img/pages/signs/INTERIOR_OFFICE_LOBBY_DECOR.png";
 import NOW_OPEN_SIGNS_GRAPHICS from "../../assets/img/pages/signs/NOW_OPEN_SIGNS_GRAPHICS.jpg";
 import PULL_UP_BANNERS_FLAGS from "../../assets/img/pages/signs/PULL_UP_BANNERS_FLAGS.png";
 import TRADESHOW_EVENT_SIGNS from "../../assets/img/pages/signs/TRADESHOW_EVENT_SIGNS.png";
 import WINDOW_WALL_FLOOR_GRAPHICS from "../../assets/img/pages/signs/WINDOW_WALL_FLOOR_GRAPHICS.jpg";
-import YARD_OUTDOOR_SIGNS from "../../assets/img/pages/signs/YARD_OUTDOOR_SIGNS.jfif";
+import YARD_OUTDOOR_SIGNS from "../../assets/img/pages/signs/YARD_OUTDOOR_SIGNS.png";
 
 // Graphic design
-import GRAPHIC_DESIGN_IMAGE from "../../assets/img/pages/graphic_design/GRAPHIC_DESIGN_IMAGE.webp";
+import GRAPHIC_DESIGN_IMAGE from "../../assets/img/pages/graphic_design/GRAPHIC_DESIGN_IMAGE.png";
 
 // Labels and Packaging
-import CUSTOM_PACKAGING_IMAGE from "../../assets/img/pages/labels_packaging/CUSTOM_PACKAGING_IMAGE.webp";
-import PREMIUM_PRIVATE_LABELS_IMAGE from "../../assets/img/pages/labels_packaging/PREMIUM_PRIVATE_LABELS_IMAGE.webp";
-import PRODUCT_PROMOTIONAL_IMAGE from "../../assets/img/pages/labels_packaging/PRODUCT_PROMOTIONAL_IMAGE.webp";
+import CUSTOM_PACKAGING_IMAGE from "../../assets/img/pages/labels_packaging/CUSTOM_PACKAGING_IMAGE.png";
+import PREMIUM_PRIVATE_LABELS_IMAGE from "../../assets/img/pages/labels_packaging/PREMIUM_PRIVATE_LABELS_IMAGE.png";
+import PRODUCT_PROMOTIONAL_IMAGE from "../../assets/img/pages/labels_packaging/PRODUCT_PROMOTIONAL_IMAGE.png";
 import QR_CODE_NO_TOUCH_OPTIONS_IMAGE from "../../assets/img/pages/labels_packaging/QR_CODE_NO_TOUCH_OPTIONS_IMAGE.jpg";
-import SAFETY_LABELS_IMAGE from "../../assets/img/pages/labels_packaging/SAFETY_LABELS_IMAGE.webp";
-import SHORT_RUN_PACKAGING_IMAGE from "../../assets/img/pages/labels_packaging/SHORT_RUN_PACKAGING_IMAGE.webp";
-import STICKERS_DECALS_IMAGE from "../../assets/img/pages/labels_packaging/STICKERS_DECALS_IMAGE.webp";
+import SAFETY_LABELS_IMAGE from "../../assets/img/pages/labels_packaging/SAFETY_LABELS_IMAGE.png";
+import SHORT_RUN_PACKAGING_IMAGE from "../../assets/img/pages/labels_packaging/SHORT_RUN_PACKAGING_IMAGE.png";
+import STICKERS_DECALS_IMAGE from "../../assets/img/pages/labels_packaging/STICKERS_DECALS_IMAGE.png";
 
 // Marketing services
 
-import CAMPAINGS_CONSULTATION_IMAGE from "../../assets/img/pages/marketing_services/CAMPAINGS_CONSULTATION_IMAGE.webp";
-import SOCIAL_MEDIA_IMAGE from "../../assets/img/pages/marketing_services/SOCIAL_MEDIA_IMAGE.jfif";
-import VIDEO_PRODUCTION_IMAGE from "../../assets/img/pages/marketing_services/VIDEO_PRODUCTION_IMAGE.webp";
-import WEBSITE_DESIGN_IMAGE from "../../assets/img/pages/marketing_services/WEBSITE_DESIGN_IMAGE.webp";
+import CAMPAINGS_CONSULTATION_IMAGE from "../../assets/img/pages/marketing_services/CAMPAINGS_CONSULTATION_IMAGE.png";
+import SOCIAL_MEDIA_IMAGE from "../../assets/img/pages/marketing_services/SOCIAL_MEDIA_IMAGE.png";
+import VIDEO_PRODUCTION_IMAGE from "../../assets/img/pages/marketing_services/VIDEO_PRODUCTION_IMAGE.png";
+import WEBSITE_DESIGN_IMAGE from "../../assets/img/pages/marketing_services/WEBSITE_DESIGN_IMAGE.png";
 
 // Tradeshows events
 
 import COUNTER_POP_UP_DISPLAYS_IMAGE from "../../assets/img/pages/tradeshows_events/COUNTER_POP_UP_DISPLAYS_IMAGE.png";
 import EVENT_LITERATURE_SIGNS_IMAGE from "../../assets/img/pages/tradeshows_events/EVENT_LITERATURE_SIGNS_IMAGE.png";
-import GIFTS_AWARDS_INCENTIVES_IMAGE from "../../assets/img/pages/tradeshows_events/GIFTS_AWARDS_INCENTIVES_IMAGE.webp";
+import GIFTS_AWARDS_INCENTIVES_IMAGE from "../../assets/img/pages/tradeshows_events/GIFTS_AWARDS_INCENTIVES_IMAGE.png";
 import PRE_POST_SHOW_DIRECT_MAIL from "../../assets/img/pages/tradeshows_events/PRE_POST_SHOW_DIRECT_MAIL.jpg";
 import TABLE_COUNTER_KIOSK_DISPLAYS from "../../assets/img/pages/tradeshows_events/TABLE_COUNTER_KIOSK_DISPLAYS.png";
 
 // Fulfillment services
-import INVENTORY_MANAGEMENT_IMAGE from "../../assets/img/pages/fulfillment_services/INVENTORY_MANAGEMENT_IMAGE.webp";
-import MARKETING_SALES_KITS_IMAGE from "../../assets/img/pages/fulfillment_services/MARKETING_SALES_KITS_IMAGE.webp";
-import PICK_PACK_IMAGE from "../../assets/img/pages/fulfillment_services/PICK_PACK_IMAGE.webp";
-import PRODUCT_FULFILLMENT_IMAGE from "../../assets/img/pages/fulfillment_services/PRODUCT_FULFILLMENT_IMAGE.webp";
+import INVENTORY_MANAGEMENT_IMAGE from "../../assets/img/pages/fulfillment_services/INVENTORY_MANAGEMENT_IMAGE.png";
+import MARKETING_SALES_KITS_IMAGE from "../../assets/img/pages/fulfillment_services/MARKETING_SALES_KITS_IMAGE.png";
+import PICK_PACK_IMAGE from "../../assets/img/pages/fulfillment_services/PICK_PACK_IMAGE.png";
+import PRODUCT_FULFILLMENT_IMAGE from "../../assets/img/pages/fulfillment_services/PRODUCT_FULFILLMENT_IMAGE.png";
 
 // Industry specific
 
-import EDUCATION_IMAGE from "../../assets/img/pages/industry_specific/EDUCATION_IMAGE.webp";
+import EDUCATION_IMAGE from "../../assets/img/pages/industry_specific/EDUCATION_IMAGE.png";
 import FINANCE_IMAGE from "../../assets/img/pages/industry_specific/FINANCE_IMAGE.jpg";
-import HEALF_CARE_IMAGE from "../../assets/img/pages/industry_specific/HEALF_CARE_IMAGE.webp";
-import LEGAL_IMAGE from "../../assets/img/pages/industry_specific/LEGAL_IMAGE.webp";
-import MANUFACTORING_IMAGE from "../../assets/img/pages/industry_specific/MANUFACTORING_IMAGE.webp";
-import POLITICAL_IMAGE from "../../assets/img/pages/industry_specific/POLITICAL_IMAGE.webp";
-import REAL_ESTATE_IMAGE from "../../assets/img/pages/industry_specific/REAL_ESTATE_IMAGE.webp";
-import RESTAURANT_IMAGE from "../../assets/img/pages/industry_specific/RESTAURANT_IMAGE.webp";
-import RETAIL_IMAGE from "../../assets/img/pages/industry_specific/RETAIL_IMAGE.webp";
+import HEALF_CARE_IMAGE from "../../assets/img/pages/industry_specific/HEALF_CARE_IMAGE.png";
+import LEGAL_IMAGE from "../../assets/img/pages/industry_specific/LEGAL_IMAGE.png";
+import MANUFACTORING_IMAGE from "../../assets/img/pages/industry_specific/MANUFACTORING_IMAGE.png";
+import POLITICAL_IMAGE from "../../assets/img/pages/industry_specific/POLITICAL_IMAGE.png";
+import REAL_ESTATE_IMAGE from "../../assets/img/pages/industry_specific/REAL_ESTATE_IMAGE.png";
+import RESTAURANT_IMAGE from "../../assets/img/pages/industry_specific/RESTAURANT_IMAGE.png";
+import RETAIL_IMAGE from "../../assets/img/pages/industry_specific/RETAIL_IMAGE.png";
 
 // Image constants
 export const DIGITAL_PRINTING_IMAGE = {
