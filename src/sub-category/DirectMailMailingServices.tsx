@@ -9,6 +9,7 @@ import {
   FullScreenTitle,
   FullScreenButton,
   GlobalMainContent,
+  FloatedImageContainer, // Make sure this is available in GlobalStyle
 } from "../style/GlobalStyle";
 import ImageWithSEO from "../importantparts/ImageWithCEO";
 import HelmetComponent from "../importantparts/Helmet"; // Import HelmetComponent for SEO
@@ -28,14 +29,27 @@ import {
   LIST_MANAGEMENT_SERVICES_IMAGE,
   STANDARD_DIRECT_MAIL_IMAGE,
   TARGETED_DIRECT_MAIL_IMAGE,
+  // Import the right-side images
+  ADVANCED_MAILING_SERVICES_RIGHT_IMAGE,
+  EVERY_DOOR_DIRECT_MAIL_RIGHT_IMAGE,
+  KITTING_FULLFILMENT_RIGHT_IMAGE,
+  LIST_MANAGEMENT_SERVICES_RIGHT_IMAGE,
+  STANDARD_DIRECT_MAIL_RIGHT_IMAGE,
+  TARGETED_DIRECT_MAIL_RIGHT_IMAGE,
 } from "../data/sub-category data/ImageWithCEOData";
 
-// Map of each data-fetching function and corresponding image
+// Map of each data-fetching function and corresponding images
 const fetchDataMap: Record<
   string,
   {
     fetchData: () => Promise<SubCategoryCommonTypes | null>;
     image: {
+      src: string;
+      alt: string;
+      title: string;
+      geoData: { latitude: string; longitude: string; location: string };
+    };
+    imageRight?: {
       src: string;
       alt: string;
       title: string;
@@ -48,6 +62,7 @@ const fetchDataMap: Record<
   "advanced-mailing-services": {
     fetchData: fetchAdvancedMailingServicesData,
     image: ADVANCED_MAILING_SERVICES_IMAGE,
+    imageRight: ADVANCED_MAILING_SERVICES_RIGHT_IMAGE,
     title: "Advanced Mailing Services | MSE Printing",
     description:
       "Discover MSE Printing's Advanced Mailing Services for tailored marketing solutions. Professional, reliable, and effective mailing strategies.",
@@ -55,6 +70,7 @@ const fetchDataMap: Record<
   "every-door-direct-mail": {
     fetchData: fetchEveryDoorDirectMailData,
     image: EVERY_DOOR_DIRECT_MAIL_IMAGE,
+    imageRight: EVERY_DOOR_DIRECT_MAIL_RIGHT_IMAGE,
     title: "Every Door Direct Mail | MSE Printing",
     description:
       "Reach every door with MSE Printing's Direct Mail services. A cost-effective way to connect with your local audience.",
@@ -62,6 +78,7 @@ const fetchDataMap: Record<
   "kitting-and-fulfillment": {
     fetchData: fetchKittingAndFulfillmentData,
     image: KITTING_FULLFILLMENT_IMAGE,
+    imageRight: KITTING_FULLFILMENT_RIGHT_IMAGE,
     title: "Kitting and Fulfillment | MSE Printing",
     description:
       "Optimize your business logistics with MSE Printing's Kitting and Fulfillment services. Efficient, customized solutions.",
@@ -69,6 +86,7 @@ const fetchDataMap: Record<
   "list-management-services": {
     fetchData: fetchListManagementServicesData,
     image: LIST_MANAGEMENT_SERVICES_IMAGE,
+    imageRight: LIST_MANAGEMENT_SERVICES_RIGHT_IMAGE,
     title: "List Management Services | MSE Printing",
     description:
       "Manage your mailing lists efficiently with MSE Printing's List Management Services. Accurate, targeted, and organized.",
@@ -76,6 +94,7 @@ const fetchDataMap: Record<
   "standard-direct-mail": {
     fetchData: fetchStandartDirectMailData,
     image: STANDARD_DIRECT_MAIL_IMAGE,
+    imageRight: STANDARD_DIRECT_MAIL_RIGHT_IMAGE,
     title: "Standard Direct Mail | MSE Printing",
     description:
       "Send impactful messages with MSE Printing's Standard Direct Mail services. Trusted solutions for effective communication.",
@@ -83,6 +102,7 @@ const fetchDataMap: Record<
   "targeted-direct-mail": {
     fetchData: fetchTargetedDirectMailData,
     image: TARGETED_DIRECT_MAIL_IMAGE,
+    imageRight: TARGETED_DIRECT_MAIL_RIGHT_IMAGE,
     title: "Targeted Direct Mail | MSE Printing",
     description:
       "Deliver personalized messages with MSE Printing's Targeted Direct Mail services. Precise, engaging, and effective marketing.",
@@ -166,6 +186,19 @@ export default function DirectMailMailingServices() {
 
       <GlobalContainerColumn>
         <GlobalTextContainer>
+          {/* Display the right image if available */}
+          {serviceConfig?.imageRight && (
+            <FloatedImageContainer>
+              <ImageWithSEO
+                src={serviceConfig.imageRight.src}
+                alt={serviceConfig.imageRight.alt}
+                title={serviceConfig.imageRight.title}
+                geoData={serviceConfig.imageRight.geoData}
+                loading="lazy"
+              />
+            </FloatedImageContainer>
+          )}
+
           {memoizedData?.two ? (
             memoizedData.two.map((item, index) => (
               <GlobalPart key={index}>{item}</GlobalPart>

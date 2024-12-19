@@ -44,12 +44,21 @@ import POSTER_PRINTING_RIGHT from "../../assets/img/pages/printing_copying/right
 import PRESENTATION_TRAINING_MATERIALS_RIGHT from "../../assets/img/pages/printing_copying/right/PRESENTATION_TRAINING_MATERIALS.jpg";
 
 // Direct mail and Mailing services
-import ADVANCED_MAILING_SERVICES from "../../assets/img/pages/direct_mail_mailing_services/ADVANCED_MAILING_SERVICES.png";
-import EVERY_DOOR_DIRECT_MAIL from "../../assets/img/pages/direct_mail_mailing_services/EVERY_DOOR_DIRECT_MAIL.png";
-import KITTING_FULLFILLMENT from "../../assets/img/pages/direct_mail_mailing_services/KITTING_FULLFILLMENT.png";
+import ADVANCED_MAILING_SERVICES from "../../assets/img/pages/direct_mail_mailing_services/ADVANCED_MAILING_SERVICES.jpg";
+import EVERY_DOOR_DIRECT_MAIL from "../../assets/img/pages/direct_mail_mailing_services/EVERY_DOOR_DIRECT_MAIL.jpg";
+import KITTING_FULLFILLMENT from "../../assets/img/pages/direct_mail_mailing_services/KITTING_FULLFILLMENT.jpg";
 import LIST_MANAGEMENT_SERVICES from "../../assets/img/pages/direct_mail_mailing_services/LIST_MANAGEMENT_SERVICES.png";
 import STANDARD_DIRECT_MAIL from "../../assets/img/pages/direct_mail_mailing_services/STANDARD_DIRECT_MAIL.png";
 import TARGETED_DIRECT_MAIL from "../../assets/img/pages/direct_mail_mailing_services/TARGETED_DIRECT_MAIL.png";
+
+// Direct mail and Mailing services right
+import ADVANCED_MAILING_SERVICES_RIGHT from "../../assets/img/pages/direct_mail_mailing_services/right/ADVANCED_MAILING_SERVICES.png";
+import ADVANCED_MAILING_SYSTEMS_RIGHT from "../../assets/img/pages/direct_mail_mailing_services/right/ADVANCED_MAILING_SYSTEMS.jpg";
+import EVERY_DOOR_DIRECT_MAIL_RIGHT from "../../assets/img/pages/direct_mail_mailing_services/right/EVERY_DOOR_DIRECT_MAIL.png";
+import KITTING_FULLFILMENT_RIGHT from "../../assets/img/pages/direct_mail_mailing_services/right/KITTING_FULLFILLMENT.png";
+import LIST_MANAGEMENT_SERVICES_RIGHT from "../../assets/img/pages/direct_mail_mailing_services/right/LIST_MANAGEMENT_SERVICES.png";
+import STANDARD_DIRECT_MAIL_RIGHT from "../../assets/img/pages/direct_mail_mailing_services/right/STANDARD_DIRECT_MAIL.png";
+import TARGETED_DIRECT_MAIL_RIGHT from "../../assets/img/pages/direct_mail_mailing_services/right/TARGETED_DIRECT_MAIL.jpg";
 
 // Signs
 import ADA_WAYFINDING_SIGNS from "../../assets/img/pages/signs/ADA_WAYFINDING_SIGNS.jpg";
@@ -1051,5 +1060,82 @@ export const PRESENTATION_TRAINING_MATERIALS_RIGHT_IMAGE = {
     latitude: "16.8320",
     longitude: "-43.2350",
     location: "soxumi,abkhazia",
+  },
+};
+
+export const ADVANCED_MAILING_SERVICES_RIGHT_IMAGE = {
+  src: ADVANCED_MAILING_SERVICES_RIGHT,
+  alt: "Advanced Mailing Services Right",
+  title: "Advanced Mailing Services (Right Section)",
+  geoData: {
+    latitude: "25.3109",
+    longitude: "92.3706",
+    location: "East Jaintia Hills, Meghalaya, India",
+  },
+};
+
+export const ADVANCED_MAILING_SYSTEMS_RIGHT_IMAGE = {
+  src: ADVANCED_MAILING_SYSTEMS_RIGHT,
+  alt: "Advanced Mailing Systems Right",
+  title: "Advanced Mailing Systems (Right Section)",
+  geoData: {
+    latitude: "64.0014",
+    longitude: "-21.1784",
+    location: "Hveragerði, Iceland",
+  },
+};
+
+export const EVERY_DOOR_DIRECT_MAIL_RIGHT_IMAGE = {
+  src: EVERY_DOOR_DIRECT_MAIL_RIGHT,
+  alt: "Every Door Direct Mail Right",
+  title: "Every Door Direct Mail (Right Section)",
+  geoData: {
+    latitude: "-51.2667",
+    longitude: "-72.3167",
+    location: "Torres del Paine, Chile",
+  },
+};
+
+export const KITTING_FULLFILMENT_RIGHT_IMAGE = {
+  src: KITTING_FULLFILMENT_RIGHT,
+  alt: "Kitting Fulfillment Right",
+  title: "Kitting Fulfillment (Right Section)",
+  geoData: {
+    latitude: "11.0333",
+    longitude: "1.4167",
+    location: "Pendjari National Park, Benin",
+  },
+};
+
+export const LIST_MANAGEMENT_SERVICES_RIGHT_IMAGE = {
+  src: LIST_MANAGEMENT_SERVICES_RIGHT,
+  alt: "List Management Services Right",
+  title: "List Management Services (Right Section)",
+  geoData: {
+    latitude: "54.0333",
+    longitude: "14.7667",
+    location: "Dziwnów, Poland",
+  },
+};
+
+export const STANDARD_DIRECT_MAIL_RIGHT_IMAGE = {
+  src: STANDARD_DIRECT_MAIL_RIGHT,
+  alt: "Standard Direct Mail Right",
+  title: "Standard Direct Mail (Right Section)",
+  geoData: {
+    latitude: "2.2670",
+    longitude: "31.5500",
+    location: "Murchison Falls, Uganda",
+  },
+};
+
+export const TARGETED_DIRECT_MAIL_RIGHT_IMAGE = {
+  src: TARGETED_DIRECT_MAIL_RIGHT,
+  alt: "Targeted Direct Mail Right",
+  title: "Targeted Direct Mail (Right Section)",
+  geoData: {
+    latitude: "57.8167",
+    longitude: "-8.5833",
+    location: "St Kilda, Scotland",
   },
 };
