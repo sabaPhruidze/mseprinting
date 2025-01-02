@@ -14,14 +14,18 @@ import {
   GlobalNestedList,
   GlobalNestedListItem,
   GlobalSpecialPartDark,
-  GlobalTextContainer, // Styled component for text wrapping
+  GlobalTextContainer,
   TitleAndButtonContainer,
-  FullBackgroundContainerZERO, // Updated to FullBackgroundContainerZERO
+  FullBackgroundContainerZERO,
   FullScreenTitle,
   FullScreenButton,
   GlobalMainContent,
+  FloatedImageContainer, // For the right-side image
 } from "../style/GlobalStyle"; // Import new and existing styles
-import { DIGITAL_PRINTING_IMAGE } from "../data/sub-category data/ImageWithCEOData"; // Import DIGITAL_PRINTING_IMAGE
+import {
+  DIGITAL_PRINTING_IMAGE,
+  DIGITAL_PRINTING_RIGHT_IMAGE,
+} from "../data/sub-category data/ImageWithCEOData"; // Import main and right-side images
 import { fetchDigitalPrintingData } from "../data/sub-category data/AllSubCategoryData";
 import { DigitalPrintingDocument } from "../types/DataTypes";
 import ImageWithCEO from "../importantparts/ImageWithCEO"; // Import ImageWithCEO component
@@ -100,6 +104,19 @@ export default function CommercialDigitalPrinting() {
       {/* Text content below the background image */}
       <GlobalContainerColumn>
         <GlobalTextContainer>
+          {/* Right-side image */}
+          {DIGITAL_PRINTING_RIGHT_IMAGE && (
+            <FloatedImageContainer>
+              <ImageWithCEO
+                src={DIGITAL_PRINTING_RIGHT_IMAGE.src}
+                alt={DIGITAL_PRINTING_RIGHT_IMAGE.alt}
+                title={DIGITAL_PRINTING_RIGHT_IMAGE.title}
+                geoData={DIGITAL_PRINTING_RIGHT_IMAGE.geoData}
+                loading="eager"
+              />
+            </FloatedImageContainer>
+          )}
+
           <GlobalMainTitle style={{ fontWeight: 800 }}>
             {memoizedData?.one.title}
           </GlobalMainTitle>

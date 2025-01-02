@@ -1,5 +1,8 @@
 import { useState, useEffect, useMemo, useCallback } from "react";
-import { OFFSET_PRINTING_IMAGE } from "../data/sub-category data/ImageWithCEOData";
+import {
+  OFFSET_PRINTING_IMAGE,
+  OFFSET_PRINTING_RIGHT_IMAGE,
+} from "../data/sub-category data/ImageWithCEOData";
 import { useNavigate } from "react-router-dom";
 import HelmetComponent from "../importantparts/Helmet"; // Import HelmetComponent for SEO
 import {
@@ -15,12 +18,13 @@ import {
   GlobalNestedList,
   GlobalNestedListItem,
   GlobalSpecialPartDark,
-  GlobalTextContainer, // Import the styled component for text wrapping
+  GlobalTextContainer,
   TitleAndButtonContainer,
   FullBackgroundContainerZERO,
   FullScreenTitle,
   FullScreenButton,
   GlobalMainContent,
+  FloatedImageContainer, // Import for right-side image
 } from "../style/GlobalStyle";
 import { fetchOffsetPrintingData } from "../data/sub-category data/AllSubCategoryData";
 import { OffsetPrintingDocument } from "../types/DataTypes";
@@ -94,6 +98,19 @@ export default function CommercialOffsetPrinting() {
       </FullBackgroundContainerZERO>
       <GlobalContainerColumn>
         <GlobalTextContainer>
+          {/* Right-side image */}
+          {OFFSET_PRINTING_RIGHT_IMAGE && (
+            <FloatedImageContainer>
+              <ImageWithCEO
+                src={OFFSET_PRINTING_RIGHT_IMAGE.src}
+                alt={OFFSET_PRINTING_RIGHT_IMAGE.alt}
+                title={OFFSET_PRINTING_RIGHT_IMAGE.title}
+                geoData={OFFSET_PRINTING_RIGHT_IMAGE.geoData}
+                loading="eager"
+              />
+            </FloatedImageContainer>
+          )}
+
           <GlobalMainTitle style={{ fontWeight: 800 }}>
             {memoizedData?.one.title}
           </GlobalMainTitle>

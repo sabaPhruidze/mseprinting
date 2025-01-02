@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   GlobalContainerColumn,
   Globalh2TitleWithMB20,
@@ -10,13 +11,18 @@ import {
   FullScreenTitle,
   FullScreenButton,
   GlobalMainContent,
+  FloatedImageContainer, // <-- Make sure to import this so you can float your second image
 } from "../style/GlobalStyle";
-import { useNavigate } from "react-router-dom";
 import { fetchOnlinePortalData } from "../data/sub-category data/AllSubCategoryData";
 import { CommonDocument } from "../types/DataTypes";
 import ImageWithSEO from "../importantparts/ImageWithCEO";
 import HelmetComponent from "../importantparts/Helmet"; // Import HelmetComponent for SEO
-import { ONLINE_ORDERING_IMAGE } from "../data/sub-category data/ImageWithCEOData";
+
+// Import both the main and right-side images
+import {
+  ONLINE_ORDERING_IMAGE,
+  ONLINE_ORDERING_RIGHT_IMAGE, // <-- Import the right-side image
+} from "../data/sub-category data/ImageWithCEOData";
 
 export default function OnlinePortal() {
   const [onlinePortalData, setOnlinePortalData] =
@@ -29,7 +35,6 @@ export default function OnlinePortal() {
         setOnlinePortalData(data);
       }
     };
-
     getOnlinePortalData();
   }, []);
 
@@ -66,8 +71,19 @@ export default function OnlinePortal() {
       {/* Text content below the background image */}
       <GlobalContainerColumn>
         <GlobalTextContainer>
-          <GlobalMainTitle>{memoizedData?.one.title}</GlobalMainTitle>
-          {memoizedData?.two.map((item, index) => (
+          {/* Floated (second) image on the right side */}
+          <FloatedImageContainer>
+            <ImageWithSEO
+              src={ONLINE_ORDERING_RIGHT_IMAGE.src}
+              alt={ONLINE_ORDERING_RIGHT_IMAGE.alt}
+              title={ONLINE_ORDERING_RIGHT_IMAGE.title}
+              geoData={ONLINE_ORDERING_RIGHT_IMAGE.geoData}
+              loading="eager"
+            />
+          </FloatedImageContainer>
+
+          <GlobalMainTitle>{memoizedData?.one?.title}</GlobalMainTitle>
+          {memoizedData?.two?.map((item, index) => (
             <div key={index}>
               <Globalh2TitleWithMB20>{item.title}</Globalh2TitleWithMB20>
               {item.content && <GlobalPart>{item.content}</GlobalPart>}

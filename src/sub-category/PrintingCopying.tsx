@@ -11,11 +11,15 @@ import {
   FullScreenTitle, // Styled component for the main title in the background
   FullScreenButton, // Styled component for the "Request a Quote" button
   GlobalMainContent,
+  FloatedImageContainer, // For the right-side image
 } from "../style/GlobalStyle";
 import { fetchCopyPrintingData } from "../data/sub-category data/AllSubCategoryData";
 import { PrintingCopyingDocument } from "../types/DataTypes";
 import ImageWithSEO from "../importantparts/ImageWithCEO"; // Import ImageWithSEO for handling the image
-import { PRINTING_COPYING_IMAGE } from "../data/sub-category data/ImageWithCEOData"; // Import the PRINTING_COPYING_IMAGE
+import {
+  PRINTING_COPYING_IMAGE,
+  PRINTING_COPYING_RIGHT_IMAGE, // Import right-side image
+} from "../data/sub-category data/ImageWithCEOData";
 
 export default function PrintingCopying() {
   const [printingCopyingData, setPrintingCopyingData] =
@@ -72,6 +76,19 @@ export default function PrintingCopying() {
       {/* Text content below the background image */}
       <GlobalContainerColumn>
         <GlobalTextContainer>
+          {/* Right-side image */}
+          {PRINTING_COPYING_RIGHT_IMAGE && (
+            <FloatedImageContainer>
+              <ImageWithSEO
+                src={PRINTING_COPYING_RIGHT_IMAGE.src}
+                alt={PRINTING_COPYING_RIGHT_IMAGE.alt}
+                title={PRINTING_COPYING_RIGHT_IMAGE.title}
+                geoData={PRINTING_COPYING_RIGHT_IMAGE.geoData}
+                loading="eager"
+              />
+            </FloatedImageContainer>
+          )}
+
           <GlobalPart>{memoizedData?.one.content}</GlobalPart>
 
           {memoizedData?.two.map((item, index) => (

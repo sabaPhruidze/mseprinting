@@ -11,11 +11,15 @@ import {
   FullScreenTitle,
   FullScreenButton,
   GlobalMainContent,
+  FloatedImageContainer, // For the right-side image
 } from "../style/GlobalStyle";
 import { fetchSignsData } from "../data/sub-category data/AllSubCategoryData";
 import { CommonDocument } from "../types/DataTypes";
 import ImageWithSEO from "../importantparts/ImageWithCEO";
-import { SIGNS_IMAGE } from "../data/sub-category data/ImageWithCEOData";
+import {
+  SIGNS_IMAGE,
+  SIGNS_RIGHT_IMAGE,
+} from "../data/sub-category data/ImageWithCEOData"; // Import both main and right-side images
 
 export default function Signs() {
   const [signsData, setSignsData] = useState<CommonDocument | null>(null);
@@ -36,11 +40,13 @@ export default function Signs() {
 
   return (
     <div>
+      {/* HelmetComponent for SEO */}
       <HelmetComponent
         title="Signs and Banners | MSE Printing"
         description="Discover MSE Printing's high-quality signs and banners for all business needs. Custom signage solutions with fast online ordering."
       />
 
+      {/* Full-screen section with background image */}
       <FullBackgroundContainerZERO>
         <div className="black-overlay"></div>
         <ImageWithSEO
@@ -62,8 +68,23 @@ export default function Signs() {
           </FullScreenButton>
         </TitleAndButtonContainer>
       </FullBackgroundContainerZERO>
+
+      {/* Text content below the background image */}
       <GlobalContainerColumn>
         <GlobalTextContainer>
+          {/* Right-side image */}
+          {SIGNS_RIGHT_IMAGE && (
+            <FloatedImageContainer>
+              <ImageWithSEO
+                src={SIGNS_RIGHT_IMAGE.src}
+                alt={SIGNS_RIGHT_IMAGE.alt}
+                title={SIGNS_RIGHT_IMAGE.title}
+                geoData={SIGNS_RIGHT_IMAGE.geoData}
+                loading="eager"
+              />
+            </FloatedImageContainer>
+          )}
+
           {memoizedData?.two.map((item, index) => (
             <div key={index}>
               <Globalh2TitleWithMB20>{item.title}</Globalh2TitleWithMB20>

@@ -10,11 +10,15 @@ import {
   FullScreenTitle,
   FullScreenButton,
   GlobalMainContent,
+  FloatedImageContainer, // For the right-side image
 } from "../style/GlobalStyle";
 import { fetchDirectMailingData } from "../data/sub-category data/AllSubCategoryData";
 import { CommonDocument } from "../types/DataTypes";
 import ImageWithSEO from "../importantparts/ImageWithCEO";
-import { DIRECT_MAIL_IMAGE_PAGE } from "../data/sub-category data/ImageWithCEOData";
+import {
+  DIRECT_MAILING_PAGE_IMAGE,
+  DIRECT_MAIL_RIGHT_IMAGE,
+} from "../data/sub-category data/ImageWithCEOData";
 import HelmetComponent from "../importantparts/Helmet"; // Import HelmetComponent for SEO
 
 export default function DirectMailing() {
@@ -43,14 +47,14 @@ export default function DirectMailing() {
         description="Enhance your business reach with our Direct Mailing services. From concept to delivery, we provide professional solutions tailored to your needs."
       />
 
-      {/* Full-screen section with background image using ImageWithSEO */}
+      {/* Full-screen section with background image */}
       <FullBackgroundContainerZERO>
         <div className="black-overlay"></div>
         <ImageWithSEO
-          src={DIRECT_MAIL_IMAGE_PAGE.src}
-          alt={DIRECT_MAIL_IMAGE_PAGE.alt}
-          title={DIRECT_MAIL_IMAGE_PAGE.title}
-          geoData={DIRECT_MAIL_IMAGE_PAGE.geoData}
+          src={DIRECT_MAILING_PAGE_IMAGE.src}
+          alt={DIRECT_MAILING_PAGE_IMAGE.alt}
+          title={DIRECT_MAILING_PAGE_IMAGE.title}
+          geoData={DIRECT_MAILING_PAGE_IMAGE.geoData}
           loading="eager"
         />
         <TitleAndButtonContainer>
@@ -69,6 +73,19 @@ export default function DirectMailing() {
       {/* Text content below the background image */}
       <GlobalContainerColumn>
         <GlobalTextContainer>
+          {/* Right-side image */}
+          {DIRECT_MAIL_RIGHT_IMAGE && (
+            <FloatedImageContainer>
+              <ImageWithSEO
+                src={DIRECT_MAIL_RIGHT_IMAGE.src}
+                alt={DIRECT_MAIL_RIGHT_IMAGE.alt}
+                title={DIRECT_MAIL_RIGHT_IMAGE.title}
+                geoData={DIRECT_MAIL_RIGHT_IMAGE.geoData}
+                loading="eager"
+              />
+            </FloatedImageContainer>
+          )}
+
           {memoizedData?.two.map((item, index) => (
             <div key={index}>
               <Globalh2TitleWithMB20>{item.title}</Globalh2TitleWithMB20>

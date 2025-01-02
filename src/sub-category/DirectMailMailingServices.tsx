@@ -194,7 +194,7 @@ export default function DirectMailMailingServices() {
                 alt={serviceConfig.imageRight.alt}
                 title={serviceConfig.imageRight.title}
                 geoData={serviceConfig.imageRight.geoData}
-                loading="lazy"
+                loading="eager"
               />
             </FloatedImageContainer>
           )}

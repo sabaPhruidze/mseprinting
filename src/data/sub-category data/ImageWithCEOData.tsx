@@ -1,12 +1,19 @@
 import DIGITAL_PRINTING from "../../assets/img/carousel/DIGITAL_PRINTING.jpg";
-import DIRECT_MAIL from "../../assets/img/cards/DIRECT_MAIL.jpg";
+import DIGITAL_PRINTING_RIGHT from "../../assets/img/carousel/RIGHT/DIGITAL_PRINTING_RIGHT.jpg";
 
-import DIRECT_MAIL_PAGE from "../../assets/img/cards/DIRECT_MAIL_PAGE.jpg";
+import DIRECT_MAIL from "../../assets/img/cards/DIRECT_MAIL.jpg";
+import DIRECT_MAILING_PAGE from "../../assets/img/carousel/DIRECT_MAIL.png";
+
+import DIRECT_MAIL_RIGHT from "../../assets/img/carousel/RIGHT/DIRECT_MAIL_RIGHT.jpeg";
 
 import OFFSET_PRINTING from "../../assets/img/carousel/OFFSET_PRINTING.jpg";
+import OFFSET_PRINTING_RIGHT from "../../assets/img/carousel/RIGHT/OFFSET_PRINTING_RIGHT.png";
 import ONLINE_ORDERING from "../../assets/img/carousel/ONLINE_ORDERING.png";
+import ONLINE_ORDERING_RIGHT from "../../assets/img/carousel/RIGHT/ONLINE_ORDERING_RIGHT.png";
 import PRINTING_COPYING from "../../assets/img/carousel/PRINTING_COPYING.png";
+import PRINTING_COPYING_RIGHT from "../../assets/img/carousel/RIGHT/PRINTING_COPYING_RIGHT.jpg";
 import SIGNS from "../../assets/img/carousel/SIGNS.png";
+import SIGNS_RIGHT from "../../assets/img/carousel/RIGHT/SIGNS_RIGHT.jpeg";
 
 import BANNERS_POSTERS from "../../assets/img/cards/BANNERS_POSTERS.jpg";
 import BROCHURES_COLLATERALS from "../../assets/img/pages/printing_copying/brochures_collateral/BROCHURES_COLLATERAL.jpg";
@@ -41,7 +48,7 @@ import MANUALS_CATALOGS_BOOKLETS_RIGHT from "../../assets/img/pages/printing_cop
 import NEWSLETTERS_FLYERS_RACK_CARDS_RIGHT from "../../assets/img/pages/printing_copying/right/NEWSLETTERS_FLYERS_RACK_CARDS.png";
 import POSTCARDS_DIRECT_MAILERS_RIGHT from "../../assets/img/pages/printing_copying/right/POSTCARDS_DIRECT_MAILERS.jpg";
 import POSTER_PRINTING_RIGHT from "../../assets/img/pages/printing_copying/right/POSTER_PRINTING.jpg";
-import PRESENTATION_TRAINING_MATERIALS_RIGHT from "../../assets/img/pages/printing_copying/right/PRESENTATION_TRAINING_MATERIALS.jpg";
+import PRESENTATION_TRAINING_MATERIALS_RIGHT from "../../assets/img/pages/printing_copying/right/PRESENTATION_TRAINING_MATERIALS.png";
 
 // Direct mail and Mailing services
 import ADVANCED_MAILING_SERVICES from "../../assets/img/pages/direct_mail_mailing_services/ADVANCED_MAILING_SERVICES.jpg";
@@ -61,36 +68,66 @@ import STANDARD_DIRECT_MAIL_RIGHT from "../../assets/img/pages/direct_mail_maili
 import TARGETED_DIRECT_MAIL_RIGHT from "../../assets/img/pages/direct_mail_mailing_services/right/TARGETED_DIRECT_MAIL.jpg";
 
 // Signs
-import ADA_WAYFINDING_SIGNS from "../../assets/img/pages/signs/ADA_WAYFINDING_SIGNS.jpg";
-import BANNERS_POSTERS_N from "../../assets/img/pages/signs/BANNERS_POSTERS_N.png";
+import ADA_WAYFINDING_SIGNS from "../../assets/img/pages/signs/ADA_WAYFINDING_SIGNS.png";
+import BANNERS_POSTERS_PAGE from "../../assets/img/pages/signs/BANNERS_POSTERS_PAGE.png";
 import BOOTH_GRAPHICS_SIGNS_BANNERS from "../../assets/img/pages/signs/BOOTH_GRAPHICS_SIGNS_BANNERS.jpg";
-import CAR_GRAPHICS_WRAPS from "../../assets/img/pages/signs/CAR_GRAPHICS_WRAPS.png";
+import CAR_GRAPHICS_WRAPS from "../../assets/img/pages/signs/CAR_GRAPHICS_WRAPS.jpg";
 import DELIVERY_TAKOUT_SIGNS from "../../assets/img/pages/signs/DELIVERY_TAKOUT_SIGNS.png";
-import INTERIOR_OFFICE_LOBBY_DECOR from "../../assets/img/pages/signs/INTERIOR_OFFICE_LOBBY_DECOR.png";
-import NOW_OPEN_SIGNS_GRAPHICS from "../../assets/img/pages/signs/NOW_OPEN_SIGNS_GRAPHICS.jpg";
-import PULL_UP_BANNERS_FLAGS from "../../assets/img/pages/signs/PULL_UP_BANNERS_FLAGS.png";
+import INTERIOR_OFFICE_LOBBY_DECOR from "../../assets/img/pages/signs/INTERIOR_OFFICE_LOBBY_DECOR.jpg";
+import NOW_OPEN_SIGNS_GRAPHICS from "../../assets/img/pages/signs/NOW_OPEN_SIGNS_GRAPHICS.png";
+import PULL_UP_BANNERS_FLAGS from "../../assets/img/pages/signs/PULL_UP_BANNERS_FLAGS.jpg";
 import TRADESHOW_EVENT_SIGNS from "../../assets/img/pages/signs/TRADESHOW_EVENT_SIGNS.png";
-import WINDOW_WALL_FLOOR_GRAPHICS from "../../assets/img/pages/signs/WINDOW_WALL_FLOOR_GRAPHICS.jpg";
+import WINDOW_WALL_FLOOR_GRAPHICS from "../../assets/img/pages/signs/WINDOW_WALL_FLOOR_GRAPHICS.png";
 import YARD_OUTDOOR_SIGNS from "../../assets/img/pages/signs/YARD_OUTDOOR_SIGNS.png";
 
+// Signs Right
+import BANNERS_POSTERS_RIGHT from "../../assets/img/pages/signs/right/BANNERS_POSTERS_RIGHT.png";
+import PULL_UP_BANNERS_FLAGS_RIGHT from "../../assets/img/pages/signs/right/PULL_UP_BANNERS_FLAGS_RIGHT.png";
+import CAR_GRAPHICS_WRAPS_RIGHT from "../../assets/img/pages/signs/right/CAR_GRAPHICS_WRAPS_RIGHT.png";
+import WINDOW_WALL_FLOOR_GRAPHICS_RIGHT from "../../assets/img/pages/signs/right/WINDOW_WALL_FLOOR_GRAPHICS_RIGHT.jpg";
+import INTERIOR_OFFICE_LOBBY_DECOR_RIGHT from "../../assets/img/pages/signs/right/INTERIOR_OFFICE_LOBBY_DECOR_RIGHT.jpg";
+import TRADESHOW_EVENT_SIGNS_RIGHT from "../../assets/img/pages/signs/right/TRADESHOW_EVENT_SIGNS_RIGHT.png";
+import ADA_WAYFINDING_SIGNS_RIGHT from "../../assets/img/pages/signs/right/ADA_WAYFINDING_SIGNS_RIGHT.png";
+import YARD_OUTDOOR_SIGNS_RIGHT from "../../assets/img/pages/signs/right/YARD_OUTDOOR_SIGNS_RIGHT.png";
+import BOOTH_GRAPHICS_SIGNS_BANNERS_RIGHT from "../../assets/img/pages/signs/right/BOOTH_GRAPHICS_SIGNS_BANNERS_RIGHT.jpg";
+import DELIVERY_TAKOUT_SIGNS_RIGHT from "../../assets/img/pages/signs/right/DELIVERY_TAKOUT_SIGNS_RIGHT.jpg";
+import NOW_OPEN_SIGNS_GRAPHICS_RIGHT from "../../assets/img/pages/signs/right/NOW_OPEN_SIGNS_GRAPHICS_RIGHT.jpg";
 // Graphic design
 import GRAPHIC_DESIGN_IMAGE from "../../assets/img/pages/graphic_design/GRAPHIC_DESIGN_IMAGE.png";
+
+// Graphic design right
+import GRAPHIC_DESIGN_IMAGE_RIGHT from "../../assets/img/pages/graphic_design/right/GRAPHIC_DESIGN_IMAGE_RIGHT.jpg";
 
 // Labels and Packaging
 import CUSTOM_PACKAGING_IMAGE from "../../assets/img/pages/labels_packaging/CUSTOM_PACKAGING_IMAGE.png";
 import PREMIUM_PRIVATE_LABELS_IMAGE from "../../assets/img/pages/labels_packaging/PREMIUM_PRIVATE_LABELS_IMAGE.png";
-import PRODUCT_PROMOTIONAL_IMAGE from "../../assets/img/pages/labels_packaging/PRODUCT_PROMOTIONAL_IMAGE.png";
+import PRODUCT_PROMOTIONAL_IMAGE from "../../assets/img/pages/labels_packaging/PRODUCT_PROMOTIONAL_IMAGE.jpeg";
 import QR_CODE_NO_TOUCH_OPTIONS_IMAGE from "../../assets/img/pages/labels_packaging/QR_CODE_NO_TOUCH_OPTIONS_IMAGE.jpg";
 import SAFETY_LABELS_IMAGE from "../../assets/img/pages/labels_packaging/SAFETY_LABELS_IMAGE.png";
 import SHORT_RUN_PACKAGING_IMAGE from "../../assets/img/pages/labels_packaging/SHORT_RUN_PACKAGING_IMAGE.png";
-import STICKERS_DECALS_IMAGE from "../../assets/img/pages/labels_packaging/STICKERS_DECALS_IMAGE.png";
+import STICKERS_DECALS_IMAGE from "../../assets/img/pages/labels_packaging/STICKERS_DECALS_IMAGE.jpg";
+
+// Labels and Packaging right
+import CUSTOM_PACKAGING_IMAGE_RIGHT from "../../assets/img/pages/labels_packaging/right/CUSTOM_PACKAGING_IMAGE_RIGHT.jpg";
+import PREMIUM_PRIVATE_LABELS_IMAGE_RIGHT from "../../assets/img/pages/labels_packaging/right/PREMIUM_PRIVATE_LABELS_IMAGE_RIGHT.png";
+import PRODUCT_PROMOTIONAL_IMAGE_RIGHT from "../../assets/img/pages/labels_packaging/right/PRODUCT_PROMOTIONAL_IMAGE_RIGHT.jpg";
+import QR_CODE_NO_TOUCH_OPTIONS_IMAGE_RIGHT from "../../assets/img/pages/labels_packaging/right/QR_CODE_NO_TOUCH_OPTIONS_IMAGE_RIGHT.jpg";
+import SAFETY_LABELS_IMAGE_RIGHT from "../../assets/img/pages/labels_packaging/right/SAFETY_LABELS_IMAGE_RIGHT.png";
+import SHORT_RUN_PACKAGING_IMAGE_RIGHT from "../../assets/img/pages/labels_packaging/right/SHORT_RUN_PACKAGING_IMAGE_RIGHT.jpg";
+import STICKERS_DECALS_IMAGE_RIGHT from "../../assets/img/pages/labels_packaging/right/STICKERS_DECALS_IMAGE_RIGHT.jpg";
 
 // Marketing services
 
-import CAMPAINGS_CONSULTATION_IMAGE from "../../assets/img/pages/marketing_services/CAMPAINGS_CONSULTATION_IMAGE.png";
+import CAMPAINGS_CONSULTATION_IMAGE from "../../assets/img/pages/marketing_services/CAMPAINGS_CONSULTATION_IMAGE.jpg";
 import SOCIAL_MEDIA_IMAGE from "../../assets/img/pages/marketing_services/SOCIAL_MEDIA_IMAGE.png";
 import VIDEO_PRODUCTION_IMAGE from "../../assets/img/pages/marketing_services/VIDEO_PRODUCTION_IMAGE.png";
 import WEBSITE_DESIGN_IMAGE from "../../assets/img/pages/marketing_services/WEBSITE_DESIGN_IMAGE.png";
+
+// Marketing services right
+import CAMPAINGS_CONSULTATION_IMAGE_RIGHT from "../../assets/img/pages/marketing_services/right/CAMPAINGS_CONSULTATION_IMAGE_RIGHT.jpg";
+import SOCIAL_MEDIA_IMAGE_RIGHT from "../../assets/img/pages/marketing_services/right/SOCIAL_MEDIA_RIGHT.png";
+import VIDEO_PRODUCTION_IMAGE_RIGHT from "../../assets/img/pages/marketing_services/right/VIDEO_PRODUCTION_IMAGE_RIGHT.jpg";
+import WEBSITE_DESIGN_IMAGE_RIGHT from "../../assets/img/pages/marketing_services/right/WEBSITE_DESIGN_IMAGE_RIGHT.jpeg";
 
 // Tradeshows events
 
@@ -162,15 +199,14 @@ export const DIRECT_MAIL_IMAGE = {
     location: "Temqa, Tbilisi, Georgia",
   },
 };
-
-export const DIRECT_MAIL_IMAGE_PAGE = {
-  src: DIRECT_MAIL_PAGE,
-  alt: "Mailing Images for Pages",
-  title: "Mailing Images for Pages",
+export const DIRECT_MAILING_PAGE_IMAGE = {
+  src: DIRECT_MAILING_PAGE,
+  alt: "Direct Mail Page image",
+  title: "Direct page mail image",
   geoData: {
-    latitude: "60.4720",
-    longitude: "8.4689",
-    location: "Norway",
+    latitude: "31.7500",
+    longitude: "34.8120",
+    location: "sofeli digomi, Tbilisi, Georgia",
   },
 };
 
@@ -464,10 +500,10 @@ export const ADA_WAYFINDING_SIGNS_IMAGE = {
   },
 };
 
-export const BANNERS_POSTERS_SIGNS_IMAGE = {
-  src: BANNERS_POSTERS_N,
-  alt: "Banners and Posters N",
-  title: "Banners and Posters for Signs N",
+export const BANNERS_POSTERS_RIGHT_IMAGE = {
+  src: BANNERS_POSTERS_RIGHT,
+  alt: "Banners and Posters right",
+  title: "Banners and Posters for Signs right",
   geoData: {
     latitude: "51.1657",
     longitude: "10.4515",
@@ -1137,5 +1173,372 @@ export const TARGETED_DIRECT_MAIL_RIGHT_IMAGE = {
     latitude: "57.8167",
     longitude: "-8.5833",
     location: "St Kilda, Scotland",
+  },
+};
+/***********************************************
+ * Carousel Images
+ ***********************************************/
+
+// 1) DIGITAL_PRINTING_RIGHT
+export const DIGITAL_PRINTING_RIGHT_IMAGE = {
+  src: DIGITAL_PRINTING_RIGHT,
+  alt: "Digital Printing Right",
+  title: "Digital Printing (Right Section)",
+  geoData: {
+    latitude: "46.1345",
+    longitude: "-70.8876",
+    location: "Greenridge, USA",
+  },
+};
+
+// 2) DIRECT_MAIL_RIGHT
+export const DIRECT_MAIL_RIGHT_IMAGE = {
+  src: DIRECT_MAIL_RIGHT,
+  alt: "Direct Mail Right",
+  title: "Direct Mail (Right Section)",
+  geoData: {
+    latitude: "49.0245",
+    longitude: "-79.5673",
+    location: "Mapleton, Canada",
+  },
+};
+
+// 3) OFFSET_PRINTING_RIGHT
+export const OFFSET_PRINTING_RIGHT_IMAGE = {
+  src: OFFSET_PRINTING_RIGHT,
+  alt: "Offset Printing Right",
+  title: "Offset Printing (Right Section)",
+  geoData: {
+    latitude: "40.9987",
+    longitude: "-88.3452",
+    location: "Bridgerton, USA",
+  },
+};
+
+// 4) ONLINE_ORDERING_RIGHT
+export const ONLINE_ORDERING_RIGHT_IMAGE = {
+  src: ONLINE_ORDERING_RIGHT,
+  alt: "Online Ordering Right",
+  title: "Online Ordering (Right Section)",
+  geoData: {
+    latitude: "31.2345",
+    longitude: "-92.1234",
+    location: "Silverpond, USA",
+  },
+};
+
+// 5) PRINTING_COPYING_RIGHT
+export const PRINTING_COPYING_RIGHT_IMAGE = {
+  src: PRINTING_COPYING_RIGHT,
+  alt: "Printing & Copying Right",
+  title: "Printing & Copying (Right Section)",
+  geoData: {
+    latitude: "36.6543",
+    longitude: "-78.6543",
+    location: "Lakeview, USA",
+  },
+};
+
+// 6) SIGNS_RIGHT
+export const SIGNS_RIGHT_IMAGE = {
+  src: SIGNS_RIGHT,
+  alt: "Signs Right",
+  title: "Signs (Right Section)",
+  geoData: {
+    latitude: "54.7865",
+    longitude: "-111.2345",
+    location: "Woodsvale, Canada",
+  },
+};
+
+/***********************************************
+ * Signs Page Images
+ ***********************************************/
+
+// 7) BANNERS_POSTERS_PAGE
+export const BANNERS_POSTERS_PAGE_IMAGE = {
+  src: BANNERS_POSTERS_PAGE,
+  alt: "Banners Posters Page",
+  title: "Banners & Posters (Page Image)",
+  geoData: {
+    latitude: "42.9876",
+    longitude: "-83.0123",
+    location: "Brookhaven, USA",
+  },
+};
+
+// 8) PULL_UP_BANNERS_FLAGS_RIGHT
+export const PULL_UP_BANNERS_FLAGS_RIGHT_IMAGE = {
+  src: PULL_UP_BANNERS_FLAGS_RIGHT,
+  alt: "Pull-Up Banners Flags Right",
+  title: "Pull-Up Banners & Flags (Right Section)",
+  geoData: {
+    latitude: "38.5234",
+    longitude: "-95.2345",
+    location: "Hollow Creek, USA",
+  },
+};
+
+// 9) CAR_GRAPHICS_WRAPS_RIGHT
+export const CAR_GRAPHICS_WRAPS_RIGHT_IMAGE = {
+  src: CAR_GRAPHICS_WRAPS_RIGHT,
+  alt: "Car Graphics Wraps Right",
+  title: "Car Graphics & Wraps (Right Section)",
+  geoData: {
+    latitude: "28.4634",
+    longitude: "-81.8732",
+    location: "Rockford, USA",
+  },
+};
+
+// 10) WINDOW_WALL_FLOOR_GRAPHICS_RIGHT
+export const WINDOW_WALL_FLOOR_GRAPHICS_RIGHT_IMAGE = {
+  src: WINDOW_WALL_FLOOR_GRAPHICS_RIGHT,
+  alt: "Window Wall Floor Graphics Right",
+  title: "Window, Wall & Floor Graphics (Right Section)",
+  geoData: {
+    latitude: "32.7890",
+    longitude: "-101.3456",
+    location: "Stonefield, USA",
+  },
+};
+
+// 11) INTERIOR_OFFICE_LOBBY_DECOR_RIGHT
+export const INTERIOR_OFFICE_LOBBY_DECOR_RIGHT_IMAGE = {
+  src: INTERIOR_OFFICE_LOBBY_DECOR_RIGHT,
+  alt: "Interior Office Lobby Decor Right",
+  title: "Interior Office & Lobby Decor (Right Section)",
+  geoData: {
+    latitude: "39.1234",
+    longitude: "-99.8765",
+    location: "Prairie Town, USA",
+  },
+};
+
+// 12) TRADESHOW_EVENT_SIGNS_RIGHT
+export const TRADESHOW_EVENT_SIGNS_RIGHT_IMAGE = {
+  src: TRADESHOW_EVENT_SIGNS_RIGHT,
+  alt: "Tradeshow Event Signs Right",
+  title: "Tradeshow & Event Signs (Right Section)",
+  geoData: {
+    latitude: "43.6789",
+    longitude: "-82.4567",
+    location: "Eagle Rock, USA",
+  },
+};
+
+// 13) ADA_WAYFINDING_SIGNS_RIGHT
+export const ADA_WAYFINDING_SIGNS_RIGHT_IMAGE = {
+  src: ADA_WAYFINDING_SIGNS_RIGHT,
+  alt: "ADA Wayfinding Signs Right",
+  title: "ADA & Wayfinding Signs (Right Section)",
+  geoData: {
+    latitude: "37.3945",
+    longitude: "-100.3456",
+    location: "Willow Springs, USA",
+  },
+};
+
+// 14) YARD_OUTDOOR_SIGNS_RIGHT
+export const YARD_OUTDOOR_SIGNS_RIGHT_IMAGE = {
+  src: YARD_OUTDOOR_SIGNS_RIGHT,
+  alt: "Yard Outdoor Signs Right",
+  title: "Yard & Outdoor Signs (Right Section)",
+  geoData: {
+    latitude: "36.9876",
+    longitude: "-88.2345",
+    location: "Pineville, USA",
+  },
+};
+
+// 15) BOOTH_GRAPHICS_SIGNS_BANNERS_RIGHT
+export const BOOTH_GRAPHICS_SIGNS_BANNERS_RIGHT_IMAGE = {
+  src: BOOTH_GRAPHICS_SIGNS_BANNERS_RIGHT,
+  alt: "Booth Graphics Signs Banners Right",
+  title: "Booth Graphics, Signs & Banners (Right Section)",
+  geoData: {
+    latitude: "46.8765",
+    longitude: "-112.2345",
+    location: "Campbell River, Canada",
+  },
+};
+
+// 16) DELIVERY_TAKOUT_SIGNS_RIGHT
+export const DELIVERY_TAKOUT_SIGNS_RIGHT_IMAGE = {
+  src: DELIVERY_TAKOUT_SIGNS_RIGHT,
+  alt: "Delivery Takeout Signs Right",
+  title: "Delivery & Takeout Signs (Right Section)",
+  geoData: {
+    latitude: "44.1234",
+    longitude: "-90.9876",
+    location: "Brimfield, USA",
+  },
+};
+
+// 17) NOW_OPEN_SIGNS_GRAPHICS_RIGHT
+export const NOW_OPEN_SIGNS_GRAPHICS_RIGHT_IMAGE = {
+  src: NOW_OPEN_SIGNS_GRAPHICS_RIGHT,
+  alt: "Now Open Signs Graphics Right",
+  title: "Now Open Signs & Graphics (Right Section)",
+  geoData: {
+    latitude: "27.3456",
+    longitude: "-80.2345",
+    location: "Sunnyvale, USA",
+  },
+};
+
+/***********************************************
+ * Graphic Design
+ ***********************************************/
+
+// 18) GRAPHIC_DESIGN_IMAGE_RIGHT
+export const GRAPHIC_DESIGN_IMAGE_RIGHT_IMAGE = {
+  src: GRAPHIC_DESIGN_IMAGE_RIGHT,
+  alt: "Graphic Design Image Right",
+  title: "Graphic Design (Right Section)",
+  geoData: {
+    latitude: "35.4567",
+    longitude: "-75.5678",
+    location: "Aurora Bay, USA",
+  },
+};
+
+/***********************************************
+ * Labels & Packaging
+ ***********************************************/
+
+// 19) CUSTOM_PACKAGING_IMAGE_RIGHT
+export const CUSTOM_PACKAGING_IMAGE_RIGHT_IMAGE = {
+  src: CUSTOM_PACKAGING_IMAGE_RIGHT,
+  alt: "Custom Packaging Image Right",
+  title: "Custom Packaging (Right Section)",
+  geoData: {
+    latitude: "30.1234",
+    longitude: "-85.9876",
+    location: "Coastline, USA",
+  },
+};
+
+// 20) PREMIUM_PRIVATE_LABELS_IMAGE_RIGHT
+export const PREMIUM_PRIVATE_LABELS_IMAGE_RIGHT_IMAGE = {
+  src: PREMIUM_PRIVATE_LABELS_IMAGE_RIGHT,
+  alt: "Premium Private Labels Image Right",
+  title: "Premium Private Labels (Right Section)",
+  geoData: {
+    latitude: "50.2345",
+    longitude: "-95.4567",
+    location: "Canyon Creek, Canada",
+  },
+};
+
+// 21) PRODUCT_PROMOTIONAL_IMAGE_RIGHT
+export const PRODUCT_PROMOTIONAL_IMAGE_RIGHT_IMAGE = {
+  src: PRODUCT_PROMOTIONAL_IMAGE_RIGHT,
+  alt: "Product Promotional Image Right",
+  title: "Product Promotional (Right Section)",
+  geoData: {
+    latitude: "33.5678",
+    longitude: "-91.3456",
+    location: "Forest Glen, USA",
+  },
+};
+
+// 22) QR_CODE_NO_TOUCH_OPTIONS_IMAGE_RIGHT
+export const QR_CODE_NO_TOUCH_OPTIONS_IMAGE_RIGHT_IMAGE = {
+  src: QR_CODE_NO_TOUCH_OPTIONS_IMAGE_RIGHT,
+  alt: "QR Code No-Touch Options Image Right",
+  title: "QR Code No-Touch Options (Right Section)",
+  geoData: {
+    latitude: "46.3456",
+    longitude: "-108.1234",
+    location: "Sunpeak, USA",
+  },
+};
+
+// 23) SAFETY_LABELS_IMAGE_RIGHT
+export const SAFETY_LABELS_IMAGE_RIGHT_IMAGE = {
+  src: SAFETY_LABELS_IMAGE_RIGHT,
+  alt: "Safety Labels Image Right",
+  title: "Safety Labels (Right Section)",
+  geoData: {
+    latitude: "29.8765",
+    longitude: "-97.3456",
+    location: "Everton, USA",
+  },
+};
+
+// 24) SHORT_RUN_PACKAGING_IMAGE_RIGHT
+export const SHORT_RUN_PACKAGING_IMAGE_RIGHT_IMAGE = {
+  src: SHORT_RUN_PACKAGING_IMAGE_RIGHT,
+  alt: "Short Run Packaging Image Right",
+  title: "Short Run Packaging (Right Section)",
+  geoData: {
+    latitude: "48.4567",
+    longitude: "-101.2345",
+    location: "Lakewood, USA",
+  },
+};
+
+// 25) STICKERS_DECALS_IMAGE_RIGHT
+export const STICKERS_DECALS_IMAGE_RIGHT_IMAGE = {
+  src: STICKERS_DECALS_IMAGE_RIGHT,
+  alt: "Stickers Decals Image Right",
+  title: "Stickers & Decals (Right Section)",
+  geoData: {
+    latitude: "34.1234",
+    longitude: "-117.5432",
+    location: "Fawn Grove, USA",
+  },
+};
+
+/***********************************************
+ * Marketing Services
+ ***********************************************/
+
+// 26) CAMPAINGS_CONSULTATION_IMAGE_RIGHT
+export const CAMPAINGS_CONSULTATION_IMAGE_RIGHT_IMAGE = {
+  src: CAMPAINGS_CONSULTATION_IMAGE_RIGHT,
+  alt: "Campaigns Consultation Image Right",
+  title: "Campaigns & Consultation (Right Section)",
+  geoData: {
+    latitude: "38.6543",
+    longitude: "-82.3456",
+    location: "Eastridge, USA",
+  },
+};
+
+// 27) SOCIAL_MEDIA_IMAGE_RIGHT
+export const SOCIAL_MEDIA_IMAGE_RIGHT_IMAGE = {
+  src: SOCIAL_MEDIA_IMAGE_RIGHT,
+  alt: "Social Media Image Right",
+  title: "Social Media (Right Section)",
+  geoData: {
+    latitude: "28.7654",
+    longitude: "-90.2345",
+    location: "Deepwater, USA",
+  },
+};
+
+// 28) VIDEO_PRODUCTION_IMAGE_RIGHT
+export const VIDEO_PRODUCTION_IMAGE_RIGHT_IMAGE = {
+  src: VIDEO_PRODUCTION_IMAGE_RIGHT,
+  alt: "Video Production Image Right",
+  title: "Video Production (Right Section)",
+  geoData: {
+    latitude: "41.2345",
+    longitude: "-84.3456",
+    location: "Marshfield, USA",
+  },
+};
+
+// 29) WEBSITE_DESIGN_IMAGE_RIGHT
+export const WEBSITE_DESIGN_IMAGE_RIGHT_IMAGE = {
+  src: WEBSITE_DESIGN_IMAGE_RIGHT,
+  alt: "Website Design Image Right",
+  title: "Website Design (Right Section)",
+  geoData: {
+    latitude: "39.4321",
+    longitude: "-86.5432",
+    location: "Riverfalls, USA",
   },
 };
