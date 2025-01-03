@@ -47,6 +47,19 @@ export default function Header() {
     [navigate]
   );
 
+  function getMenuColor(page: string): string {
+    switch (page) {
+      case "Products & Services":
+        return "#fb70c6"; // pink
+      case "About us":
+        return "#faa34d"; // orange
+      case "Resources":
+        return "#69be4a"; // green
+      default:
+        return "#ffffff"; // fallback color
+    }
+  }
+
   const [menuData, setMenuData] = useState<HMenuType[]>([]);
   const handleLogout = useCallback(() => {
     localStorage.removeItem("user");
@@ -97,13 +110,23 @@ export default function Header() {
           }
           onMouseLeave={handleMouseLeave}
         >
-          <HeaderMenuCountDivText onClick={() => handleMenuNavigation(data)}>
+          <HeaderMenuCountDivText
+            onClick={() => handleMenuNavigation(data)}
+            style={{
+              color: getMenuColor(data.page),
+              textDecoration: "underline",
+              textDecorationColor: getMenuColor(data.page),
+              textUnderlineOffset: "2px",
+              textDecorationThickness: "2px",
+            }}
+          >
             {data.page}
           </HeaderMenuCountDivText>
         </HeaderMenuCountDivButton>
       )),
     [menuData, handleMenuNavigation]
   );
+
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const menuItems = useMemo(() => renderMenuItems(), [renderMenuItems]);
   useEffect(() => {

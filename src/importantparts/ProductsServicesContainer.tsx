@@ -55,8 +55,10 @@ export default function ProductsServicesContainer() {
     (item: string) => {
       if (item === "Online Ordering Portals") {
         navigate("/online-ordering-portals");
+        dispatching("SHOW_PRODUCT_SERVICES_WINDOW_FROM_BOX", false);
       } else if (item === "Graphic Design") {
         navigate("/graphic-design");
+        dispatching("SHOW_PRODUCT_SERVICES_WINDOW_FROM_BOX", false);
       }
     },
     [navigate]
@@ -113,7 +115,13 @@ export default function ProductsServicesContainer() {
       </LeftSideContainer>
       <RightSideContainer>
         {getRightSideData().map((item, index) => (
-          <RightSideText key={index} onClick={() => navigate(item.link)}>
+          <RightSideText
+            key={index}
+            onClick={() => {
+              navigate(item.link);
+              dispatching("SHOW_PRODUCT_SERVICES_WINDOW_FROM_BOX", false);
+            }}
+          >
             {item.title}
           </RightSideText>
         ))}
@@ -121,12 +129,4 @@ export default function ProductsServicesContainer() {
     </ProductsServicesContainerStyle>
   );
 }
-
-// case "Online Ordering Portals":
-//   return productsAndServicesData.OnlineOrderingPortals
-//     ? [productsAndServicesData.OnlineOrderingPortals]
-//     : [];
-// case "Graphic Design":
-//   return productsAndServicesData.GraphicDesign
-//     ? [productsAndServicesData.GraphicDesign]
-//     : [];
+// s
