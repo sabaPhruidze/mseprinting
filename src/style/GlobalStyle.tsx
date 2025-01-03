@@ -349,7 +349,7 @@ export const FullScreenTitle = styled.h1`
     text-align: center;
   }
 `;
-export const GlobalMainContentResources = styled.p`
+export const GlobalMainContentContactUs = styled.p`
   font-size: 18px;
   font-weight: 400;
   line-height: 1.4;

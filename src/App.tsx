@@ -8,7 +8,7 @@ import {
 import Root from "./Root";
 import Home from "./category/Home";
 import AboutUs from "./category/AboutUs";
-import Resources from "./category/Resources";
+import ContactUs from "./category/ContactUs";
 
 import Login from "./category/Login";
 import Productsservices from "./category/Productsservices";
@@ -64,7 +64,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/productsservices" element={<Productsservices />} />
         <Route path="/about-us" element={<AboutUs />} />
-        <Route path="/resources" element={<Resources />} />
+        <Route path="/ContactUs" element={<ContactUs />} />
         <Route path="/request-quote" element={<RequestQuote />} />
         <Route path="/send-file" element={<SendFile />} />
         {/* sub-category */}

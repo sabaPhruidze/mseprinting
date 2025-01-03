@@ -344,7 +344,7 @@ export interface SpecialStandard {
   Special: string;
   Standard: string;
 }
-export interface ResourcesDocument {
+export interface ContactUsDocument {
   one: TitleWithContent;
   two: TitleWithContent[];
 }

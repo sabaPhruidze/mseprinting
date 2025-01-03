@@ -10,7 +10,7 @@ import {
   SubCategoryCommonTypes,
   AboutUsDocument,
   ProductServicesDocument,
-  ResourcesDocument,
+  ContactUsDocument,
   AccessibilityDocument,
   OffsetPrintingDocument,
   BlogDocument,
@@ -281,8 +281,8 @@ export const fetchRetailData = () =>
 
 // special pages
 
-export const fetchResourceData = () =>
-  fetchData<ResourcesDocument>("SpecialPages", "Resources");
+export const fetchContactUsData = () =>
+  fetchData<ContactUsDocument>("SpecialPages", "Resources");
 export const fetchProductServicesPageData = () =>
   fetchData<ProductServicesDocument>("SpecialPages", "ProductServices");
 export const fetchAboutUsData = () =>

@@ -57,7 +57,7 @@ export default function Header() {
         return "#fb70c6"; // pink
       case "About us":
         return "#faa34d"; // orange
-      case "Resources":
+      case "Contact us":
         return "#69be4a"; // green
       default:
         return "#ffffff"; // fallback color
@@ -94,9 +94,9 @@ export default function Header() {
             key={data.page}
             onMouseEnter={() => handleMouseEnter(data.page)}
             onMouseLeave={handleMouseLeave}
+            onClick={() => handleMenuNavigation(data)}
           >
             <HeaderMenuCountDivText
-              onClick={() => handleMenuNavigation(data)}
               style={{
                 textDecorationLine: isHovered ? "none" : "underline",
                 textDecorationColor: isHovered

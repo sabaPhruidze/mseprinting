@@ -68,8 +68,8 @@ const Sitemap = () => {
         <SMItem $level={1} onClick={() => navigate("/about-us")}>
           About Us
         </SMItem>
-        <SMItem $level={1} onClick={() => navigate("/resources")}>
-          Resources
+        <SMItem $level={1} onClick={() => navigate("/ContactUs")}>
+          ContactUs
         </SMItem>
         <SMItem $level={1} onClick={() => navigate("/request-quote")}>
           Request a Quote
