@@ -38,6 +38,10 @@ export default function Header() {
   const { state, dispatching } = context;
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
+  const [menuData, setMenuData] = useState<HMenuType[]>([]);
+  const [hoveredMenu, setHoveredMenu] = useState<string | null>(null);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
   const handleMenuNavigation = useCallback(
     (data: HMenuType) => {
       if (data.page !== "Products & Services") {
@@ -60,12 +64,71 @@ export default function Header() {
     }
   }
 
-  const [menuData, setMenuData] = useState<HMenuType[]>([]);
+  const handleMouseEnter = useCallback(
+    (page: string) => {
+      setHoveredMenu(page);
+      if (page === "Products & Services") {
+        if (timeoutRef.current) {
+          clearTimeout(timeoutRef.current);
+          timeoutRef.current = null;
+        }
+        dispatching("SHOW_PRODUCT_SERVICES_WINDOW_FROM_MENU", true);
+      }
+    },
+    [dispatching]
+  );
+
+  const handleMouseLeave = useCallback(() => {
+    setHoveredMenu(null);
+    timeoutRef.current = setTimeout(() => {
+      dispatching("SHOW_PRODUCT_SERVICES_WINDOW_FROM_MENU", false);
+    }, 150);
+  }, [dispatching]);
+
+  const renderMenuItems = useCallback(
+    () =>
+      menuData.map((data) => {
+        const isHovered = hoveredMenu === data.page;
+        return (
+          <HeaderMenuCountDivButton
+            key={data.page}
+            onMouseEnter={() => handleMouseEnter(data.page)}
+            onMouseLeave={handleMouseLeave}
+          >
+            <HeaderMenuCountDivText
+              onClick={() => handleMenuNavigation(data)}
+              style={{
+                textDecorationLine: isHovered ? "none" : "underline",
+                textDecorationColor: isHovered
+                  ? "transparent"
+                  : getMenuColor(data.page),
+                textDecorationThickness: "2px",
+                textUnderlineOffset: "2px",
+                color: isHovered ? "#000000" : getMenuColor(data.page),
+              }}
+            >
+              {data.page}
+            </HeaderMenuCountDivText>
+          </HeaderMenuCountDivButton>
+        );
+      }),
+    [
+      menuData,
+      handleMenuNavigation,
+      handleMouseEnter,
+      handleMouseLeave,
+      hoveredMenu,
+    ]
+  );
+
+  const menuItems = useMemo(() => renderMenuItems(), [renderMenuItems]);
+
   const handleLogout = useCallback(() => {
     localStorage.removeItem("user");
     dispatching("LOGOUT", null);
     navigate("/");
   }, [dispatching, navigate]);
+
   useEffect(() => {
     const getMenuData = async () => {
       const data = await fetchHeaderMenuData();
@@ -78,57 +141,7 @@ export default function Header() {
 
     getMenuData();
   }, []);
-  const handleNavigationLogin = () => {
-    if (!state.user) navigate("/login");
-  };
-  const handleNavigationRegister = () => {
-    if (!state.user) navigate("/register");
-  };
-  const handleNavigationHome = () => {
-    navigate("/");
-  };
-  const handleMouseEnter = useCallback(() => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-      timeoutRef.current = null;
-    }
-    dispatching("SHOW_PRODUCT_SERVICES_WINDOW_FROM_MENU", true);
-  }, [dispatching]);
 
-  const handleMouseLeave = useCallback(() => {
-    timeoutRef.current = setTimeout(() => {
-      dispatching("SHOW_PRODUCT_SERVICES_WINDOW_FROM_MENU", false);
-    }, 150);
-  }, [dispatching]);
-  const renderMenuItems = useCallback(
-    () =>
-      menuData.map((data) => (
-        <HeaderMenuCountDivButton
-          key={data.page}
-          onMouseEnter={
-            data.page === "Products & Services" ? handleMouseEnter : undefined
-          }
-          onMouseLeave={handleMouseLeave}
-        >
-          <HeaderMenuCountDivText
-            onClick={() => handleMenuNavigation(data)}
-            style={{
-              color: getMenuColor(data.page),
-              textDecoration: "underline",
-              textDecorationColor: getMenuColor(data.page),
-              textUnderlineOffset: "2px",
-              textDecorationThickness: "2px",
-            }}
-          >
-            {data.page}
-          </HeaderMenuCountDivText>
-        </HeaderMenuCountDivButton>
-      )),
-    [menuData, handleMenuNavigation]
-  );
-
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-  const menuItems = useMemo(() => renderMenuItems(), [renderMenuItems]);
   useEffect(() => {
     const handleResize = () => {
       setScreenWidth(window.innerWidth);
@@ -140,6 +153,19 @@ export default function Header() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  const handleNavigationLogin = () => {
+    if (!state.user) navigate("/login");
+  };
+
+  const handleNavigationRegister = () => {
+    if (!state.user) navigate("/register");
+  };
+
+  const handleNavigationHome = () => {
+    navigate("/");
+  };
+
   return (
     <HeaderContainer>
       <HeaderMenuBox>
@@ -152,9 +178,7 @@ export default function Header() {
           <HeaderTagline>
             PRINT <span> ● </span> SIGNS <span> ● </span> MARKETING
           </HeaderTagline>
-        ) : (
-          ""
-        )}
+        ) : null}
         <HeaderMenuCountDiv>{menuItems}</HeaderMenuCountDiv>
         <HeaderAccSignSearchDiv>
           {screenWidth < 1300 || screenWidth > 1450 ? (
@@ -173,12 +197,9 @@ export default function Header() {
                 {state.user ? "Log out" : "Sign up"}
               </HeaderAccSignButton>
             </HeaderAccSignDiv>
-          ) : (
-            ""
-          )}
+          ) : null}
           <SearchEngine />
         </HeaderAccSignSearchDiv>
-        {/* </HeaderContentSecondPartWrapper> */}
       </HeaderMenuBox>
       <HeaderRSBox>
         <NavigateAndScroll path="/request-quote">
